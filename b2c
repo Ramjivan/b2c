@@ -1,0 +1,12 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="4">
+            <File firstVisibleLine="80" xOffset="611" scrollWidth="2760" startPos="2373" endPos="2373" selMode="0" lang="PHP" encoding="-1" filename="C:\xampp\htdocs\b2c\ques.php" backupFilePath="" originalFileLastModifTimestamp="1516476087" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="42" xOffset="0" scrollWidth="2700" startPos="9" endPos="74" selMode="0" lang="PHP" encoding="-1" filename="C:\xampp\htdocs\b2c\prdct.php" backupFilePath="" originalFileLastModifTimestamp="1516441305" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="16" xOffset="0" scrollWidth="590" startPos="1098" endPos="1098" selMode="0" lang="Normal Text" encoding="-1" filename="C:\xampp\htdocs\b2c\.htaccess" backupFilePath="" originalFileLastModifTimestamp="1516476239" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="89" xOffset="0" scrollWidth="3780" startPos="2975" endPos="2975" selMode="0" lang="PHP" encoding="-1" filename="C:\xampp\htdocs\b2c\adrses.php" backupFilePath="" originalFileLastModifTimestamp="1516474245" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="117" xOffset="0" scrollWidth="1580" startPos="3456" endPos="3467" selMode="0" lang="PHP" encoding="-1" filename="C:\xampp\htdocs\b2c\ans.php" backupFilePath="" originalFileLastModifTimestamp="1516476919" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>
