@@ -1,0 +1,1017 @@
+{
+	"info": {
+		"name": "b2c",
+		"_postman_id": "a22a3322-e433-0079-8510-db13372e4beb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/product/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "p_name",
+									"value": "Mi Mix 2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_description",
+									"value": "Mi Community is best",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_price",
+									"value": "13000",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_stock",
+									"value": "15000",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image1",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "image2",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "imgcount",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hlgtcount",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hlgt1",
+									"value": "4GB RAM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hlgt2",
+									"value": "32 GB ROM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "spcount",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sp_name1",
+									"value": "Rear Camera",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sp_value1",
+									"value": "12 MP camera",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "rtype",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cod",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_category",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sp_name2",
+									"value": "processor",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "sp_value2",
+									"value": "2.00GHZ octa core Processor",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/product/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"product",
+								"add"
+							]
+						},
+						"description": "product addition required paramerter count 10....."
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/product/edit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "05a7f07e80",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_name",
+									"value": "Mi Max 2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_price",
+									"value": "9",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_description",
+									"value": "this is updated by using product/edit",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "p_stock",
+									"value": "1000",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/product/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"product",
+								"edit"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/customer",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"customer"
+							]
+						},
+						"description": "this fetch a perticular customer"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/customer/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "c_fullname",
+									"value": "Merchant",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "c_email",
+									"value": "b2c@test.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "c_mobile",
+									"value": "8461294246",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "ctus",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "pwd",
+									"value": "random",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/customer/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"customer",
+								"add"
+							]
+						},
+						"description": "this request is used to post data on server and add data to customer table.....8 "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/product/category/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Merchant_id",
+									"value": "8681645ac6e",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "isTop",
+									"value": "true",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "NULL",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "cat_name",
+									"value": "Electronics",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cat_description",
+									"value": "all Electronics Items.",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cat_meta_keyword",
+									"value": "electronics,electronic items,xyz ,abc,mobiles,appliances",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/product/category/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"product",
+								"category",
+								"add"
+							]
+						},
+						"description": "add category"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/product/category/edit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cid",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cat_name",
+									"value": "Electronics & Accesories",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/product/category/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"product",
+								"category",
+								"edit"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "addresses",
+			"description": "all request for address ADD,ALTER,DELETE ",
+			"item": [
+				{
+					"name": "localhost/b2c/address/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "adt_fullname",
+									"value": "O/S chandpole ADDRESS",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_mob",
+									"value": "8561996246",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_pincode",
+									"value": "342001",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_addressline1",
+									"value": "TEST TEST TEST TEST  1TEST 1  TEST 1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_addressline2",
+									"value": "TEST TEST TEST TEST  1TEST 1  TEST 1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_landmark",
+									"value": "DIET",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_city",
+									"value": "Jodhpur",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_country",
+									"value": "INDIA",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_type",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "adt_state",
+									"value": "Rajasthan",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/address/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"address",
+								"add"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/address/delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cid",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/address/delete",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"address",
+								"delete"
+							]
+						},
+						"description": "address deletion with user validation [user own address or not] "
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/address",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"address"
+							]
+						},
+						"description": "GET REQUEST for fetching all address. "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "qna",
+			"description": "all QNA related API Calls.. ",
+			"item": [
+				{
+					"name": "localhost/b2c/question/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "qna_question",
+									"value": "does it have NFC ?? Blah Blah",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/question/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"question",
+								"add"
+							]
+						},
+						"description": "add question on a product"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/question/edit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "qna_id",
+									"value": "4",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "qna_question",
+									"value": "does this havee NFC ????",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/question/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"question",
+								"edit"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/question/delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "qna_id",
+									"value": "4",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/question/delete",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"question",
+								"delete"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "answer",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/answer/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "qna_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "qna_answer",
+									"value": "No",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/answer/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"answer",
+								"add"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/answer/edit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "qna_id",
+									"value": "5",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "qna_answer",
+									"value": "Yes in other varients",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/answer/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"answer",
+								"edit"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "qna",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/qna/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/qna/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"qna",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/cart/add/1/qty/2/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/cart/add/05a7f07e80/qty/5",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"cart",
+								"add",
+								"05a7f07e80",
+								"qty",
+								"5"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/cart/edit/1/qty/3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/cart/edit/4/qty/5",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"cart",
+								"edit",
+								"4",
+								"qty",
+								"5"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/cart/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/cart",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"cart"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/cart/delete/4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/cart/delete/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"cart",
+								"delete",
+								"4"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/order/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ord_payment_method",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "ord_address_id",
+									"value": "fghdft435wg3",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/order/add",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"order",
+								"add"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wallet",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/wallet/transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "wallet_id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "balance",
+									"value": "3",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/wallet/transfer",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"wallet",
+								"transfer"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost/b2c/session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "b2c@test.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "paswrd",
+									"value": "random",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/b2c/session",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"session"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost/b2c/logout.php",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost/b2c/logout.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"b2c",
+								"logout.php"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
