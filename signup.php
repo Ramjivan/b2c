@@ -7,6 +7,7 @@
 		<script language="JavaScript" type="text/javascript" src="style.js"></script>
 		<script language="JavaScript" type="text/javascript" src="validate.js"></script>
 		<link rel="stylesheet" href="style.css" type='text/css' media="all"/>
+		<link rel="stylesheet" href="responsive.css" type='text/css' media="all"/>
 		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 	</head>
 <body class="body">
@@ -61,6 +62,9 @@
 						</div>
 						<div class="form-group">
 							<input id="password" placeholder="8 word Password" type="password" name="pwd"/>
+						</div>
+						<div class="form-group">
+							<input type="button" class="btn btn-success" value="Register"/>
 						</div>
 					</form>
 				</div>

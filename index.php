@@ -39,6 +39,7 @@
 					<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
 					<div class="clearfix"></div>
 				</nav>
+				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
