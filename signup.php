@@ -52,16 +52,16 @@
 					<h3>Sign up</h3>
 					<form class="signup-form">
 						<div class="form-group">
-							<input id="name" onchange="validate({'id':'name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null})" type="text" placeholder="Full Name" name="c_fullname"/>
+							<input id="name" onchange="validate({'id':'name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9})" type="text" placeholder="Full Name" name="c_fullname"/>
 						</div>
 						<div class="form-group">
-							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null})" type="text" placeholder="E-mail Address" name="c_email"/>
+							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8})" type="text" placeholder="E-mail Address" name="c_email"/>
 						</div>
 						<div class="form-group">
-							<input id="m-num" type="text" onchange="validate({'id':'m-num','name':'mobile','regex':/([0-9]*)/,'length':10})" placeholder="10 Digit Mobile Number" name="c_mobile"/>
+							<input id="m-num" type="text" onchange="validate({'id':'m-num','name':'mobile','regex':/([0-9]*)/,'length':10,'min_length':null})" placeholder="10 Digit Mobile Number" name="c_mobile"/>
 						</div>
 						<div class="form-group">
-							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null})" placeholder="8 word Password" type="password" name="pwd"/>
+							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8})" placeholder="8 word Password" type="password" name="pwd"/>
 						</div>
 						<div class="form-group">
 							<input type="button" class="btn btn-primary-color" value="Register"/>

@@ -14,7 +14,12 @@ function validate(arr)
 		raiseError = true;
 		Message = arr.name+" was not valid";
 	}
-
+	else if(arr.min_length !== null && document.getElementById(arr.id).value.toString().trim().length < arr.min_length)
+	{
+		raiseError = true;
+		Message = arr.name+" should be "+arr.min_length+" long !";
+	}
+	
 	if(raiseError == true)
 	{
 		document.getElementById(arr.id).style.borderColor = 'red';
