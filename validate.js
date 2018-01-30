@@ -2,25 +2,29 @@ function validate(arr)
 {
 	var raiseError = false;
 	var Message = "";
-	var elem = document.getElementById(arr.id);
-
-	if(arr.length !== null && parseInt(arr.length) !== parseInt(elem.value.toString().length))
+	this.document.getElementById(arr.id).value.toString();
+	
+	if(arr.length !== null && (document.getElementById(arr.id).value.toString().trim().length > arr.length  || document.getElementById(arr.id).value.toString().trim().length < arr.length) )
 	{
-		this.raiseError = true;
-		this.Message = arr.name+" should be "+arr.length+" Long !"+elem.value.length;
+		raiseError = true;
+		Message = arr.name+" should be "+arr.length+" Long ! Length : "+document.getElementById(arr.id).value.toString().trim().length;
 	}
-	else if(elem.value.match(arr.regex) == null)
+	else if(arr.regex !== null && document.getElementById(arr.id).value.match(arr.regex) == null)
 	{
-		this.raiseError = true;
-		this.Message = arr.name+" was not valid";
-	}
-
-	if(this.raiseError == true)
-	{
-		alert(this.Message);
-		return false;
+		raiseError = true;
+		Message = arr.name+" was not valid";
 	}
 
-	return true;
+	if(raiseError == true)
+	{
+		document.getElementById(arr.id).style.borderColor = 'red';
+		//return false;
+	}
+	else
+	{
+		document.getElementById(arr.id).style.borderColor = '#BADA55';
+	}
+
+	//return true;
 }
 

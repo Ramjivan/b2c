@@ -3,6 +3,10 @@
 	box-sizing:border-box;
 }
 
+:root{
+	--primary-color:#FB8c00;
+}
+
 body{
 	margin:0;
 }
@@ -233,6 +237,10 @@ form div.form-group{
 
 .btn-success{
 	background-color:#8AEA55;
+}
+
+.btn-primary-color{
+	background-color:var(--primary-color,#FFFFFF);
 }
 
 .btn-xs{

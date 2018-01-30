@@ -7,5 +7,4 @@ $(document).ready(function(){
 		$('#sidebar').fadeOut();
 		$('.blurdfg').toggleClass('active');
 	});
-	validate({'id':'name','name':'mobile','regex':'[0-9]','length':'10'});
 });
