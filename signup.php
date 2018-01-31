@@ -68,7 +68,7 @@
 							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
 						</div>
 						<div class="form-group">
-							<input type="button" onclick="form_validate(this,document.getElementById('vs'))" class="btn btn-primary-color" value="Register"/>
+							<input type="submit" onclick="return form_validate(this,document.getElementById('vs'))" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
 				</div>
