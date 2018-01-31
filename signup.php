@@ -5,6 +5,7 @@
 		</title>
 		<script language="JavaScript" type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script language="JavaScript" type="text/javascript" src="style.js"></script>
+		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
 		<script language="JavaScript" type="text/javascript" src="validate.js"></script>
 		<link rel="stylesheet" href="style.css" type='text/css' media="all"/>
 		<link rel="stylesheet" href="responsive.css" type='text/css' media="all"/>
@@ -16,7 +17,7 @@
 			<nav class="navbar side-nav">
 				<div class="nav-header">
 					<div>
-					B2C
+						B2C
 						<div class="return-btn right">
 							&times;
 						</div>
@@ -51,7 +52,7 @@
 			<div class="col-6">
 				<div class="spform">
 					<h3>Sign up</h3>
-					<form class="signup-form">
+					<form class="signup-form" id="sgn-form">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
@@ -68,7 +69,10 @@
 							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
 						</div>
 						<div class="form-group">
-							<input type="submit" onclick="return form_validate(this,document.getElementById('vs'))" class="btn btn-primary-color" value="Register"/>
+							Merchant <input type="radio" name="ctus" value="1"> Customer <input type="radio" name="ctus" value="2">
+						</div>
+						<div class="form-group">
+							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
 				</div>

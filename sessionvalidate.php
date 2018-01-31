@@ -16,10 +16,10 @@ function prevent_hijacking(){
 	}
 }
 	
-	if(!prevent_hijacking() && !isset($_SESSION['user']))
+	/*if(!prevent_hijacking() && !isset($_SESSION['user']))
 	{
 		die(json_encode(array('ERROR' =>  "AUTH FAILED")));
-	}
+	}*/
 
 
 

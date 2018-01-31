@@ -48,6 +48,10 @@
 	nav.navbar.top-nav  > div.nav-item{
 		display:none;
 	}
+	
+	#sidebar{
+		width:100%;
+	}
 }
 
 
