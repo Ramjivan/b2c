@@ -1,0 +1,1 @@
+all the files which directly communicate to our apies and delivar content to html pages

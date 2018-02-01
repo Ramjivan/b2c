@@ -1,8 +1,11 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>
-			new Page | B2C
+			Login | B2C
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
@@ -25,7 +28,7 @@
 			<div class="col-6">
 				<div class="spform">
 					<h3>Login</h3>
-					<form class="signup-form">
+					<form id="signin-form" class="signup-form">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
@@ -34,7 +37,8 @@
 						</div>
 						<div class="form-group">
 							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
-						</div>
+                        </div>
+                        <input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
 						<div class="form-group">
 							<input type="button" onclick="form_validate(this,document.getElementById('vs'))" class="btn btn-primary-color" value="Login"/>
 						</div>
@@ -56,60 +60,41 @@
 		//including footer
 		include 'footer.php';
 	?>
+    <form action="apies/verify-g-token.php" method="POST" name="g-signin">
+        <input type="hidden" name="ID">
+        <input type="hidden" name="Full_Name">
+        <input type="hidden" name="First_Name">
+        <input type="hidden" name="Last_Name">
+        <input type="hidden" name="Image_URL">
+        <input type="hidden" name="Email">
+        <input type="hidden" name="ID_Token">
+        <input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
+    </form>
     <!--Scripts-->
     <script>
-      function onSignIn(googleUser) {
+        function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
+        document.forms['g-signin']['ID'].value = profile.getId();
+        document.forms['g-signin']['First_Name'].value = profile.getGivenName();
+        document.forms['g-signin']['Last_Name'].value = profile.getFamilyName();
+        document.forms['g-signin']['Full_Name'].value = profile.getName();
+        document.forms['g-signin']['Image_URL'].value = profile.getImageUrl();
+        document.forms['g-signin']['Email'].value = profile.getEmail();
         
-        console.log("ID Token: " + id_token);
-        //window.location.href='verify-g-token.php?ID='+profile.getId()+'&EMAIL='+profile.getEmail()+'&token_id='+id_token;
-        userData = {"ID":profile.getId(),
-                "EMAIL":profile.getEmail(),
-                "FIRST_NAME":profile.getGivenName(),
-                "LAST_NAME":profile.getFamilyName(),
-                "IMAGE_URL":profile.getImageUrl(),
-                "token_id":id_token} ;
+        // The ID token you need to pass to your backend:
+        document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
 
-        var clientID = "340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com";
-        $.ajax({
-            type: "GET",
-            url: "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="+id_token,
-            dataType : 'JSON',
-            success: function (data) {
-                //verifying if request is coming from our google-app
-                if(data.aud == clientID){
-                    $.ajax({
-                        type: "POST",
-                        url: "verify-g-token.php",
-                        data: userData,
-                        
-                        success: function (data) {
-                            alert(data);
-                            window.location.href=data;
-                        }
-                    });
-                    alert("loggen in sucessfully");
-                }
-
-            }
-        });
-      };
+        //submitting the form
+        $('[name="g-signin"]').submit();
+        
+      };        
     </script>
 
     <script>
-    $(function () {
+    $( document ).ready(function() {
 
-    $('form').on('submit', function (e) {
+    $('#signin-form').on('submit', function (e) {
 
     e.preventDefault();
 
@@ -129,7 +114,7 @@
     
     <script>
     //facebook javascript sdk
-    /*window.fbAsyncInit = function() {
+    window.fbAsyncInit = function() {
         FB.init({
         appId      : '2089771331266779',
         cookie     : true,
@@ -147,7 +132,7 @@
         js = d.createElement(s); js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));*/
+    }(document, 'script', 'facebook-jssdk'));
     </script>
 </body>
 </html>

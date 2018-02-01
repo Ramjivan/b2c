@@ -1,0 +1,31 @@
+//login with google
+<form action="verify-g-token.php" method="POST" id="g-signin">
+        <input type="hidden" name="ID">
+        <input type="hidden" name="Full_Name">
+        <input type="hidden" name="First_Name">
+        <input type="hidden" name="Last_Name">
+        <input type="hidden" name="Image_URL">
+        <input type="hidden" name="Email">
+        <input type="hidden" name="ID_Token">
+    </form>
+
+    <script>
+    document.forms['g-signin']['ID'].value = profile.getId();
+        document.forms['g-signin']['First_Name'].value = profile.getGivenName();
+        document.forms['g-signin']['Last_Name'].value = profile.getFamilyName();
+        document.forms['g-signin']['Full_Name'].value = profile.getName();
+        document.forms['g-signin']['Image_URL'].value = profile.getImageUrl();
+        document.forms['g-signin']['Email'].value = profile.getEmail();
+        document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
+        
+        $('#g-signin').submit();
+        
+
+        window.location.href='verify-g-token.php?ID='+profile.getId()+
+                            '&FIRST_NAME='+profile.getGivenName()+
+                            '&LAST_NAME='+profile.getFamilyName()+
+                            '&EMAIL='+profile.getEmail()+
+                            '&IMAGE_URL='+profile.getImageUrl()+
+                            '&ID_TOKEN='+id_token;
+        
+    </script>
