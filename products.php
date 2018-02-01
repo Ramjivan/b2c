@@ -6,7 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		
+		<script>xhr_call('GET','')</script>
 		<?php
 			//include head
 			include 'headTags.php';
@@ -17,10 +17,7 @@
 		//including header
 		include 'header.php';
 	?>
-	
-		<div class="main-grid"> 
-			
-		</div>
+	<!--Content Here-->
 
 	<?php
 		//including footer

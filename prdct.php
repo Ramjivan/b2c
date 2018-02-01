@@ -303,7 +303,35 @@ function upload_image($index)
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")
 	{
+		$return_values = array();
 		
+		if(isset($_GET['page']))
+		{
+			try
+			{
+				$start = (intval($_GET['page']) * 10) - 10;
+				$end = (intval($_GET['page']) * 10);
+				$SQL = "SELECT * FROM `products` LIMIT ".$start.",".$end;
+				$stmt = $conn->prepare($SQL);
+				$stmt->execute();
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['result'] = 1;
+					$return_values['items'] = $stmt->fetchAll();
+				}
+				else
+				{
+					$return_values['result'] = 0;
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
+			}
+		}
 		
 		
 	}

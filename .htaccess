@@ -5,6 +5,7 @@ RewriteRule ^customer$ reg.php [QSA]
 
 RewriteRule ^product/add$ prdct.php?qtype=1 [QSA]
 RewriteRule ^product/edit$ prdct.php?qtype=2 [QSA]
+RewriteRule ^product/page/([0-9]*)$ prdct.php?page=$1 [QSA]
 
 #product related
 
