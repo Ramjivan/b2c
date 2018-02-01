@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(isset($_SESSION['user'])){
+		Header('Location: index.php');
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,6 +15,8 @@
 		<meta name="google-signin-scope" content="profile email">
         <meta name="google-signin-client_id" content="340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="validate.js"></script>
+        <script src="js/lin.js"></script>
 		<?php
 			//include head
 			include 'headTags.php';
@@ -25,18 +33,18 @@
 			<div class="col-6">
 				<div class="spform">
 					<h3>Login</h3>
-					<form class="signup-form">
+					<form class="signup-form" id="lgn-btn">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
-							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="c_email"/>
+							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="mail"/>
 						</div>
 						<div class="form-group">
-							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
+							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="paswrd" minlength="8" />
 						</div>
 						<div class="form-group">
-							<input type="button" onclick="form_validate(this,document.getElementById('vs'))" class="btn btn-primary-color" value="Login"/>
+							<input type="button" id="lgn" class="btn btn-primary-color" value="Login"/>
 						</div>
 					</form>
                     

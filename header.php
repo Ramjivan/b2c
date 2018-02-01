@@ -24,7 +24,8 @@
             <div class="nav-item"><a class="opn-btn" href="#"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
             <nav class="navbar top-nav">
                 <div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
-                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="#">Sign up / Sign in</a></div>
+                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="signup.php">Sign up </a></div>
+                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="login.php">Sign in</a></div>
                 <div class="nav-item"><span class="fa fa-1x fa-search"></span><a href="#">Explore</a></div>
                 <div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
                 <div class="clearfix"></div>
