@@ -1,8 +1,11 @@
 <?php
-require_once 'b2c/google-api-php-client-master/src/Google/autoload.php';
 
+//require_once 'vendor/autoload.php';
+$id_token= 'dhv';
+return $id_token;
 if(isset($_POST['token_id'])){
     $id_token = $_POST['token_id'];
+    return $id_token;
 }
 else{
     return 'BAD REQUEST: NO TOKEN ID WAS PASSED!';
@@ -14,8 +17,8 @@ $client = new Google_Client(['client_id' => $CLIENT_ID]);  // Specify the CLIENT
 $payload = $client->verifyIdToken($id_token);
 if ($payload) {
   $userid = $payload['sub'];
-  // If request specified a G Suite domain:
-  //$domain = $payload['hd'];
+  echo $userid;
+  echo"dfj";
 } else {
   // Invalid ID token
 }

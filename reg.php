@@ -2,7 +2,6 @@
 session_start();
 include('pdo.php');
 include('functions.php');
-include('sessionvalidate.php');
 function is_set_strict(&$var,$index,&$ERROR_FLAG)
 {
 		

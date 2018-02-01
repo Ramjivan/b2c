@@ -1,4 +1,5 @@
 <div class="row">
+		<!--Mobile Navbar-->
 		<div class="col-1" id="sidebar">
 			<nav class="navbar side-nav">
 				<div class="nav-header">
@@ -17,7 +18,7 @@
 			</nav>
 		</div>
 		<div class="clearfix"></div>
-
+		<!--Desktop Navbar-->
         <div class="col-6">
         <div class="header">	
             <div class="nav-item"><a class="opn-btn" href="#"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
