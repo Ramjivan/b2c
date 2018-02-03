@@ -1,8 +1,13 @@
-<html id="fh4jf">
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html>
 	<head>
 		<title>
-			B2C | Signup
+			Login | B2C
 		</title>
+<<<<<<< HEAD
 		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
 		<script language="JavaScript" type="text/javascript" src="validate.js"></script>
 	<?php
@@ -12,11 +17,28 @@
 	</head>
 <body class="body">
 	
+=======
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+		<?php
+			//include head
+			include 'headTags.php';
+		?>
+	</head>
+<body class="body">
+>>>>>>> 64817461c192ac6b071ec8b00a68e40e4745f58e
 	<?php
 		//including header
 		include 'header.php';
 	?>
+<<<<<<< HEAD
 	
+=======
+	<!--Content Here-->
+>>>>>>> 64817461c192ac6b071ec8b00a68e40e4745f58e
 	<div class="signup">
 		<div class="row">
 			<div class="col-6">
@@ -45,11 +67,17 @@
 							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
+					<a href="login.php">Already a Mamber! Log In</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="blurdfg">
 	</div>
+
+	<?php
+		//including footer
+		include 'footer.php';
+	?>
 </body>
 </html>
