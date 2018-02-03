@@ -85,7 +85,6 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 
 function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)
 {
-	alert(formvalidation.toString());
 	if(form_validate(document.getElementById(validation_summary),formvalidation))
 	{			
 		var form = document.getElementById(formid);
@@ -102,7 +101,7 @@ function submit_form(formid,formvalidation,validation_summary,url,method,success
 		}
 		else
 		{
-			alert('Some Field(9) data are/is not valid.');
+			alert('Fatal Error');
 		}
 	}
 }

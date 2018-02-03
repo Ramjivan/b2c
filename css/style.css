@@ -546,4 +546,6 @@ display: inline;
 
 .spec{
 	padding:15px;
+	background-color:rgba(0,0,0,0.1);
+	border-radius:3px;
 }

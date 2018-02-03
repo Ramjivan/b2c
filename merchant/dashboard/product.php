@@ -42,7 +42,7 @@
 			<div class="center-block">
 				<h3>Add Product</h3>
 				<div>
-					<form class="pdct-form" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
+					<form class="pdct-form" id="pctafm" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
@@ -69,10 +69,13 @@
 							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1"/>
 						</div>
 						<div class="form-group">
+							<h2>Hightlights</h2>
+						
 							<input id="hlgt1" onchange="validate({'id':'hlgt1','name':'Hightlight1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Hightlight 1" name="hlgt1"/>
 							<input type="hidden" name="hlgtcount" value="1"/>
 						</div>
-						<div class="spec form-group">
+						<div class="form-group">
+						<h2>Specifications</h2>
 							<input type="hidden" name="spcount" value="1"/>
 							<div class="spec">
 								<h3>Specification 1</h3>
@@ -80,11 +83,11 @@
 								<input id="sp_value1" onchange="validate({'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Value" name="sp_value1"/>
 							</div>
 						</div>
-						<div class="form-group">
-							COD eligible ? Yes <input type="radio" name="cod" value="1"> No <input type="radio" name="ctus" value="0">
+						<div class="form-group">							
+							COD eligible ? Yes <input type="radio" name="cod" value="1" checked> No <input type="radio" name="cod" value="0">
 						</div>
 						<div class="form-group">
-							<input type="submit" onclick="return form_validate(document.getElementById('vs'),[{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255}])" id="add" class="btn btn-primary-color" value="Add"/>
+							<input type="button" id="add" class="btn btn-primary-color" value="Add"/>
 						</div>
 						<div class="clearfix"></div>
 					</form>
