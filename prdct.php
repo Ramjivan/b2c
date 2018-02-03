@@ -26,7 +26,7 @@ function upload_image($index)
 	)
 	{
 		//image validation starts
-		$dir = "products/uploads/";
+		$dir = "apies/products/uploads/";
 		$name = md5(basename($_FILES[$index]['name']).time());
 		$targetFile = $dir.$name;
 		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
