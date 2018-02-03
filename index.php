@@ -19,7 +19,22 @@
 	?>
 	
 		<div class="main-grid"> 
-			
+			<div class="prdct-grids row">
+				<div class="prdct col-1">
+					<div class="img">
+						<img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/>
+					</div>
+					<div class="details">
+						stancil
+						<div class="price">
+							<sup><span class="fa fa-inr"></span></sup>2000
+						</div>
+						<div class="rating">
+							<span class="fa fa-star"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	<?php

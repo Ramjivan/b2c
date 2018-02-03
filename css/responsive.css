@@ -53,6 +53,12 @@
 		width:100%;
 	}
 	
+<<<<<<< HEAD
+=======
+	.container{
+		width:100%;
+	}  
+>>>>>>> 586d4ab634877e4ae5b08241794666c254772602
 }
 
 
@@ -66,5 +72,7 @@
 		width:auto;
 	}
 	
-
+	.container{
+		margin:5px;
+	}  
 }

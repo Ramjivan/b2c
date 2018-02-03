@@ -5,8 +5,17 @@ session_start();
 <html>
 	<head>
 		<title>
-			Login | B2C
+			Sign up | B2C
 		</title>
+		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
+		<script language="JavaScript" type="text/javascript" src="js/validate.js"></script>
+	<?php
+		//include head
+		include 'headTags.php';
+	?>
+	</head>
+<body class="body">
+	
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta name="google-signin-scope" content="profile email">
@@ -51,7 +60,7 @@ session_start();
 							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
-					<a href="login.php">Already a Mamber! Log In</a>
+					<a class="_redfge" href="login.php">Already a Mamber ! Log In</a>
 				</div>
 			</div>
 		</div>

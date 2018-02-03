@@ -1,52 +1,46 @@
 window.onload = function(){
 	
 	var sub_btn = document.getElementById('btn-sgn');
-	sub_btn.onclick = function(){
-		
-		if(form_validate(document.getElementById('btn-sgn'),document.getElementById('vs')))
-		{			
-			var form = document.getElementById('sgn-form');
-			var formData = new FormData(form);
-			
-			xhr_call(
-				'POST',
-				'customer/add',
-				formData,
-				function(xhttp){
-					document.location = "/b2c/";
-				},
-				function(xhttp){
-					
-				}
-			);
-		}
-	};
+	var elems = [
+		{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+		{'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null},
+		{'id':'m-num','name':'mobile','regex':/([0-9]*)/,'length':10,'min_length':null,'max_length':null},
+		{'id':'password','name':'Password','regex':null,'length':null,'min_length':8,'max_length':null}
+	];
+	var url = "apies/customer/add";
+	var method = "POST";
+	var success = function(){document.location="/b2c/"};
+	var fail = function(){alert("Server Error.")};
+	var formid = 'sgn-form';
+	var validation_summary = "vs";
+	sub_btn.addEventListener("click",function(){
+		submit_form(formid,elems,validation_summary,url,method,success,fail)
+	});
 };
 
-function xhr_call(method,url,param,success_fun,fail_fun)
+
+
+function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)
 {
-	var xhttp ;
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(xhttp.readyState == 4)
+	alert(formvalidation.toString());
+	if(form_validate(document.getElementById(validation_summary),formvalidation))
+	{			
+		var form = document.getElementById(formid);
+		if(form !== null)
 		{
-			switch(xhttp.status)
-			{
-				case 200:
-					success_fun(xhttp);
-				break;
-				
-				case 400:
-					fail_fun(xhttp);
-				break;
-				
-				case 501:
-					fail_fun(xhttp);
-				break;
-			}
+			var formData = new FormData(form);
+			xhr_call(
+				method,
+				url,
+				formData,
+				success,
+				fail
+			);
 		}
-	};
-	
-	xhttp.open(method,url,true);
-	xhttp.send(param);
+		else
+		{
+			alert('Some Fields are not eligible');
+		}
+	}
 }
+

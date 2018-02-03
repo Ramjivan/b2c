@@ -72,7 +72,7 @@ function upload_image($index)
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
-		if(isset($_GET['qtype']) && $_GET['qtype'] == "1")
+		if(isset($_GET['qtype']) && $_GET['qtype'] == "1" && $user !== null && $user['merchant_id'] !== null)
 		{
 			try
 			{
@@ -81,13 +81,8 @@ function upload_image($index)
 				$ERROR_FLAG = 0;
 				
 				$return_values = array();
-				
-				$img_list_id = md5(time().rand(0,1000));
-				$product_id = md5(rand(0,1000).time());
-					
-				
+			
 				$indexes = array(
-				'Merchant_id' => '',
 				'isTop' => '',
 				'parent_id' => ''
 				);
@@ -98,7 +93,7 @@ function upload_image($index)
 				}
 				
 				$name_arr = upload_image('image');
-				
+				$indexes['Merchant_id'] = $user['merchant_id'];
 					
 				if($ERROR_FLAG == 0 && count($name_arr) > 0)
 				{
