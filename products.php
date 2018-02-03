@@ -18,7 +18,6 @@
 		include 'header.php';
 	?>
 	<!--Content Here-->
-
 	<?php
 		//including footer
 		include 'footer.php';
