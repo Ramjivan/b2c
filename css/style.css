@@ -10,7 +10,12 @@
 
 body{
 	margin:0;
+<<<<<<< HEAD
+	padding-top:70px;
+	font-family: verdana,arial,helvetica,sans-serif;
+=======
 	padding-top:100px;
+>>>>>>> 586d4ab634877e4ae5b08241794666c254772602
 }
 .row{
 	width:100%;
@@ -390,6 +395,7 @@ div.prdct div.price{
 	color:black;
 }
 
+<<<<<<< HEAD
 
 .center-block{
 	display:block;
@@ -441,3 +447,74 @@ table > tbody > tr:hover{
 .log-table table{
 	width:100%;
 }
+
+.askWidgetHeader{
+	font-weight: bold;
+    font-size: 21px;
+	line-height: 1.3;
+}
+.search-container{
+max-width:100%;
+border: 1px solid gray;
+border-radius: .2em;
+position: relative;
+padding-right: 27px;
+}
+.search-input:focus {
+	outline: none !important;
+}
+.search-input{
+	border: none;
+	height: 28px;
+	margin-left: 26px;	
+	box-sizing: border-box;
+	display:block;width:100%;
+	
+}
+.search-container .fa-search{
+	position: absolute;
+	pointer-events: none;
+	color: gray;
+	margin-left: 6px;
+	margin-top:5px;
+}
+
+.main-container{
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+.search-input::-webkit-input-placeholder {
+	color: orange;	
+}
+.shadow{
+	box-shadow: 0 10px 6px -6px #777;
+}
+.question-container{
+	margin-top: 2em;
+	font-size: 14px;
+}
+.qa-left{
+font-weight:700!important;
+margin-right: 1em;
+font-size: 13px;
+}
+.qa-right{
+display: inline;
+}
+.qa-right-q{
+	color: #425ff4;
+}
+.hr-v{ 
+  
+    border: none;
+    border-left:    1px solid hsla(200, 10%, 50%,100);
+    height:         10vh;
+	width:          1px;       
+	float: left;
+	margin-right: 4px;
+	margin-top:-4px;
+}
+
+
