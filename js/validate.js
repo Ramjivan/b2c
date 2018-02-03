@@ -24,7 +24,7 @@ function validate(arr)
 		Message = "Max "+arr.min_length+" char allowed for "+arr.name;
 	}
 	
-	else if(arr.max_length !== null && document.getElementById(arr.id).value.toString().trim().length < arr.max_length)
+	else if(arr.max_length !== null && document.getElementById(arr.id).value.toString().trim().length > arr.max_length)
 	{
 		raiseError = true;
 		Message = arr.name+"'s length should be "+arr.max_length+" long !";

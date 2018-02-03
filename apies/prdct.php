@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include('sessionvalidate.php');
 $user = $_SESSION['user'];
@@ -13,6 +12,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}else
 	{
 		$ERROR_FLAG = true;
+		echo $index;
 	}
 	
 	
@@ -226,6 +226,10 @@ function upload_image($index)
 															$_POST['cod']
 															)
 														);
+						if($cod_response < 0)
+						{
+							$return_values['cod'] = 1;
+						}
 					}
 				}
 				catch(PDOException $e)
@@ -240,7 +244,15 @@ function upload_image($index)
 					$conn->commit();
 					$return_values['success'] = 1;
 				}
+				else
+				{
+					$return_values['ERROR'] = 'DB ERROR';
+				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			else
+			{
+				echo 1;
 			}
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == "2")
