@@ -1,10 +1,6 @@
 span.fa.fa-pencil{
-	background-color:#bada55;
+	background-color:#d1d1d1;
 	padding:10px;
 	border-radius:4px;
-}
-span.fa.fa-trash{
-	background-color:#ff4b4b;
-	padding:10px;
-	border-radius:4px;
+	text-align:center;
 }

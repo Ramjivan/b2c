@@ -73,7 +73,14 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 	};
 	
 	xhttp.open(method,url,true);
-	xhttp.send(param);
+	if(method == "POST")
+	{		
+		xhttp.send(param);
+	}
+	else
+	{		
+		xhttp.send(param);
+	}
 }
 
 function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)

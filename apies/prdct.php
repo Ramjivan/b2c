@@ -26,7 +26,7 @@ function upload_image($index)
 	)
 	{
 		//image validation starts
-		$dir = "apies/products/uploads/";
+		$dir = "products/uploads/";
 		$name = md5(basename($_FILES[$index]['name']).time());
 		$targetFile = $dir.$name;
 		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
@@ -330,6 +330,32 @@ function upload_image($index)
 			{
 				$return_values['ERROR']['insert'] = $e->getMessage();
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
+			}
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '1')
+		{
+			$return_values = array();
+			try
+			{
+				$SQL = "SELECT * FROM `products` where `Merchant_id`=?";
+				$stmt = $conn->prepare($SQL);
+				$stmt->execute(array($user['merchant_id']));
+				if($stmt->rowCount())
+				{
+					$return_values['success'] = 1;
+					$return_values['items'] = $stmt->fetchAll();
+				}
+				else
+				{
+					$return_values['ERROR'] = "NO ITEMs";
+				}
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+				
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 			}
 		}
 		

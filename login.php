@@ -15,7 +15,7 @@
 		<meta name="google-signin-scope" content="profile email">
         <meta name="google-signin-client_id" content="340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="validate.js"></script>
+        <script src="js/validate.js"></script>
         <script src="js/lin.js"></script>
 		<?php
 			//include head

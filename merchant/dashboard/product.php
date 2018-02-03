@@ -22,7 +22,7 @@
 			<div class="center-block">
 				<h3>Products</h3>
 				<div class="log-table">
-					<table>
+					<table id="p-tab">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -35,16 +35,6 @@
 								<th>action</th>
 							</tr>
 						</thead>
-							<tr>
-								<td>1</td>
-								<td>ds;gnsdgd;ngsd;gn;</td>
-								<td>dalgmpetdmvdviejgasfmd</td>
-								<td>2000</td>
-								<td>Electronics</td>
-								<td>200</td>
-								<td><a>all</a></td>
-								<td><span class="fa fa-pencil"></span><span class="fa fa-trash"></span></td>
-							</tr>
 					</table>
 				</div>
 			</div>
