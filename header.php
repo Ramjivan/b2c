@@ -26,7 +26,8 @@
                 <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="signup.php">Sign up </a></div>
                 <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="login.php">Sign in</a></div>
 				<div class="nav-item dropbtn">
-						Categories
+						<span class="fa fa-sitemap"></span>
+						<a>Categories</a>
 						<i class="fa fa-caret-down"></i>
 						<div class="dropdown-content">
 							<a href="#">Link 1</a>

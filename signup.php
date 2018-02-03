@@ -5,10 +5,10 @@ session_start();
 <html>
 	<head>
 		<title>
-			Login | B2C
+			Sign up | B2C
 		</title>
 		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
-		<script language="JavaScript" type="text/javascript" src="validate.js"></script>
+		<script language="JavaScript" type="text/javascript" src="js/validate.js"></script>
 	<?php
 		//include head
 		include 'headTags.php';
@@ -60,7 +60,7 @@ session_start();
 							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
-					<a class="_redfge" href="login.php">Already a Mamber! Log In</a>
+					<a class="_redfge" href="login.php">Already a Mamber ! Log In</a>
 				</div>
 			</div>
 		</div>

@@ -1,12 +1,8 @@
 <?php
-<<<<<<< HEAD
 	session_start();
 	if(isset($_SESSION['user'])){
 		Header('Location: index.php');
 	}
-=======
-session_start();
->>>>>>> 64817461c192ac6b071ec8b00a68e40e4745f58e
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,11 +33,7 @@ session_start();
 			<div class="col-6">
 				<div class="spform">
 					<h3>Login</h3>
-<<<<<<< HEAD
-					<form class="signup-form" id="lgn-btn">
-=======
 					<form id="signin-form" class="signup-form">
->>>>>>> 64817461c192ac6b071ec8b00a68e40e4745f58e
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
@@ -49,14 +41,9 @@ session_start();
 							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="mail"/>
 						</div>
 						<div class="form-group">
-<<<<<<< HEAD
 							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="paswrd" minlength="8" />
 						</div>
-=======
-							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
-                        </div>
-                        <input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
->>>>>>> 64817461c192ac6b071ec8b00a68e40e4745f58e
+                        <input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>">
 						<div class="form-group">
 							<input type="button" id="lgn" class="btn btn-primary-color" value="Login"/>
 						</div>

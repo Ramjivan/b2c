@@ -44,15 +44,8 @@ function validate(arr)
 }
 
 
-function form_validate(elem,validation_summary)
+function form_validate(validation_summary,elems)
 {
-	
-	elems = [
-		{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
-		{'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null},
-		{'id':'m-num','name':'mobile','regex':/([0-9]*)/,'length':10,'min_length':null,'max_length':null},
-		{'id':'password','name':'Password','regex':null,'length':null,'min_length':8,'max_length':null}
-	];
 	
 	validation_summary.innerHTML = "";
 	var header = document.createElement("h3");

@@ -18,7 +18,8 @@
 		include 'header.php';
 	?>
 	
-		<div class="main-grid"> 
+		<div class="container"> 
+
 		</div>
 
 	<?php
