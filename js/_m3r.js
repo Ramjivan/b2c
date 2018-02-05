@@ -139,7 +139,7 @@ window.onload = function(){
 					div.appendChild(sp_name);
 					
 					var sp_value = document.createElement('input');  
-					sp_value.setAttribute('id','sp_name'+i);
+					sp_value.setAttribute('id','sp_value'+i);
 					sp_value.setAttribute('onchange','validate({\'id\':\'sp_value'+i+'\',\'name\':\'Spec Value '+i+'\',\'regex\':null,\'length\':null,\'min_length\':5,\'max_length\':null})');
 					sp_value.setAttribute('placeholder','Spec Value');
 					sp_value.setAttribute('name','sp_value'+i);
@@ -188,7 +188,7 @@ window.onload = function(){
 						div.appendChild(sp_name);
 						
 						var sp_value = document.createElement('input');  
-						sp_value.setAttribute('id','sp_name'+i);
+						sp_value.setAttribute('id','sp_value'+i);
 						sp_value.setAttribute('onchange','validate({\'id\':\'sp_value'+i+'\',\'name\':\'Spec Value '+i+'\',\'regex\':null,\'length\':null,\'min_length\':5,\'max_length\':null})');
 						sp_value.setAttribute('placeholder','Spec Value');
 						sp_value.setAttribute('name','sp_value'+i);
