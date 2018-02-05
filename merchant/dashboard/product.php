@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['user'])){
+		Header('Location: b2c/index.php');
+	}
+?>
 <!DOCTYPE html>
 <html id="fh4jf">
 	<head>
@@ -68,19 +74,28 @@
 							<input type="hidden" name="imgcount" value="1"/>
 							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1"/>
 						</div>
-						<div class="form-group">
-							<h2>Hightlights</h2>
+						<div class="form-group">						
+							<h3>Hightlights</h3>
 						
 							<input id="hlgt1" onchange="validate({'id':'hlgt1','name':'Hightlight1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Hightlight 1" name="hlgt1"/>
-							<input type="hidden" name="hlgtcount" value="1"/>
-						</div>
+							<input id="hlgt2" type="text" placeholder="Hightlight 2 (optional)" name="hlgt2"/>
+							<input id="hlgt3" type="text" placeholder="Hightlight 3 (optional)" name="hlgt3"/>
+							<input id="hlgt4" type="text" placeholder="Hightlight 4 (optional)" name="hlgt4"/>
+							<input id="hlgt5" type="text" placeholder="Hightlight 5 (optional)" name="hlgt5"/>
+							<input type="hidden" name="hlgtcount" value="5"/>
+						</div>	
 						<div class="form-group">
-						<h2>Specifications</h2>
-							<input type="hidden" name="spcount" value="1"/>
-							<div class="spec">
-								<h3>Specification 1</h3>
-								<input id="sp_name1" onchange="validate({'id':'sp_name1','name':'Spec Name 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Name" name="sp_name1"/>
-								<input id="sp_value1" onchange="validate({'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Value" name="sp_value1"/>
+								<h2>Specifications</h2>
+								<div style="margin:0% auto;position:relative;display:block;width:45%;background-color:white;box-shadow:0px 0px 1px rgba(0,0,0,0.2);padding:20px;">
+									Specification count <select id="s_c" name="spcount"></select>
+								</div>
+							<div id="qasw">
+								<div class="clearfix"></div>
+								<div class="spec">
+									<h3>Specification 1</h3>
+										<input id="sp_name1" onchange="validate({'id':'sp_name1','name':'Spec Name 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Name" name="sp_name1"/>
+										<input id="sp_value1" onchange="validate({'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Value" name="sp_value1"/>
+								</div>
 							</div>
 						</div>
 						<div class="form-group">							

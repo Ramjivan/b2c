@@ -180,8 +180,9 @@ function upload_image($index)
 					if
 					(
 						isset($_POST['spcount']) &&
-						is_numeric($_POST['hlgtcount']) &&
-						$_POST['hlgtcount'] > 0
+						is_numeric($_POST['spcount']) &&
+						$_POST['spcount'] > 0 &&
+						$_POST['spcount'] >= 20
 					)
 					{
 						$count = $_POST['spcount'];
@@ -196,8 +197,8 @@ function upload_image($index)
 								$spec_response = $stmt->execute(array
 															(
 															$product_id,
-															$_POST['sp_name'.$i],
-															$_POST['sp_value'.$i]
+															trim($_POST['sp_name'.$i]),
+															trim($_POST['sp_value'.$i])
 															)
 														);
 							}
@@ -226,10 +227,6 @@ function upload_image($index)
 															$_POST['cod']
 															)
 														);
-						if($cod_response < 0)
-						{
-							$return_values['cod'] = 1;
-						}
 					}
 				}
 				catch(PDOException $e)

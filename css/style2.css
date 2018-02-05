@@ -4,3 +4,10 @@ span.fa.fa-pencil{
 	border-radius:4px;
 	text-align:center;
 }
+span.fa.fa-trash{
+	content:'';
+	background-color:#ed0101;
+	padding:5px;
+	border-radius:4px;
+	text-align:center;
+}
