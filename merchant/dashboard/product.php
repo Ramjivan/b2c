@@ -1,8 +1,5 @@
 <?php
-	session_start();
-	if(!isset($_SESSION['user'])){
-		Header('Location: b2c/index.php');
-	}
+	require_once 'C:/xampp/htdocs/b2c/sess_val.php';
 ?>
 <!DOCTYPE html>
 <html id="fh4jf">
@@ -53,7 +50,7 @@
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
-							<input id="name" onchange="validate({'id':'name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
 						</div>
 						<div class="form-group">
 							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
@@ -72,12 +69,12 @@
 						<div class="form-group">
 							<h3>Images</h3>
 							<input type="hidden" name="imgcount" value="1"/>
-							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1"/>
+							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1" multiple/>
 						</div>
 						<div class="form-group">						
 							<h3>Hightlights</h3>
 						
-							<input id="hlgt1" onchange="validate({'id':'hlgt1','name':'Hightlight1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Hightlight 1" name="hlgt1"/>
+							<input id="hlgt1" onchange="validate({'id':'hlgt1','name':'Hightlight1','regex':null,'length':null,'	min_length':5,'max_length':null})" type="text" placeholder="Hightlight 1" name="hlgt1"/>
 							<input id="hlgt2" type="text" placeholder="Hightlight 2 (optional)" name="hlgt2"/>
 							<input id="hlgt3" type="text" placeholder="Hightlight 3 (optional)" name="hlgt3"/>
 							<input id="hlgt4" type="text" placeholder="Hightlight 4 (optional)" name="hlgt4"/>

@@ -6,7 +6,7 @@ span.fa.fa-pencil{
 }
 span.fa.fa-trash{
 	content:'';
-	background-color:#ed0101;
+	background-color:var(--primary-color,black);
 	padding:5px;
 	border-radius:4px;
 	text-align:center;

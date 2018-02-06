@@ -129,7 +129,7 @@ function upload_image($index)
 						$indexes = array(
 									'cat_name' => "",
 									'cat_description' => "",
-									'cat_meta_keyword' => ""
+									'cat_meta_keyword' => "",
 									);
 					
 					

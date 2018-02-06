@@ -247,12 +247,60 @@ window.onload = function(){
 		
 		
 		case /Orders.php/.test(loc_arr[loc_arr.length-1]):
-			
+		
+		
+		
 		break;
 		
 		
 		case /qna.php/.test(loc_arr[loc_arr.length-1]):
 
+		
+		
+		break;
+		
+		case /category.php/.test(loc_arr[loc_arr.length-1]):
+		
+			function pchange()
+			{
+				var tar = document.getElementsByName('isTop');
+				var fn = function(target){
+					if(target.checked == true)
+					{
+						document.getElementById('category').removeAttribute('disabled');
+					}
+					else
+					{
+						document.getElementById('category').setAttribute('disabled','true');
+					}
+				};
+				
+				var fn2 = function(target){
+					if(target.checked == true)
+					{
+						document.getElementById('category').setAttribute('disabled','true');
+					}
+					else
+					{
+						document.getElementById('category').removeAttribute('disabled');
+					}
+				};
+				
+				
+				if(tar !== null)
+				{
+					tar[0].onchange = function(){
+						fn(this);
+					};
+					tar[1].onchange = function(){
+						fn2(this);
+					};
+				}
+			}
+			
+			(function(){
+			})();
+			
 		break;
 		
 		default:

@@ -32,8 +32,8 @@
 		</form>
 		<div class="space-1em"></div>
 		<div style="margin-top:1em; text-align:center;">
-		<span style="display:inline-block;">Don't see what you're looking for? </span>
-		<button>Ask the Community</button>
+		<span style="display:inline-block;">Don't see what you're looking for ?</span>
+		<button class="btn btn-info">Ask Seller</button>
 		</div>
 		<div class="question-container">
 			<hr class="hr-v">
@@ -41,8 +41,8 @@
 			<span class="qa-right qa-right-q">What the hell is this?</span>
 			</p>
 			<p>
-				<span class="qa-left">Answere:</span>
-				<span class="qa-right qa-right-a">This is the Answere Looking Nice isn't it?</span>
+				<span class="qa-left">Answer:</span>
+				<span class="qa-right qa-right-a">This is the Answer Looking Nice isn't it?</span>
 			</p>
 		</div>
 		
