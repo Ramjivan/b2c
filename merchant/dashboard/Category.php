@@ -28,11 +28,9 @@
 					<table id="p-tab">
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Name</th>
 								<th>Description</th>
-								<th>isTop</th>
-								<th>category</th>
+								<th>parent category name</th>
 								<th>action</th>
 							</tr>
 						</thead>
@@ -50,15 +48,18 @@
 						</div>
 						
 						<div class="form-group">
-							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="cat_name"/>
 						</div>
 						
 						<div class="form-group">
-							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
+							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="cat_description"></textarea>
+						</div>
+						<div class="form-group">
+							<textarea id="metakey" onchange="validate({'id':'metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="cat_meta_keyword"></textarea>
 						</div>
 						
 						<div class="form-group">
-							can have child categories ? Yes&nbsp;<input type="radio" name="isTop" value="1" checked/> No&nbsp;<input type="radio" name="isTop" value="0s"/> 
+							can have child categories ? Yes&nbsp;<input type="radio" name="isTop" value="1" checked/> No&nbsp;<input type="radio" name="isTop" value="0"/> 
 						</div>
 						
 						<div class="row form-group">
@@ -66,16 +67,15 @@
 								Parent Category
 							</div>
 							<div class="col-2">
-								<select id="category" onchange="validate({'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})" name="p_category" style="margin:0;">
-									<option value="null">Select Category</option>
+								<select id="category" onchange="validate({'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})" name="parent_id" style="margin:0;">
+									<option value="1">Select Category</option>
 								</select>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="form-group">
 							<h3>Sample Image</h3>
-							<input type="hidden" name="imgcount" value="1"/>
-							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1"/>
+							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image"/>
 						</div>
 						<div class="form-group">
 							<input type="button" id="add" class="btn btn-primary-color" value="Add"/>

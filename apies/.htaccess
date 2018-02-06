@@ -15,6 +15,8 @@ RewriteRule ^product$ prdct.php?qtype=1 [QSA]
 RewriteRule ^product/category/add$ cat.php?qtype=1 [QSA]
 RewriteRule ^product/category/edit$ cat.php?qtype=2 [QSA]
 RewriteRule ^product/category/([0-9]*)$ cat.php?id=$2 [QSA]
+RewriteRule ^product/category/merchant$ cat.php?qtype=1 [QSA]
+
 
 #category related
 

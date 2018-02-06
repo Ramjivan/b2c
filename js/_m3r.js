@@ -260,7 +260,59 @@ window.onload = function(){
 		break;
 		
 		case /category.php/.test(loc_arr[loc_arr.length-1]):
-		
+			
+			function get()
+			{
+				var method = "GET";
+				var url = "/b2c/apies/product/category/merchant";
+				var formData = null;				
+				var success = function(xhttp){
+					var tab = document.getElementById('p-tab');
+					if(tab !== null)
+					{
+						if(document.getElementsByTagName('tbody') !== null)
+						{
+							document.getElementsByTagName('tbody').innerHTML  = "";							
+						}
+						var json_response = JSON.parse(xhttp.responseText);
+						if(json_response.result)
+						{
+							for(var i= 0 ; i < json_response.items.length ; i++)
+							{
+								var row = '<tr>\
+											<td>'+json_response.items[i].cat_name+'</td>\
+											<td>'+json_response.items[i].cat_description+'</td>\
+											<td>'+json_response.items[i].parent_name+'</td>\
+											<td><span class="fa fa-pencil"></span></td>\
+										   </tr>';
+								
+								tab.innerHTML += row;
+							}
+						}
+						else
+						{
+							alert(json_response.ERROR);
+						}
+					}
+					else
+					{
+						alert('Fatel Error');
+					}
+				};
+				
+				var fail = function(xhttp){
+					alert(xhttp.responseText);
+				};
+				
+				xhr_call(
+					method,
+					url,
+					formData,
+					success,
+					fail
+				);
+			}
+			
 			function pchange()
 			{
 				var tar = document.getElementsByName('isTop');
@@ -298,7 +350,37 @@ window.onload = function(){
 				}
 			}
 			
+			var formvalidation = [
+				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
+				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
+				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null}
+			];
+			
+			var btn = document.getElementById('add');
+				if(btn !== null)
+				{
+					var success = function(xhttp){
+						if(JSON.parse(xhttp.responseText).success == '1')
+						{
+							//get();
+							document.getElementById('ctcfm').reset();
+						}
+						else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+						{
+							alert("Connection lost while connecting to Server");
+						}
+					};
+					var fail = function(xhttp){
+						alert(xhttp.responseText);
+					};
+					btn.addEventListener('click',function(){
+						submit_form('ctcfm',formvalidation,'vs','/b2c/apies/product/category/add','POST',success,fail);
+					});
+				}
+				
 			(function(){
+				get();
 			})();
 			
 		break;
