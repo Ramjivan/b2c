@@ -2,7 +2,7 @@
 <html id="fh4jf">
 	<head>
 		<title>
-			B2C | HOME
+			Orders | dashoboard
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">

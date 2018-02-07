@@ -53,9 +53,14 @@
 		width:100%;
 	}
 	
+
 	.container{
 		width:100%;
-	}  
+	} 
+
+	.cente-block{
+		width:100%;
+	}
 }
 
 
@@ -63,6 +68,9 @@
 {
 	.signup{
 		width:40%;
+	}
+	.center-block{
+		width:80%;
 	}
 	
 	.btn-md{

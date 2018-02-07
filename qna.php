@@ -45,7 +45,7 @@
 			</p>
 			<p>
 				<span class="qa-left">Answere:</span>
-				<span class="qa-right qa-right-a">This is the Answere Looking Nice isn't it?</span>
+				<span class="qa-right qa-right-a">This is the Answere Looking Nice isn't it? Well Let's make th</span>
 			</p>
 		</div>
 		

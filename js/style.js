@@ -75,3 +75,27 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 	xhttp.open(method,url,true);
 	xhttp.send(param);
 }
+
+function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)
+{
+	alert(formvalidation.toString());
+	if(form_validate(document.getElementById(validation_summary),formvalidation))
+	{			
+		var form = document.getElementById(formid);
+		if(form !== null)
+		{
+			var formData = new FormData(form);
+			xhr_call(
+				method,
+				url,
+				formData,
+				success,
+				fail
+			);
+		}
+		else
+		{
+			alert('Some Field(9) data are/is not valid.');
+		}
+	}
+}

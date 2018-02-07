@@ -10,12 +10,7 @@
 
 body{
 	margin:0;
-<<<<<<< HEAD
-	padding-top:70px;
-	font-family: verdana,arial,helvetica,sans-serif;
-=======
 	padding-top:100px;
->>>>>>> 586d4ab634877e4ae5b08241794666c254772602
 }
 .row{
 	width:100%;
@@ -396,6 +391,58 @@ div.prdct div.price{
 }
 
 <<<<<<< HEAD
+
+.center-block{
+	display:block;
+	vertical-align:middle;
+	margin:5% auto;
+	position:relative;
+	box-shadow:0px 0px 3px rgba(0,0,0,0.1);
+	padding:10px;
+	border-radius:2px;
+	overflow-x:scroll;
+}
+
+.center-block h3{
+	font-weight:700;
+	color:black;
+	font-family:'Roboto',sans-serif;
+}
+
+
+table{
+	display:table;
+	font-family:'Roboto',sans-serif;
+	border-collapse:collapse;
+}
+table > tbody > tr{
+	transition:0.2s ease-in;
+	cursor:normal;
+}
+
+table th,table td{
+	border:1px solid rgba(0,0,0,0.2);
+	padding:10px;
+}
+
+table > thead > tr{
+	background-color:black;
+	color:white;
+}
+
+table > tbody > tr:hover{
+	background-color:rgba(251, 140, 0,0.2);
+}
+
+
+.log-table{
+	padding:10px;
+}
+
+.log-table table{
+	width:100%;
+}
+
 .askWidgetHeader{
 	font-weight: bold;
     font-size: 21px;
@@ -456,7 +503,7 @@ display: inline;
 }
 .hr-v{ 
   
-    border:         none;
+    border: none;
     border-left:    1px solid hsla(200, 10%, 50%,100);
     height:         10vh;
 	width:          1px;       
@@ -465,10 +512,13 @@ display: inline;
 	margin-top:-4px;
 }
 
+/*Rating Section*/
+.rating-box{
+	border: 1px solid gray;
+}
+
+.sr-checked{
+	color: orange;
+}
 
 
-
-
-
-=======
->>>>>>> 586d4ab634877e4ae5b08241794666c254772602
