@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include('sessionvalidate.php');
 $user = $_SESSION['user'];
@@ -13,6 +12,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}else
 	{
 		$ERROR_FLAG = true;
+		echo $index;
 	}
 	
 	
@@ -180,8 +180,9 @@ function upload_image($index)
 					if
 					(
 						isset($_POST['spcount']) &&
-						is_numeric($_POST['hlgtcount']) &&
-						$_POST['hlgtcount'] > 0
+						is_numeric($_POST['spcount']) &&
+						$_POST['spcount'] > 0 &&
+						$_POST['spcount'] >= 20
 					)
 					{
 						$count = $_POST['spcount'];
@@ -196,8 +197,8 @@ function upload_image($index)
 								$spec_response = $stmt->execute(array
 															(
 															$product_id,
-															$_POST['sp_name'.$i],
-															$_POST['sp_value'.$i]
+															trim($_POST['sp_name'.$i]),
+															trim($_POST['sp_value'.$i])
 															)
 														);
 							}
@@ -240,7 +241,15 @@ function upload_image($index)
 					$conn->commit();
 					$return_values['success'] = 1;
 				}
+				else
+				{
+					$return_values['ERROR'] = 'DB ERROR';
+				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			else
+			{
+				echo 1;
 			}
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == "2")
@@ -330,6 +339,32 @@ function upload_image($index)
 			{
 				$return_values['ERROR']['insert'] = $e->getMessage();
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
+			}
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '1')
+		{
+			$return_values = array();
+			try
+			{
+				$SQL = "SELECT * FROM `products` where `Merchant_id`=?";
+				$stmt = $conn->prepare($SQL);
+				$stmt->execute(array($user['merchant_id']));
+				if($stmt->rowCount())
+				{
+					$return_values['success'] = 1;
+					$return_values['items'] = $stmt->fetchAll();
+				}
+				else
+				{
+					$return_values['ERROR'] = "NO ITEMs";
+				}
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+				
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 			}
 		}
 		

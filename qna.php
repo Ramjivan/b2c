@@ -21,10 +21,6 @@
 		//including header
 		include 'header.php';
 	?>
-	<!--Content Here-->
-	<div class="main-container">
-		<hr>
-		<h2 class="askWidgetHeader">Customer questions and answeres</h2>
 
 		<form action=""method="POST">
 			<div class="search-container">

@@ -5,12 +5,12 @@ window.onload = function(){
 		
 		if(login(document.getElementById('vs')))
 		{			
-			var form = document.getElementById('lgn-btn');
+			var form = document.getElementById('signin-form');
 			var formData = new FormData(form);
 			
 			xhr_call(
 				'POST',
-				'session',
+				'/b2c/apies/session',
 				formData,
 				function(xhttp){
 					alert(xhttp.responseText);

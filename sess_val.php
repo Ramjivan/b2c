@@ -1,4 +1,5 @@
 <?php
+session_start();
 function prevent_hijacking(){
 	if(isset($_SESSION['prevent_hijacking'])){
 		$prevent_=$_SERVER['HTTP_USER_AGENT'];
@@ -18,7 +19,7 @@ function prevent_hijacking(){
 	
 	if(!prevent_hijacking() && !isset($_SESSION['user']))
 	{
-		die(json_encode(array('ERROR' =>  "AUTH FAILED")));
+		Header('Location: /b2c/index.php');
 	}
 
 

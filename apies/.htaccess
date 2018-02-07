@@ -6,6 +6,7 @@ RewriteRule ^customer$ reg.php [QSA]
 RewriteRule ^product/add$ prdct.php?qtype=1 [QSA]
 RewriteRule ^product/edit$ prdct.php?qtype=2 [QSA]
 RewriteRule ^product/page/([0-9]*)$ prdct.php?page=$1 [QSA]
+RewriteRule ^product$ prdct.php?qtype=1 [QSA]
 
 #product related
 
@@ -14,6 +15,8 @@ RewriteRule ^product/page/([0-9]*)$ prdct.php?page=$1 [QSA]
 RewriteRule ^product/category/add$ cat.php?qtype=1 [QSA]
 RewriteRule ^product/category/edit$ cat.php?qtype=2 [QSA]
 RewriteRule ^product/category/([0-9]*)$ cat.php?id=$2 [QSA]
+RewriteRule ^product/category/merchant$ cat.php?qtype=1 [QSA]
+
 
 #category related
 
@@ -40,7 +43,7 @@ RewriteRule ^answer/add$ ans.php?qtype=1 [QSA]
 RewriteRule ^answer/edit$ ans.php?qtype=2 [QSA]
 RewriteRule ^answer/delete$ ans.php?qtype=3 [QSA]
 RewriteRule ^answer/*$ ans.php [QSA]
-RewriteRule ^qna/([0-9]*)$ ques.php?id=$1 [QSA]
+RewriteRule ^qna/([\w]*)$ ques.php?id=$1 [QSA]
 
 #qna[ans] related
 

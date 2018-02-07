@@ -1,0 +1,13 @@
+span.fa.fa-pencil{
+	background-color:#d1d1d1;
+	padding:10px;
+	border-radius:4px;
+	text-align:center;
+}
+span.fa.fa-trash{
+	content:'';
+	background-color:var(--primary-color,black);
+	padding:5px;
+	border-radius:4px;
+	text-align:center;
+}
