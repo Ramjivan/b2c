@@ -60,7 +60,7 @@ window.onload = function(){
 							}
 							for(var i = 0 ; i < json_response.items.length ; i++)
 							{
-								var str = 'ed'+json_response.items[i].product_id; 
+								const str = 'ed'+json_response.items[i].product_id; 
 								const id = json_response.items[i].product_id;
 								document.getElementById(str).addEventListener('click',function(){
 									document.getElementsByClassName('dialog')[0].style.display = 'block';
@@ -93,8 +93,6 @@ window.onload = function(){
 										});
 									}
 									
-								});
-								
 									var elements = ['e_name','e_description','e_price','e_stock'];
 									
 									var parent =  document.getElementById(str).parentElement.parentElement;
@@ -105,6 +103,10 @@ window.onload = function(){
 											document.getElementById(elements[j]).value = parent.getElementsByTagName('td')[j].innerHTML;
 										}
 									}
+									
+								});
+								
+									
 							}
 						}
 						else
@@ -362,7 +364,7 @@ window.onload = function(){
 							
 							for(var i = 0 ; i < json_response.items.length ; i++)
 							{
-								var str = 'ed'+json_response.items[i].category_id; 
+								const str = 'ed'+json_response.items[i].category_id; 
 								const id = json_response.items[i].category_id;
 								document.getElementById(str).addEventListener('click',function(){
 									document.getElementsByClassName('dialog')[0].style.display = 'block';
