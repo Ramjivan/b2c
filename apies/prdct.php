@@ -255,60 +255,57 @@ function upload_image($index)
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == "2")
 		{
 			
-				if(isset($_POST['product_id']))
+			if(isset($_POST['product_id']))
+			{
+				$i = 0;
+				$SQL = 'UPDATE `products` SET ';
+				$indexes = array('p_name','p_description','p_price','p_category','p_stock');
+				$return_values = array();
+				
+				foreach($indexes as $index)
 				{
-					$i = 0;
-					$SQL = 'UPDATE `products` SET ';
-					$indexes = array('p_name','p_description','p_price','p_category','p_stock');
-					$return_values = array();
-					
-					foreach($indexes as $index)
+					if(isset($_POST[$index]))
 					{
-						if(isset($_POST[$index]))
+						if($i > 0)
 						{
-							if($i > 0)
-							{
-								$SQL .= ',';
-							}
-							$SQL .= "`".$index."`"."='".trim($_POST[$index])."'"; 
-							$i=1;
+							$SQL .= ',';
 						}
+						$SQL .= "`".$index."`"."='".trim($_POST[$index])."'"; 
+						$i=1;
 					}
-					
-					$SQL .= " WHERE `product_id` = '".$_POST['product_id']."' && `Merchant_id` ='".$user['merchant_id']."'";
-					
-					if($i > 0)
-					{
-						$return_values['SQL'] = $SQL;
-						try
-						{
-							$conn->beginTransaction();
-							$stmt = $conn->prepare($SQL);
-							$response = $stmt->execute();
-							if($response)
-							{
-								$conn->commit();
-								$return_values['success'] = 1;
-							}
-						}
-						catch(PDOException $e)
-						{
-							$conn->rollBack();
-							$return_values['ERROR']['insert'] = $e->getMessage();
-							die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-						}
-					}
-					else
-					{
-						$return_values['ERROR']['internal'] = "No Data to Update.";
-					}
-					
-					echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 				}
-			
-		}
-		
-		
+				
+				$SQL .= " WHERE `product_id` = '".$_POST['product_id']."' && `Merchant_id` ='".$user['merchant_id']."'";
+				
+				if($i > 0)
+				{
+					$return_values['SQL'] = $SQL;
+					try
+					{
+						$conn->beginTransaction();
+						$stmt = $conn->prepare($SQL);
+						$response = $stmt->execute();
+						if($response)
+						{
+							$conn->commit();
+							$return_values['success'] = 1;
+						}
+					}
+					catch(PDOException $e)
+					{
+						$conn->rollBack();
+						$return_values['ERROR']['insert'] = $e->getMessage();
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+					}
+				}
+				else
+				{
+					$return_values['ERROR']['internal'] = "No Data to Update.";
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}			
+		}	
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")
 	{

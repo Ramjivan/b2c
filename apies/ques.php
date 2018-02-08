@@ -192,7 +192,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")
 	{
-		if(isset($_GET['id']) && !empty($_GET['id']))
+		if(isset($_GET['qtype']) && $_GET['qtype'] = 1  isset($_GET['id']) && !empty($_GET['id']))
 		{
 			try
 			{

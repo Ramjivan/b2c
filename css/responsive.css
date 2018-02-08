@@ -21,6 +21,11 @@
 	.col-md-offset-1{
 		margin-left:0;
 	}
+	
+	.dialog{
+		width:100%;
+		left:0;
+	}
 }
 
 
@@ -61,6 +66,11 @@
 	.cente-block{
 		width:100%;
 	}
+	
+	.dialog{
+		width:100%;
+		left:0;
+	}
 }
 
 
@@ -79,5 +89,10 @@
 	
 	.container{
 		margin:5px;
-	}  
+	}
+	
+	.dialog{
+		width:50%;
+		left:25%;
+	}
 }

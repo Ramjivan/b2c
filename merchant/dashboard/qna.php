@@ -48,6 +48,30 @@
 		
 		
 	</div>
+	
+	<div class="container"> 
+			<div class="center-block">
+				<h2><u>Q &amp; A</u></h2>
+				<div class="log-table">
+					<table id="p-tab">
+						<thead>
+							<tr>
+								<th>Question</th>
+								<th>Answer</th>
+								<th>Prdouct Link</th>
+								<th>Added on</th>
+								<th>Answered on</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+			
+			<div class="center-block">
+				<h3>Answer</h3>
+				
+			</div>
+		</div>
 
 	<?php
 		//including footer

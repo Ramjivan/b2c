@@ -34,6 +34,8 @@
 								<th>action</th>
 							</tr>
 						</thead>
+						<tbody id="tbdy">
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -43,7 +45,7 @@
 				<div>
 					<form class="pdct-form" id="ctcfm">
 						
-						<div id="vs">
+						<div id="vsadc" class="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						

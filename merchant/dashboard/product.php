@@ -38,16 +38,19 @@
 								<th>action</th>
 							</tr>
 						</thead>
+						<tbody id="tbdy">
+						</tbody>
 					</table>
 				</div>
+				
 			</div>
-			
+
 			<div class="center-block">
 				<h3>Add Product</h3>
 				<div>
 					<form class="pdct-form" id="pctafm" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
-						<div id="vs">
-							<h3 id="vsh3">Something Went wrong</h3>
+						<div id="vsap" class="vs">
+							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
 							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
@@ -106,6 +109,46 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="dialog">
+		
+			<div id="dhead">
+			Edit Product
+			<span class="fa right" onclick="this.parentElement.parentElement.style.display='none';document.getElementsByClassName('blurdfg')[0].style.display='none';">
+				&times;
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="dialog-body">
+				<form class="pdct-form" id="pctefm" >
+						<div class="vs" id="valsum">
+							<h3 id="vsh4" class="vs">Something Went wrong</h3>
+						</div>
+						<div class="form-group">
+							<input id="e_name" onchange="validate({'id':'e_name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+						</div>
+						
+						<div class="form-group">
+							<textarea id="e_description" onchange="validate({'id':'e_description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
+						</div>
+						
+						<div class="form-group">
+							<input id="e_price" onchange="validate({'id':'e_price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Price" name="p_price"/>
+						</div>			
+				
+						<div class="form-group">
+							<input id="e_stock" onchange="validate({'id':'e_stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Stocks" name="p_stock"/>
+						</div>
+
+						<div class="form-group">
+							<input type="hidden" name="product_id" id="pe5d_3fid" value="">
+							<input type="button" id="ed" class="btn btn-success" value="Edit"/>
+						</div>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
 
 	<?php
 		//including footer

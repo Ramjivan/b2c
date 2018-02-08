@@ -3,9 +3,8 @@ window.onload = function(){
 	switch(true)
 	{
 		case /product.php/.test(loc_arr[loc_arr.length-1]):
-			
 			//global vars 
-				var spcount = 1;
+			var spcount = 1;
 			//global vars
 			
 			
@@ -21,18 +20,25 @@ window.onload = function(){
 				{'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':5,'max_length':null}
 			];
 			
+			var edit_formvalidation = [
+				{'id':'e_name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'e_description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
+				{'id':'e_price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
+				{'id':'e_stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
+			];
+			
 			function get()
 			{
 				var method = "GET";
 				var url = "/b2c/apies/product";
 				var formData = null;
 				var success = function(xhttp){
-					var tab = document.getElementById('p-tab');
+					var tab = document.getElementById('tbdy');
 					if(tab !== null)
 					{
-						if(document.getElementsByTagName('tbody') !== null)
+						if(tab !== null)
 						{
-							document.getElementsByTagName('tbody').innerHTML  = "";							
+							tab.innerHTML = "";
 						}
 						var json_response = JSON.parse(xhttp.responseText);
 						if(json_response.success)
@@ -47,10 +53,48 @@ window.onload = function(){
 											<td>'+json_response.items[i].p_category+'</td>\
 											<td>'+json_response.items[i].p_stock+'</td>\
 											<td>'+json_response.items[i].img_list_id+'</td>\
-											<td><span class="fa fa-pencil"></span></td>\
+											<td><span id="ed'+json_response.items[i].product_id+'" class="fa fa-pencil"></span></td>\
 										   </tr>';
 								
 								tab.innerHTML += row;
+								
+							}
+							for(var i = 0 ; i < json_response.items.length ; i++)
+							{
+								var str = 'ed'+json_response.items[i].product_id; 
+								const id = json_response.items[i].product_id;
+								document.getElementById(str).addEventListener('click',function(){
+									document.getElementsByClassName('dialog')[0].style.display = 'block';
+									document.getElementsByClassName('blurdfg')[0].className += ' active'; 
+									document.getElementById('pe5d_3fid').value = id;
+									
+									//product form action
+									var btn = document.getElementById('ed');
+									
+									if(btn !== null)
+									{
+										var success = function(xhttp){
+											if(JSON.parse(xhttp.responseText).success == '1')
+											{
+												get();
+												document.getElementById('pctefm').reset();
+												this.parentElement.parentElement.style.display='none';
+												document.getElementsByClassName('blurdfg')[0].style.display='none';
+											}
+											else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+											{
+												alert("Connection lost while connecting to Server");
+											}
+										};
+										var fail = function(xhttp){
+											alert(xhttp.responseText);
+										};
+										btn.addEventListener('click',function(){
+											submit_form('pctefm',edit_formvalidation,'valsum','/b2c/apies/product/edit','POST',success,fail);
+										});
+									}
+									
+								});
 							}
 						}
 						else
@@ -233,7 +277,7 @@ window.onload = function(){
 						alert(xhttp.responseText);
 					};
 					btn.addEventListener('click',function(){
-						submit_form('pctafm',formvalidation,'vs','/b2c/apies/product/add','POST',success,fail);
+						submit_form('pctafm',formvalidation,'vsap','/b2c/apies/product/add','POST',success,fail);
 					});
 				}
 				//product form action
@@ -254,26 +298,28 @@ window.onload = function(){
 		
 		
 		case /qna.php/.test(loc_arr[loc_arr.length-1]):
-
 		
+			
 		
 		break;
 		
-		case /category.php/.test(loc_arr[loc_arr.length-1]):
+		case (/category.php/.test(loc_arr[loc_arr.length-1])):
 			
-			function get()
+			function get_cat()
 			{
 				var method = "GET";
 				var url = "/b2c/apies/product/category/merchant";
 				var formData = null;				
 				var success = function(xhttp){
-					var tab = document.getElementById('p-tab');
+					var tab = document.getElementById('tbdy');
 					if(tab !== null)
 					{
-						if(document.getElementsByTagName('tbody') !== null)
+						
+						if(tab !== null)
 						{
-							document.getElementsByTagName('tbody').innerHTML  = "";							
-						}
+							tab.innerHTML = "";
+						}							
+						
 						var json_response = JSON.parse(xhttp.responseText);
 						if(json_response.result)
 						{
@@ -375,14 +421,13 @@ window.onload = function(){
 						alert(xhttp.responseText);
 					};
 					btn.addEventListener('click',function(){
-						submit_form('ctcfm',formvalidation,'vs','/b2c/apies/product/category/add','POST',success,fail);
+						submit_form('ctcfm',formvalidation,'vsadc','/b2c/apies/product/category/add','POST',success,fail);
 					});
 				}
 				
 			(function(){
-				get();
+				get_cat();
 			})();
-			
 		break;
 		
 		default:
