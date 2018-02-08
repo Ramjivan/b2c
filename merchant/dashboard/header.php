@@ -11,11 +11,11 @@
 					</div>
 					
 				</div>
-				<div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-list-alt"></span><a href="#">Product</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-table"></span><a href="#">Category</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="/">Home</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-list-alt"></span><a href="product.php">Product</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-table"></span><a href="ccategory.php">Category</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-clipbaord"></span><a href="#">Orders</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Q &amp; A</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="qna.php">Q &amp; A</a></div>
 			</nav>
 		</div>
 		<div class="clearfix"></div>
@@ -24,11 +24,11 @@
         <div class="header">	
             <div class="nav-item"><a class="opn-btn" href="#"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
             <nav class="navbar top-nav">
-<div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-list-alt"></span><a href="#">Product</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-table"></span><a href="#">Category</a></div>
+<div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="../dashboard">Home</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-list-alt"></span><a href="product.php">Product</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-table"></span><a href="category.php">Category</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-clipboard"></span><a href="#">Orders</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Q &amp; A</a></div>            </nav>
+				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="qna.php">Q &amp; A</a></div>            </nav>
         </div>
         <div class="clearfix"></div>
     </div>

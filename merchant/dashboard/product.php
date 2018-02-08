@@ -28,12 +28,11 @@
 					<table id="p-tab">
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Name</th>
 								<th>Description</th>
 								<th>price</th>
-								<th>category</th>
 								<th>stock</th>
+								<th>category</th>
 								<th>images</th>
 								<th>action</th>
 							</tr>
@@ -125,18 +124,22 @@
 							<h3 id="vsh4" class="vs">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
+							Name
 							<input id="e_name" onchange="validate({'id':'e_name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
 						</div>
 						
 						<div class="form-group">
+						Description
 							<textarea id="e_description" onchange="validate({'id':'e_description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
 						</div>
 						
 						<div class="form-group">
+						Price
 							<input id="e_price" onchange="validate({'id':'e_price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Price" name="p_price"/>
 						</div>			
 				
 						<div class="form-group">
+						stock
 							<input id="e_stock" onchange="validate({'id':'e_stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Stocks" name="p_stock"/>
 						</div>
 

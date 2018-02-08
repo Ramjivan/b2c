@@ -46,12 +46,11 @@ window.onload = function(){
 							for(var i= 0 ; i < json_response.items.length ; i++)
 							{
 								var row = '<tr>\
-											<td>'+json_response.items[i].product_id+'</td>\
 											<td>'+json_response.items[i].p_name+'</td>\
 											<td>'+json_response.items[i].p_description+'</td>\
 											<td>'+json_response.items[i].p_price+'</td>\
-											<td>'+json_response.items[i].p_category+'</td>\
 											<td>'+json_response.items[i].p_stock+'</td>\
+											<td>'+json_response.items[i].p_category+'</td>\
 											<td>'+json_response.items[i].img_list_id+'</td>\
 											<td><span id="ed'+json_response.items[i].product_id+'" class="fa fa-pencil"></span></td>\
 										   </tr>';
@@ -95,6 +94,17 @@ window.onload = function(){
 									}
 									
 								});
+								
+									var elements = ['e_name','e_description','e_price','e_stock'];
+									
+									var parent =  document.getElementById(str).parentElement.parentElement;
+									for(var j = 0 ; j < elements.length ; j++)
+									{
+										if(document.getElementById(elements[j]) !== null)
+										{
+											document.getElementById(elements[j]).value = parent.getElementsByTagName('td')[j].innerHTML;
+										}
+									}
 							}
 						}
 						else
@@ -305,6 +315,21 @@ window.onload = function(){
 		
 		case (/category.php/.test(loc_arr[loc_arr.length-1])):
 			
+			var add_formvalidation = [
+				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
+				{'id':'metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255},
+				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
+				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null}
+			];
+			
+			
+			var cat_edit_formvalidation = [
+				{'id':'e_name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'e_description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
+				{'id':'e_metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255}
+			];
+			
 			function get_cat()
 			{
 				var method = "GET";
@@ -329,10 +354,60 @@ window.onload = function(){
 											<td>'+json_response.items[i].cat_name+'</td>\
 											<td>'+json_response.items[i].cat_description+'</td>\
 											<td>'+json_response.items[i].parent_name+'</td>\
-											<td><span class="fa fa-pencil"></span></td>\
+											<td><span id="ed'+json_response.items[i].category_id+'" class="fa fa-pencil"></span></td>\
 										   </tr>';
 								
 								tab.innerHTML += row;
+							}
+							
+							for(var i = 0 ; i < json_response.items.length ; i++)
+							{
+								var str = 'ed'+json_response.items[i].category_id; 
+								const id = json_response.items[i].category_id;
+								document.getElementById(str).addEventListener('click',function(){
+									document.getElementsByClassName('dialog')[0].style.display = 'block';
+									document.getElementsByClassName('blurdfg')[0].className += ' active'; 
+									document.getElementById('ce5d_3fid').value = id;
+									
+									var elements = ['e_name','e_description'];
+									
+									var parent =  document.getElementById(str).parentElement.parentElement;
+									for(var j = 0 ; j < elements.length ; j++)
+									{
+										if(document.getElementById(elements[j]) !== null)
+										{
+											document.getElementById(elements[j]).value = parent.getElementsByTagName('td')[j].innerHTML;
+										}
+									}
+									
+									
+									//product form action
+									var btn = document.getElementById('ed');
+									
+									if(btn !== null)
+									{
+										var success = function(xhttp){
+											if(JSON.parse(xhttp.responseText).success == '1')
+											{
+												get_cat();
+												document.getElementById('ctefm').reset();
+												this.parentElement.parentElement.style.display='none';
+												document.getElementsByClassName('blurdfg')[0].style.display='none';
+											}
+											else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+											{
+												alert("Connection lost while connecting to Server");
+											}
+										};
+										var fail = function(xhttp){
+											alert(xhttp.responseText);
+										};
+										btn.addEventListener('click',function(){
+											submit_form('ctefm',cat_edit_formvalidation,'vsedc','/b2c/apies/product/category/edit','POST',success,fail);
+										});
+									}
+									
+								});
 							}
 						}
 						else
@@ -421,7 +496,7 @@ window.onload = function(){
 						alert(xhttp.responseText);
 					};
 					btn.addEventListener('click',function(){
-						submit_form('ctcfm',formvalidation,'vsadc','/b2c/apies/product/category/add','POST',success,fail);
+						submit_form('ctcfm',add_formvalidation,'vsadc','/b2c/apies/product/category/add','POST',success,fail);
 					});
 				}
 				
