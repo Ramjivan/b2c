@@ -1,5 +1,5 @@
 #Refrance or Documentation File for style.css
-jk framwork
+jk framwork -- jivan kunal kuldeep ki framework hahaha
 
 @@ Form Componanats @@
 div form-card - form block
@@ -16,7 +16,11 @@ div form-card - form block
                          -- for inline radio -
                             <div class="jk-radio jk-radio-inline">
 
-            jk-checkbox ]
+            jk-checkbox ] -- use of jk-checkbox --
+                            <div class="jk-checkbox">
+                                <input id="i1" type="checkbox">             //input id="must be same"
+                                <label for="i1">Item 2</label>              //for="must be same" 
+                            </div>
             jk-select   ]
             
 

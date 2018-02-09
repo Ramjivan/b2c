@@ -71,7 +71,8 @@
 		width:100%;
 		left:0;
 	}
-	.jk-radio {
+	.jk-radio,
+	.jk-checkbox {
 		margin: 10px 0;
 	}
 }

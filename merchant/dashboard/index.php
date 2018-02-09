@@ -51,15 +51,14 @@
     </div>
   </div>
   <div>
-    <div class="jk-radio jk-radio-inline">
-      <input id="5" type="radio" name="g3" checked>
-      <label for="5"></label>
-    </div>
-    <div class="jk-radio jk-radio-inline">
-      <input id="6" type="radio" name="g3">
-      <label for="6">Option 6</label>
-    </div>
-  </div>
+  <div class="jk-checkbox">
+  <input id="i2" type="checkbox" checked>
+  <label for="i2">Item 1</label>
+</div>
+<div class="jk-checkbox">
+  <input id="i1" type="checkbox">
+  <label for="i1">Item 2</label>
+</div>
 	</div>
 
 	<?php

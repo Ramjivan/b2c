@@ -336,7 +336,48 @@ form div.form-group select:focus{
 }
 /*Radio componanat end here*/
 
-
+/*Checkbox componant STARTS here*/
+.jk-checkbox {
+	position: relative;
+	margin: 16px 0;
+  }
+  .jk-checkbox label {
+	cursor: pointer;
+  }
+  .jk-checkbox label:before, .jk-checkbox label:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+  }
+  .jk-checkbox label:before {
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border: 2px solid rgba(0, 0, 0, 0.54);
+	border-radius: 2px;
+	cursor: pointer;
+	transition: background 0.3s;
+  }
+  .jk-checkbox input[type="checkbox"] {
+	outline: 0;
+	margin-right: 10px;
+  }
+  .jk-checkbox input[type="checkbox"]:checked + label:before {
+	background: var(--primary-color);
+	border: none;
+  }
+  .jk-checkbox input[type="checkbox"]:checked + label:after {
+	transform: rotate(-45deg);
+	top: 5px;
+	left: 4px;
+	width: 12px;
+	height: 6px;
+	border: 2px solid #fff;
+	border-top-style: none;
+	border-right-style: none;
+  }
+/*Checkbox componant ENDS here*/
 
 
 
