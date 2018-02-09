@@ -9,7 +9,8 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	if(isset($_POST[$index]))
 	{
 		$var = trim($_POST[$index]);
-	}else
+	}
+	else
 	{
 		$ERROR_FLAG = true;
 		echo $index;
@@ -311,19 +312,45 @@ function upload_image($index)
 	{
 		$return_values = array();
 		
-		if(isset($_GET['page']))
+		if(isset($_GET['page']) && $_GET['cat'])
 		{
 			try
 			{
 				$start = (intval($_GET['page']) * 10) - 10;
 				$end = (intval($_GET['page']) * 10);
-				$SQL = "SELECT * FROM `products` LIMIT ".$start.",".$end;
+				$SQL = "SELECT * FROM `products`  where `p_category`=? LIMIT ".$start.",".$end;
 				$stmt = $conn->prepare($SQL);
-				$stmt->execute();
+				$stmt->execute(array($_GET['cat']));
 				if($stmt->rowCount() > 0)
 				{
-					$return_values['result'] = 1;
 					$return_values['items'] = $stmt->fetchAll();
+					$return_values['result'] = 1;
+					
+					$i = 0;
+					
+					foreach($return_values['items'] as $item)
+					{
+						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
+						$stmt->execute(array($item['img_list_id'])); 
+						
+						$spec = $conn->prepare('select `spc_field_name`,`spc_field_value` from `p_spec` where `product_id`=?');
+						$spec->execute(array($item['product_id']));
+						
+						$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
+						$hlgt->execute(array($item['product_id']));
+						
+						if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $stmt->rowCount() > 0)
+						{
+							$return_values['items'][$i]['images'] = $stmt->fetchAll();
+							
+							$return_values['items'][$i]['specification'] = $spec->fetchAll();
+
+							$return_values['items'][$i]['highlights'] = $hlgt->fetchAll();
+							
+						}
+					
+						$i++;
+					}
 				}
 				else
 				{
@@ -348,8 +375,34 @@ function upload_image($index)
 				$stmt->execute(array($user['merchant_id']));
 				if($stmt->rowCount())
 				{
-					$return_values['success'] = 1;
 					$return_values['items'] = $stmt->fetchAll();
+					$return_values['result'] = 1;
+					
+					$i = 0;
+					
+					foreach($return_values['items'] as $item)
+					{
+						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
+						$stmt->execute(array($item['img_list_id'])); 
+						
+						$spec = $conn->prepare('select `spc_field_name`,`spcfield_value` from `p_spec` where `product_id`=?');
+						$spec->execute(array($item['product_id']));
+						
+						$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
+						$hlgt->execute(array($item['product_id']));
+						
+						if($stmt->rowCount() > 0)
+						{
+							$return_values['items'][$i]['images'] = $stmt->fetchAll();
+							
+							$return_values['items'][$i]['specification'] = $spec->fetchAll();
+
+							$return_values['items'][$i]['highlights'] = $hlgt->fetchAll();
+							
+						}
+					
+						$i++;
+					}
 				}
 				else
 				{
