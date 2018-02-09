@@ -18,9 +18,30 @@
 		include 'header.php';
 	?>
 	
-		<div class="container"> 
-
+	<div class="container"> 
+	
+		<div class="jk-f">
+			<form action="">
+				<div class="jk-fg">
+					<input type="text" class="jk-textbox" placeholder="username" require>
+				</div>
+				<div class="jk-fg">
+					<input type="password" class="jk-textbox" placeholder="password" require>
+				</div>
+				<div class="jk-fg">
+					<input type="submit" class="btn btn-primary-color">
+				</div>
+				
+					
+			</form>
 		</div>
+			
+		<form>
+  <input placeholder="Username" type="text">
+  <input placeholder="Password" type="password">
+	<textarea placeholder="Description"></textarea>
+</form> 
+	</div>
 
 	<?php
 		//including footer

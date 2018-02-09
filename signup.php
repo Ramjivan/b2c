@@ -32,12 +32,12 @@ session_start();
 		include 'header.php';
 	?>
 	<!--Content Here-->
-	<div class="signup">
+	<div class="form-card">
 		<div class="row">
 			<div class="col-6">
-				<div class="spform">
+				
 					<h3>Sign up</h3>
-					<form class="signup-form" id="sgn-form">
+					<form class="jk-form" id="sgn-form">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
@@ -61,7 +61,7 @@ session_start();
 						</div>
 					</form>
 					<a class="_redfge" href="login.php">Already a Mamber ! Log In</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>

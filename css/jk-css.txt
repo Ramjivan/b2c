@@ -1,0 +1,19 @@
+#Refrance or Documentation File for style.css
+jk framwork
+
+@@ Form Componanats @@
+div form-card - form block
+    form .jk-form - 
+        h3 - heading
+        form-group
+
+            jk-textbox  ]
+            jk-radio    ]   need to beimplimented
+            jk-checkbox ]
+            jk-select   ]
+            
+
+
+        
+
+

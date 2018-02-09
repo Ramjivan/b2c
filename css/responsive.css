@@ -47,7 +47,7 @@
 		width: 100%; 
 	}
 	
-	.signup{
+	.form-card{
 		width:100%;
 	}
 	nav.navbar.top-nav  > div.nav-item{
@@ -76,7 +76,7 @@
 
 @media all and (min-width:1000px) /*for tab view */
 {
-	.signup{
+	.form-card{
 		width:40%;
 	}
 	.center-block{

@@ -14,7 +14,8 @@ body{
 	font-family: verdana,arial,helvetica,sans-serif;
 	padding-top:100px;
 }
-.row{
+.row,
+.form-group{
 	width:100%;
 	overflow:hidden;
 }
@@ -179,15 +180,16 @@ div.blurdfg.active{
 	display:none;
 }
 
-.spform h3{
+.form-card h3{
 	font-weight:700;
 	color:black;
 	font-family:'Roboto',sans-serif;
 }
 
-div.signup{
+div.form-card{
 	display:block;
-	vertical-align:middle;
+	margin-left: auto;
+	margin-right: auto;
 	margin:5% auto;
 	position:relative;
 	box-shadow:0px 0px 4px rgba(0,0,0,0.3);
@@ -204,8 +206,9 @@ form div.form-group{
 	margin:1px;
 }
 
-.signup-form div.form-group input[type="text"],
-.signup-form div.form-group input[type="password"]{
+.jk-form div.form-group input[type="text"],
+.jk-form div.form-group input[type="password"],
+.jk-textbox{
 	border-top:0px solid transparent;
 	border-left:0px solid transparent;
 	border-right:0px solid transparent;
@@ -220,12 +223,14 @@ form div.form-group{
 	margin-top:20px;
 	background-color:transparent;
 }
-.signup-form div.form-group input[type="text"]:hover,
-.signup-form div.form-group input[type="password"]:hover{
+.jk-form div.form-group input[type="text"]:hover,
+.jk-form div.form-group input[type="password"]:hover,
+.jk-textbox:hover{
 	border-bottom:2px solid rgba(251,140,0,1);
 }
-.signup-form div.form-group input[type="text"]:focus,
-.signup-form div.form-group input[type="password"]:focus{
+.jk-form div.form-group input[type="text"]:focus,
+.jk-form div.form-group input[type="password"]:focus,
+.jk-textbox:focous{
 	border-bottom:2px solid rgba(251,140,0,1);
 }
 

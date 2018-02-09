@@ -28,12 +28,12 @@
 		include 'header.php';
 	?>
 	<!--Content Here-->
-    <div class="signup">
+    <div class="form-card">
 		<div class="row">
 			<div class="col-6">
 				<div class="spform">
 					<h3>Login</h3>
-					<form id="signin-form" class="signup-form">
+					<form id="signin-form" class="jk-form">
 						<div id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
