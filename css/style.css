@@ -6,6 +6,7 @@
 :root{
 	--primary-color:#FB8c00;
 	--secondary-color:#fff;
+	--jk-radio-size:20px;
 }
 
 body{
@@ -180,12 +181,7 @@ div.blurdfg.active{
 	display:none;
 }
 
-.form-card h3{
-	font-weight:700;
-	color:black;
-	font-family:'Roboto',sans-serif;
-}
-
+/*Form Componants*/
 div.form-card{
 	display:block;
 	margin-left: auto;
@@ -195,6 +191,12 @@ div.form-card{
 	box-shadow:0px 0px 4px rgba(0,0,0,0.3);
 	padding:10px;
 	background-color:rgb(250,250,250);
+}
+
+.form-card h3{
+	font-weight:700;
+	color:black;
+	font-family:'Roboto',sans-serif;
 }
 
 form div.form-group{
@@ -268,6 +270,76 @@ form div.form-group select:focus{
 .form-group label{
 	text-align:right;
 }
+
+/*Radio Button Componant*/
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@keyframes ripple {
+  0% {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+  }
+  50% {
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0);
+  }
+}
+.jk-radio {
+  margin: 16px 0;
+}
+.jk-radio.jk-radio-inline {
+  display: inline-block;
+}
+.jk-radio input[type="radio"] {
+  display: none;
+}
+.jk-radio input[type="radio"]:checked + label:before {
+  border-color: var(--primary-color);
+  animation: ripple 0.2s linear forwards;
+}
+.jk-radio input[type="radio"]:checked + label:after {
+  transform: scale(1);
+}
+.jk-radio label {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  padding: 0 30px;
+  margin-bottom: 0;
+  cursor: pointer;
+  vertical-align: bottom;
+}
+.jk-radio label:before, .jk-radio label:after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transition-property: transform, border-color;
+}
+.jk-radio label:before {
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.54);
+}
+.jk-radio label:after {
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  transform: scale(0);
+  background: var(--primary-color);
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+/*Radio componanat end here*/
+
+
+
+
+
 
 .btn{
 	display:inline-block;

@@ -8,7 +8,14 @@ div form-card - form block
         form-group
 
             jk-textbox  ]
-            jk-radio    ]   need to beimplimented
+            jk-radio    ] -- use of jk radio should be like this - 
+                            <div class="jk-radio">  
+                                <input id="1" type="radio" name="g" checked>  //input id="must be same"
+                                <label for="1">Option 1</label>               //for="must be same" 
+                            </div>
+                         -- for inline radio -
+                            <div class="jk-radio jk-radio-inline">
+
             jk-checkbox ]
             jk-select   ]
             
