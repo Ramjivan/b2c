@@ -22,9 +22,3 @@ div form-card - form block
                                 <label for="i1">Item 2</label>              //for="must be same" 
                             </div>
             jk-select   ]
-            
-
-
-        
-
-

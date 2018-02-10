@@ -16,6 +16,25 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}	
 }
 
+function get_product($id)
+{
+	try
+	{
+		include('pdo.php');
+		$stmt = $conn->prepare('select * from `products` where `product_id` = ? LIMIT 1');
+		$stmt->execute(array($id));
+		if($stmt->rowCount() > 0)
+		{
+			return $stmt->fetch();
+		}
+		return null;
+	}
+	catch(PDOException $e)
+	{
+		return null;
+	}
+}
+
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		if(isset($_GET['qtype']) && $_GET['qtype'] == '1') //ADD
@@ -34,14 +53,18 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 			{
 				is_set($indexes[$index],$index,$ERROR_FLAG);
 			}
-				
-			if($ERROR_FLAG == 0)
+			
+			
+			
+			if($ERROR_FLAG == 0 && ($product = get_product($indexes['product_id'])) !== null)
 			{
+				
 				try
 				{
 					$indexes['customer_id'] = $user['customer_id'];
+					$indexes['Merchant_id'] = $product['Merchant_id'];
 					$conn->beginTransaction();
-					$stmt = $conn->prepare("INSERT INTO `p_qna` (`product_id`,`qna_question`,`customer_id`) VALUES (:product_id,:qna_question,:customer_id)");
+					$stmt = $conn->prepare("INSERT INTO `p_qna` (`product_id`,`qna_question`,`customer_id`,`Merchant_id`) VALUES (:product_id,:qna_question,:customer_id,:Merchant_id)");
 					$response = $stmt->execute($indexes);
 					if($response > 0)
 					{
@@ -192,7 +215,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")
 	{
-		if(isset($_GET['qtype']) && $_GET['qtype'] = 1  isset($_GET['id']) && !empty($_GET['id']))
+		if(isset($_GET['qtype']) && $_GET['qtype'] = 1 &&  isset($_GET['id']) && !empty($_GET['id'])) //get question on product
 		{
 			try
 			{
@@ -210,9 +233,28 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 			}
 		}
-		else
+		else if(isset($_GET['qtype']) && $_GET['qtype'] = 2)
 		{
-			echo json_encode(array("ERROR" => "ID WAS MISSING OR EMPTY"),JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			try
+			{
+				$stmt = $conn->prepare('SELECT * FROM `p_qna` WHERE `Merchant_id` = ?');
+				$response = $stmt->execute(array($user['merchant_id']));
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['success'] = 1;
+					$return_values['items'] = $stmt->fetchAll();
+				}	
+				else
+				{
+					$return_values['success'] = 0;
+				}
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['DB'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}
 		}
 	}
 

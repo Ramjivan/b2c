@@ -4,6 +4,12 @@ span.fa.fa-pencil{
 	border-radius:4px;
 	text-align:center;
 }
+span.fa.fa-plus{
+	background-color:#bada55;
+	padding:10px;
+	border-radius:4px;
+	text-align:center;
+}
 span.fa.fa-trash{
 	content:'';
 	background-color:var(--primary-color,black);

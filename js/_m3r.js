@@ -41,7 +41,7 @@ window.onload = function(){
 							tab.innerHTML = "";
 						}
 						var json_response = JSON.parse(xhttp.responseText);
-						if(json_response.success)
+						if(json_response.result)
 						{
 							for(var i= 0 ; i < json_response.items.length ; i++)
 							{
@@ -51,7 +51,7 @@ window.onload = function(){
 											<td>'+json_response.items[i].p_price+'</td>\
 											<td>'+json_response.items[i].p_stock+'</td>\
 											<td>'+json_response.items[i].p_category+'</td>\
-											<td>'+json_response.items[i].img_list_id+'</td>\
+											<td><a href="/b2c/apies/'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'">'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'</a></td>\
 											<td><span id="ed'+json_response.items[i].product_id+'" class="fa fa-pencil"></span></td>\
 										   </tr>';
 								
@@ -310,8 +310,186 @@ window.onload = function(){
 		
 		
 		case /qna.php/.test(loc_arr[loc_arr.length-1]):
-		
 			
+			var qne_vld = [
+				{'id':'e_answer','name':'answer','regex':null,'length':null,'min_length':9,'max_length':255}
+			];
+			
+			var qna_vld = [
+				{'id':'answer','name':'answer','regex':null,'length':null,'min_length':9,'max_length':255}
+			];
+			
+			function get_qna()
+			{
+				var method = "GET";
+				var url = "/b2c/apies/qna/merchant";
+				var formData = null;
+				var success = function(xhttp){
+					var tab = document.getElementById('tbdy');
+					if(tab !== null)
+					{
+						if(tab !== null)
+						{
+							tab.innerHTML = "";
+						}
+						var json_response = JSON.parse(xhttp.responseText);
+						if(json_response.success)
+						{
+							for(var i= 0 ; i < json_response.items.length ; i++)
+							{
+								var row = '<tr>\
+											<td>'+json_response.items[i].qna_question+'</td>\
+											<td>'+(json_response.items[i].qna_answer == null ? 'Not Answered Yet.' : json_response.items[i].qna_answer)+'</td>\
+											<td>'+json_response.items[i].product_id+'</td>\
+											<td>'+json_response.items[i].qna_added+'</td>\
+											<td>'+(json_response.items[i].qna_closed == '0000-00-00 00:00:00' ? '<center>-</center>' : json_response.items[i].qna_closed)+'</td>\
+											<td>'+(json_response.items[i].qna_answer !== null ?'<span id="ed'+json_response.items[i].qna_id+'" class="fa fa-pencil"></span>':'')+(json_response.items[i].qna_answer == null ?'<span id="ad'+json_response.items[i].qna_id+'" class="fa fa-plus"></span>':"")+'</td>\
+										   </tr>';
+								
+								tab.innerHTML += row;
+								
+							}
+							for(var i = 0 ; i < json_response.items.length ; i++)
+							{
+								
+								
+								
+								const edit = 'ed'+json_response.items[i].qna_id; 
+								const add = 'ad'+json_response.items[i].qna_id; 
+								const id = json_response.items[i].qna_id;
+								const edit_btn = document.getElementById(edit);
+								
+								
+								
+								
+								// adding on click listeners on edit btn of dialog 
+								if(edit_btn !== null)
+								{
+									edit_btn.addEventListener('click',function(){
+										document.getElementById('dlg1').style.display = 'block';
+										document.getElementsByClassName('blurdfg')[0].className += ' active'; 
+										document.getElementById('qe5d_3fid').value = id;
+										
+										
+										var btn = document.getElementById('ed');
+										
+										if(btn !== null)
+										{
+											var success = function(xhttp){
+												if(JSON.parse(xhttp.responseText).success == '1')
+												{
+													get_qna();
+													document.getElementById('pctefm').reset();
+													document.getElementById('dlg1').style.display = 'none';
+													document.getElementsByClassName('blurdfg')[0].style.display='none';
+												}
+												else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+												{
+													alert("Connection lost while connecting to Server");
+												}
+											};
+											var fail = function(xhttp){
+												alert(xhttp.responseText);
+											};
+											btn.addEventListener('click',function(){
+												submit_form('qntefm',qne_vld,'valsum1','/b2c/apies/answer/edit','POST',success,fail);
+											});
+										}
+										
+										var elements = ['ques_e_p','e_answer'];
+										
+										var parent =  document.getElementById(edit).parentElement.parentElement;
+										for(var j = 0 ; j < elements.length ; j++)
+										{
+											if(document.getElementById(elements[j]) !== null)
+											{
+												document.getElementById(elements[j]).value = parent.getElementsByTagName('td')[j].innerHTML;
+												document.getElementById(elements[j]).innerHTML = parent.getElementsByTagName('td')[j].innerHTML;
+											}
+										}
+										
+									});
+								}
+								
+								
+								const add_btn = document.getElementById(add);
+								// adding on click listeners on add btn of dialog 
+								if(add_btn !== null)
+								{
+									add_btn.addEventListener('click',function(){
+										document.getElementById('dlg2').style.display = 'block';
+										document.getElementsByClassName('blurdfg')[0].className += ' active'; 
+										document.getElementById('qa5d_3fid').value += id;
+										
+										
+										var btn = document.getElementById('ad');
+										
+										if(btn !== null)
+										{
+											var success = function(xhttp){
+												if(JSON.parse(xhttp.responseText).success == '1')
+												{
+													get_qna();
+													document.getElementById('qnatefm').reset();
+													document.getElementById('dlg2').style.display = 'none';
+													document.getElementsByClassName('blurdfg')[0].style.display='none';
+												}
+												else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+												{
+													alert("Connection lost while connecting to Server");
+												}
+											};
+											var fail = function(xhttp){
+												alert(xhttp.responseText);
+											};
+											btn.addEventListener('click',function(){
+												submit_form('qnatefm',qna_vld,'valsum2','/b2c/apies/answer/add','POST',success,fail);
+											});
+										}
+										
+										var elements = ['ques_a_p','answer'];
+										
+										var parent =  document.getElementById(add).parentElement.parentElement;
+										for(var j = 0 ; j < elements.length ; j++)
+										{
+											if(document.getElementById(elements[j]) !== null)
+											{
+												document.getElementById(elements[j]).value = parent.getElementsByTagName('td')[j].innerHTML;
+												document.getElementById(elements[j]).innerHTML = parent.getElementsByTagName('td')[j].innerHTML;
+											}
+										}
+										
+									});
+								}
+							}
+						}
+						else
+						{
+							alert(json_response.ERROR);
+						}
+					}
+					else
+					{
+						alert('Fatel Error');
+					}
+				};
+				
+				var fail = function(xhttp){
+					alert(xhttp.responseText);
+				};
+				
+				xhr_call(
+					method,
+					url,
+					formData,
+					success,
+					fail
+				);
+			}
+			
+			(function(){
+				get_qna();
+			})();
 		
 		break;
 		
