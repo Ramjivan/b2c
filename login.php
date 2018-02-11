@@ -38,17 +38,19 @@
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
-							<input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="mail"/>
+                            <input class="jk-textbox wi-left" id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="mail"/>
+                            <span class="fa fa-user jk-input-ico-left"></span>
 						</div>
 						<div class="form-group">
-							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="paswrd" minlength="8" />
+                            <input class="jk-textbox wi-left" id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="paswrd" minlength="8" />
+                            <span class="fa fa-lock jk-input-ico-left"></span>
 						</div>
                         <input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>">
 						<div class="form-group">
 							<input type="button" id="lgn" class="btn btn-primary-color" value="Login"/>
 						</div>
 					</form>
-                    
+                    <div ></div> Not a mamber SignUp Now
 				</div>
                 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 			</div>

@@ -20,6 +20,33 @@
 	
 	<div class="form-card"> 
 		some tex blal
+		<input type="text" class="jk-textbox wi-right" value=""/>
+		<span class="fa fa-user jk-input-ico-right"></span>
+
+		<input type="password" class="jk-textbox wi-left">
+		<span class="fa fa-lock jk-input-ico-left"></span>
+		
+		<input type="tel" class="jk-textbox wi-left ">
+		<span class="fa fa-phone jk-input-ico-left"></span>
+		
+		<input type="url" class="jk-textbox">
+		<span class="fa fa-link jk-input-ico-right"></span>
+
+		<input type="tel" class="jk-textbox">
+		<span class="fa fa-phone jk-input-ico-right"></span>
+
+		<input type="time" class="jk-textbox">
+		<span class="fa fa-clock-o jk-input-ico-right"></span>
+
+		<select name="" class="jk-select">	
+			<option value="" >option 1</option>
+			<option value="">option 2</option>
+			<option value="">option 3</option>
+			<option value="">option 4</option>
+		</select>
+		<span class="fa fa-chevron-down jk-input-ico-right"></span>
+
+
 		<div class="radio-group">
 			<div class="jk-radio">
 				<input id="1" type="radio" name="g" checked>
@@ -32,13 +59,8 @@
 		</div>
 		
 		<div>
-    <div class="jk-radio">
-      <input id="1" type="radio" name="g" checked>
-    </div>
-    <div class="jk-radio">
-      <input id="2" type="radio" name="g">
-      <label for="2">Option 2</label>
-    </div>
+    
+    
   </div>
   <div>
     <div class="jk-radio jk-radio-inline">

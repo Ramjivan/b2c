@@ -75,6 +75,15 @@
 	.jk-checkbox {
 		margin: 10px 0;
 	}
+	.wi-left
+	{
+		padding-left: 24px;
+	}
+	.wi-right
+	{
+		padding-right: 24px;
+
+	}
 }
 
 

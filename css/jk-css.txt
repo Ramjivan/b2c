@@ -7,7 +7,17 @@ div form-card - form block
         h3 - heading
         form-group
 
-            jk-textbox  ]
+            jk-textbox  ] -- use of textbox --
+                            %% simple --
+                            <input type="text" class="jk-textbox">
+
+                            %% when using icons in textbox --
+                            <input type="text" class="jk-textbox wi-right">      //wi-right is to put margin in right of textbox || wi - with icon left&right wi-left
+                            <span class="fa fa-user jk-input-ico-right"></span>  //jk-input-ico-right to put icon in textbox 
+
+                            <input type="password" class="jk-textbox wi-left">   //wi-left is to put margin in left of textbox
+                            <span class="fa fa-lock jk-input-ico-left"></span>
+
             jk-radio    ] -- use of jk radio should be like this - 
                             <div class="jk-radio">  
                                 <input id="1" type="radio" name="g" checked>  //input id="must be same"
@@ -21,8 +31,22 @@ div form-card - form block
                                 <input id="i1" type="checkbox">             //input id="must be same"
                                 <label for="i1">Item 2</label>              //for="must be same" 
                             </div>
-            jk-select   ]
-            
+
+            jk-date     ] -- use of jk-date --
+                            <input type="date" class="jk-date"> 
+		    icon in input - <span class="fa fa-calendar jk-input-ico"></span>  //use fontAwasome icon right after 
+                                                                               the input field and choose whatever 
+                                                                               icon you want to usefj
+
+            jk-select   ] -- use of jk-select --
+                            <select name="" class="jk-select">
+                                <option value="" >option 1</option>
+                                <option value="">option 2</option>
+                                <option value="">option 3</option>
+                                <option value="">option 4</option>
+                            </select>
+                            <span class="fa fa-chevron-down jk-input-ico"></span>
+        
 
 
         

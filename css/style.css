@@ -7,13 +7,14 @@
 	--primary-color:#FB8c00;
 	--secondary-color:#fff;
 	--jk-radio-size:20px;
+	--jk-form-font-size:16px;
 }
 
 body{
 	margin:0;
 	padding-top:70px;
 	font-family: verdana,arial,helvetica,sans-serif;
-	padding-top:100px;
+	
 }
 .row,
 .form-group{
@@ -202,7 +203,7 @@ div.form-card{
 form div.form-group{
 	font-family:'Roboto',sans-serif;
 	font-weight:700;
-	font-size:15px;
+	font-size:var(--jk-form-font-size);
 	text-align:normal;
 	padding:10px;
 	margin:1px;
@@ -210,7 +211,9 @@ form div.form-group{
 
 .jk-form div.form-group input[type="text"],
 .jk-form div.form-group input[type="password"],
-.jk-textbox{
+.jk-textbox,
+.jk-date,
+.jk-select{
 	border-top:0px solid transparent;
 	border-left:0px solid transparent;
 	border-right:0px solid transparent;
@@ -224,55 +227,31 @@ form div.form-group{
 	padding:5px;
 	margin-top:20px;
 	background-color:transparent;
+	font-size: var(--jk-form-font-size);
+	font-family: 'Roboto', sans-serif;
+	font-weight: 21px;
 }
 .jk-form div.form-group input[type="text"]:hover,
 .jk-form div.form-group input[type="password"]:hover,
-.jk-textbox:hover{
-	border-bottom:2px solid rgba(251,140,0,1);
+.jk-textbox:hover,
+.jk-date:hover,
+.jk-select:hover{
+	outline:0;
+	border-bottom:2px solid var(--primary-color);
 }
 .jk-form div.form-group input[type="text"]:focus,
 .jk-form div.form-group input[type="password"]:focus,
-.jk-textbox:focous{
-	border-bottom:2px solid rgba(251,140,0,1);
-}
-
-form div.form-group input[type="text"],
-form div.form-group input[type="password"],
-form div.form-group textarea,
-form div.form-group select{
-	border-top:0px solid transparent;
-	border-left:0px solid transparent;
-	border-right:0px solid transparent;
-	/*border-bottom:2px solid rgba(251,140,0,0.3);*/
-	border-bottom:2px solid rgba(0,0,0,0.3);
-	transition:border ease-in 0.4s;
-	margin-left:2px;
-	margin-top:-20px;
-	font-family:'Roboto',sans-serif;
-	width:100%;
-	padding:5px;
-	margin-top:20px;
-	background-color:transparent;
-}
-form div.form-group input[type="text"]:hover,
-form div.form-group input[type="password"]:hover,
-form div.form-group textarea:hover,
-form div.form-group select:hover{
-	border-bottom:2px solid rgba(251,140,0,1);
-}
-form div.form-group input[type="text"]:focus,
-form div.form-group input[type="password"]:focus,
-form div.form-group textarea:focus,
-form div.form-group select:focus{
-	border-bottom:2px solid rgba(251,140,0,1);
+.jk-textbox:focus,
+.jk-date:focus,
+.jk-select:focus{
+	outline:0;
+	border-bottom:2px solid var(--primary-color);
 }
 
 .form-group label{
 	text-align:right;
 }
-
 /*Radio Button Componant*/
-@import url(https://fonts.googleapis.com/css?family=Roboto);
 @keyframes ripple {
   0% {
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
@@ -302,7 +281,7 @@ form div.form-group select:focus{
 }
 .jk-radio label {
   display: inline-block;
-  height: 20px;
+  height: var(--jk-form-font-size);
   position: relative;
   padding: 0 30px;
   margin-bottom: 0;
@@ -366,6 +345,7 @@ form div.form-group select:focus{
   .jk-checkbox input[type="checkbox"]:checked + label:before {
 	background: var(--primary-color);
 	border: none;
+	animation: ripple 0.2s linear forwards;
   }
   .jk-checkbox input[type="checkbox"]:checked + label:after {
 	transform: rotate(-45deg);
@@ -379,7 +359,69 @@ form div.form-group select:focus{
   }
 /*Checkbox componant ENDS here*/
 
+/*Date Comonant */
+.jk-date{
+	position:relative;
+	font-size: var(--jk-form-font-size);
+    background-repeat: no-repeat;
+	padding-left: 25px;
+}
+.jk-date::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+/*Date Comonant */
 
+/*Input Box ICONS STARTS here*/
+.jk-input-ico-left{
+	float: left;
+	margin-left: 2%;
+	margin-top: -25px;
+	position: relative;
+	color: var(--primary-color);
+	font-size: var(--jk-form-font-size);
+	z-index: 5;
+	
+}
+.jk-input-ico-right {
+	float: right;
+	margin-right: 2%;
+	margin-top: -25px;
+	position: relative;
+	color: var(--primary-color);
+	font-size: var(--jk-form-font-size);
+	z-index: 5;
+	
+}
+input.wi-left
+{
+	padding-left: 20px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+input.wi-right,
+.wi-right
+{
+	padding-right: 20px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+}
+/*Input Box ICONS STARTS here*/
+
+/* Select dropdown STARTS here*/
+.jk-select{
+	font-family: 'Roboto',sans-serif;
+	font-size: var(--jk-form-font-size);
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+/* Select dropdown ENDS here*/
 
 
 .btn{
