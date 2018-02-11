@@ -35,6 +35,3 @@
 </div>
 <div class="blurdfg">
 </div>
-	</div>
-	<div class="blurdfg">
-	</div>

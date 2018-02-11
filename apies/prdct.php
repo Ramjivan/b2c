@@ -385,7 +385,7 @@ function upload_image($index)
 						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
 						$stmt->execute(array($item['img_list_id'])); 
 						
-						$spec = $conn->prepare('select `spc_field_name`,`spcfield_value` from `p_spec` where `product_id`=?');
+						$spec = $conn->prepare('select `spc_field_name`,`spc_field_value` from `p_spec` where `product_id`=?');
 						$spec->execute(array($item['product_id']));
 						
 						$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');

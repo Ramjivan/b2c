@@ -11,7 +11,7 @@
 		<meta name="keywords" content="">
 		
 		<?php
-			//include head
+			//including head
 			include 'headTags.php';
 		?>
 	</head>
@@ -33,7 +33,7 @@
 								<th>price</th>
 								<th>stock</th>
 								<th>category</th>
-								<th>images</th>
+								<th>image</th>
 								<th>action</th>
 							</tr>
 						</thead>
