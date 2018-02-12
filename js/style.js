@@ -83,6 +83,8 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 	}
 }
 
+
+
 function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)
 {
 	if(form_validate(document.getElementById(validation_summary),formvalidation))
@@ -105,3 +107,32 @@ function submit_form(formid,formvalidation,validation_summary,url,method,success
 		}
 	}
 }
+
+
+xhr_call(
+	'GET',
+	'/b2c/apies/index/category',
+	null,
+	function(xhttp){
+	var tar = document.getElementById('32t3g05');
+	var tar2 = document.getElementById('32tfg05');
+	if(tar !== null && tar2 !== null)	
+		if(xhttp.responseText.length > 0)
+		{
+			var json = JSON.parse(xhttp.responseText);
+			
+			if(json.result > 0)
+			{
+				for(var i = 0 ; i < json.items.length ; i++)
+				{
+					tar.innerHTML += '<a href="maincategory/'+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+					tar2.innerHTML += '<a href="maincategory/'+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+				}
+			}
+			
+		}
+	},
+	function(xhttp){
+		
+	}
+);

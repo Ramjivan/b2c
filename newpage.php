@@ -12,11 +12,15 @@
 			include 'headTags.php';
 		?>
 	</head>
-<body class="body">
+<body>
 	<?php
 		//including header
 		include 'header.php';
 	?>
+	<!--Content Here-->
+	
+		
+	
 	<!--Content Here-->
 
 	<?php

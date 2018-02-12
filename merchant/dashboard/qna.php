@@ -81,7 +81,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="dialog-body">
-				<form class="pdct-form" id="qntefm" >
+				<form class="jk-form pdct-form" id="qntefm" >
 						<div class="vs" id="valsum1">
 							<h3 id="vsh4" class="vs">Something Went wrong</h3>
 						</div>
@@ -111,7 +111,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="dialog-body">
-				<form class="pdct-form" id="qnatefm" >
+				<form class="jk-form pdct-form" id="qnatefm" >
 						<div class="vs" id="valsum2">
 							<h3 id="vsh4" class="vs">Something Went wrong</h3>
 						</div>

@@ -496,7 +496,7 @@ window.onload = function(){
 		case (/category.php/.test(loc_arr[loc_arr.length-1])):
 			
 			var add_formvalidation = [
-				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255},
 				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
@@ -526,7 +526,7 @@ window.onload = function(){
 						}							
 						
 						var json_response = JSON.parse(xhttp.responseText);
-						if(json_response.result)
+						if(json_response.result == '1')
 						{
 							for(var i= 0 ; i < json_response.items.length ; i++)
 							{
@@ -592,7 +592,7 @@ window.onload = function(){
 						}
 						else
 						{
-							alert(json_response.ERROR);
+							tab.innerHTML += '<tr><td colspan="4"><center>No Categories Found</center></td></tr>';
 						}
 					}
 					else
@@ -652,11 +652,58 @@ window.onload = function(){
 			}
 			
 			var formvalidation = [
-				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'name','name':'Name','regex':/[a-zA-Z ]+/,'length':null,'min_length':9,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null}
 			];
+			
+			
+			function spinner_cat_fill()
+			{
+				
+				var method = "GET";
+				var url = "/b2c/apies/index/category";
+				var formData = null;
+				
+				var success = function(xhttp){
+					if(xhttp.responseText.length > 0)
+					{
+						var json = JSON.parse(xhttp.responseText);
+						if(json.result !== undefined && json.result > 0)
+						{
+							var cat = document.getElementById('category');
+							if(cat !== null && xhttp.response.items !== null)
+							{
+								for(var i = 0 ;  i < json.items.length ; i++)
+								{
+									var option = document.createElement('option');
+									option.setAttribute('value',json.items[i].category_id);
+									option.appendChild(document.createTextNode(json.items[i].cat_name));
+									cat.appendChild(option);
+								}
+							}
+						}
+						else if(!xhttp.responseText.result)
+						{
+							alert('Nothing Found');
+						}
+					}
+				};
+				
+				
+				var fail = function(xhttp){
+					alert("Sorry Couldn't establish the connection..");
+				};
+				
+				xhr_call(
+					method,
+					url,
+					formData,
+					success,
+					fail
+				);
+			}
 			
 			var btn = document.getElementById('add');
 				if(btn !== null)
@@ -664,7 +711,7 @@ window.onload = function(){
 					var success = function(xhttp){
 						if(JSON.parse(xhttp.responseText).success == '1')
 						{
-							//get();
+							get_cat();
 							document.getElementById('ctcfm').reset();
 						}
 						else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
@@ -680,8 +727,11 @@ window.onload = function(){
 					});
 				}
 				
+			
+				
 			(function(){
 				get_cat();
+				spinner_cat_fill();
 			})();
 		break;
 		
