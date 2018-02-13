@@ -140,10 +140,10 @@ function upload_image($index)
 						
 						if($ERROR_FLAG == 0)
 						{
-							
 							$last_id = $conn->lastInsertId();
+							$indexes['Merchant_id'] = $user['merchant_id'];
 							$indexes['category_id'] = $last_id;
-							$stmt = $conn->prepare("INSERT INTO `categorydescription`(`category_id`, `cat_name`, `cat_description`, `cat_meta_keyword`) VALUES (:category_id,:cat_name,:cat_description,:cat_meta_keyword)");
+							$stmt = $conn->prepare("INSERT INTO `categorydescription`(`category_id`, `cat_name`, `cat_description`, `cat_meta_keyword`,`Merchant_id`) VALUES (:category_id,:cat_name,:cat_description,:cat_meta_keyword,:Merchant_id)");
 							$cat_desc_response = $stmt->execute($indexes);
 						}
 					}
@@ -155,7 +155,7 @@ function upload_image($index)
 					}
 					else
 					{
-						$return_values['fail'] = 0;	
+						$return_values['success'] = 0;	
 					}
 				}
 			}
@@ -275,6 +275,51 @@ function upload_image($index)
 				$cat = "select `category`.`category_id`,`category`.`parent_id`,`categorydescription`.`cat_name`,`categorydescription`.`cat_description`,`categorydescription`.`cat_meta_keyword`,`category`.`dateAdded`,`category`.`image_id` from `category`,`categorydescription` where `category`.`category_id` = `categorydescription`.`category_id` && `category`.`isTop`=? &&  `category`.`parent_id`= 1"; 
 				$stmt = $conn->prepare($cat);
 				$stmt->execute(array(1));
+				
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['result'] = 1;
+
+					$return_values['items'] = $stmt->fetchAll();
+					$i = 0;
+					foreach($return_values['items'] as $cat)
+					{
+						if($cat['parent_id'] !== "")
+						{
+							$stmt = $conn->prepare('select * from `categorydescription` where `category_id` = ?');
+							$stmt->execute(array($cat['parent_id']));
+							if($stmt->rowCount() > 0)
+							{
+								$return_values['items'][$i]['parent_name'] = $stmt->fetch()['cat_name']; 
+							}
+						}
+						$i++;
+					}
+					
+				}
+				else
+				{
+					$return_values['result'] = 0;
+				}
+					
+					echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
+		{			
+			//get category of merchant
+			$return_values = array();
+			
+			try
+			{
+				$cat = "select `category`.`category_id`,`category`.`parent_id`,`categorydescription`.`cat_name`,`categorydescription`.`cat_description`,`categorydescription`.`cat_meta_keyword`,`category`.`dateAdded`,`category`.`image_id` from `category`,`categorydescription` where `category`.`category_id` = `categorydescription`.`category_id` && `category`.`parent_id`= ?"; 
+				$stmt = $conn->prepare($cat);
+				$stmt->execute(array($_GET['id']));
 				
 				if($stmt->rowCount() > 0)
 				{

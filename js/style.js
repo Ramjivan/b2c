@@ -125,8 +125,8 @@ xhr_call(
 			{
 				for(var i = 0 ; i < json.items.length ; i++)
 				{
-					tar.innerHTML += '<a href="maincategory/'+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
-					tar2.innerHTML += '<a href="maincategory/'+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+					tar.innerHTML += '<a href="mcat='+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+					tar2.innerHTML += '<a href="mcat='+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
 				}
 			}
 			
