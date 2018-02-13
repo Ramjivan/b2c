@@ -61,7 +61,7 @@
 							<input id="price" onchange="validate({'id':'price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Price" name="p_price"/>
 						</div>
 						<div id="cat_panel" class="form-group">
-							<select id="31t1" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})" name="p_category">
+							<select id="31t1" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
 							</select>
 						</div>
 						<div class="form-group">
