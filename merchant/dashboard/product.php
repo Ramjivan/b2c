@@ -85,7 +85,7 @@
 						<div class="form-group">
 								<h2>Specifications</h2>
 								<div style="margin:0% auto;position:relative;display:block;width:45%;background-color:white;box-shadow:0px 0px 1px rgba(0,0,0,0.2);padding:20px;">
-									Specification count <select id="s_c" name="spcount"></select>
+									Specification count <select id="s_c" name="spcount" class="jk-select"></select>
 								</div>
 							<div id="qasw">
 								<div class="clearfix"></div>

@@ -26,6 +26,9 @@
 		width:100%;
 		left:0;
 	}
+	input.wi-left{
+		padding-left: 20px;
+	}
 }
 
 
@@ -75,15 +78,13 @@
 	.jk-checkbox {
 		margin: 10px 0;
 	}
-	.wi-left
-	{
-		padding-left: 24px;
-	}
-	.wi-right
-	{
-		padding-right: 24px;
-
-	}
+	.side, .middle {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+	
 }
 
 
@@ -108,4 +109,5 @@
 		width:50%;
 		left:25%;
 	}
+	
 }

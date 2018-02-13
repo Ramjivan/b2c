@@ -46,6 +46,16 @@ div form-card - form block
                                 <option value="">option 4</option>
                             </select>
                             <span class="fa fa-chevron-down jk-input-ico"></span>
+
+***********************************************************************************************************************************************
+
+Table - 
+
+jk-table-container
+    table class = stripped, bordered, highlight
+        thead
+
+        tbody    
         
 
 

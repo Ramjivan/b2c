@@ -1,3 +1,8 @@
+<div class="jk-textbox" style="padding-left:30px;">
+                                <span class="fa fa-user ico-left"></span>
+                                <input id="email" onchange="validate({'id':'email','name':'Email Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':8,'max_length':null})" type="text" placeholder="E-mail Address (eg. example@example.org)" name="mail"/>
+                            </div>
+                            
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 *{
 	box-sizing:border-box;
@@ -13,7 +18,7 @@
 body{
 	margin:0;
 	padding-top:70px;
-	font-family: 'Roboto',sans-serif;
+	font-family: verdana,arial,helvetica,sans-serif;
 	
 }
 .row,
@@ -134,7 +139,7 @@ nav div a {
 
 .header{
 	width:100%;
-	background-color:var(--primary-color);
+	background-color:#FB8c00;
 	padding:20px;
 	overflow:visible;
 	box-shadow:0px 0px 10px rgba(0,0,0,0.4);
@@ -208,108 +213,51 @@ form div.form-group{
 	padding:10px;
 	margin:1px;
 }
-
-.jk-form div.form-group input[type="text"],
-.jk-form div.form-group input[type="password"],
-.jk-form div.form-group textarea,
-.jk-form div.form-group select,
-.jk-textbox,
-.jk-date,
-.jk-select,
-textarea{
-	border-top:0px solid transparent;
-	border-left:0px solid transparent;
-	border-right:0px solid transparent;
-	border-bottom:2px solid rgba(251,140,0,0.3);
-	border-bottom:2px solid rgba(0,0,0,0.3);
-	transition:border ease-in 0.4s;
+.ico-left{
+	display: inline-block;
+	width: 1%;
+}
+.jk-form div.form-group input,
+.jk-textbox input{
+	border:none;
+	outline: 0;
 	margin-left:2px;
 	margin-top:-20px;
 	font-family:'Roboto',sans-serif;
-	width:100%;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	width:96%;
+	padding:5px;
 	margin-top:20px;
 	background-color:transparent;
 	font-size: var(--jk-form-font-size);
-	font-family: 'Roboto', sans-serif;
 	font-weight: 21px;
+	position: relative;
 }
-.jk-form div.form-group input[type="text"]:hover,
-.jk-form div.form-group input[type="password"]:hover,
+
+.jk-textbox,
+.jk-date,
+.jk-select{
+	border-top:0px solid transparent;
+	border-left:0px solid transparent;
+	border-right:0px solid transparent;
+	/*border-bottom:2px solid rgba(251,140,0,0.3);*/
+	border-bottom:2px solid rgba(0,0,0,0.3);
+	transition:border ease-in 0.4s;
+}
+
 .jk-textbox:hover,
 .jk-date:hover,
-.jk-select:hover,
-textarea:hover{
+.jk-select:hover{
 	outline:0;
 	border-bottom:2px solid var(--primary-color);
 }
-.jk-form div.form-group input[type="text"]:focus,
-.jk-form div.form-group input[type="password"]:focus,
+
 .jk-textbox:focus,
 .jk-date:focus,
-.jk-select:focus,
-textarea:focus{
+.jk-select:focus{
 	outline:0;
 	border-bottom:2px solid var(--primary-color);
 }
 
-.form-group label{
-	text-align:right;
-}
-/* Range Slider STARTS here*/
-input[type="range"]:focus,
-input[type="range"]:hover{
-	outline: none;
-}
-input[type="range"]{
-	outline: none;
-	width: 100%;
-    height: 25px;
-    overflow: hidden;
-	cursor: hand;
-	background-color: transparent;
-}
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type='range']::-webkit-slider-thumb {
-  position: relative;
-  width: 22px;
-	height: 22px;
-	border-color: var(--primary-color);
-    background: var(--primary-color);
-  margin-top: -10px;
-  border-radius: 50%;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-	background: var(--primary-color);
-	border-color: var(--primary-color);
-	cursor: pointer;
-	border-radius: 100%;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-	height: 2px;
-	cursor: pointer;
-	border-radius: 1.3px;
-	background-color: var(--primary-color);
-  }
-  
-  input[type=range]::-moz-range-track {
-	height: 2px;
-	border-radius: 100%;
-	background-color: var(--primary-color);
-  }
-  
-/*Range Slider ENDS here*/ 
-  
 /*Radio Button Componant*/
 @keyframes ripple {
   0% {
@@ -434,16 +382,17 @@ input[type=range]::-webkit-slider-runnable-track {
 /*Input Box ICONS STARTS here*/
 .jk-input-ico-left{
 	float: left;
-	margin-left: 7px;
+	margin-left: 2%;
 	margin-top: -25px;
 	position: relative;
 	color: var(--primary-color);
 	font-size: var(--jk-form-font-size);
 	z-index: 5;
+	
 }
 .jk-input-ico-right {
 	float: right;
-	margin-right: 7px;
+	margin-right: 2%;
 	margin-top: -25px;
 	position: relative;
 	color: var(--primary-color);
@@ -453,17 +402,19 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 input.wi-left
 {
-	padding-left: 24px;
+	padding-left: 20px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
-input.wi-right
+input.wi-right,
+.wi-right
 {
-	padding-right: 28px;
+	padding-right: 20px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+
 }
 /*Input Box ICONS STARTS here*/
 
@@ -660,48 +611,53 @@ div.prdct div.price{
 	font-family:'Roboto',sans-serif;
 }
 
-/*Table STARTS here*/
-.jk-table-container{
-	overflow: auto;
-}
+
 table{
 	display:table;
 	font-family:'Roboto',sans-serif;
 	border-collapse:collapse;
-	border:none;
 }
-
-table th,table td{
-	padding:5px;
-}
-table.bordered > tr > td,
-table.bordered > tbody > tr > td{
-	border-bottom: 1px solid var(--primary-color)
-}
-table > thead > tr{
-	border-bottom: 1px solid gray;
-}
-table.stripped > tbody > tr:nth-child(even),
-table.stripped tr:nth-child(even){
-	background-color: #f2f2f2;
-}
-table.highlight > tbody > tr:hover{
-	background-color:rgb(0.1, 0.1, 0.1,0.1);
+table > tbody > tr{
 	transition:0.2s ease-in;
 	cursor:normal;
 }
 
+table th,table td{
+	border:1px solid rgba(0,0,0,0.2);
+
+	padding:10px;
+
+	padding:5px;
+
+}
+
+table > thead > tr{
+	background-color:black;
+	color:white;
+}
+
+table > tbody > tr:hover{
+
+	background-color:rgba(251, 140, 0,0.2);
+
+	background-color:rgba(0, 0, 0,0.1);
+
+}
+
+
 .log-table{
 	padding:10px;
-	overflow-x:auto;
-	text-align: center;
+
+
+	overflow-x:scroll;
+
+
 }
 
 .log-table table{
 	width:100%;
 }
 
-/*Table ENDS here*/
 .askWidgetHeader{
 	font-weight: bold;
     font-size: 21px;
@@ -737,7 +693,6 @@ padding-right: 27px;
 	max-width: 90%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 1em;
 	display: block;
 }
 .search-input::-webkit-input-placeholder {
@@ -794,48 +749,4 @@ display: inline;
 	border-radius:3px;
 	margin:10px;
 }
-/*User Ratings*/
-.checked {
-    color: orange;
-}
 
-/* Three column layout */
-.side {
-    float: left;
-    width: 15%;
-    margin-top:10px;
-}
-
-.middle {
-    margin-top:10px;
-    float: left;
-    width: 70%;
-}
-
-/* Place text to the right */
-.right {
-    text-align: right;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* The bar container */
-.bar-container {
-    width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    color: white;
-}
-
-/* Individual bars */
-.bar-5 {width: 80%; height: 18px; background-color: #4CAF50;}
-.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
-.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
-.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
-.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
-/*User Ratings*/
