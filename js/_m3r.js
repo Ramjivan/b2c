@@ -162,7 +162,7 @@ window.onload = function(){
 				var data = new FormData(document.getElementById('pctafm'));
 				var  specs = document.getElementsByClassName('spec');
 				
-				while(specs.length !== index-1)
+				while(specs.length >= index)
 				{
 					specs[specs.length-1].parentNode.removeChild(specs[specs.length-1]);
 				}
@@ -179,19 +179,23 @@ window.onload = function(){
 					var h3 = document.createElement('h3');
 					h3.appendChild(document.createTextNode('Specification '+i+' '));
 					var span = document.createElement('span');
+					
+					if(i > 1){
 					span.setAttribute('class','fa fa-trash');
 					const p = i-1;
 					span.onclick = function(){
 						rng(p);
 					};
 					h3.appendChild(span);
+					}
+					
 					div.appendChild(h3);
 					
 					var sp_name = document.createElement('input');
 					sp_name.setAttribute('id','sp_name'+i);
 					sp_name.setAttribute('onchange','validate({\'id\':\'sp_name'+i+'\',\'name\':\'Spec Name '+i+'\',\'regex\':null,\'length\':null,\'min_length\':5,\'max_length\':null})');
 					sp_name.setAttribute('Placeholder','Spec Name');
-					sp_name.setAttribute('name','sp_name'+i-1);
+					sp_name.setAttribute('name','sp_name'+i);
 					sp_name.setAttribute('type','text');
 					sp_name.setAttribute('value',data.get('sp_name'+(i+1)));
 					div.appendChild(sp_name);
@@ -260,8 +264,15 @@ window.onload = function(){
 				}
 				else if(count < spcount)
 				{
+					var specs = document.getElementsByClassName('spec');
+
 					//truncate
-					alert(count);
+					while(spcount > count)
+					{
+						specs[specs.length-1].parentNode.removeChild(specs[specs.length-1]);
+						spcount--;
+					}
+					
 				}
 			}
 			
