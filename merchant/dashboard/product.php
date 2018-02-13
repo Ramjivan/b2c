@@ -47,7 +47,7 @@
 			<div class="center-block">
 				<h3>Add Product</h3>
 				<div>
-					<form class="pdct-form" id="pctafm" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
+					<form class="jk-form pdct-form" id="pctafm" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
 						<div id="vsap" class="vs">
 							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>
@@ -86,7 +86,7 @@
 						<div class="form-group">
 								<h2>Specifications</h2>
 								<div style="margin:0% auto;position:relative;display:block;width:45%;background-color:white;box-shadow:0px 0px 1px rgba(0,0,0,0.2);padding:20px;">
-									Specification count <select id="s_c" name="spcount"></select>
+									Specification count <select id="s_c" name="spcount" class="jk-select"></select>
 								</div>
 							<div id="qasw">
 								<div class="clearfix"></div>
