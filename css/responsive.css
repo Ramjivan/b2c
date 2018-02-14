@@ -81,7 +81,7 @@
 	.side, .middle {
         width: 100%;
     }
-    .right {
+    input span.right {
         display: none;
     }
 	

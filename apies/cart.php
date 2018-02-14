@@ -205,21 +205,56 @@ function get_product($id)
 			}
 			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 		}
-		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')  // GET
 		{
 			$cart = get_cart($user['customer_id']);
 			$return_values = array();
 			$i = 0;
 			if($cart !== null)
 			{
+				
 				foreach($cart as $cartItem)
 				{
-					$return_values[$i] = get_product($cartItem['p_id']);
-					$i++;
+					
+					if(($product = get_product($cartItem['p_id'])) !== null)
+					{
+						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=? LIMIT 1');
+						$stmt->execute(array($product['img_list_id'])); 
+						
+						if($stmt->rowCount() > 0)
+						{	
+							$return_values['result'] = 1;
+							
+							$img = $stmt->fetch();
+
+							$return_values['items'][$i] = array(
+															'product_id' => $product['product_id'],
+															'p_name' => $product['p_name'],
+															'qty' => $cartItem['qty'],
+															'stock' => ($product['p_stock'] > 0 ? 1 : 0),
+															'price' => $product['p_price'],
+															'item_id' => $cartItem['item_id'],
+															'img' => $img['img_dir'].$img['img_name']
+														);
+
+							$i++;
+						}
+						else
+						{
+							$return_values['result'] = 0;
+							$return_values['MESSAGE'] = "Empty Cart.";						
+						}
+					}
+					else
+					{
+						$return_values['result'] = 0;
+						$return_values['MESSAGE'] = "Empty Cart.";						
+					}
 				}
 			}
 			else
 			{
+				$return_values['result'] = 0;
 				$return_values['MESSAGE'] = "Empty Cart.";
 			}
 		

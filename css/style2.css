@@ -38,3 +38,28 @@ div.dialog div.dialog-body{
 div#dhead{
 	padding:20px;
 }
+
+.img-circle{
+	vertical-align:middle;
+}
+
+.item-card{
+	border-bottom:1px solid rgba(0,0,0,0.4);
+	padding:10px;
+}
+
+[class*='col-'] [class*='col-']{
+	padding:1%;
+}
+
+.green{
+	color:#bada55;
+}
+
+.color-primary{
+	color:var(--primary-color,black);
+}
+
+span.fa-1dot5x{
+	font-size:1.6em;
+}
