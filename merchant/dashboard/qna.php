@@ -53,7 +53,7 @@
 			<div class="center-block">
 				<h2><u>Q &amp; A</u></h2>
 				<div class="log-table">
-					<table id="p-tab">
+					<table class="stripped" id="p-tab">
 						<thead>
 							<tr>
 								<th>Question</th>

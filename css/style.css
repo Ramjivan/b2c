@@ -206,7 +206,6 @@ form div.form-group{
 	font-size:var(--jk-form-font-size);
 	text-align:normal;
 	padding:10px;
-	margin:1px;
 }
 
 .jk-form div.form-group input[type="text"],
