@@ -28,7 +28,7 @@
 			<p>4.1 average based on 254 reviews.</p>
 			<hr style="border:3px solid #f1f1f1">
 
-		<div class="row">A
+		<div class="row">
 		<div class="side">
 			<div>5 star</div>
 		</div>
@@ -133,11 +133,21 @@
 
 	<div class="form-card"> 
 		some tex blal
-		<input type="text" class="jk-textbox wi-right" value=""/>
-		<span class="fa fa-user jk-input-ico-right"></span>
+		<div style="display:block-inline;">
+			<div class="form-group col-3">
+				<input type="text" class="jk-textbox wi-right" value=""/>
+				<span class="fa fa-user jk-input-ico-right"></span>
+			</div>
+			<div class="form-group col-3">
+				<input type="text" class="jk-textbox wi-right" value=""/>
+				<span class="fa fa-user jk-input-ico-right"></span>
+			</div>
+		</div>
+		
 
-		<input type="password" class="jk-textbox wi-left">
+		<input type="password" class="jk-textbox wi-left wi-right" placeholder="Enter Your Password Here!">
 		<span class="fa fa-lock jk-input-ico-left"></span>
+		<span class="fa fa-eye jk-input-ico-right"></span>
 		
 		<input type="tel" class="jk-textbox wi-left">
 		<span class="fa fa-phone jk-input-ico-left"></span>
