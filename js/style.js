@@ -64,6 +64,9 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 				case 400:
 					fail_fun(xhttp);
 				break;
+				case 404:
+					fail_fun(xhttp);
+				break;
 				
 				case 501:
 					fail_fun(xhttp);
@@ -82,6 +85,8 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 		xhttp.send(param);
 	}
 }
+
+
 
 function submit_form(formid,formvalidation,validation_summary,url,method,success,fail)
 {
@@ -163,3 +168,29 @@ function imageZoom(imgID, resultID) {
   } 
   
   
+
+xhr_call(
+	'GET',
+	'/b2c/apies/index/category',
+	null,
+	function(xhttp){
+	var tar = document.getElementById('32t3g05');
+	var tar2 = document.getElementById('32tfg05');
+	if(tar !== null && tar2 !== null)	
+		if(xhttp.responseText.length > 0)
+		{
+			var json = JSON.parse(xhttp.responseText);
+			if(json.result > 0)
+			{
+				for(var i = 0 ; i < json.items.length ; i++)
+				{
+					tar.innerHTML += '<a href="mcat='+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+					tar2.innerHTML += '<a href="mcat='+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
+				}
+			}
+		}
+	},
+	function(xhttp){
+		
+	}
+);

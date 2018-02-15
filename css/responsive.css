@@ -96,6 +96,10 @@
 		border: 2px solid #f1f1f1;
 		padding: 1em;
 	}
+    input span.right {
+        display: none;
+    }
+	
 }
 
 

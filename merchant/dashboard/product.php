@@ -25,7 +25,7 @@
 			<div class="center-block">
 				<h3>Products</h3>
 				<div class="log-table">
-					<table id="p-tab">
+					<table class="stripped" id="p-tab">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -60,15 +60,14 @@
 						<div class="form-group">
 							<input id="price" onchange="validate({'id':'price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Price" name="p_price"/>
 						</div>
-						<div class="form-group">
-							<select id="category" onchange="validate({'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})" name="p_category">
-								<option value="1">Select Category</option>
+						<div id="cat_panel" class="form-group">
+							<select id="31t1" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
 							</select>
 						</div>
 						<div class="form-group">
 							<input id="stock" onchange="validate({'id':'stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Stocks" name="p_stock"/>
 						</div>
-						<div class="form-group">
+						<div class="form-card form-group">
 							<h3>Images</h3>
 							<input type="hidden" name="imgcount" value="1"/>
 							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1" multiple/>

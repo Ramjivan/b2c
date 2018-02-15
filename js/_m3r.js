@@ -12,7 +12,6 @@ window.onload = function(){
 				{'id':'name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
-				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
 				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null},
 				{'id':'hlgt1','name':'Hightlight1','regex':null,'length':null,'min_length':5,'max_length':null},
@@ -133,6 +132,8 @@ window.onload = function(){
 				);
 			}
 			
+			
+			
 			function put_count(name,count)
 			{
 				var target = document.getElementById(name);
@@ -160,7 +161,7 @@ window.onload = function(){
 				var data = new FormData(document.getElementById('pctafm'));
 				var  specs = document.getElementsByClassName('spec');
 				
-				while(specs.length !== index-1)
+				while(specs.length >= index)
 				{
 					specs[specs.length-1].parentNode.removeChild(specs[specs.length-1]);
 				}
@@ -177,19 +178,23 @@ window.onload = function(){
 					var h3 = document.createElement('h3');
 					h3.appendChild(document.createTextNode('Specification '+i+' '));
 					var span = document.createElement('span');
+					
+					if(i > 1){
 					span.setAttribute('class','fa fa-trash');
 					const p = i-1;
 					span.onclick = function(){
 						rng(p);
 					};
 					h3.appendChild(span);
+					}
+					
 					div.appendChild(h3);
 					
 					var sp_name = document.createElement('input');
 					sp_name.setAttribute('id','sp_name'+i);
 					sp_name.setAttribute('onchange','validate({\'id\':\'sp_name'+i+'\',\'name\':\'Spec Name '+i+'\',\'regex\':null,\'length\':null,\'min_length\':5,\'max_length\':null})');
 					sp_name.setAttribute('Placeholder','Spec Name');
-					sp_name.setAttribute('name','sp_name'+i-1);
+					sp_name.setAttribute('name','sp_name'+i);
 					sp_name.setAttribute('type','text');
 					sp_name.setAttribute('value',data.get('sp_name'+(i+1)));
 					div.appendChild(sp_name);
@@ -258,12 +263,106 @@ window.onload = function(){
 				}
 				else if(count < spcount)
 				{
+					var specs = document.getElementsByClassName('spec');
+
 					//truncate
-					alert(count);
+					while(spcount > count)
+					{
+						specs[specs.length-1].parentNode.removeChild(specs[specs.length-1]);
+						spcount--;
+					}
+					
 				}
 			}
 			
-
+					var _cat_sel_count = 1;
+		
+		function nescat(index,name)
+		{
+			var spinner = document.getElementById('31t'+index);
+			
+			if(spinner !== null)
+			{
+				while(index < _cat_sel_count )
+				{
+					if(document.getElementById('31t'+index) !== null)
+					{
+						document.getElementById('31t'+_cat_sel_count).parentNode.removeChild(document.getElementById('31t'+_cat_sel_count));
+					}
+					_cat_sel_count--;
+				}
+				xhr_call(
+					'GET',
+					'/b2c/apies/index/subcategory/'+spinner.value,
+					null,
+					function(xhttp){
+						const tar = document.getElementById('31t'+index);
+						if(tar !== null)
+						{	
+							if(xhttp.responseText.length > 0)
+							{
+								var json = JSON.parse(xhttp.responseText);
+								if(json.result)
+								{
+									var select = document.createElement('select');
+									select.setAttribute('id','31t'+(index+1));
+									
+									for(var i =0 ; i < json.items.length ; i++)
+									{
+										var option = document.createElement('option');
+										option.setAttribute('value',json.items[i].category_id);
+										option.appendChild(document.createTextNode(json.items[i].cat_name));
+										select.appendChild(option);
+									}
+									
+									document.getElementById('cat_panel').appendChild(select);
+									_cat_sel_count+=1;
+									select.onchange = function(){nescat(index+1,'p_category')};
+									document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+									select.onchange();
+								}
+								else
+								{
+									document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+								}
+							}
+						}							
+					}
+				);
+			}
+		}
+			/**ajax call for cateegory spinner for parent category selection*/
+			xhr_call(
+			'GET',
+			'/b2c/apies/index/category',
+			null,
+			function(xhttp){
+			var tar = document.getElementById('31t1');
+			if(tar !== null)
+			{	
+				if(xhttp.responseText.length > 0)
+				{
+					var json = JSON.parse(xhttp.responseText);
+					
+					if(json.result > 0)
+					{
+						for(var i = 0 ; i < json.items.length ; i++)
+						{
+							var option = document.createElement('option');
+							option.setAttribute('value',json.items[i].category_id);
+							option.appendChild(document.createTextNode(json.items[i].cat_name));
+							tar.appendChild(option);
+						}
+						tar.onchange=function(){nescat(1,'p_category')};
+						tar.onchange();
+					}
+				}
+			}
+			},
+			function(xhttp){
+			alert('ERROR');
+			}
+			);
 			
 			
 			(function(){
@@ -485,8 +584,7 @@ window.onload = function(){
 					success,
 					fail
 				);
-			}
-			
+			}	
 			(function(){
 				get_qna();
 			})();
@@ -496,10 +594,9 @@ window.onload = function(){
 		case (/category.php/.test(loc_arr[loc_arr.length-1])):
 			
 			var add_formvalidation = [
-				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255},
-				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null}
 			];
 			
@@ -526,7 +623,7 @@ window.onload = function(){
 						}							
 						
 						var json_response = JSON.parse(xhttp.responseText);
-						if(json_response.result)
+						if(json_response.result == '1')
 						{
 							for(var i= 0 ; i < json_response.items.length ; i++)
 							{
@@ -592,7 +689,7 @@ window.onload = function(){
 						}
 						else
 						{
-							alert(json_response.ERROR);
+							tab.innerHTML += '<tr><td colspan="4"><center>No Categories Found</center></td></tr>';
 						}
 					}
 					else
@@ -652,11 +749,58 @@ window.onload = function(){
 			}
 			
 			var formvalidation = [
-				{'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'name','name':'Name','regex':/[a-zA-Z ]+/,'length':null,'min_length':9,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'category','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null},
 				{'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null}
 			];
+			
+			
+			function spinner_cat_fill()
+			{
+				
+				var method = "GET";
+				var url = "/b2c/apies/index/category";
+				var formData = null;
+				
+				var success = function(xhttp){
+					if(xhttp.responseText.length > 0)
+					{
+						var json = JSON.parse(xhttp.responseText);
+						if(json.result !== undefined && json.result > 0)
+						{
+							var cat = document.getElementById('category');
+							if(cat !== null && xhttp.response.items !== null)
+							{
+								for(var i = 0 ;  i < json.items.length ; i++)
+								{
+									var option = document.createElement('option');
+									option.setAttribute('value',json.items[i].category_id);
+									option.appendChild(document.createTextNode(json.items[i].cat_name));
+									cat.appendChild(option);
+								}
+							}
+						}
+						else if(!xhttp.responseText.result)
+						{
+							alert('Nothing Found');
+						}
+					}
+				};
+				
+				
+				var fail = function(xhttp){
+					alert("Sorry Couldn't establish the connection..");
+				};
+				
+				xhr_call(
+					method,
+					url,
+					formData,
+					success,
+					fail
+				);
+			}
 			
 			var btn = document.getElementById('add');
 				if(btn !== null)
@@ -664,7 +808,7 @@ window.onload = function(){
 					var success = function(xhttp){
 						if(JSON.parse(xhttp.responseText).success == '1')
 						{
-							//get();
+							get_cat();
 							document.getElementById('ctcfm').reset();
 						}
 						else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
@@ -680,8 +824,42 @@ window.onload = function(){
 					});
 				}
 				
+			var _cat_sel_count = 1;
+				
 			(function(){
 				get_cat();
+				spinner_cat_fill();
+				xhr_call(
+					'GET',
+					'/b2c/apies/index/category',
+					null,
+					function(xhttp){
+					var tar = document.getElementById('31t1');
+					if(tar !== null)
+					{	
+						if(xhttp.responseText.length > 0)
+						{
+							var json = JSON.parse(xhttp.responseText);
+							
+							if(json.result > 0)
+							{
+								for(var i = 0 ; i < json.items.length ; i++)
+								{
+									var option = document.createElement('option');
+									option.setAttribute('value',json.items[i].category_id);
+									option.appendChild(document.createTextNode(json.items[i].cat_name));
+									tar.appendChild(option);
+								}
+								tar.onchange=function(){nescat(1,'parent_id')};
+								tar.onchange();
+							}
+						}
+					}
+					},
+					function(xhttp){
+					alert('ERROR');
+					}
+				);
 			})();
 		break;
 		

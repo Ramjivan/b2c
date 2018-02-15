@@ -206,11 +206,12 @@ form div.form-group{
 	font-size:var(--jk-form-font-size);
 	text-align:normal;
 	padding:10px;
-	margin:1px;
 }
 
 .jk-form div.form-group input[type="text"],
 .jk-form div.form-group input[type="password"],
+.jk-form div.form-group textarea,
+.jk-form div.form-group select,
 .jk-textbox,
 .jk-date,
 .jk-select,
@@ -218,7 +219,7 @@ textarea{
 	border-top:0px solid transparent;
 	border-left:0px solid transparent;
 	border-right:0px solid transparent;
-	/*border-bottom:2px solid rgba(251,140,0,0.3);*/
+	border-bottom:2px solid rgba(251,140,0,0.3);
 	border-bottom:2px solid rgba(0,0,0,0.3);
 	transition:border ease-in 0.4s;
 	margin-left:2px;

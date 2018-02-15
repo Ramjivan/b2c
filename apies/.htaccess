@@ -16,6 +16,8 @@ RewriteRule ^product/category/add$ cat.php?qtype=1 [QSA]
 RewriteRule ^product/category/edit$ cat.php?qtype=2 [QSA]
 RewriteRule ^product/category/([0-9]*)$ cat.php?id=$2 [QSA]
 RewriteRule ^product/category/merchant$ cat.php?qtype=1 [QSA]
+RewriteRule ^index/category$ cat.php?qtype=2 [QSA]
+RewriteRule ^index/subcategory/([0-9]*)$ cat.php?qtype=3&id=$1 [QSA]
 
 
 #category related
@@ -51,7 +53,7 @@ RewriteRule ^answer/*$ ans.php [QSA]
 #cart related
 
 RewriteRule ^cart/add/([\w]*)/qty/([0-9]*)$ cart.php?qtype=1&p_id=$1&qty=$2 [QSA]
-RewriteRule ^cart/edit/([\w]*)/qty/([0-9]*)$ cart.php?qtype=2&&item_id=$1&&qty=$2 [QSA]
+RewriteRule ^cart/edit/([\w]*)/qty/([0-9]*)$ cart.php?qtype=2&item_id=$1&qty=$2 [QSA]
 RewriteRule ^cart$ cart.php?qtype=3 [QSA]
 RewriteRule ^cart/delete/([0-9]*)$ cart.php?qtype=4&item_id=$1 [QSA]
 
