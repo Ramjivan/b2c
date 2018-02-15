@@ -29,7 +29,7 @@
         </ul>
         
         <div class="img-zoom-container">
-            <img id="myimage" src="img/IMG_2618_LI .jpg"  >
+            <img id="myimage" src="img/IMG_2618_LI (2).jpg" hight="300" width="300" >
             <div id="myresult" class="img-zoom-result"></div>
         </div>
         
