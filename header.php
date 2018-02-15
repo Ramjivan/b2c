@@ -18,7 +18,7 @@
 					<span class="fa fa-sitemap"></span>
 					<a>Categories</a>
 					<i class="fa fa-caret-down"></i>
-					<div id="32tfg05" class="dropdown-content">
+					<div class="dropdown-content" id="32tfg05">
 					</div>
 				</div>
 				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
@@ -36,7 +36,7 @@
 						<span class="fa fa-sitemap"></span>
 						<a>Categories</a>
 						<i class="fa fa-caret-down"></i>
-						<div id="32t3g05" class="dropdown-content">
+						<div class="dropdown-content" id="32t3g05">
 						</div>
 				</div>
                 <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="#">Sign up / Sign in</a></div>

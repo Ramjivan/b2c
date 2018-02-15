@@ -64,6 +64,9 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 				case 400:
 					fail_fun(xhttp);
 				break;
+				case 404:
+					fail_fun(xhttp);
+				break;
 				
 				case 501:
 					fail_fun(xhttp);
@@ -120,7 +123,6 @@ xhr_call(
 		if(xhttp.responseText.length > 0)
 		{
 			var json = JSON.parse(xhttp.responseText);
-			
 			if(json.result > 0)
 			{
 				for(var i = 0 ; i < json.items.length ; i++)
@@ -129,7 +131,6 @@ xhr_call(
 					tar2.innerHTML += '<a href="mcat='+json.items[i].category_id+'">'+json.items[i].cat_name+'</a>';
 				}
 			}
-			
 		}
 	},
 	function(xhttp){
