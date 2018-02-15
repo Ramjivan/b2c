@@ -38,6 +38,29 @@
 			);
 		}
 		
+		function d_q(args){
+			var tar = args[2];
+			tar.parentNode.parentNode.style.filter = 'blur(0.3px)';
+			xhr_call(
+				'GET',
+				'/b2c/apies/cart/delete/'+args[1],
+				null,
+				function(xhttp){
+					if(xhttp.responseText.length > 0)
+					{
+						var json = JSON.parse(xhttp.responseText);
+						if(json.success)
+						{
+							tar.parentNode.parentNode.parentNode.removeChild(tar.parentNode.parentNode);
+						}
+					}
+				},
+				function(xhttp){
+					tar.parentNode.parentNode.style.filter = 'none';
+				}
+			);
+		}
+		
 		function cb(fn)
 		{
 			fn(arguments);
@@ -72,7 +95,7 @@ xhr_call(
 											</div>\
 										</div>\
 										<div class="col-1">\
-											<button class="btn fa fa-trash"></button>\
+											<button id="45t'+i+'" class="btn fa fa-trash"></button>\
 										</div>\
 										<div class="right">\
 											<select  class="jk-select" id="9t7'+i+'">\
@@ -92,6 +115,7 @@ xhr_call(
 						tar.innerHTML += append;
 						const di = row.item_id;
 						document.getElementById('9t7'+i).value = row.qty;
+							
 							document.getElementById('9t7'+i).onfocus = function(){
 								last_qty = this.value;
 							};
@@ -99,6 +123,10 @@ xhr_call(
 							document.getElementById('9t7'+i).onchange = function(){
 								cb(e_q,di,this.value,this);
 							};
+							
+						document.getElementById('45t'+i).onclick = function(){
+							cb(d_q,di,this);
+						};
 					}
 				}
 			}
