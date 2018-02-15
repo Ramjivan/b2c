@@ -819,6 +819,10 @@ display: inline;
 	float: left;
 }
 
+.float-right{
+	float:right;
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -870,4 +874,23 @@ ul.breadcrumb li a:hover {
 
 h3{
 color: var(--primary-color);	
+}
+
+ul.imglst{
+	list-style:none;
+}
+
+ul.imglst li img{
+	width:60px;
+	height:60px;
+	border:solid 1px rgba(0,0,0,0.2);
+}
+
+ul.imglst  >li  > img.active{
+	border:solid 1px var(--primary-color,black);
+	box-shadow:0px 0px 5px var(--primary-color,black);
+}
+
+.red{
+	color:#f82828;
 }

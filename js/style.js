@@ -127,13 +127,14 @@ function imageZoom(imgID, resultID) {
 	result.style.backgroundImage = "url('" + img.src + "')";
 	result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
 	/*execute a function when someone moves the cursor over the image, or the lens:*/
-	lens.addEventListener("mouseenter", result.style.display='block');
-	lens.addEventListener("mouseleave", result.style.display='none');
+	lens.addEventListener("mouseenter", function(){result.style.display='block'});
+	lens.addEventListener("mouseleave", function(){result.style.display='none'});
 	lens.addEventListener("mousemove", moveLens);
 	img.addEventListener("mousemove", moveLens);
 	/*and also for touch screens:*/
 	lens.addEventListener("touchmove", moveLens);
 	img.addEventListener("touchmove", moveLens);
+	result.style.display = "none";
 	function moveLens(e) {
 	  var pos, x, y;
 	  /*prevent any other actions that may occur when moving over the image*/
@@ -167,7 +168,7 @@ function imageZoom(imgID, resultID) {
 	  y = y - window.pageYOffset;
 	  return {x : x, y : y};
 	}
-  } 
+} 
   
   
 

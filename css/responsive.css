@@ -127,9 +127,11 @@
 	
 	/*Image Zooming Feature STARTS here*/
 	* {box-sizing: border-box;}
+	
 	.img-zoom-container {
-	position: relative;
+		position: relative;
 	}
+	
 	.img-zoom-lens {
 	position: absolute;
 	border: 1px solid #d4d4d4;
@@ -141,8 +143,11 @@
 	.img-zoom-result {
 	border: 1px solid #d4d4d4;
 	/*set the size of the result div:*/
-	width: 500px;
-	height: 600px;
+	width: 300px;
+	height: 300px;
+	position:absolute;
+	top:0;
+	left:25%;
 	}
 	/*Image Zooming Feature ENDS here*/
 	

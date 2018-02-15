@@ -7,6 +7,7 @@ RewriteRule ^product/add$ prdct.php?qtype=1 [QSA]
 RewriteRule ^product/edit$ prdct.php?qtype=2 [QSA]
 RewriteRule ^product/page/([0-9]*)/category/([0-9]*)$ prdct.php?page=$1&&cat=$2 [QSA]
 RewriteRule ^product$ prdct.php?qtype=1 [QSA]
+RewriteRule ^product/([\w]*)$ prdct.php?qtype=2&&id=$1 [QSA]
 
 #product related
 
