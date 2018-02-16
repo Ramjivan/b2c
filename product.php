@@ -24,13 +24,7 @@ include('sess_val.php');
 		include 'header.php';
 	?>
 	<!--Content Here-->
-    <div class="main-container">
-        <ul class="breadcrumb">
-            <li><a href="#">Electronics</a></li>
-            <li><a href="#">Mobile</a></li>
-            <li><a href="#">Mi</a></li>
-            <li>Mi A1</li>
-        </ul> 
+    <div class="main-container" >
     </div>
 
 	<?php

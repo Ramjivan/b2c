@@ -128,27 +128,34 @@
 	/*Image Zooming Feature STARTS here*/
 	* {box-sizing: border-box;}
 	
-	.img-zoom-container {
-		position: relative;
-	}
-	
 	.img-zoom-lens {
 	position: absolute;
 	border: 1px solid #d4d4d4;
 	/*set the size of the lens:*/
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
+	width: 200px;
+	height: 100px;
+	background-color:rgba(255,255,255,0.7);
 	}
 	.img-zoom-result {
-	border: 1px solid #d4d4d4;
-	/*set the size of the result div:*/
-	width: 300px;
-	height: 300px;
-	position:absolute;
-	top:0;
-	left:25%;
+		border: 1px solid #d4d4d4;
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		top:0;
+		padding:10px;
+		left: 50%;
+		z-index: 1;
+		border-radius: 9px;
+		box-shadow: 0px 0px 10px rgba(255,255,255,1);
 	}
+	
+	.img-zoom-container{
+		padding:0px 20px 0px 0px;
+	}
+	.img-zoom-container img{
+		width:100%;
+		height:416px;
+	}	
 	/*Image Zooming Feature ENDS here*/
 	
 }
