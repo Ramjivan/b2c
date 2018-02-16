@@ -152,7 +152,17 @@ function get_product($id)
 			}
 			else
 			{
-				$return_values['ERROR'] = "invalid Parameter or already in cart.";
+				if(!$ERROR_FLAG)
+				{	
+					$return_values['ERROR'] = 1;
+					$return_values['MESSAGE'] = "Already in cart.";
+				}
+				else
+				{
+					$return_values['ERROR'] = 1;
+					$return_values['MESSAGE'] = "Sorry Something went wrong.";
+				
+				}
 			}
 			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 		}

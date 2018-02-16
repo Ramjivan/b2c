@@ -60,6 +60,13 @@ RewriteRule ^cart/delete/([0-9]*)$ cart.php?qtype=4&item_id=$1 [QSA]
 
 #cart related
 
+#reviewrlated 
+RewriteRule ^review/add$ reviw.php?qtype=1 [QSA]
+RewriteRule ^review/edit$ reviw.php?qtype=2 [QSA]
+RewriteRule ^review/product/([\w]*)$ reviw.php?qtype=3&p_id=$1 [QSA]
+
+#reviewrlated 
+
 #order related
 
 RewriteRule ^order/add$ orders.php?qtype=1 [QSA]

@@ -60,11 +60,7 @@
 				}
 			);
 		}
-		
-		function cb(fn)
-		{
-			fn(arguments);
-		}
+	
 xhr_call(
 	'GET',
 	'/b2c/apies/cart',
