@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^mcat=([0-9]*)$ maincategory.php?id=$1 [QSA]
+RewriteRule ^product?([\w]*)$ product.php?id=$1 [QSA]
