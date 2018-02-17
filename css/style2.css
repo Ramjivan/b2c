@@ -46,6 +46,8 @@ div#dhead{
 .item-card{
 	border-bottom:1px solid rgba(0,0,0,0.4);
 	padding:10px;
+	margin-bottom:10px;
+	margin-top:5px;
 }
 
 [class*='col-'] [class*='col-']{
