@@ -498,7 +498,6 @@ input.wi-right
 	cursor:pointer;
 	font-weight:700;
 	transition:0.2s;
-	margin:2px;
 }
 
 .btn:hover{
@@ -762,6 +761,8 @@ padding-right: 27px;
 .question-container{
 	margin-top: 2em;
 	font-size: 14px;
+	border-left:1px solid rgba(0,0,0,0.8);
+	padding:4px;
 }
 .qa-left{
 font-weight:700!important;
@@ -912,17 +913,22 @@ ul.imglst  >li  > img.active{
 	color:#f82828;
 }
 
-div.detail-card{
+div.detail-card,form.detail-card{
 	display:block;
 	margin-bottom:15px;
 	margin-top:10px;
 	position:relative;
 	background-color:rgb(250,250,250);
 	border:1px solid rgba(0,0,0,0.2);
+	padding:5px;
 }
 
 div.detail-card div{
 	padding:10px;
+}
+
+div.detail-card div button{
+	margin:2px;
 }
 
 div.detail-card h3{

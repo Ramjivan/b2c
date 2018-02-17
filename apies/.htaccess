@@ -56,7 +56,7 @@ RewriteRule ^answer/*$ ans.php [QSA]
 RewriteRule ^cart/add/([\w]*)/qty/([0-9]*)$ cart.php?qtype=1&p_id=$1&qty=$2 [QSA]
 RewriteRule ^cart/edit/([\w]*)/qty/([0-9]*)$ cart.php?qtype=2&item_id=$1&qty=$2 [QSA]
 RewriteRule ^cart$ cart.php?qtype=3 [QSA]
-RewriteRule ^cart/delete/([0-9]*)$ cart.php?item_id=$1 [QSA]
+RewriteRule ^cart/delete/([0-9]*)$ cart.php?item_id=$1&qtype=4 [QSA]
 
 #cart related
 
