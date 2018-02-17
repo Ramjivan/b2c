@@ -29,7 +29,24 @@ function is_set(&$var,$index,&$ERROR_FLAG,$method)
 		}
 	}
 }
-
+function get_product($id)
+{
+	try
+	{
+		include('pdo.php');
+		$stmt = $conn->prepare('select * from `products` where `product_id` = ? LIMIT 1');
+		$stmt->execute(array($id));
+		if($stmt->rowCount() > 0)
+		{
+			return $stmt->fetch();
+		}
+		return null;
+	}
+	catch(PDOException $e)
+	{
+		return null;
+	}
+}
 function get_review($item_id)
 {
 	try
@@ -152,41 +169,74 @@ function get_review($item_id)
 			}
 			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 		}
-		else if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['qtype']) && $_GET['qtype'] == '3' && isset($_GET['p_id']))  // GET
+	}
+	else if($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['p_id']))  // GET
+	{
+		$return_values = array();
+		$i = 0;
+		
+		if(($product = get_product($_GET['p_id'])) !== null)
 		{
-			$return_values = array();
-			$i = 0;
-
+			$stmt = $conn->prepare('select `p_review`.*,`customers`.`c_fullname`,`customers`.`ppImg_id` from `customers` INNER JOIN `p_review` ON `customers`.`customer_id` = `p_review`.`customer_id` where `p_review`.`product_id`=?');
+			$stmt->execute(array($product['product_id'])); 
+			
+			if($stmt->rowCount() > 0)
+			{	
+				$i = 0;
 				
-				foreach($cart as $cartItem)
-				{
-					
-					if(($product = get_product($_GET['p_id'])) !== null)
-					{
-						$stmt = $conn->prepare('select * from `p_review` where `product_id`=? LIMIT 1');
-						$stmt->execute(array($product['product_id'])); 
-						
-						if($stmt->rowCount() > 0)
-						{	
-							$return_values['result'] = 1;
-							
-							$img = $stmt->fetch();
+				$return_values['result'] = 1;
 
-							$return_values['items'] = $stmt->fetchAll();
-						}
-						else
-						{
-							$return_values['result'] = 0;
-							$return_values['MESSAGE'] = "Something Went Wrong.";						
-						}
-					}
-					else
+				$return_values['items'] = $stmt->fetchAll();
+				
+				$return_values['average_rating'] = 0;
+				$return_values['one_star_rating'] = 0;
+				$return_values['two_star_rating'] = 0;
+				$return_values['three_star_rating'] = 0;
+				$return_values['four_star_rating'] = 0;
+				$return_values['five_star_rating'] = 0;
+				
+				$stmt = $conn->prepare("select * from `images` where `img_id`=? && `isDeleted` = '0'");
+				
+				foreach($return_values['items'] as $rviw)
+				{
+					$i++;
+					$return_values['average_rating'] += $rviw['rew_rating'] ;
+					if($rviw['rew_rating'] == 1)
+						$return_values['one_star_rating']++;
+					if($rviw['rew_rating'] == 2)
+						$return_values['two_star_rating']++;
+					if($rviw['rew_rating'] == 3)
+						$return_values['three_star_rating']++;
+					if($rviw['rew_rating'] == 4)
+						$return_values['four_star_rating']++;
+					if($rviw['rew_rating'] == 5)
+						$return_values['five_star_rating']++;
+					
+					if($rviw['ppImg_id'] !== null)
 					{
-						$return_values['result'] = 0;
-						$return_values['MESSAGE'] = "Something Went Wrong.";						
+						$stmt->execute(array($rviw['ppImg_id']));
+						if($stmt->rowCount() > 0)
+						{
+							$return_values['items'][($i-1)]['cusotmer_image'] = $stmt->fetch();
+						}
 					}
 				}
-			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+				
+				$return_values['average_rating'] /= $i;
+				$return_values['rating_count'] = $i;
+			}
+			else
+			{
+				$return_values['result'] = 0;
+				$return_values['MESSAGE'] = "Something Went Wrong.";						
+			}
 		}
+		else
+		{
+			$return_values['result'] = 0;
+			$return_values['MESSAGE'] = "Something Went Wrong.";						
+		}
+		
+		echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 	}
 ?>

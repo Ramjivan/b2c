@@ -171,6 +171,37 @@ xhr_call(
 			</div>
 		</div>
 		
+		
+			<div class="jk-review-tile col-3">
+				<div  class="jk-review-tile-header clearfix">
+					<div class="col-6">
+						<img style="max-width:30px;min-height:30px;height:30px;width:30px;border-radius:100%;vertical-align:middle;margin-top:-1px;" src="apies/products/uploads/22be20b1bf2190a3ecccc3dea69d7ae3.jpg">&nbsp;Kunal Awasthi
+					</div>
+					<div class="col-6">
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+					</div>
+				</div>
+				<div class="col-6">
+					blah lblah adgdknf
+					blah lblah adgdknf
+					lreon ispan loren 	lreon ispan loren 
+					lreon	lreon ispan loren 
+					lreon ispan loren 
+				 ispan loren 
+					lreon ispan loren 
+					lreon ispan loren 
+				
+					lreon ispan loren 
+				
+					lreon ispan loren 
+					
+				</div>
+			</div>
+		
 
 	<?php
 		//including footer

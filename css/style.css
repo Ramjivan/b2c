@@ -450,6 +450,18 @@ input[type=range]::-webkit-slider-runnable-track {
 	z-index: 5;
 	
 }
+.jk-review-tile{
+	padding:5px;
+	border:1px solid rgba(0,0,0,0.2);
+	margin-bottom:5px;
+	margin-top:5px;
+	float:none;
+}
+
+.jk-review-tile .jk-review-tile-header{
+	border-bottom:1px solid rgba(0,0,0,0.6);
+}
+
 input.wi-left
 {
 	padding-left: 24px;
@@ -896,7 +908,6 @@ ul.imglst  >li  > img.active{
 .red{
 	color:#f82828;
 }
-
 
 div.detail-card{
 	display:block;
