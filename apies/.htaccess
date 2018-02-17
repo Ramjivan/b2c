@@ -37,7 +37,7 @@ RewriteRule ^question/add$ ques.php?qtype=1 [QSA]
 RewriteRule ^question/edit$ ques.php?qtype=2 [QSA]
 RewriteRule ^question/delete$ ques.php?qtype=3 [QSA]
 RewriteRule ^question/*$ ques.php [QSA]
-RewriteRule ^qna/product/([\w]*)$ ques.php?id=$1 [QSA]
+RewriteRule ^qna/product/([\w]*)$ ques.php?id=$1&qtype=1 [QSA]
 RewriteRule ^qna/merchant$ ques.php?qtype=2&mid=$1 [QSA]
 
 #qna[question] related

@@ -227,8 +227,17 @@ function get_review($item_id)
 			}
 			else
 			{
-				$return_values['result'] = 0;
-				$return_values['MESSAGE'] = "Something Went Wrong.";						
+				$return_values['result'] = 1;
+				$return_values['average_rating'] = '0';
+				$return_values['one_star_rating'] = '0';
+				$return_values['two_star_rating'] = '0';
+				$return_values['three_star_rating'] = '0';
+				$return_values['four_star_rating'] = '0';
+				$return_values['five_star_rating'] = '0';
+				$return_values['average_rating'] = '0';
+				$return_values['rating_count'] = '0';
+				
+				$return_values['items'] = array();						
 			}
 		}
 		else

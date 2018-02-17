@@ -221,10 +221,16 @@ function get_product($id)
 			{
 				$stmt = $conn->prepare('SELECT * FROM `p_qna` WHERE `product_id` = ?');
 				$response = $stmt->execute(array($_GET['id']));
-				if($response > 0)
+				if($stmt->rowCount() > 0)
 				{
-					$return_values = $stmt->fetchAll();
+					$return_values['result'] = 1;
+					$return_values['items'] = $stmt->fetchAll();
 				}	
+				else
+				{
+					$return_values['result'] = 0;					
+					$return_values['items'] = array();
+				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}
 			catch(PDOException $e)
