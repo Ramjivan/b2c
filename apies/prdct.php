@@ -451,6 +451,7 @@ function upload_image($index)
 				else
 				{
 					$return_values['ERROR'] = "NO ITEMs";
+					$return_values['items'] = array();
 				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 				
