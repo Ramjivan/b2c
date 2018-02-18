@@ -63,6 +63,7 @@ CREATE TABLE `category` (
   `isTop` tinyint(1) NOT NULL DEFAULT '0',
   `parent_id` int(11) DEFAULT NULL,
   `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cat_name` varchar(51) NOT NULL,
   `image_id` varchar(11) NOT NULL,
   `Merchant_id` varchar(10) NOT NULL,
   `appoved` tinyint(1) NOT NULL DEFAULT '0'
