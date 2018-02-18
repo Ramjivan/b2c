@@ -44,8 +44,8 @@
                 <div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
             </nav>
 			<nav class="navbar float-right">
-				<div class="nav-item"><a href="/"><img height="25px" width="25px" class="img-circle" src="default-user.png"/>&nbsp;</a></div>
-				<div class="nav-item"><a href="#"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
+				<div class="nav-item"><a href="/b2c"><img height="25px" width="25px" class="img-circle" src="default-user.png"/>&nbsp;</a></div>
+				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
 			</nav>
 		</div>
     </div>

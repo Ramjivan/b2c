@@ -488,6 +488,14 @@ input.wi-right
     text-indent: 1px;
     text-overflow: '';
 }
+
+.jk-address-tile {
+	background-color:#EFEFEF;
+}
+
+.jk-address-tile div{
+	padding:2px;
+}
 /* Select dropdown ENDS here*/
 
 
