@@ -10,7 +10,7 @@ window.onload = function(){
 			
 			xhr_call(
 				'POST',
-				'/b2c/apies/session',
+				'apies/session',
 				formData,
 				function(xhttp){
 					alert(xhttp.responseText);

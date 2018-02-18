@@ -29,7 +29,7 @@ window.onload = function(){
 			function get()
 			{
 				var method = "GET";
-				var url = "/b2c/apies/product";
+				var url = "apies/product";
 				var formData = null;
 				var success = function(xhttp){
 					var tab = document.getElementById('tbdy');
