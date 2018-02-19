@@ -980,3 +980,37 @@ div.detail-card h3{
 	margin:0;
 	border-bottom:1px solid rgba(0,0,0,0.2);
 }
+/*Wallet page starts*/
+.wallet-container{
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 1%;
+	border: 1px solid var(--primary-color);
+	border-radius: 4px;
+}
+.wallet-container .ab-box{
+	padding: 1em;
+}
+.wallet-container .w-box{
+	width: 49%;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-top: 5px;
+	padding: 1em;
+}
+.wallet-container .bal{
+	color:green;
+	float: right;
+}
+.wallet-container .w-box a{
+	text-decoration: none;
+	color: default;
+	background: transparent;
+}
+.wallet-container .w-box a:active{
+	color:var(--primary-color);
+}
+.wallet-container .ico{
+	display: inline;
+}

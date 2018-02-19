@@ -1,3 +1,9 @@
+:root{
+	--primary-color:#FB8c00;
+	--secondary-color:#fff;
+	--jk-radio-size:20px;
+	--jk-form-font-size:16px;
+}
 @media all and (max-width:400px) /* for mobile tab view */
 {
 	.col-1{ width: 33.33%;  }
@@ -30,6 +36,25 @@
 	}
 	nav.navbar.top-nav  > div.nav-item{
 		display:none;
+	}
+	.wallet-container{
+		margin-left: 2%;
+		margin-right: 2%;
+		padding: 2%;
+		border: none;
+	}
+	.wallet-container .ab-box{
+		border: 1px solid var(--primary-color);
+		border-radius: 4px;
+	}
+	.wallet-container .w-box{
+		text-align: center;
+		border: 1px solid var(--primary-color);
+		border-radius: 4px;
+	}
+	.wallet-container .ico{
+		display: block;
+		font-size: 3em;
 	}
 }
 
@@ -156,6 +181,9 @@
 	.dialog{
 		width:50%;
 		left:25%;
+	}
+	.wallet-container .bal{
+		margin-right: 1.5em;
 	}
 	
 	/*Image Zooming Feature STARTS here*/
