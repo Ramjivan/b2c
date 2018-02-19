@@ -1,8 +1,8 @@
 <?php
 try{
-		$servername = "b2c.ci5stww8s4in.ap-south-1.rds.amazonaws.com";
+		$servername = "localhost";
 		$username = "root";
-		$password = "Jivan1234";
+		$password = "";
 		$dbname = "b2c";	
 		
 		

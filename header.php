@@ -27,7 +27,7 @@
 		<!--Desktop Navbar-->
         <div class="col-6">
 		<div class="header">	
-            <div class="nav-item"><a class="opn-btn" href="#"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
+            <div class="nav-item"><a class="opn-btn" href="javascript:void(0);"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
             <nav class="navbar top-nav">
                 <div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
                 <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="signup.php">Sign up </a></div>

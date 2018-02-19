@@ -7,7 +7,7 @@ include('sess_val.php');
 		<title>
 			Customer Address | B2C
 		</title>
-		<base href="/b2c/" target="_blank">
+		<base href="/b2c/">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<script src="js/adr_ctmr.js" language="JavaScript" type="text/javascript"></script>

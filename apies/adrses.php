@@ -25,7 +25,6 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}else
 	{
 		$ERROR_FLAG = true;
-			echo $index." "; 
 	}
 	
 	
@@ -55,7 +54,6 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 					'adt_landmark' => '',
 					'adt_city' => '',
 					'adt_state' => '',
-					'adt_country' => '',
 					'adt_type' => ''
 				);
 		
@@ -66,9 +64,8 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	
 				if($ERROR_FLAG == 0)
 				{
-					print_r($indexes);
 					$indexes['customer_id'] = $user['customer_id'];
-					$stmt = $conn->prepare('insert into `addresses` (`customer_id`,`adt_fullname`,`adt_mob`,`adt_pincode`,`adt_addressline1`,`adt_addressline2`,`adt_landmark`,`adt_city`,`adt_state`,`adt_country`,`adt_type`) VALUES (:customer_id,:adt_fullname,:adt_mob,:adt_pincode,:adt_addressline1,:adt_addressline2,:adt_landmark,:adt_city,:adt_state,:adt_country,:adt_type)');
+					$stmt = $conn->prepare('insert into `addresses` (`customer_id`,`adt_fullname`,`adt_mob`,`adt_pincode`,`adt_addressline1`,`adt_addressline2`,`adt_landmark`,`adt_city`,`adt_state`,`adt_type`) VALUES (:customer_id,:adt_fullname,:adt_mob,:adt_pincode,:adt_addressline1,:adt_addressline2,:adt_landmark,:adt_city,:adt_state,:adt_type)');
 					$address = $stmt->execute($indexes);
 					
 					if($address > 0)
