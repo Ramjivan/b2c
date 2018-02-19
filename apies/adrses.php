@@ -65,11 +65,42 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 				if($ERROR_FLAG == 0)
 				{
 					$indexes['customer_id'] = $user['customer_id'];
-					$stmt = $conn->prepare('insert into `addresses` (`customer_id`,`adt_fullname`,`adt_mob`,`adt_pincode`,`adt_addressline1`,`adt_addressline2`,`adt_landmark`,`adt_city`,`adt_state`,`adt_type`) VALUES (:customer_id,:adt_fullname,:adt_mob,:adt_pincode,:adt_addressline1,:adt_addressline2,:adt_landmark,:adt_city,:adt_state,:adt_type)');
+					$stmt = $conn->prepare('insert into 
+					`addresses` 
+					(`customer_id`,
+					`adt_fullname`,
+					`adt_mob`,
+					`adt_pincode`,
+					`adt_addressline1`,
+					`adt_addressline2`,
+					`adt_landmark`,
+					`adt_city`,
+					`adt_state`
+					,`adt_type`) 
+					VALUES 
+					(:customer_id,
+					:adt_fullname,
+					:adt_mob,
+					:adt_pincode,
+					:adt_addressline1,
+					:adt_addressline2,
+					:adt_landmark,
+					:adt_city,
+					:adt_state,
+					:adt_type)');
 					$address = $stmt->execute($indexes);
 					
 					if($address > 0)
 					{
+						
+						if($user['c_def_address_id'] == null)
+						{
+							$last_insert_id = $conn->lastInsertId();
+							$_SESSION['user']['c_def_address_id'] = $last_insert_id;
+							$stmt = $conn->prepare('update `customers` SET `c_def_address_id` = ? WHERE `customer_id` = ?');
+							$stmt->execute(array($last_insert_id,$user['customer_id']));
+							
+						}
 						$conn->commit();
 						$return_values['success'] = 1;
 					}
@@ -112,6 +143,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 						{
 							$conn->commit();
 							$return_values['success'] = 1;
+							
 						}
 					}
 					else
@@ -126,7 +158,6 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 			}
 			catch(PDOException $e)
 			{
-				$conn->rollBack();
 				$return_values['ERROR']['insert'] = $e->getMessage();
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}
@@ -142,14 +173,20 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 		{
 			$stmt = $conn->prepare('SELECT * FROM `addresses` WHERE `customer_id` = ?');
 			$response = $stmt->execute(array($user['customer_id']));
-			if($response > 0)
+			if($stmt->rowCount() > 0)
 			{
-				$return_values = $stmt->fetchAll();
+				$return_values['result'] = 1;
+				$return_values['items'] = $stmt->fetchAll();
+				$return_values['default_id'] = $user['c_def_address_id'];
+			}
+			else
+			{
+				$return_values['result'] = 0;
+				$return_values['items'] = array();	
 			}
 		}
 		catch(PDOException $e)
 		{
-			$conn->rollBack();
 			$return_values['ERROR']['insert'] = $e->getMessage();
 			die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 		}

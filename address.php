@@ -28,35 +28,14 @@ include('sess_val.php');
 		<div id="cart-container" class="main-container clearfix" style="padding:4px;">
 		<h3>Addresses</h3>
 			
-			<div class="row">
-				<div class="jk-address-tile col-3">
-					<div class="col-6">
-						<div class="col-6">
-							House No. XYZ ABC
-						</div>
-						<div class="col-6">
-							Address line 1 | address line 2
-						</div>
-						<div class="col-6">
-							Landmark,City,State,Country
-						</div>
-						<div class="col-3">
-							Type
-						</div>
-						<div class="col-3">
-							<button>Del btn</button> 
-						</div>
+			<div id="addressrow" class="row gutter">
+				<a href="address/add">
+				<div class="jk-address-tile-container col-2">
+					<div class="jk-address-tile col-6">
+						<div class="jk-address-tile-add-div"><i class="fa fa-plus"></i></div>
 					</div>
 				</div>
-				<div class="col-3">
-					1
-				</div>
-				<div class="col-3">
-					1
-				</div>
-				<div class="col-3">
-					1
-				</div>
+				</a>
 			</div>
 			
 		</div>

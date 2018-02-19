@@ -1,15 +1,11 @@
-@media all and (max-width:800px) /* for mobile tab view */
+@media all and (max-width:400px) /* for mobile tab view */
 {
 	.col-1{ width: 33.33%;  }
-	.col-2{ width: 50%;     }
-	.col-3{ width: 83.33%;  }
+	.col-2{ width: 100%;     }
+	.col-3{ width: 100%;  }
 	.col-4{ width: 100%;    }
 	.col-5{ width: 100%;    }
 	.col-6{ width: 100%;    }
-
-	.row .col-2:last-of-type{
-		width: 100%; 
-	}
 
 	.row .col-5 ~ .col-1{
 		width: 100%; 
@@ -32,11 +28,51 @@
 	.main-container{
 		max-width: 100%;
 	}
+	nav.navbar.top-nav  > div.nav-item{
+		display:none;
+	}
+}
+
+
+@media all and (max-width:800px) and (min-width:600px) /* for mobile tab view */
+{
+	.col-1{ width: 33.33%;  }
+	.col-2{ width: 50%;     }
+	.col-3{ width: 83.33%;  }
+	.col-4{ width: 100%;    }
+	.col-5{ width: 100%;    }
+	.col-6{ width: 100%;    }
+
+	.row .col-5 ~ .col-1{
+		width: 100%; 
+	}
+	
+	#sidebar{
+		display:none;
+	}
+	.col-md-offset-1{
+		margin-left:0;
+	}
+	
+	.dialog{
+		width:100%;
+		left:0;
+	}
+	input.wi-left{
+		padding-left: 20px;
+	}
+	.main-container{
+		max-width: 100%;
+	}
+	
+	nav.navbar.top-nav  > div.nav-item{
+		display:none;
+	}
 }
 
 
 
-@media all and (max-width:600px)     /* for mobile view  or tab view */
+@media all and (max-width:600px) and (min-width:400px)  /* for mobile view  or tab view */
 {
 	.col-1{ width: 33.33%;  }
 	.col-2{ width: 50%;     }
@@ -45,9 +81,6 @@
 	.col-5{ width: 100%;    }
 	.col-6{ width: 100%;    }
 
-	.row .col-2:last-of-type{
-		width: 100%; 
-	}
 
 	.row .col-5 ~ .col-1{
 		width: 100%; 

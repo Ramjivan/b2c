@@ -489,13 +489,49 @@ input.wi-right
     text-overflow: '';
 }
 
-.jk-address-tile {
-	background-color:#EFEFEF;
+
+.jk-address-tile-container {
+	padding:4px;
 }
 
-.jk-address-tile div{
-	padding:2px;
+.jk-address-tile-add-div {
+	top:0%;
+	cursor:pointer;
+	width:100%;
+	height:100%;
+	border:1px dashed rgba(0,0,0,0.4);
 }
+
+.jk-address-tile-add-div i{
+    position:relative;
+    top:42%;
+    left:48%;
+	background:transparent;
+	color:black;
+}
+
+.jk-address-tile {
+	background-color:#EFEFEF;
+	font-size:14px;
+	padding-left:4px;
+	height:200px;
+	vertical-align:middle;
+	position:relative;
+}
+
+.jk-address-tile div:last-child:not(:first-child){
+	position:absolute;
+	bottom:0;
+}
+
+.jk-address-tile.col-6 [class="col-"]{
+	padding-left:10px;
+}
+
+.jk-address-tile h4{
+	border-bottom:1px solid rgba(0,0,0,0.2);
+}
+
 /* Select dropdown ENDS here*/
 
 
