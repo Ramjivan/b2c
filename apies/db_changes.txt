@@ -1,0 +1,4 @@
+
+1) column `order_id` deleted from `order_list_items`
+2) column `merchant_id` added to `p_cart`[ VARCHAR(11) ]
+

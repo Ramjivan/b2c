@@ -9,7 +9,7 @@ window.onload = function(){
 			
 			
 			var formvalidation = [
-				{'id':'name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'name','name':'Email Address','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null},
 				{'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
 				{'id':'stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
@@ -20,7 +20,7 @@ window.onload = function(){
 			];
 			
 			var edit_formvalidation = [
-				{'id':'e_name','name':'Email Address','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null},
+				{'id':'e_name','name':'Email Address','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null},
 				{'id':'e_description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255},
 				{'id':'e_price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
 				{'id':'e_stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6},
@@ -29,7 +29,7 @@ window.onload = function(){
 			function get()
 			{
 				var method = "GET";
-				var url = "apies/product";
+				var url = "/b2c/apies/product";
 				var formData = null;
 				var success = function(xhttp){
 					var tab = document.getElementById('tbdy');
@@ -379,7 +379,7 @@ window.onload = function(){
 							get();
 							document.getElementById('pctafm').reset();
 						}
-						else if(JOSN.parse(xhttp.responseText).ERROR !== undefined)
+						else if(JSON.parse(xhttp.responseText).ERROR !== undefined)
 						{
 							alert("Connection lost while connecting to Server");
 						}
