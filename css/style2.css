@@ -48,6 +48,19 @@ div#dhead{
 	padding:10px;
 	margin-bottom:10px;
 	margin-top:5px;
+	background-color:rgba(230,230,230,0.4);
+}
+
+.item-card div h2{
+	margin:0;
+}
+
+.item-card [class*="col-"]:not(:first-child):not(:second-child){
+	height:45px;
+}
+
+.item-card div.right{
+	float:right;
 }
 
 [class*='col-'] [class*='col-']{
@@ -64,4 +77,28 @@ div#dhead{
 
 span.fa-1dot5x{
 	font-size:1.6em;
+}
+
+span.cart-total-span{
+	color:green;
+	float: right;
+	font-size:20px;
+}
+
+.chckot-flex{
+	border-radius: 3px;
+	height: 100%;
+	margin-top: 15px;
+	background-color: #f6f6f6;
+}
+.chckot-flex div{
+	padding:10px;
+}
+
+.font-13px{
+	font-size:13px;
+}
+
+.cart-content{
+	padding-right:15px;
 }

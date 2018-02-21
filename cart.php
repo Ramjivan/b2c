@@ -24,8 +24,25 @@ include('sess_val.php');
 		include 'header.php';
 	?>
 	<!--Content Here-->
-		<div id="cart-container" class="main-container clearfix" style="padding:4px;">
+		<div class="main-container clearfix" style="padding:4px;">
 		<h3>Shopping Cart</h3>
+			<div class="row cart-flex-box">
+				<div class="col-5">
+					<div id="cart-container" class="cart-content col-6">
+					</div>
+				</div>
+				<div class="chckot-flex col-1" id="chckot-con">
+					<div class="cart-content col-6">
+						<div class="clearfix">
+							<span class="font-13px">Total</span>
+							<span class="cart-total-span"><span id="ttl-span"></span>&nbsp;<span class="fa fa-1x fa-inr"></span></span>
+						</div>
+						<div>
+							<button class="btn btn-wide btn-primary-color" id="chckut-btn">checkout</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	<?php
 		//including footer

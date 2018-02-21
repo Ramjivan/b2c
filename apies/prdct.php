@@ -27,7 +27,7 @@ function upload_image($index)
 	)
 	{
 		//image validation starts
-		$dir = "apies/products/uploads/";
+		$dir = "products/uploads/";
 		$name = md5(basename($_FILES[$index]['name']).time());
 		$targetFile = $dir.$name;
 		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
@@ -36,7 +36,7 @@ function upload_image($index)
 		{
 			if($imageFileType == "png" || $imageFileType == "jpg" || $imageFileType == "jpeg")
 			{
-				if (move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
+				if(move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
 				{
 					return array('dir'=>$dir,'imgname'=>$name.'.'.$imageFileType);
 				}
@@ -183,7 +183,7 @@ function upload_image($index)
 						isset($_POST['spcount']) &&
 						is_numeric($_POST['spcount']) &&
 						$_POST['spcount'] > 0 &&
-						$_POST['spcount'] >= 20
+						$_POST['spcount'] <= 20
 					)
 					{
 						$count = $_POST['spcount'];
@@ -244,7 +244,7 @@ function upload_image($index)
 				}
 				else
 				{
-					$return_values['ERROR'] = 'DB ERROR';
+					$return_values['ERROR'] = $product_response.$hlgt_response.$count.$imglst_response.$cod_response;
 				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}

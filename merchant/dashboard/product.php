@@ -52,7 +52,7 @@
 							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
-							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
 						</div>
 						<div class="form-group">
 							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
@@ -124,7 +124,7 @@
 						</div>
 						<div class="form-group">
 							Name
-							<input id="e_name" onchange="validate({'id':'e_name','name':'Name','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+							<input id="e_name" onchange="validate({'id':'e_name','name':'Name','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
 						</div>
 						
 						<div class="form-group">

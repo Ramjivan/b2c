@@ -125,13 +125,15 @@ function get_product($id)
 				is_set($indexes[$index],$index,$ERROR_FLAG,'GET');
 			}
 				
-			if($ERROR_FLAG == 0 && !in_cart($_GET['p_id']))
+			if($ERROR_FLAG == 0 && !in_cart($_GET['p_id']) && ($product = get_product($_GET['p_id'])) !== null)
 			{
 				try
 				{
 					$indexes['customer_id'] = $user['customer_id'];
+					$indexes['merchant_id'] = $product['Merchant_id'];
+					
 					$conn->beginTransaction();
-					$stmt = $conn->prepare("INSERT INTO `p_cart` (`p_id`,`qty`,`customer_id`) VALUES (:p_id,:qty,:customer_id)");
+					$stmt = $conn->prepare("INSERT INTO `p_cart` (`p_id`,`qty`,`customer_id`,`merchant_id`) VALUES (:p_id,:qty,:customer_id,:merchant_id)");
 					$response = $stmt->execute($indexes);
 					if($response > 0)
 					{
