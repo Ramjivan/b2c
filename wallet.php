@@ -11,129 +11,7 @@
 			//include head
 			include 'headTags.php';
 		?>
-		
-		<script>
-		var last_qty = 0;
-		function e_q(args){
-			var tar = args[3];
-			tar.parentNode.parentNode.style.filter = 'blur(0.3px)';
-			xhr_call(
-				'GET',
-				'/b2c/apies/cart/edit/'+args[1]+'/qty/'+args[2],
-				null,
-				function(xhttp){
-					if(xhttp.responseText.length > 0)
-					{
-						var json = JSON.parse(xhttp.responseText);
-						if(json.success)
-						{
-							tar.parentNode.parentNode.style.filter = 'none';
-						}
-					}
-				},
-				function(xhttp){
-					tar.parentNode.parentNode.style.filter = 'none';
-					tar.value = last_qty;
-				}
-			);
-		}
-		
-		function d_q(args){
-			var tar = args[2];
-			tar.parentNode.parentNode.style.filter = 'blur(0.3px)';
-			xhr_call(
-				'GET',
-				'/b2c/apies/cart/delete/'+args[1],
-				null,
-				function(xhttp){
-					if(xhttp.responseText.length > 0)
-					{
-						var json = JSON.parse(xhttp.responseText);
-						if(json.success)
-						{
-							tar.parentNode.parentNode.parentNode.removeChild(tar.parentNode.parentNode);
-						}
-					}
-				},
-				function(xhttp){
-					tar.parentNode.parentNode.style.filter = 'none';
-				}
-			);
-		}
 	
-xhr_call(
-	'GET',
-	'/b2c/apies/cart',
-	null,
-	function(xhttp){
-		var tar = document.getElementById('cart-container');
-		var classes = [];
-		if(tar !== null)
-		{	
-			if(xhttp.responseText.length > 0)
-			{
-				var json = JSON.parse(xhttp.responseText);
-				
-				if(json.result > 0 && json.items.length > 0)
-				{
-					for(var i = 0 ; i < json.items.length ; i++)
-					{
-						var row = json.items[i];
-						var append = '<div class="item-card col-5">\
-										<div class="col-1">\
-											<img src="/b2c/apies/'+row.img+'" width="100%" height="80%"/>\
-										</div>\
-										<div class="col-3">\
-											<h3>'+row.p_name+'</h3>\
-											<h5 class="green">'+(row.stock ? 'In Stock' : 'Out of Stock')+'</h5>\
-											<div class="col-1">\
-												<span class="color-primary ">'+row.price+'&nbsp;</span><span class="fa fa-inr"></span>\
-											</div>\
-										</div>\
-										<div class="col-1">\
-											<button id="45t'+i+'" class="btn fa fa-trash"></button>\
-										</div>\
-										<div class="right">\
-											<select  class="jk-select" id="9t7'+i+'">\
-												<option value="1">1</option>\
-												<option value="2">2</option>\
-												<option value="3">3</option>\
-												<option value="4">4</option>\
-												<option value="5">5</option>\
-												<option value="6">6</option>\
-												<option value="7">7</option>\
-												<option value="8">8</option>\
-												<option value="9">9</option>\
-												<option value="10">10</option>\
-											</select>\
-										</div>\
-									</div>';
-						tar.innerHTML += append;
-						const di = row.item_id;
-						document.getElementById('9t7'+i).value = row.qty;
-							
-							document.getElementById('9t7'+i).onfocus = function(){
-								last_qty = this.value;
-							};
-							
-							document.getElementById('9t7'+i).onchange = function(){
-								cb(e_q,di,this.value,this);
-							};
-							
-						document.getElementById('45t'+i).onclick = function(){
-							cb(d_q,di,this);
-						};
-					}
-				}
-			}
-		}
-	},
-	function(xhttp){
-		alert('ERROR');
-	}
-);
-		</script>
-		
 	</head>
 <body>
 	<?php
@@ -142,6 +20,17 @@ xhr_call(
 	?>
 		
     <div class="main-container">
+		<div class="form-card text-center aS" style="display:none;">
+			<div class="clearfix">
+				<span class="fa fa-4x fa-check-circle"  style="color:#bada55;"></span>
+			</div>
+			<div class="clearfix">			
+				<h3>
+					Sucessfully Transfered !
+				</h3>
+			</div>
+		</div>
+		
         <div class="wallet-container">
         <div class="ab-box">
             <p>
@@ -152,12 +41,12 @@ xhr_call(
         <hr>     
             <div class="row">
                 <div class="w-box">
-                    <a href="">
+                    <a href="#">
                         <div class="ico"><span class="fa fa-plus-square"></span></div>Add Money 
                     </a>
                 </div>
                 <div class="w-box">
-                    <a href="">
+                    <a id="w_sM0" href="#">
                         <div class="ico"><span class="fa fa-send"></span></div> Send Money  
                     </a>
                 </div>
@@ -165,13 +54,13 @@ xhr_call(
 
             <div class="row">
                 <div class="w-box">
-                    <a href="">
+                    <a href="#">
                         <div class="ico"><span class="fa fa-book"></span> </div>View Statments
                     </a>
                 </div>
 
                 <div class="w-box">
-                    <a href="">
+                    <a href="#">
                         <div class="ico"><span class="fa fa-gear"></span></div>Payment Option
                     </a>
                 </div>
@@ -181,11 +70,92 @@ xhr_call(
             
         </div>
     </div>
-            
+        
+	<div class="dialog" id="wdlg1a">		
+		<div id="dhead">
+			<span class="fa fa-send">&nbsp;</span>Send Money
+			<span class="fa btn right" onclick="this.parentElement.parentElement.style.display='none';document.getElementsByClassName('blurdfg')[0].style.display='none';document.getElementById('actefm').reset();">
+				&times;
+				</span>
+				<div class="clearfix"></div>
+		</div>
+		<div class="dialog-body">
+			<form class="jk-form pdct-form" id="actefm" >
+				<div class="vs" id="valsum">
+					<h3 id="vsh4" class="vs">Something Went wrong</h3>
+				</div>
+				<div class="form-group">
+					To
+					<input id="mob" onchange="validate({'id':'mob','name':'Mobile Number','regex':/^[0-9]+$/,'length':10,'min_length':null,'max_length':null})" type="text" placeholder="10-Digit Mobile Number" name="mob"/>
+				</div>
+				<div class="form-group">
+					Amount
+					<input id="amt" onchange="validate({'id':'amt','name':'Amount','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':5})" type="text" placeholder="Amount(in digits)" name="balance"/>
+				</div>
+				<div class="form-group">
+					<input type="button" name="submit" value="send" id="tlsambtn" class="btn btn-default btn-primary-color"/>
+				</div>
+			</form>
+		</div>
+	</div>
+		
 
 	<?php
 		//including footer
 		include 'footer.php';
 	?>
+	<div class="blurdfg">
+	</div>
+	<script>
+			//onclick listener for sendMoney btn 
+			document.getElementById('w_sM0').onclick = function(){
+				document.getElementsByClassName('dialog')[0].style.display = 'block';
+				document.getElementsByClassName('blurdfg')[0].className += ' active'; 
+			};
+			//onclick listener for sendMoney 
+			
+			function sd_mo()
+			{
+				var fval = [
+					{'id':'mob','name':'Mobile Number','regex':/^[0-9]+$/,'length':10,'min_length':null,'max_length':null},
+					{'id':'amt','name':'Amount','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':5}
+				];
+				
+				var s = function(xhttp){
+					var response = xhttp.responseText;
+					var json = JSON.parse(response);
+					
+					if(json.success)
+					{						
+						//closing dialog 
+						document.getElementById('wdlg1a').style.display='none';
+						document.getElementsByClassName('blurdfg')[0].style.display='none';
+						document.getElementById('actefm').reset();
+						//closing dialog
+						
+						document.getElementsByClassName('aS')[0].style.display='block';
+					}
+					else if(json.ERROR !== undefined)
+					{
+						alert(json.ERROR);
+					}
+				
+				};
+				var f = function(xhttp){
+					alert('Error While etablishing a connection to server');
+				};
+				
+				submit_form('actefm',fval,'valsum','apies/wallet/transfer','POST',s,f);
+			}
+			
+			
+			//set onclick listener on form submit
+				document.getElementById('tlsambtn').onclick = function(){
+					cb(sd_mo);
+				};
+			//set onclick listener on form submit
+			
+			
+	</script>
 </body>
 </html>

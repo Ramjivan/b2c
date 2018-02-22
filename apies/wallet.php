@@ -14,7 +14,6 @@ function is_set(&$var,$index,&$ERROR_FLAG,$method)
 		}
 		else
 		{
-			echo $index;
 			$ERROR_FLAG = true;
 		}	
 	}
@@ -36,7 +35,7 @@ function validate_wallet($id)
 	try
 	{
 		include('pdo.php');
-		$stmt = $conn->prepare('select * from `wallet` where `wallet_id`=? LIMIT 1');
+		$stmt = $conn->prepare('select * from `wallet` where `customer_id`=? LIMIT 1');
 		$response = $stmt->execute(array($id));
 		
 		if($response > 0 && $stmt->rowCount() > 0)
@@ -77,9 +76,10 @@ function get_wallet($id)
 			{
 				$return_values = array();
 				$ERROR_FLAG = 0;
+				
 				$indexes = array(
 							'balance'=>'',
-							'wallet_id'=>''
+							'mob'=>''
 				);
 
 				foreach($indexes as $index => $value)
@@ -87,9 +87,28 @@ function get_wallet($id)
 					is_set($indexes[$index],$index,$ERROR_FLAG,'POST');
 				}
 				
+				try
+				{
+					$stmt = $conn->prepare('select `customer_id` from `customers` where `c_mobile` = ? LIMIT 1');
+					$stmt->execute(array($indexes['mob']));
+					if($stmt->rowCount() > 0)
+					{
+						$indexes['customer_id'] =$stmt->fetch()['customer_id'];
+					}
+					else
+					{
+						die('');
+					}
+				}
+				catch(PDOException $e)
+				{
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+				
 				if($ERROR_FLAG == 0)
 				{
-					if( ($user_wallet = validate_wallet($indexes['wallet_id']) ) !== null && ( $current_user_wallet = get_wallet($user['customer_id']) ) !==  null)
+					if( ($user_wallet = validate_wallet($indexes['customer_id']) ) !== null && ( $current_user_wallet = get_wallet($user['customer_id']) ) !==  null)
 					{
 						try
 						{
@@ -98,10 +117,13 @@ function get_wallet($id)
 							if($current_balance > 0 && $current_balance >= $indexes['balance'])
 							{
 								$new_balance = $current_balance - $indexes['balance'];
+								
 								$conn->beginTransaction();
+								
 								$stmt = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
+								
 								$response = $stmt->execute(array($new_balance,$current_user_wallet['wallet_id']));
-								echo json_encode(array($new_balance,$current_user_wallet['wallet_id']));
+																
 								if($response > 0 )
 								{
 									$new_balance = $user_wallet['balance'] + $indexes['balance'];
