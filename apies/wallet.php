@@ -116,31 +116,36 @@ function get_wallet($id)
 							$current_balance = $current_user_wallet['balance'];
 							if($current_balance > 0 && $current_balance >= $indexes['balance'])
 							{
+								
+								//upadating the sending customer wallet
 								$new_balance = $current_balance - $indexes['balance'];
 								
 								$conn->beginTransaction();
 								
-								$stmt = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
+								$update_cur = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
 								
-								$response = $stmt->execute(array($new_balance,$current_user_wallet['wallet_id']));
-																
-								if($response > 0 )
+								$update_cur->execute(array($new_balance,$current_user_wallet['wallet_id']));
+								
+								//updating recieving customer wallet
+								$new_balance = $user_wallet['balance'] + $indexes['balance'];
+								$update_rec = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
+								$update_rec->execute(array($new_balance,$user_wallet['wallet_id']));
+								
+								//adding in_txn tuple
+								$txn_id = substr(md5(time()),0,10);
+								$in_txn = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`, `txn_debit_wallet_id`) VALUES (?,?,?,?)');
+								$in_txn->execute(array($txn_id,$indexes['balance'],$current_user_wallet['wallet_id'],$user_wallet['wallet_id']));
+								//adding in_txn tuple
+								
+								
+								if($update_cur->rowCount() && $update_rec->rowCount() && $in_txn->rowCount())
 								{
-									$new_balance = $user_wallet['balance'] + $indexes['balance'];
-									$stmt = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
-									$response = $stmt->execute(array($new_balance,$user_wallet['wallet_id']));
-									if($response > 0)
-									{
-										$conn->commit();
-										$return_values['success'] = 1;
-									}
-									else
-									{
-										$return_values['ERROR'] = "DBERROR";
-									}
+									$conn->commit();
+									$return_values['success'] = 1;
 								}
 								else
 								{
+									$conn->rollBack();
 									$return_values['ERROR'] = "DB ERROR";
 								}
 							}
