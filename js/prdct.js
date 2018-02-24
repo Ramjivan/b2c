@@ -18,14 +18,15 @@ window.onload = function(){
 						
 						if(json.items.length !== undefined)
 						{
-							var rating = '<div class="jk-user-rating">\
+							var rating = '<div class="jk-user-rating" itemprop="aggregateRating" \
+							itemscope itemtype="http://schema.org/AggregateRating">\
 									<span class="heading">User Rating</span>\
 									<span class="fa fa-star"></span>\
 									<span class="fa fa-star"></span>\
 									<span class="fa fa-star"></span>\
 									<span class="fa fa-star"></span>\
 									<span class="fa fa-star"></span>\
-									<p>'+Math.floor(json.average_rating)+' average based on '+json.rating_count+' reviews.</p>\
+									<p><span itemprop="ratingValue">'+Math.floor(json.average_rating)+'</span> average based on <span itemprop="reviewCount">'+json.rating_count+'</span> reviews.</p>\
 									<hr style="border:3px solid #f1f1f1">\
 								<div class="row">\
 								<div class="side">\
@@ -109,10 +110,10 @@ window.onload = function(){
 									var row = json.items[i];
 										
 									//review section starts
-									var upper_first_leg = '<div class="jk-review-tile col-3 clearfix">\
+									var upper_first_leg = '<div itemprop="review" itemscope itemtype="http://schema.org/Review" class="jk-review-tile col-3 clearfix">\
 										<div  class="jk-review-tile-header clearfix">\
 											<div class="col-6">\
-												<img style="max-width:30px;min-height:30px;height:30px;width:30px;border-radius:100%;vertical-align:middle;margin-top:-1px;" src="'+(row.ppImg_id !== null ? 'apies/'+row.cusotmer_image.img_dir+row.cusotmer_image.img_name : 'default-user.png')+'">&nbsp;'+row.c_fullname+'\
+												<img style="max-width:30px;min-height:30px;height:30px;width:30px;border-radius:100%;vertical-align:middle;margin-top:-1px;" src="'+(row.ppImg_id !== null ? 'apies/'+row.cusotmer_image.img_dir+row.cusotmer_image.img_name : 'default-user.png')+'">&nbsp;<span itemprop="author">'+row.c_fullname+'</span>\
 											</div>';
 											
 											
@@ -129,7 +130,7 @@ window.onload = function(){
 									upper_second_leg += '</div>';
 											
 									var bottom = '</div>\
-										<div class="col-6">'+row.rew_text+'</div>\
+										<div class="col-6" itemprop="description">'+row.rew_text+'</div>\
 									</div>';
 									
 									rew.innerHTML += (upper_first_leg + upper_second_leg + bottom);
@@ -262,25 +263,28 @@ window.onload = function(){
 								</div>\
 								<div class="row" style="position:relative;">\
 								<div class="col-3 img-zoom-container">\
-									<img id="myimage" src="apies/'+images[0]['img_dir']+images[0]['img_name']+'">\
+									<img itemprop="image" id="myimage" src="apies/'+images[0]['img_dir']+images[0]['img_name']+'">\
 									<div id="myresult" class="img-zoom-result"></div>\
 									<div class="clearfix"></div>\
 								</div>';
 								
 								
 							var mid ='<div class=" col-3 detail-card" id="d5t1ls">\
-										<h3>'+product.p_name+'</h3>\
+							<meta itemprop="productID" content="'+pid+'"> \
+										<h3 itemprop="name">'+product.p_name+'</h3>\
 										<div>\
-											<h4>'+product.p_price+'&nbsp;<span class="fa fa-inr"></span></h4>\
+											<h4 itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span itemprop="priceCurrency" content="INR"></span><span \
+											itemprop="price" content="'+product.p_price+'">'+product.p_price+'</span>&nbsp;<span class="fa fa-inr"></span></h4>\
 											'+(product.p_stock > 0 ? '<h4 class="green">In Stock</h4><button id="c-add" class="btn btn-default btn-success">ADD TO CART</button><button class="btn btn-default btn-primary-color">BUY NOW</button>' : '<h4 class="red">Out of Stock</h4>')+'\
 										</div>\
 									</div>\
 									<div class="col-3 detail-card">\
 										<h3>Description</h3>\
-										<div>'+product.p_description+'</div>\
+										<div itemprop="description">'+product.p_description+'</div>\
 									</div>\
 									</div>';
-								
+									//set product description as page meta description
+									document.querySelector('meta[name="description"]').setAttribute("content", product.p_description);
 							var highlights = 
 							'<div class="detail-card">\
 							<h3>\

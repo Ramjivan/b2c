@@ -24,7 +24,7 @@ include('sess_val.php');
 		include 'header.php';
 	?>
 	<!--Content Here-->
-    <div class="main-container" >
+    <div class="main-container" itemscope itemtype="http://schema.org/Product">
     </div>
 <div class="dialog" id="dg1">
 	<div id="dhead">
