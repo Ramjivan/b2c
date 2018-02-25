@@ -4,8 +4,7 @@ category page -> why it have two description textarea change placeholder name
 
 
 in product page -> review -> date published
-                             name  -> title of review
-                -> brand naem if exist
+                            
                 -> category
 #get these things in product page
 
@@ -21,3 +20,10 @@ Same with signup .php
 search page     
 
 
+	<form accept-charset="utf-8" action="" class="nav-searchbar" method="GET" name="site-search" role="search">
+		
+
+						<input type="text" class="nav-textbox">
+						<span class="fa fa-search"></span>
+
+					</form>
