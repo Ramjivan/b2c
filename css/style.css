@@ -776,6 +776,7 @@ border: 1px solid gray;
 border-radius: .2em;
 position: relative;
 padding-right: 27px;
+background-color: white;
 }
 .search-input:focus {
 	outline: none !important;
@@ -802,9 +803,7 @@ padding-right: 27px;
 	margin-top: 1em;
 	display: block;
 }
-.search-input::-webkit-input-placeholder {
-	color: orange;	
-}
+
 .shadow{
 	box-shadow: 0 10px 6px -6px #777;
 }

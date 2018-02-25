@@ -11,8 +11,8 @@
 					</div>
 					
 				</div>
-				<div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
-				<div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="#">Sign up / Sign in</a></div>
+				
+				
 				<div class="nav-item"><span class="fa fa-1x fa-search"></span><a href="#">Explore</a></div>
 				<div class="nav-item dropbtn">
 					<span class="fa fa-sitemap"></span>
@@ -21,7 +21,7 @@
 					<div class="dropdown-content" id="32tfg05">
 					</div>
 				</div>
-				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
+				
 			</nav>
 		</div>
 		<!--Desktop Navbar-->
@@ -29,9 +29,8 @@
 		<div class="header">	
             <div class="nav-item"><a class="opn-btn" href="javascript:void(0);"><div class="dash"></div><div class="dash"></div><div class="dash"></div></a></div>
             <nav class="navbar top-nav">
-                <div class="nav-item"><span class="fa fa-1x fa-home"></span><a href="#">Home</a></div>
-                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="signup.php">Sign up </a></div>
-                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="login.php">Sign in</a></div>
+               
+              
 				<div class="nav-item dropbtn">
 						<span class="fa fa-sitemap"></span>
 						<a>Categories</a>
@@ -39,12 +38,20 @@
 						<div class="dropdown-content" id="32t3g05">
 						</div>
 				</div>
-                <div class="nav-item"><span class="fa fa-1x fa-user-circle"></span><a href="#">Sign up / Sign in</a></div>
-                <div class="nav-item"><span class="fa fa-1x fa-search"></span><a href="#">Explore</a></div>
-                <div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="#">Help</a></div>
+                
+                <div class="nav-item">
+					<form action=""method="POST">
+						<div class="search-container" style="background-color:white;">
+							<i class="fa fa-search"></i>
+							<input type="text" class="search-input"
+							onfocus="addShadow()" onblur="rmShadow()" onchange="getQuestions()">
+						</div>
+					</form>
+				</div>
+                
             </nav>
 			<nav class="navbar float-right">
-				<div class="nav-item"><a href="/b2c"><img height="25px" width="25px" class="img-circle" src="default-user.png"/>&nbsp;</a></div>
+				<div class="nav-item"><a href="/b2c"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
 				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
 			</nav>
 		</div>

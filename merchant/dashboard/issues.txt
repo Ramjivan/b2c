@@ -1,3 +1,0 @@
-product page -> product name field can't have numberic value or small names like Mi note
-
-category page -> why it have two description textarea
