@@ -63,9 +63,6 @@ div#dhead{
 	float:right;
 }
 
-[class*='col-'] [class*='col-']{
-	padding:1%;
-}
 
 .green{
 	color:#bada55;
