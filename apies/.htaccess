@@ -71,6 +71,8 @@ RewriteRule ^review/product/([\w]*)$ reviw.php?qtype=3&p_id=$1 [QSA]
 #order related
 
 RewriteRule ^order/add$ orders.php?qtype=1 [QSA]
+RewriteRule ^order/time/([0-9]*)$ orders.php?qtype=1&&t=$1 [QSA]
+RewriteRule ^order/([\w]+)$ orders.php?qtype=2&&t=$1 [QSA]
 
 #order related
 
