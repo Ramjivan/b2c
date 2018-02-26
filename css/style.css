@@ -104,6 +104,11 @@ nav div a {
 	text-decoration:none;
 }
 
+nav div a:hover{
+	color:black;
+	text-decoration:none;
+}
+
 
 #sidebar{
 	background-color:#EFEFEF;

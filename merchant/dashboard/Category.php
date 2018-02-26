@@ -76,7 +76,7 @@
 							Parent Category
 							<div >
 								<div class="jk-radio">
-									<input id="31trd1" value="select" name="3trd" type="radio" checked>
+									<input id="3trd1" value="select" name="3trd" type="radio" checked>
 									<label for="3trd1">
 										<select name="parent_id" id="31t1" style="width:auto;margin:0;" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
 										</select>
