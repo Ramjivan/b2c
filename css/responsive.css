@@ -59,6 +59,9 @@
 		display: block;
 		font-size: 3em;
 	}
+	#sb-search{
+		display: inline;
+	}
 }
 
 
@@ -96,6 +99,10 @@
 	nav.navbar.top-nav  > div.nav-item{
 		display:none;
 	}
+	#sb-search{
+		display: inline;
+	}
+	
 }
 
 
@@ -160,7 +167,9 @@
     input span.right {
         display: none;
     }
-	
+	#sb-search{
+		display: inline;
+	}
 }
 
 
