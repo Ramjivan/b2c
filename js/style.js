@@ -9,7 +9,44 @@ $(document).ready(function(){
 		$('.blurdfg').toggleClass('active');
 		enableScroll();
 	});
+	//desktop view searchbar form submit
+	$('#d-sb-fsub').on('click',function(){
+		$('#searchForm-d').submit();
+	});
+
 });
+
+//getting search suggestions
+function getSearchSuggestion(q){
+		$url = "apies/getSearchSugg.php?q=";
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				$("#suggestions").empty();
+				
+				alert(this.responseText);
+		}
+		};
+		xhttp.overrideMimeType("application/json");
+		xhttp.open("GET", $url + q, true);
+		xhttp.send(); 
+		/*
+		$.ajax({
+			type: "GET",
+			url: $url,
+			data: {q: q},
+			dataType : 'JSON',
+			success:function(data){
+			
+				$("#suggestions").empty();
+				$(data).each(function(i, elem) {
+					$("#suggestions").append('<option value="'+elem[0]+'">');
+			
+				});
+			}    
+			
+		});*/
+}
 
 function cb(fn)
 {
@@ -201,3 +238,52 @@ xhr_call(
 		
 	}
 );
+
+//mobile view search bar 
+function buttonUp(){
+	var valux = $('.sb-search-input').val(); 
+		valux = $.trim(valux).length;
+		if(valux !== 0){
+			$('.sb-search-submit').css('z-index','99');
+		} else{
+			$('.sb-search-input').val(''); 
+			$('.sb-search-submit').css('z-index','-999');
+		}
+}
+
+$(document).ready(function(){
+	var submitIcon = $('.sb-icon-search');
+	var submitInput = $('.sb-search-input');
+	var searchBox = $('.sb-search');
+	var isOpen = false;
+	
+	$(document).mouseup(function(){
+		if(isOpen == true){
+		submitInput.val('');
+		$('.sb-search-submit').css('z-index','-999');
+		submitIcon.click();
+		}
+	});
+	
+	submitIcon.mouseup(function(){
+		return false;
+	});
+	
+	searchBox.mouseup(function(){
+		return false;
+	});
+			
+	submitIcon.click(function(){
+		if(isOpen == false){
+			searchBox.addClass('sb-search-open');
+			$('#sf-i').focus();
+			submitInput.show();
+			isOpen = true;
+		} else {
+			searchBox.removeClass('sb-search-open');
+			isOpen = false;
+			submitInput.hide();
+		}
+});
+
+});
