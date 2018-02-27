@@ -6,6 +6,9 @@
 }
 @media all and (max-width:400px) /* for mobile tab view */
 {
+	#sidebar{
+		width:100%;
+	}
 	.col-1{ width: 33.33%;  }
 	.col-2{ width: 100%;     }
 	.col-3{ width: 100%;  }

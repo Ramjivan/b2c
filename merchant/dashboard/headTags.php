@@ -7,5 +7,6 @@
 <link rel="stylesheet" href="/b2c/css/style2.css" type='text/css' media="all"/>
 <link rel="stylesheet" href="/b2c/css/responsive.css" type='text/css' media="all"/>
 <link rel="stylesheet" href="/b2c/font-awesome-4.7.0/css/font-awesome.min.css">
+ <base href="/b2c/merchant/dashboard/"/>
 <!--we can also include favicons and all the head common tags-->
 <!--Most browsers search for /favicon.ico in the website. It usually caches and will work across the whole website from the one directory.-->

@@ -180,6 +180,103 @@ function get_merchant($id)
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")
 	{
-		
+		$return_values = array();
+		if(isset($_GET['qtype']) && $_GET['qtype'] == 1 && isset($_GET['t']))
+		{
+			
+			try
+			{
+				
+				$timestamp = date('Y-m-d h:m:s',strtotime('-'.$_GET['t'].' days'));
+				
+				$stmt = $conn->prepare('select *,(select count(*) from `order_list_items` where `pl_id` = `orders`.`ord_pl_id`) AS `pl_count` from `orders` where `merchant_id` = ? && `ord_date_time` >= ?');
+				$stmt->execute(array($user['merchant_id'],$timestamp));
+			
+				if($stmt->rowCount() > 0)
+				{	
+					$return_values['items'] = $stmt->fetchAll();
+					
+					$return_values['result'] = 1;
+					$return_values['timestamp'] = $timestamp;
+				}
+				else
+				{
+					
+					$return_values['result'] = 0;
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}	
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == 2) //single order fetch
+		{
+			
+			try
+			{
+				
+				
+				$stmt = $conn->prepare('select * from `orders` where `ord_pl_id` = ? LIMIT 1');
+				$stmt->execute(array($_GET['t']));
+			
+				if($stmt->rowCount() > 0)
+				{	
+					$order = $stmt->fetch();
+					
+					if($order['merchant_id'] !== $user['merchant_id'])
+					{							
+						$return_values['ERROR'] = 400;
+						$return_values['Message'] = "BAD REQUEST";
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+					}
+					
+					$return_values['items']['orderDetails'] = $order;
+					
+					$productDetails = $conn->prepare("select (`products`.`p_price`*`order_list_items`.`qty`) AS `total_price`,`order_list_items`.`qty`,`products`.`product_id`,`products`.`p_name` from `products` LEFT JOIN `order_list_items` ON `order_list_items`.`product_id` = `products`.`product_id`  where `pl_id` = ?");
+					$productDetails->execute(array($_GET['t']));
+					
+					$address = $conn->prepare('select * from `addresses` where `address_id` = ?');
+					$address->execute(array($order['ord_address_id']));
+					
+					
+					if($address->rowCount() > 0 &&
+						$productDetails->rowCount() > 0)
+					{
+						$return_values['items']['productDetails'] = $productDetails->fetchAll();
+						$return_values['items']['address'] = $address->fetch();
+						$return_values['result'] = 1;						
+					}
+					else
+					{
+						$return_values['ERROR'] = 400;
+						$return_values['Message'] = "BAD REQUEST";
+					}
+
+				}
+				else
+				{
+					$return_values['ERROR'] = 400;
+					$return_values['Message'] = "BAD REQUEST";
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}	
+		}
 	}
+	
+	
+	//$today = date('Y-m-d');
+	
+	//$month = date('Y-m-d h:m:s',strtotime('-30 days'));
+	
+	
 ?>

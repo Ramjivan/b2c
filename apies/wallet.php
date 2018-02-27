@@ -174,4 +174,26 @@ function get_wallet($id)
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}
 		}
+		else if($_SERVER['REQUEST_METHOD'] == "GET")
+		{
+			$return_values = array();
+			
+			if(isset($_GET['qtype']) && $_GET['qtype'] == "1")
+			{
+				try
+				{
+					if(($wallet  = get_wallet($user['customer_id'])) !== null)
+					{
+						$return_values['sucess'] = 1;
+						$return_values['wallet'] = $wallet;
+						echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+					}						
+			}
+				catch(PDOException $e)
+				{
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+			}
+		}
 ?>

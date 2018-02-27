@@ -26,4 +26,4 @@ search page
 						<input type="text" class="nav-textbox">
 						<span class="fa fa-search"></span>
 
-					</form>
+	</form>

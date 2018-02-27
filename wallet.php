@@ -34,7 +34,7 @@
         <div class="wallet-container">
         <div class="ab-box">
             <p>
-                Available Pay balance <span class="bal"><span class="fa fa-rupee"></span>5000.00</span>
+                Available Pay balance <span class="bal" id="sn_2-3b_ral_4w"><span class="fa fa-rupee"></span></span>
              </p> 
         </div>     
         
@@ -148,13 +148,39 @@
 				submit_form('actefm',fval,'valsum','apies/wallet/transfer','POST',s,f);
 			}
 			
+			function g()
+			{
+				xhr_call(
+					'GET',
+					'apies/wallet',
+					null,
+					function(xhttp){
+						var res = xhttp.responseText;
+						var json = JSON.parse(res);
+						if(json !== null)
+						{								
+							var tar = document.getElementById("sn_2-3b_ral_4w");
+							
+							if(tar !== null)
+							{
+								tar.innerHTML += json.wallet.balance;
+							}
+						}
+					
+					},
+					function(xhttp){
+						
+					}
+				);
+			}
+			
 			
 			//set onclick listener on form submit
 				document.getElementById('tlsambtn').onclick = function(){
 					cb(sd_mo);
 				};
 			//set onclick listener on form submit
-			
+			g();
 			
 	</script>
 </body>

@@ -63,9 +63,6 @@ div#dhead{
 	float:right;
 }
 
-[class*='col-'] [class*='col-']{
-	padding:1%;
-}
 
 .green{
 	color:#bada55;
@@ -105,4 +102,42 @@ span.cart-total-span{
 
 .text-center{
 	text-align:center;
+}
+
+.ord_filter .row [class*="col-"]{
+	padding:5px;
+}
+
+.ord_filter .row [class*="col-"] select{
+	margin:0;
+}
+
+.ordItem{
+	background-color:rgba(240,240,240,0.5);
+	margin-bottom:10px;
+	padding:10px;
+	border-radius:5px;
+}
+
+a{
+	color:black;
+	text-decoration:none;
+	transition:ease-in 0.3s;
+}
+
+a:hover{
+	
+	color:var(--primary-color);
+
+}
+.ordItem div{
+	padding:5px;
+}
+
+.orderSumContainer h1,h2,h3,h4,h5,h6{
+
+	color:var(--primary-color);
+	text-decoration:none;
+	transition:ease-in 0.3s;
+	
 }
