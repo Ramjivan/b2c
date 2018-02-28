@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['q'])){
-    $keyword = mysql_real_escape_string($_GET['q']);
+    $keyword = $_GET['q'];
     $return_values = array();
 		
     include('pdo.php'); //inluding the $conn PDO-OBJ 
