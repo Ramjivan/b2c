@@ -26,6 +26,8 @@
 					</div>
 					<div>
 						<b>Acrylic Painting</b>
+<a href="http://localhost/b2c/product?25c84c7af1"><img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/></a>
+
 					</div>
 					<div class="details">
 						<div class="price">

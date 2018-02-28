@@ -139,7 +139,7 @@ nav div a:hover{
 
 .header{
 	width:100%;
-	background-color:var(--primary-color);
+	background-color:var(--primary-color,black);
 	padding:20px;
 	overflow:visible;
 	box-shadow:0px 0px 10px rgba(0,0,0,0.4);
