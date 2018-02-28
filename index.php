@@ -20,17 +20,19 @@
 	
 		<div class="main-grid"> 
 			<div class="prdct-grids row">
-				<div class="prdct col-1">
+				<div class="prdct">
 					<div class="img">
-						<img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/>
+						<img src="apies/products/uploads/22be20b1bf2190a3ecccc3dea69d7ae3.jpg"/>
+					</div>
+					<div>
+						<b>Acrylic Painting</b>
 					</div>
 					<div class="details">
-						stancil
 						<div class="price">
-							<sup><span class="fa fa-inr"></span></sup>2000
+							<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
 						</div>
 						<div class="rating">
-							<span class="fa fa-star"></span>
+							<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
 						</div>
 					</div>
 				</div>

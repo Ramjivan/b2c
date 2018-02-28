@@ -330,23 +330,12 @@ function upload_image($index)
 					
 					foreach($return_values['items'] as $item)
 					{
-						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
+						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=? LIMIT 1');
 						$stmt->execute(array($item['img_list_id'])); 
 						
-						$spec = $conn->prepare('select `spc_field_name`,`spc_field_value` from `p_spec` where `product_id`=?');
-						$spec->execute(array($item['product_id']));
-						
-						$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
-						$hlgt->execute(array($item['product_id']));
-						
-						if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $stmt->rowCount() > 0)
+						if($stmt->rowCount() > 0)
 						{
-							$return_values['items'][$i]['images'] = $stmt->fetchAll();
-							
-							$return_values['items'][$i]['specification'] = $spec->fetchAll();
-
-							$return_values['items'][$i]['highlights'] = $hlgt->fetchAll();
-							
+							$return_values['items'][$i]['images'] = $stmt->fetch();
 						}
 					
 						$i++;
