@@ -38,13 +38,15 @@
 						<div class="dropdown-content" id="32t3g05">
 						</div>
 				</div>
-                
+				<script>
+				
+				</script>
                 <div class="nav-item">
 					<!--For desktop-->
-					<form action="" class="nav-s-bar">
+					<form action="login.php" class="nav-s-bar" id="searchForm-d">
 						<div class="form-group" style="background-color:white;">
-							<input type="text" class="jk-textbox wi-right nav-sb">
-							<span onclick="submit" class="fa fa-search jk-input-ico-right nav-bb"></span>
+							<input type="text" onkeyup="getSearchSuggestion(this.value);" class="jk-textbox wi-right nav-sb" autocomplete="off" list="suggestions">
+							<span id="d-sb-fsub" class="fa fa-search jk-input-ico-right nav-bb"></span>
 						</div>
 						
 					</form>
@@ -52,21 +54,22 @@
 				</div>
                 
 			</nav>
+			<nav class="navbar float-right">
+				
+			<div class="nav-item"><a href="/b2c"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
+				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
+				
+			</nav>
 			<!--for mobile-->
 			<div id="sb-search" class="sb-search navbar float-right" >
 						<form>
-							<input class="sb-search-input " onkeyup="buttonUp();" placeholder="Enter your search term..." onblur="monkey();" type="search" value="" name="search" id="search">
+							<input class="sb-search-input" onkeyup="buttonUp();getSearchSuggestion(this.value);" list="suggestions" placeholder="Let's Buy..." onblur="monkey();" type="search" value="" name="search" id="search" autocomplete="off">
 							<input class="sb-search-submit" type="submit"  value="">
 							<span class="sb-icon-search"><i class="fa fa-1dot5x fa-search" style="margin-top: -130px;"></i></span>
 						</form>
 						
 					</div>
-			<nav class="navbar float-right">
-				
-				<div class="nav-item"><a href="/b2c"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
-				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
-				
-			</nav>
+			
 		</div>
     </div>
 </div>
@@ -76,53 +79,10 @@
 	<div class="blurdfg">
 	</div>
 
-	<script>
-	function buttonUp(){
-		var valux = $('.sb-search-input').val(); 
-			valux = $.trim(valux).length;
-			if(valux !== 0){
-				$('.sb-search-submit').css('z-index','99');
-			} else{
-				$('.sb-search-input').val(''); 
-				$('.sb-search-submit').css('z-index','-999');
-			}
-	}
-	
-	$(document).ready(function(){
-		var submitIcon = $('.sb-icon-search');
-		var submitInput = $('.sb-search-input');
-		var searchBox = $('.sb-search');
-		var isOpen = false;
-		
-		$(document).mouseup(function(){
-			if(isOpen == true){
-			submitInput.val('');
-			$('.sb-search-submit').css('z-index','-999');
-			submitIcon.click();
-			}
-		});
-		
-		submitIcon.mouseup(function(){
-			return false;
-		});
-		
-		searchBox.mouseup(function(){
-			return false;
-		});
-				
-		submitIcon.click(function(){
-			if(isOpen == false){
-				searchBox.addClass('sb-search-open');
-				
-				submitInput.show();
-				isOpen = true;
-			} else {
-				searchBox.removeClass('sb-search-open');
-				isOpen = false;
-				
-				submitInput.hide();
-			}
-	});
-
-});
-</script>
+<datalist id="suggestions">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
