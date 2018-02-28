@@ -1,11 +1,11 @@
 <?php
 if(isset($_GET['q'])){
-    $keyword = mysql_real_escape_string($_GET['q']);
+    $keyword = $_GET['q'];
     $return_values = array();
 		
     include('pdo.php'); //inluding the $conn PDO-OBJ 
-
-    $stmt = $conn->prepare("SELECT * FROM products");
+    
+    $stmt = $conn->prepare("SELECT p_name FROM products");
     $response =  $stmt->execute();
     
     if($response)

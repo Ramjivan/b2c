@@ -20,10 +20,3 @@ Same with signup .php
 search page     
 
 
-	<form accept-charset="utf-8" action="" class="nav-searchbar" method="GET" name="site-search" role="search">
-		
-
-						<input type="text" class="nav-textbox">
-						<span class="fa fa-search"></span>
-
-	</form>

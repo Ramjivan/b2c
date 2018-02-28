@@ -19,7 +19,7 @@ $(document).ready(function(){
 //getting search suggestions
 function getSearchSuggestion(q){
 		$url = "apies/getSearchSugg.php?q=";
-		var xhttp = new XMLHttpRequest();
+		/*var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				$("#suggestions").empty();
@@ -30,22 +30,27 @@ function getSearchSuggestion(q){
 		xhttp.overrideMimeType("application/json");
 		xhttp.open("GET", $url + q, true);
 		xhttp.send(); 
-		/*
+		*/
+		
 		$.ajax({
 			type: "GET",
 			url: $url,
 			data: {q: q},
 			dataType : 'JSON',
 			success:function(data){
-			
+				
 				$("#suggestions").empty();
 				$(data).each(function(i, elem) {
+					
 					$("#suggestions").append('<option value="'+elem[0]+'">');
 			
 				});
+				
+
 			}    
-			
-		});*/
+				
+		});
+		
 }
 
 function cb(fn)

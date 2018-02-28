@@ -22,7 +22,7 @@
 			<div class="prdct-grids row">
 				<div class="prdct col-1">
 					<div class="img">
-						<img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/>
+<a href="http://localhost/b2c/product?25c84c7af1"><img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/></a>
 					</div>
 					<div class="details">
 						stancil
