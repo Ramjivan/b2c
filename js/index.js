@@ -13,9 +13,14 @@ window.onload = function(){
 	var fail = function(){alert("Server Error.")};
 	var formid = 'sgn-form';
 	var validation_summary = "vs";
-	sub_btn.addEventListener("click",function(){
-		submit_form(formid,elems,validation_summary,url,method,success,fail)
-	});
+	if(sub_btn !== null)
+	{		
+		sub_btn.addEventListener("click",function(){
+			submit_form(formid,elems,validation_summary,url,method,success,fail)
+		});
+	}
+	
+	
 };
 
 
