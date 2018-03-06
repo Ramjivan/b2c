@@ -19,7 +19,7 @@ function prevent_hijacking(){
 	
 	if(!prevent_hijacking() && !isset($_SESSION['user']))
 	{
-		Header('Location: /b2c/index.php');
+		Header('Location: /b2c/login.php');
 	}
 
 

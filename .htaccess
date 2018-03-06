@@ -5,4 +5,5 @@ RewriteRule ^product?([\w]*)$ product.php?id=$1 [QSA]
 RewriteRule ^cart$ cart.php [QSA]
 RewriteRule ^customer/address$ address.php [QSA]
 RewriteRule ^customer/address/add$ add_address.php [QSA]
-
+RewriteRule ^customer/orders$ orders.php [QSA]
+RewriteRule ^order/([\w]*)$ orderSummary.php [QSA]

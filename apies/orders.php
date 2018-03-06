@@ -130,12 +130,31 @@ function get_merchant($id)
 									
 								$stmt_ord->execute(array($user['customer_id'],$merchant_id['merchant_id'],$indexes['ord_payment_method'],$indexes['ord_address_id'],$ord_pl_id));
 								
+								$order_id = $conn->lastInsertId();
 								
 								foreach($merchant_ps as $item)
 								{
-									$stmt = $conn->prepare('insert into `order_list_items` (`pl_id`,`product_id`,`qty`) VALUES (?,?,?)');
-									$stmt->execute(array($ord_pl_id,$item['p_id'],$item['qty']));
+									$stmt = $conn->prepare('insert into `order_list_items` (`pl_id`,`product_id`,`qty`,`price`) VALUES (?,?,?,(SELECT `p_price` FROM `products` where `product_id`=? LIMIT 1))');
+									$stmt->execute(array($ord_pl_id,$item['p_id'],$item['qty'],$item['p_id']));
 								}
+								
+								$address = $conn->prepare('INSERT INTO `b2c`.`snap_addresses`
+															(`address_id`,
+															`customer_id`,
+															`adt_fullname`,
+															`adt_mob`,
+															`adt_pincode`,
+															`adt_addressline1`,
+															`adt_addressline2`,
+															`adt_landmark`,
+															`adt_city`,
+															`adt_state`,
+															`adt_country`,
+															`adt_type`,
+															`order_id`)
+															
+															SELECT `address_id`,`customer_id`,`adt_fullname`,`adt_mob`,`adt_pincode`,`adt_addressline1`,`adt_addressline2`,`adt_landmark`,`adt_city`,`adt_state`,`adt_country`,`adt_type`,? FROM `addresses` where `address_id` = ?');
+								$address->execute(array($order_id,$indexes['ord_address_id']));
 							}
 							else
 							{
@@ -213,7 +232,97 @@ function get_merchant($id)
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 			}	
 		}
-		else if(isset($_GET['qtype']) && $_GET['qtype'] == 2) //single order fetch
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == 2) //single order fetch merchant
+		{
+			
+			try
+			{
+				
+				
+				$stmt = $conn->prepare('select * from `orders` where `ord_pl_id` = ? LIMIT 1');
+				$stmt->execute(array($_GET['t']));
+			
+				if($stmt->rowCount() > 0)
+				{	
+					$order = $stmt->fetch();
+					
+					if($order['merchant_id'] !== $user['merchant_id'])
+					{							
+						$return_values['ERROR'] = 400;
+						$return_values['Message'] = "BAD REQUEST";
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+					}
+					
+					$return_values['items']['orderDetails'] = $order;
+					
+					$productDetails = $conn->prepare("select (`products`.`p_price`*`order_list_items`.`qty`) AS `total_price`,`order_list_items`.`qty`,`products`.`product_id`,`products`.`p_name` from `products` LEFT JOIN `order_list_items` ON `order_list_items`.`product_id` = `products`.`product_id`  where `pl_id` = ?");
+					$productDetails->execute(array($_GET['t']));
+					
+					$address = $conn->prepare('select * from `addresses` where `address_id` = ?');
+					$address->execute(array($order['ord_address_id']));
+					
+					
+					if($address->rowCount() > 0 &&
+						$productDetails->rowCount() > 0)
+					{
+						$return_values['items']['productDetails'] = $productDetails->fetchAll();
+						$return_values['items']['address'] = $address->fetch();
+						$return_values['result'] = 1;						
+					}
+					else
+					{
+						$return_values['ERROR'] = 400;
+						$return_values['Message'] = "BAD REQUEST";
+					}
+
+				}
+				else
+				{
+					$return_values['ERROR'] = 400;
+					$return_values['Message'] = "BAD REQUEST";
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}	
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == 3 && isset($_GET['t']))
+		{
+			
+			try
+			{
+				
+				$timestamp = date('Y-m-d h:m:s',strtotime('-'.$_GET['t'].' days'));
+				
+				$stmt = $conn->prepare('select *,(select count(*) from `order_list_items` where `pl_id` = `orders`.`ord_pl_id`) AS `pl_count` from `orders` where `customer_id` = ? && `ord_date_time` >= ?');
+				$stmt->execute(array($user['customer_id'],$timestamp));
+			
+				if($stmt->rowCount() > 0)
+				{	
+					$return_values['items'] = $stmt->fetchAll();
+					
+					$return_values['result'] = 1;
+					$return_values['timestamp'] = $timestamp;
+				}
+				else
+				{
+					
+					$return_values['result'] = 0;
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}	
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == 4) //single order fetch merchant
 		{
 			
 			try

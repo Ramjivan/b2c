@@ -16,13 +16,14 @@ $obj = json_decode($json);
 if($obj->aud == $CLIENT_ID){
   
     
-     $row = false;
-    $email = mysql_real_escape_string($_POST['Email']);
-    $results = mysql_query("select c_email from customers where c_email='$email' ");
-    if ($results) {
+    $email = ($_POST['Email']);
+    $results = $conn->prepare("select * from customers where `c_email`=? LIMIT 1");
+    $results->execute(array($email));
+	
+	if($results->rowCount() > 0) {
         //let the user login by assigning session to it
         session_start();
-        $_SESSION['user'] = $email;
+        $_SESSION['user'] = $results->fetch();
         
         //redircting user
         if(isset($_POST['redirurl'])) 
@@ -30,7 +31,11 @@ if($obj->aud == $CLIENT_ID){
         else 
         $url = "index.php"; // default page for 
 
-        header("Location:$url");
- }
+        Header("Location:$url");
+	}
+	else
+	{
+		echo "no user";
+	}
   
 }

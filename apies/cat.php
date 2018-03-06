@@ -267,7 +267,7 @@ function upload_image($index)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '2')
 		{			
-			//get category of merchant
+			//get index category
 			$return_values = array();
 			
 			try
@@ -312,7 +312,7 @@ function upload_image($index)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
 		{			
-			//get category of merchant
+			//get category single category
 			$return_values = array();
 			
 			try

@@ -6,6 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
+		<script src="js/indx.js"></script>
 		
 		<?php
 			//include head
@@ -21,12 +22,12 @@
 		<div class="main-grid"> 
 			<div class="prdct-grids row">
 				<div class="prdct">
+				<a class="prdct-lnk-a" href="http://localhost/b2c/product?25c84c7af1">
 					<div class="img">
 						<img src="apies/products/uploads/22be20b1bf2190a3ecccc3dea69d7ae3.jpg"/>
 					</div>
 					<div>
 						<b>Acrylic Painting</b>
-<a href="http://localhost/b2c/product?25c84c7af1"><img src="products/uploads/0e8f77f2ea6212b854948a266c056aa1.jpg"/></a>
 
 					</div>
 					<div class="details">
@@ -37,6 +38,7 @@
 							<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
 						</div>
 					</div>
+				</a>
 				</div>
 			</div>
 		</div>
