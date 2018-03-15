@@ -221,7 +221,7 @@ function get_merchant($id)
 				else
 				{
 					
-					$return_values['result'] = 0;
+					$return_values['result'] = $user['merchant_id'];
 				}
 				
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

@@ -89,6 +89,15 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 	RewriteRule ^session$ session.php [QSA]
 #session
 
+
+#store
+
+	RewriteRule ^store/([a-zA-Z]+)$ store.php?qtype=1&name=$1 [QSA]
+	RewriteRule ^store/product/([\w]+)/recent$ store.php?qtype=2&mer_id=$1 [QSA]
+	RewriteRule ^store/([\w]+)/([0-9]+)/page/([0-9]+)$ store.php?qtype=3&mer_id=$1&cat=$2&page=$3 [QSA]
+
+#store
+
 #customer related
 RewriteRule ^customer/add$ reg.php [QSA]
 RewriteRule ^customer$ reg.php [L]

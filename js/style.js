@@ -256,7 +256,42 @@ function buttonUp(){
 		}
 }
 
+
+/*****************************SLIDER***********************************/
+// Next/previous controls
+	var slideIndex = 0;
+	var interval = null;
+	function plusSlides(n,classname) {
+	  showSlides(slideIndex += n,classname);  
+	}
+
+	// Thumbnail image controls
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n,classname) {
+	  var i;
+	  var slides = document.getElementsByClassName(classname);
+	  var dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+		  slides[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+		  dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	  slides[slideIndex-1].className += " fade";
+
+	} 
+/*****************************SLIDER***********************************/
+
+
 $(document).ready(function(){
+	plusSlides(slideIndex,"mySlides");
 	var submitIcon = $('.sb-icon-search');
 	var submitInput = $('.sb-search-input');
 	var searchBox = $('.sb-search');

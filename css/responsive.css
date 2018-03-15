@@ -67,6 +67,14 @@
 
 @media all and (max-width:800px) and (min-width:600px) /* for mobile tab view */
 {
+	.slideshow-container{
+		height:200px;
+		width:100%;
+	}
+	
+	.prev, .next {
+		width:25px;
+	}
 	.col-1{ width: 33.33%;  }
 	.col-2{ width: 50%;     }
 	.col-3{ width: 83.33%;  }
@@ -230,6 +238,10 @@
 		border: 1px solid rgba(0,0,0,0.2);
 		padding: 1em;
 	}
+	
+	  .prev, .next {
+		width:75px;
+	  }
 }
 
 

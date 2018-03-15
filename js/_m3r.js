@@ -995,7 +995,7 @@ window.onload = function(){
 		})();
 	}
 	
-	else if(/orders.php/.test(loc_arr[length-1]))
+	else if(/Orders.php/.test(loc_arr[length-1]) == true)
 	{
 		
 		function st(i)
@@ -1076,8 +1076,7 @@ window.onload = function(){
 			);
 	
 		}
-		
-		get();
+		(function(){get();})();
 	}
 	
 	else if(/order([\w]*)/.test(loc_arr[length-2]+loc_arr[length-1]))

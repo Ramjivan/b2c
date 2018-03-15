@@ -1,4 +1,4 @@
-<base href="/"/>
+<base href="/b2c/"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script language="JavaScript" type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/style.js"></script>

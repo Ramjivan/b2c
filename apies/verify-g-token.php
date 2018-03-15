@@ -11,7 +11,15 @@ echo $_POST['ID_Token'];*/
 require 'pdo.php';
 $CLIENT_ID = '340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com';
 
-$json = file_get_contents("https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=".$_POST['ID_Token']);
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);  
+
+
+$json = file_get_contents("https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=".$_POST['ID_Token'], false, stream_context_create($arrContextOptions));
 $obj = json_decode($json);
 if($obj->aud == $CLIENT_ID){
   
@@ -22,7 +30,6 @@ if($obj->aud == $CLIENT_ID){
 	
 	if($results->rowCount() > 0) {
         //let the user login by assigning session to it
-        session_start();
         $_SESSION['user'] = $results->fetch();
         
         //redircting user
@@ -31,7 +38,7 @@ if($obj->aud == $CLIENT_ID){
         else 
         $url = "index.php"; // default page for 
 
-        Header("Location:$url");
+        Header("Location:/b2c/index.php");
 	}
 	else
 	{

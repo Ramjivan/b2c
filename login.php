@@ -10,6 +10,25 @@
 		<title>
 			Login | B2C
 		</title>
+		<script>
+        function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        document.forms['g-signin']['ID'].value = profile.getId();
+        document.forms['g-signin']['First_Name'].value = profile.getGivenName();
+        document.forms['g-signin']['Last_Name'].value = profile.getFamilyName();
+        document.forms['g-signin']['Full_Name'].value = profile.getName();
+        document.forms['g-signin']['Image_URL'].value = profile.getImageUrl();
+        document.forms['g-signin']['Email'].value = profile.getEmail();
+        
+        // The ID token you need to pass to your backend:
+        document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
+
+        //submitting the form
+        $('[name="g-signin"]').submit();
+        
+      };        
+    </script>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta name="google-signin-scope" content="profile email">
@@ -78,25 +97,7 @@
         <input type="hidden" name="redirurl" value="<?php echo $_SERVER['HTTP_REFERER']; ?>" />
     </form>
     <!--Scripts-->
-    <script>
-        function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        document.forms['g-signin']['ID'].value = profile.getId();
-        document.forms['g-signin']['First_Name'].value = profile.getGivenName();
-        document.forms['g-signin']['Last_Name'].value = profile.getFamilyName();
-        document.forms['g-signin']['Full_Name'].value = profile.getName();
-        document.forms['g-signin']['Image_URL'].value = profile.getImageUrl();
-        document.forms['g-signin']['Email'].value = profile.getEmail();
-        
-        // The ID token you need to pass to your backend:
-        document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
-
-        //submitting the form
-        $('[name="g-signin"]').submit();
-        
-      };        
-    </script>
+    
 
     <script>
     $( document ).ready(function() {

@@ -1,9 +1,13 @@
 <?php
 session_start();
+
 include('sessionvalidate.php');
+
 $user = $_SESSION['user'];
 
 include('pdo.php');
+
+
 function is_set(&$var,$index,&$ERROR_FLAG)
 {
 	if(isset($_POST[$index]))
@@ -18,6 +22,8 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	
 	
 }
+
+
 function upload_image($index)
 {
 	if(
