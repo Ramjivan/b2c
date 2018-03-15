@@ -56,7 +56,7 @@
 			</nav>
 			<nav class="navbar float-right">
 				
-			<div class="nav-item"><a href="/b2c"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
+			<div class="nav-item"><a href="dashboard.php"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
 				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
 				
 			</nav>

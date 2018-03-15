@@ -6,7 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script src="js/indx.js"></script>
+		<script src="js/index.js"></script>
 		
 		<?php
 			//include head

@@ -37,8 +37,7 @@ if($obj->aud == $CLIENT_ID){
         $url = $_POST['redirurl']; // holds url for last page visited.
         else 
         $url = "index.php"; // default page for 
-
-        Header("Location:/b2c/index.php");
+        Header("Location:$url");
 	}
 	else
 	{

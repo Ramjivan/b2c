@@ -94,7 +94,7 @@
         <input type="hidden" name="Image_URL">
         <input type="hidden" name="Email">
         <input type="hidden" name="ID_Token">
-        <input type="hidden" name="redirurl" value="<?php echo $_SERVER['HTTP_REFERER']; ?>" />
+        <input type="hidden" name="redirurl" value="" />
     </form>
     <!--Scripts-->
     

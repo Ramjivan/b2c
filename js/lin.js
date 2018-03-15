@@ -1,6 +1,14 @@
 window.onload = function(){
 	
-	var lgn = document.getElementById('lgn');
+	var arr = document.location.toString().match(/redir=(http:\/\/)([\w+]*)/g);
+	
+	arr = arr[0].split('=');
+	
+	document.forms['g-signin']['redirurl'].value = arr[arr.length-1]; 	
+	
+	
+	
+	
 	lgn.onclick = function(){
 		
 		if(login(document.getElementById('vs')))
@@ -13,8 +21,7 @@ window.onload = function(){
 				'apies/session',
 				formData,
 				function(xhttp){
-					alert(xhttp.responseText);
-					//document.location = "/b2c/";
+					document.location = arr[arr.length-1];
 				},
 				function(xhttp){
 					
