@@ -9,7 +9,7 @@ window.onload = function(){
 	];
 	var url = "apies/customer/add";
 	var method = "POST";
-	var success = function(){document.location="/b2c/"};
+	var success = function(){document.location="/"};
 	var fail = function(){alert("Server Error.")};
 	var formid = 'sgn-form';
 	var validation_summary = "vs";

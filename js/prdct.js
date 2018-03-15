@@ -338,7 +338,7 @@ window.onload = function(){
 								{
 									xhr_call(
 										'GET',
-										'/b2c/apies/cart/add/'+args[1]+'/qty/1',
+										'/apies/cart/add/'+args[1]+'/qty/1',
 										null,
 										function(xhttp){
 											if(xhttp.responseText.length > 0)
@@ -378,16 +378,16 @@ window.onload = function(){
 						}
 						else
 						{
-							window.location = "/b2c/";
+							window.location = "/";
 						}
 					}
 					else
 					{
-						window.location = "/b2c/";
+						window.location = "/";
 					}
 				},
 				function(xhttp){
-					window.location = "/b2c/";
+					window.location = "/";
 				}
 			);
 	}

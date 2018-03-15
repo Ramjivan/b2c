@@ -47,7 +47,7 @@
 			<div class="center-block">
 				<h3>Add Product</h3>
 				<div>
-					<form class="jk-form pdct-form" id="pctafm" action="/b2c/apies/product/add" method="post" enctype="multipart/form-data">
+					<form class="jk-form pdct-form" id="pctafm" action="/apies/product/add" method="post" enctype="multipart/form-data">
 						<div id="vsap" class="vs">
 							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>

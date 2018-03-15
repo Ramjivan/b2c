@@ -81,7 +81,7 @@ xhr_call(
 						var row = json.items[i];
 						var append = '<div class="item-card col-5">\
 										<div class="col-1">\
-											<img src="/b2c/apies/'+row.img+'" width="100%" height="80%"/>\
+											<img src="/apies/'+row.img+'" width="100%" height="80%"/>\
 										</div>\
 										<div class="col-3">\
 											<h3>'+row.p_name+'</h3>\

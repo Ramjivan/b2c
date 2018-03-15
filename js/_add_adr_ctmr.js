@@ -30,7 +30,7 @@ window.onload = function(){
 				alert(xhttp.responseText);
 			};
 			btn.addEventListener('click',function(){
-				submit_form('adresform',formvalidation,'vsap','/b2c/apies/address/add','POST',success,fail);
+				submit_form('adresform',formvalidation,'vsap','/apies/address/add','POST',success,fail);
 			});
 		}
 };

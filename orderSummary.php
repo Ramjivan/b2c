@@ -6,7 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script language="javascript" src="/b2c/js/_c_orsm.js"></script>
+		<script language="javascript" src="/js/_c_orsm.js"></script>
 
 		<?php
 			//include head
