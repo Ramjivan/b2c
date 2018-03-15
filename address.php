@@ -7,7 +7,7 @@ include('sess_val.php');
 		<title>
 			Customer Address | B2C
 		</title>
-		<base href="/b2c/">
+		<base href="/">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<script src="js/adr_ctmr.js" language="JavaScript" type="text/javascript"></script>
@@ -29,7 +29,7 @@ include('sess_val.php');
 		<h3>Addresses</h3>
 			
 			<div id="addressrow" class="row gutter">
-				<a href="address/add">
+				<a href="customer/address/add">
 				<div class="jk-address-tile-container col-2">
 					<div class="jk-address-tile col-6">
 						<div class="jk-address-tile-add-div"><i class="fa fa-plus"></i></div>

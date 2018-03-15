@@ -7,9 +7,10 @@ include('sess_val.php');
 		<title>
 			customer | orders 
 		</title>
+		<base href="/"/>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script language="javascript" src="/b2c/js/c_ordr.js"></script>
+		<script language="javascript" src="js/c_ordr.js"></script>
 		<?php
 			//include head
 			include 'headTags.php';
