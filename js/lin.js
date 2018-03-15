@@ -1,11 +1,16 @@
 window.onload = function(){
 	
-	var arr = document.location.toString().match(/redir=(http:\/\/)([\w+]*)/g);
+	try {
 	
-	arr = arr[0].split('=');
+		var arr = document.location.toString().match(/redir=(http:\/\/)([\w+]*)/g);
 	
-	document.forms['g-signin']['redirurl'].value = arr[arr.length-1]; 	
-	
+		arr = arr[0].split('=');
+		
+		document.forms['g-signin']['redirurl'].value = arr[arr.length-1]; 	
+			
+	} catch (error) {
+		arr = undefined;
+	}
 	
 	
 	
@@ -21,7 +26,14 @@ window.onload = function(){
 				'apies/session',
 				formData,
 				function(xhttp){
-					document.location = arr[arr.length-1];
+					if(arr !== undefined)
+					{
+						document.location = arr[arr.length-1];
+					}
+					else
+					{
+						document.location = "/";
+					}				
 				},
 				function(xhttp){
 					
