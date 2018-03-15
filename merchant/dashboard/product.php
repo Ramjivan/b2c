@@ -1,5 +1,5 @@
 <?php
-	require_once 'C:/xampp/htdocs/b2c/sess_val.php';
+	include("/sess_val.php");
 ?>
 <!DOCTYPE html>
 <html id="fh4jf">

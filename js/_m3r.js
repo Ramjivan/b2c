@@ -29,7 +29,7 @@ window.onload = function(){
 		function get()
 		{
 			var method = "GET";
-			var url = "/b2c/apies/product";
+			var url = "/apies/product";
 			var formData = null;
 			var success = function(xhttp){
 				var tab = document.getElementById('tbdy');
@@ -298,7 +298,7 @@ window.onload = function(){
 			}
 			xhr_call(
 				'GET',
-				'/b2c/apies/index/subcategory/'+spinner.value,
+				'/apies/index/subcategory/'+spinner.value,
 				null,
 				function(xhttp){
 					const tar = document.getElementById('31t'+index);
@@ -377,7 +377,7 @@ window.onload = function(){
 		/**ajax call for cateegory spinner for parent category selection*/
 			xhr_call(
 				'GET',
-				'/b2c/apies/index/category',
+				'/apies/index/category',
 				null,
 				function(xhttp){
 				var tar = document.getElementById('31t1');
@@ -456,7 +456,7 @@ window.onload = function(){
 		function get_qna()
 		{
 			var method = "GET";
-			var url = "/b2c/apies/qna/merchant";
+			var url = "/apies/qna/merchant";
 			var formData = null;
 			var success = function(xhttp){
 				var tab = document.getElementById('tbdy');
@@ -647,7 +647,7 @@ window.onload = function(){
 		function get_cat()
 		{
 			var method = "GET";
-			var url = "/b2c/apies/product/category/merchant";
+			var url = "/apies/product/category/merchant";
 			var formData = null;				
 			var success = function(xhttp){
 				var tab = document.getElementById('tbdy');
@@ -797,7 +797,7 @@ window.onload = function(){
 		{
 			
 			var method = "GET";
-			var url = "/b2c/apies/index/category";
+			var url = "/apies/index/category";
 			var formData = null;
 			
 			var success = function(xhttp){
@@ -880,7 +880,7 @@ window.onload = function(){
 				}
 				xhr_call(
 					'GET',
-					'/b2c/apies/index/subcategory/'+spinner.value,
+					'/apies/index/subcategory/'+spinner.value,
 					null,
 					function(xhttp){
 						const tar = document.getElementById('31t'+index);
@@ -963,7 +963,7 @@ window.onload = function(){
 			spinner_cat_fill();
 			xhr_call(
 				'GET',
-				'/b2c/apies/index/category',
+				'/apies/index/category',
 				null,
 				function(xhttp){
 				var tar = document.getElementById('31t1');
@@ -995,7 +995,11 @@ window.onload = function(){
 		})();
 	}
 	
+<<<<<<< HEAD
 	else if(/Orders.php/.test(loc_arr[length-1]) == true)
+=======
+	else if(/Orders.php/.test(loc_arr[length-1]))
+>>>>>>> 3b40fac30c9a5a93ac37bb7be9a263a309f806a2
 	{
 		
 		function st(i)
@@ -1042,7 +1046,7 @@ window.onload = function(){
 		{		
 			xhr_call(
 				'GET',
-				'/b2c/apies/order/time/28',
+				'/apies/order/time/28',
 				null,
 				function(xhttp){					
 					
@@ -1087,7 +1091,7 @@ window.onload = function(){
 		{
 			xhr_call(
 				'GET',
-				'/b2c/apies/order/'+id,
+				'/apies/order/'+id,
 				null,
 				function(xhttp){
 					
