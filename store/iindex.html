@@ -1,13 +1,31 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-<title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+				var storename = window.location.search.substr(1);
+				var url = "/apies/store/kingston";
+				$.ajax({
+				type: "GET",
+				url: url,
+				data: {q: storename},
+				dataType : 'JSON',
+					success:function(data){
+							
+	
+							var obj = JSON.parse(JSON.stringify(data));
+							$('title').text(obj.header.name);
+							$('.phoneNum').html(obj.footer.address.adt_mob);
+							console.log(obj.footer.address.adt_mob);
+							console.log(obj);
+									
+					
+						
+					}     
+				});
+				
+			</script>
+<title></title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
+			<a href="products.html">Store Powered By B2C !</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -112,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><span class="phoneNum"></span></li>
 					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
 				</ul>
 			</div>

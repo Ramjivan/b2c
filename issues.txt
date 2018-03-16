@@ -1,22 +1,25 @@
-product page -> product name field can't have numberic value or small names like Mi note chane regex
+in store Main api
 
-category page -> why it have two description textarea change placeholder name
+add or modify touple
 
-
-in product page -> review -> date published
-                            
-                -> category
-#get these things in product page
-
-google signin
-
-impliment redirect uri -
-call login.php with $GET redirect uri 
-    -> if redirect uri exist -> redirect after sucessfull login
-                             -> otherwise redirect to index page
-Same with signup .php
-    ->after signup redirect to login page alongs with redirect uri if any
-
-search page     
+result
+theam_id
+store.id
+     .name
+     .logo
+     .merchant_id
+     .contact.phone
+             .email
+             .gpsCoardinates
+     .address
+     .socialLinks.fb
+                 .insta                     'return only touples which are not null
+                 .whatsAppBusiness      
+                 .youTybe
+                 .twitter
+                 .messanger
+                 .googlePlus
+                 .custom
+category
 
 

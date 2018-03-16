@@ -1,0 +1,35 @@
+{
+    "result":1,
+    "store":{
+        "id":123,
+        "name":"storeName",
+        "logo":"imagePath",
+        "merchant_id":1234567,
+        "contact":{
+            "phone":"8003209000",
+            "email":"store@b2c.com",
+            "gpsCord":{
+                "lonitude":"value",
+                "latitude":"value"
+            }
+        },
+        "address":{
+            "adt_fullname": "HOME",
+            "adt_mob": "755256668",
+            "adt_pincode": "342001",
+            "adt_addressline1": "test line 1",
+            "adt_addressline2": "test line 2",
+            "adt_landmark": "testing",
+            "adt_city": "Jodhpur",
+            "adt_state": "Rajsathan"
+        },
+        "socialLinks":{
+            "fb":"fb-url",
+            "youtube":"youTybeURL",
+            "whatsAppBusiness":"number",
+            "insta":"insta-link",
+            "twitter":"twitter-link",
+            "googlePlus":"g+ link"
+        }
+    }
+}

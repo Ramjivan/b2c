@@ -1,0 +1,5 @@
+implimenting api in store for third party the easy way--
+
++title will be replaced autometicly
+
++for Phone <span class="phoneNum">
