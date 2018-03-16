@@ -23,7 +23,7 @@
         
         // The ID token you need to pass to your backend:
         document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
-
+        
         //submitting the form
         $('[name="g-signin"]').submit();
         

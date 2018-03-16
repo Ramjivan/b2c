@@ -1,6 +1,7 @@
 <?php
    require 'sqlConfig.php';
    session_start();
+
 if(isset($_POST['REQ_TYPE'])){ 
     if($_POST['REQ_TYPE'] == "9001"){
         if (isset($_POST['username']) and isset($_POST['password'])){
