@@ -22,6 +22,11 @@ store.id
                  .custom
 category
 
+Need to get SEO elements like meta keywords and description
+
+Impliment Add to Cart button API or script
+
+
 
 while getting products list 
 Don't includ everything like description and redundent fields 
@@ -48,4 +53,6 @@ Return this JSON for product Get By Category
                             "TotalPages": 1,
                             "NextPage": 1
 
+
+Required a API to get all details of singls Product in a Call
 

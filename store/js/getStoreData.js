@@ -69,7 +69,9 @@
 								]
 							};
 							var obj = JSON.parse(JSON.stringify(x));
+
 							$('title').text(obj.store.name);
+							$('.storeNameR').text(obj.store.name);
 							$('.phoneR').html('<a href="tel:'+obj.store.contact.phone+'">'+obj.store.contact.phone+'</a>');
 							$('.emailR').html('<a href="mailto:'+obj.store.contact.email+'">'+obj.store.contact.email+'</a>');
 							
