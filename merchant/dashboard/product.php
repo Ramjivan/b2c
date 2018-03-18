@@ -9,6 +9,8 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
+		<script language="JavaScript" type="text/javascript" src="/js/_m3r.js"></script>
+
 		
 		<?php
 			//including head

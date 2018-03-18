@@ -995,11 +995,7 @@ window.onload = function(){
 		})();
 	}
 	
-<<<<<<< HEAD
-	else if(/Orders.php/.test(loc_arr[length-1]) == true)
-=======
 	else if(/Orders.php/.test(loc_arr[length-1]))
->>>>>>> 3b40fac30c9a5a93ac37bb7be9a263a309f806a2
 	{
 		
 		function st(i)
