@@ -23,3 +23,29 @@ store.id
 category
 
 
+while getting products list 
+Don't includ everything like description and redundent fields 
+Return this JSON for product Get By Category
+
+                            "cat_name": "Name of the Category",
+                            "products": [
+                                {
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                }
+                            ],
+                            "result": 1,
+                            "TotalPages": 1,
+                            "NextPage": 1
+
+
