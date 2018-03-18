@@ -1,8 +1,6 @@
 <?php
 session_start();
 include('pdo.php');
-include('sessionvalidate.php');
-$user = $_SESSION['user'];
 function is_set_strict(&$var,$index,&$ERROR_FLAG)
 {
 		
@@ -207,6 +205,43 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 				else
 				{
 					$return_values['result'] = 0;
+				}
+				
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
+			}
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '4')
+		{
+
+			//including session validate because this section is related to merchant dashboard
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+
+			//and $user data is needed here for retrieval of store.
+
+			try
+			{
+				
+				
+				$SQL = "SELECT * FROM `store` where `merchant_id` = ? LIMIT 1";
+				$stmt = $conn->prepare($SQL);
+				$stmt->execute(array($user['merchant_id']));
+				
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['result'] = 1;
+					$return_values['store'] = $stmt->fetch();
+			
+				}
+				else
+				{
+					$return_values['result'] = 1;
+					$return_values['store'] = array('notOpen' => 1);
 				}
 				
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

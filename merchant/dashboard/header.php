@@ -16,6 +16,7 @@
 				<div class="nav-item"><span class="fa fa-1x fa-table"></span><a href="ccategory.php">Category</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-clipbaord"></span><a href="#">Orders</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="qna.php">Q &amp; A</a></div>
+				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="store.php">Store</a></div>
 			</nav>
 		</div>
 		<div class="clearfix"></div>

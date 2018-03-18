@@ -1,16 +1,18 @@
+<?php
+	include("/sess_val.php");
+?>
 <!DOCTYPE html>
 <html id="fh4jf">
 	<head>
 		<title>
-			Orders | dashoboard
+			Store | dashoboard
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script language="JavaScript" type="text/javascript" src="/js/_m3r.js"></script>
+		<script language="javascript" src="/js/merstroe.js"></script>
 
-		
 		<?php
-			//include head
+			//including head
 			include 'headTags.php';
 		?>
 	</head>
@@ -21,9 +23,15 @@
 	?>
 	
 		<div class="container"> 
-			<div class="orderSumContainer center-block clearfix" id="ordsucont">	
-			</div>
+			<div class="center-block">
+                <h2>Store</h2>
+                <div id="main-str-cnr">
+                    
+                </div>
+            </div>
+			<div class="clearfix"></div>
 		</div>
+		
 
 	<?php
 		//including footer

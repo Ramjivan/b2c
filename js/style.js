@@ -220,7 +220,7 @@ function imageZoom(imgID, resultID) {
 
 xhr_call(
 	'GET',
-	'apies/index/category',
+	'/apies/index/category',
 	null,
 	function(xhttp){
 	var tar = document.getElementById('32t3g05');
