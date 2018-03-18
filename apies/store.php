@@ -24,9 +24,39 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	{
 		$ERROR_FLAG = true;
 			echo $index." "; 
+	}	
+}
+
+function upload_image($index)
+{
+	if(
+		isset($_FILES[$index]) && 
+		is_uploaded_file($_FILES[$index]['tmp_name']) && 
+		$_FILES[$index]['tmp_name'] !== ""
+	)
+	{
+		//image validation starts
+		$dir = "products/uploads/";
+		$name = md5(basename($_FILES[$index]['name']).time());
+		$targetFile = $dir.$name;
+		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
+		$check = getimagesize($_FILES[$index]["tmp_name"]);
+		if($check !== false)
+		{
+			if($imageFileType == "png" || $imageFileType == "jpg" || $imageFileType == "jpeg")
+			{
+				if(move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
+				{
+					return array('dir'=>$dir,'imgname'=>$name.'.'.$imageFileType);
+				}
+			}
+			else
+			{
+				return null;
+			}
+		}
 	}
-	
-	
+	return false;
 }
 	if($_SERVER['REQUEST_METHOD'] == "GET") 
 	{
@@ -254,5 +284,180 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 		}
 		
 		
+	}
+	else if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+
+		$return_values = array();
+
+		if($_GET['qtype'] == "1")
+		{
+
+			$indexes = array(
+				"name" => ""
+			);
+
+			foreach($indexes as $index => $value)
+			{
+				is_set($indexes[$index],$index,$ERROR_FLAG,'POST');
+			}
+
+			try
+			{
+				
+				$stmt= $conn->prepare("SELECT count(`st_name`) AS `bool` WHERE `st_name` = ?");
+				$stmt->execute(array($indexes['name']));
+
+				if($stmt->fetch()['bool'] > 0)
+				{
+					$return_values['result'] = 1;
+				}
+				else
+				{
+					$return_values['result'] = 0;
+				}
+
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']= $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));				
+			}
+		}
+		else if($_GET['qtype'] == "2")
+		{
+			//including session validate because this section is related to merchant dashboard
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+
+			//and $user data is needed here for retrieval of store.
+			$return_values = array();
+			$ERROR_FLAG = false;
+
+			$indexes = array(
+				"st_name"    => "",
+				"st_fb_lnk"  => "",
+				"st_tw_lnk"  => "",
+				"st_in_lnk"  => "",
+				"st_wpb_lnk" => "",
+				"st_go_lnk"  => "",
+				"st_yt_lnk"  => "",
+				"st_phone"   => "",
+				"st_email"   => "",
+				"st_theme_id"=> ""		
+			);
+
+			$address_arr = array(
+				'adt_fullname' => '',
+				'adt_mob' => '',
+				'adt_pincode' => '',
+				'adt_addressline1' => '',
+				'adt_addressline2' => '',
+				'adt_landmark' => '',
+				'adt_city' => '',
+				'adt_state' => '',
+				'adt_type' => ''
+			);
+
+			foreach($indexes as $index => $value)
+			{
+				is_set($indexes[$index],$index,$ERROR_FLAG,'POST');
+			}
+
+			
+			foreach($address_arr as $index => $value)
+			{
+				is_set($address_arr[$index],$index,$ERROR_FLAG,'POST');
+			}
+
+			try
+			{
+				if(!$ERROR_FLAG)
+				{
+						
+					$conn->beginTransaction();
+					$address_arr['customer_id'] = $user['customer_id'];
+					$indexes['merchant_id'] = $user['merchant_id'];
+					$indexes['st_logo'] = 1;
+
+					$address = $conn->prepare('insert into 
+					`addresses` 
+					(`customer_id`,
+					`adt_fullname`,
+					`adt_mob`,
+					`adt_pincode`,
+					`adt_addressline1`,
+					`adt_addressline2`,
+					`adt_landmark`,
+					`adt_city`,
+					`adt_state`
+					,`adt_type`) 
+					VALUES 
+					(:customer_id,
+					:adt_fullname,
+					:adt_mob,
+					:adt_pincode,
+					:adt_addressline1,
+					:adt_addressline2,
+					:adt_landmark,
+					:adt_city,
+					:adt_state,
+					:adt_type)');
+					
+					$addressBool = $address->execute($address_arr);
+					
+					$indexes['st_address_id'] = $conn->lastInsertId();
+
+					$stmt= $conn->prepare
+					(
+					"INSERT INTO `b2c`.`store`
+					(`merchant_id`,
+					`st_name`,
+					`st_logo`,
+					`st_address_id`,
+					`st_theme_id`,
+					`st_fb_lnk`,
+					`st_in_lnk`,
+					`st_tw_lnk`,
+					`st_go_lnk`,
+					`st_wpb_lnk`,
+					`st_yt_lnk`,
+					`st_phone`,
+					`st_email`)
+					VALUES
+					(:merchant_id,:st_name,:st_logo,:st_address_id,:st_theme_id,:st_fb_lnk,:st_in_lnk,:st_tw_lnk,:st_go_lnk,:st_wpb_lnk,:st_yt_lnk,:st_phone,:st_email)
+					");
+					$storeBool = $stmt->execute($indexes);
+
+
+					
+					if($addressBool && $storeBool)
+					{
+						
+						if($user['c_def_address_id'] == null)
+						{
+							$_SESSION['user']['c_def_address_id'] = $last_insert_id;
+							$stmt = $conn->prepare('update `customers` SET `c_def_address_id` = ? WHERE `customer_id` = ?');
+							$stmt->execute(array($indexes['st_address_id'],$user['customer_id']));
+							
+						}
+						$conn->commit();
+						$return_values['success'] = 1;
+					}
+					else
+					{
+						$ERROR_FLAG = true;
+						$return_values['ERROR'] = "COULDN'T CONNECT TO DATABASE";
+
+					}
+				}
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']= $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));				
+			}
+		}
 	}
 ?>

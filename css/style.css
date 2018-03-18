@@ -213,6 +213,20 @@ form div.form-group{
 	padding:10px;
 }
 
+form div.form-group p {
+	margin:2px;
+	font-size: 15px;
+	color:var(--primary-color,black);
+}
+
+form div.form-group p+input{
+	margin-bottom:10px;
+}
+
+form div.form-group p+input+span.jk-input-ico-left{
+		margin-top:-35px;
+}
+
 .jk-form div.form-group input[type="text"],
 .jk-form div.form-group input[type="password"],
 .jk-form div.form-group textarea,
@@ -228,12 +242,10 @@ textarea{
 	border-bottom:2px solid rgba(0,0,0,0.3);
 	transition:border ease-in 0.4s;
 	margin-left:2px;
-	margin-top:-20px;
 	font-family:'Roboto',sans-serif;
 	width:100%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-top:20px;
 	background-color:transparent;
 	font-size: var(--jk-form-font-size);
 	font-family: 'Roboto', sans-serif;

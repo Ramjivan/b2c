@@ -94,9 +94,11 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 
 	#merhcant
 	RewriteRule ^store/merchant/index$ store.php?qtype=4 [QSA] #get store details for merchant
+	RewriteRule ^store/merchant/av/([0-9]*)$ store.php?qtype=1&name=$1 [QSA] #check name availablity
+	RewriteRule ^store/merchant/create$ store.php?qtype=2 [QSA] #check name availablity
 	#merchant
 
-	RewriteRule ^store/([a-zA-Z]+)$ store.php?qtype=1&name=$1 [QSA]
+	RewriteRule ^store/get/([a-zA-Z]+)$ store.php?qtype=1&name=$1 [QSA]
 	RewriteRule ^store/product/([\w]+)/recent$ store.php?qtype=2&mer_id=$1 [QSA]
 	RewriteRule ^store/([\w]+)/([0-9]+)/page/([0-9]+)$ store.php?qtype=3&mer_id=$1&cat=$2&page=$3 [QSA]
 

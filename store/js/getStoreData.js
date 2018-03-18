@@ -4,7 +4,7 @@ $(window).on("load",function(){
 	
 	if($arr.length > 0)
 	{
-		var url = "/apies/store/"+$arr[$arr.length-1];
+		var url = "/apies/store/get/"+$arr[$arr.length-1];
 	}
 	else
 	{
