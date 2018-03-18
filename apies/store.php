@@ -62,7 +62,6 @@ function upload_image($index)
 	{
 		if(isset($_GET['qtype']) && $_GET['qtype'] == '1')
 		{			
-			//get category of merchant
 			$return_values = array();
 			
 			try
@@ -76,21 +75,33 @@ function upload_image($index)
 				{
 					$return = $stmt->fetch();
 					$return_values['result'] = 1;
-					$return_values['header'] = array('name' => $return['st_name'],'logo' => $return['st_logo']); 
-					$return_values['footer'] = array(
-													'address' => array(
-																'adt_fullname' => $return['adt_fullname'],
-																'adt_mob' => $return['adt_mob'],
-																'adt_pincode' => $return['adt_pincode'],
-																'adt_addressline1' => $return['adt_addressline1'],
-																'adt_addressline2' => $return['adt_addressline2'],
-																'adt_landmark' => $return['adt_landmark'],
-																'adt_city' => $return['adt_city'],
-																'adt_state' => $return['adt_state']
-																),
-													); 
-					$return_values['storeDetails'] = array('id'=>$return['st_id'],'themeid' => $return['st_theme_id'],'merchant_id' => $return['merchant_id']); 
+					$return_values['store']['id'] = $return['st_id'];
+					$return_values['store']['name'] = $return['st_name'];
+					$return_values['store']['logo'] = $return['st_logo'];
+					$return_values['store']['merhcant_id'] = $return['merchant_id'];
+					$return_values['store']['contact'] = array('phone'=>$return['st_phone'],'email'=>$return['st_email']);
+
+					$return_values['store']['address'] = array(
+															'adt_fullname' => $return['adt_fullname'],
+															'adt_mob' => $return['adt_mob'],
+															'adt_pincode' => $return['adt_pincode'],
+															'adt_addressline1' => $return['adt_addressline1'],
+															'adt_addressline2' => $return['adt_addressline2'],
+															'adt_landmark' => $return['adt_landmark'],
+															'adt_city' => $return['adt_city'],
+															'adt_state' => $return['adt_state']
+														);
 					
+					$return_values['store']['socialLinks'] = array(
+						'fb' => $return['st_fb_lnk'],
+						'youtube' => $return['st_yt_lnk'],
+						'whatsappBusiness' => $return['st_wpb_lnk'],
+						'insta' => $return['st_in_lnk'],
+						'twitter' => $return['st_tw_lnk'],
+						'google' => $return['st_go_lnk'],
+					);									
+
+
 					$category = "select distinct `categorydescription`.* from `products` INNER JOIN  `categorydescription` ON `category_id` = `p_category` where `products`.`Merchant_id` = ? ;";
 					$stmt = $conn->prepare($category);
 					$stmt->execute(array($return['merchant_id']));
