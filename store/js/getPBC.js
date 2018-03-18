@@ -1,4 +1,4 @@
-		var storename = window.location.search.substr(1);
+		
 				var url = "/apies/store/b72c423c5b5/6/page/1";
 				$.ajax({
 				type: "GET",
@@ -23,6 +23,165 @@
                                     },
                                     "ratingAvg": 4.5,
                                     "ratingCount": "3"
+                                },
+                                {
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },
+                                {
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },
+                                {
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
+                                },{
+                                    "product_id": "25c84c7af1",
+                                    "p_name": "Product Edited",
+                                    "p_price": "2400",
+                                    "p_stock": "200",
+                                    "images": {
+                                        "0": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "1": "products/uploads/",
+                                        "img_name": "22be20b1bf2190a3ecccc3dea69d7ae3.jpg",
+                                        "img_dir": "products/uploads/"
+                                    },
+                                    "ratingAvg": 4.5,
+                                    "ratingCount": "3"
                                 }
                             ],
                             "result": 1,
@@ -35,13 +194,29 @@
                             console.log(obj.cat_name);
                             //putting category name
                             $('.categoryNameR').text(obj.cat_name);
+
+                            
+                            var a = 1;
 							for(var i = 0; i < obj.products.length; i++){
                                 var pdt = obj.products[i];
-                                str = productParse(pdt);
-                                $('.productR').append(str);
+                                var str = "";
+                                if(a === 1){
+                                    str += '<div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">';
+                                }
+                                
+                                str += productParse(pdt);
+                                $('.productsR').append(str);
+                                
+                                if(a === 4){
+                                    str += '	<div class="clearfix"> </div></div>';
+                                    
+                                    a = 0;
+                                }
+                                a++;
+                                
                             }
                             function productParse(pdt){
-                                var str = '<div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">\
+                                var str = '<div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd" style="margin-bottom:1em;">\
                                 <div class="hover14 column">\
                                 <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">\
                                     <div class="agile_top_brand_left_grid_pos">\
