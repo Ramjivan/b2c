@@ -1122,17 +1122,21 @@ button.submit.check_out{
 	background:#55acee;
 	border-color:#55acee;
 }
-.agileits_social_icons li a.google:hover{
-	background:#dd4b39;
-	border-color:#dd4b39;
-}
 .agileits_social_icons li a.instagram:hover{
 	background:#833ab4;
 	border-color:#833ab4;
 }
-.agileits_social_icons li a.dribbble:hover{
-	background:#ea4c89;
-	border-color:#ea4c89;
+.agileits_social_icons li a.youtube:hover{
+	background:red;
+	border-color:red;
+}
+.agileits_social_icons li a.google-plus:hover{
+	background:#dd4b39;
+	border-color:#dd4b39;
+}
+.agileits_social_icons li a.whatsapp:hover{
+	background:GREEN;
+	border-color:green;
 }
 .w3_footer_grid ul.w3_footer_grid_list1 li i {
     color: #84C639;
