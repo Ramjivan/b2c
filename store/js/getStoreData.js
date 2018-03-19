@@ -1,6 +1,6 @@
 $(window).on("load",function(){
-
-	$arr = window.location.toString().split('/');
+	
+	/*$arr = window.location.toString().split('/');
 	
 	if($arr.length > 0)
 	{
@@ -11,13 +11,12 @@ $(window).on("load",function(){
 		window.location= "index.php";
 	}
 
-
 	$.ajax({
 	type: "GET",
 	url: url,
 	dataType : 'JSON',
 		success:function(data){
-				
+				*/
 				var  x= {
 					"result":1,
 					"store":{
@@ -44,12 +43,12 @@ $(window).on("load",function(){
 							"adt_state": "Rajsathan"
 						},
 						"socialLinks":{
-							"fb":"fb-url",
+							"facebook":"fb-url",
 							"youtube":"youTybeURL",
-							"whatsAppBusiness":"number",
-							"insta":"insta-link",
+							"whatsApp":"number",
+							"instagram":"insta-link",
 							"twitter":"twitter-link",
-							"googlePlus":"g+ link"
+							"google-plus":"g+ link"
 						}
 					}
 				};
@@ -65,11 +64,19 @@ $(window).on("load",function(){
 									obj.store.address.adt_pincode; 
 				$('.addressR').html(addString);
 
-				console.log(obj.store.address.adt_mob);
-				console.log(obj);
-						
+				//social Links
+				sobj = obj.store.socialLinks;
+				
+				for (var key in sobj) {
+					$('.socialLinksR').append('<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>');
+					console.log('<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>');
+				}
+				
+
+				
+				$('.copyrightR').html('©'+(new Date()).getFullYear()+' All Rights Reserverd. '+obj.store.name+' Store with <i class="fa fa-heart-o" aria-hidden="true"></i> from <a href="#">B2C!</a>');		
 		
-			
+			/*
 		}     
-	});
+	});*/
 });

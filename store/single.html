@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="styles/single_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/single_responsive.css">
+<link rel="stylesheet" href="styles/needsharebutton.min.css">
 </head>
 
 <body>
@@ -118,11 +119,25 @@
 			<div class="col-lg-5">
 				<div class="product_details">
 					<div class="product_details_title">
-						<h2>Pocket cotton sweatshirt</h2>
-						<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
+						<h2 class="productNameR">Pocket cotton sweatshirt</h2>
+						<p class="descriptionR">Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 					</div>
+					<div id="demo"
+
+						class="need-share-button-default"
+
+						data-share-icon-style="box"
+
+						data-share-networks="Mailto,Twitter,Pinterest,Facebook">
+
+					</div>
+					<script>
+					new needShareDropdown(document.getElementById('demo'));
+
+					</script>
+
 					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-						<span class="ti-truck"></span><span>free delivery</span>
+						<span class="fa fa-share-alt"></span><span>Share </span>
 					</div>
 					<div class="original_price">$629.99</div>
 					<div class="product_price">$495.00</div>
@@ -130,7 +145,7 @@
 						<li><i class="fa fa-star" aria-hidden="true"></i></li>
 						<li><i class="fa fa-star" aria-hidden="true"></i></li>
 						<li><i class="fa fa-star" aria-hidden="true"></i></li>
-						<li><i class="fa fa-star" aria-hidden="true"></i></li>
+						<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 						<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 					</ul>
 					<div class="product_color">
