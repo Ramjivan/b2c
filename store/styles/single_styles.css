@@ -374,19 +374,18 @@ section
 	position: relative;
 	min-width: 50px;
 	border-right: solid 1px #33333b;
-	padding-right: 20px;
+	
 	padding-left: 20px;
 	text-align: center;
 	vertical-align: middle;
-	background: #1e1e27;
+	background: transparent;
 }
 .language > a
 {
 	display: block;
 	color: #b5aec4;
 	font-weight: 400;
-	height: 50px;
-	line-height: 50px;
+	/* height: 50px; */
 	font-size: 13px;
 }
 .language > a > i
@@ -422,7 +421,7 @@ section
 {
 	padding-left: 10px;
 	padding-right: 10px;
-	line-height: 50px;
+	/* line-height: 50px; */
 }
 .language_selection li a
 {
