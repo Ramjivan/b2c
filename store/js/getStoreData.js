@@ -1,5 +1,5 @@
-$(window).on("load",function(){
-	
+function initStoreFromServer(){
+
 	/*$arr = window.location.toString().split('/');
 	
 	if($arr.length > 0)
@@ -68,8 +68,9 @@ $(window).on("load",function(){
 				sobj = obj.store.socialLinks;
 				
 				for (var key in sobj) {
-					$('.socialLinksR').append('<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>');
-					console.log('<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>');
+					var str = '<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
+					$('.socialLinksR').append(str);		
+					console.log("dsg");			
 				}
 				
 
@@ -79,4 +80,4 @@ $(window).on("load",function(){
 			/*
 		}     
 	});*/
-});
+}

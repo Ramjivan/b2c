@@ -93,10 +93,10 @@ function upload_image($index)
 														);
 					
 					$return_values['store']['socialLinks'] = array(
-						'fb' => $return['st_fb_lnk'],
+						'facebook' => $return['st_fb_lnk'],
 						'youtube' => $return['st_yt_lnk'],
-						'whatsappBusiness' => $return['st_wpb_lnk'],
-						'insta' => $return['st_in_lnk'],
+						'whatsapp' => $return['st_wpb_lnk'],
+						'instagram' => $return['st_in_lnk'],
 						'twitter' => $return['st_tw_lnk'],
 						'google' => $return['st_go_lnk'],
 					);									
