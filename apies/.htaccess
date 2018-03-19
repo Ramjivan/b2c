@@ -95,7 +95,8 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 	#merhcant
 	RewriteRule ^store/merchant/index$ store.php?qtype=4 [QSA] #get store details for merchant
 	RewriteRule ^store/merchant/av/([0-9]*)$ store.php?qtype=1&name=$1 [QSA] #check name availablity
-	RewriteRule ^store/merchant/create$ store.php?qtype=2 [QSA] #check name availablity
+	RewriteRule ^store/merchant/create$ store.php?qtype=2 [QSA] #create store
+	RewriteRule ^store/merchant/edit$ store.php?qtype=3 [QSA] #edit store details
 	#merchant
 
 	RewriteRule ^store/get/([a-zA-Z]+)$ store.php?qtype=1&name=$1 [QSA]

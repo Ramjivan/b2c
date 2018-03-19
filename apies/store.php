@@ -269,7 +269,7 @@ function upload_image($index)
 			{
 				
 				
-				$SQL = "SELECT * FROM `store` where `merchant_id` = ? LIMIT 1";
+				$SQL = "SELECT * FROM `store` INNER JOIN `addresses` ON `store`.`st_address_id` = `addresses`.`address_id` where `merchant_id` = ? LIMIT 1";
 				$stmt = $conn->prepare($SQL);
 				$stmt->execute(array($user['merchant_id']));
 				
@@ -277,6 +277,9 @@ function upload_image($index)
 				{
 					$return_values['result'] = 1;
 					$return_values['store'] = $stmt->fetch();
+
+					
+
 			
 				}
 				else
@@ -469,6 +472,139 @@ function upload_image($index)
 				$return_values['ERROR']= $e->getMessage();
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));				
 			}
+		}
+		else if($_GET['qtype'] == 3)
+		{
+			//including session validate because this section is related to merchant dashboard
+			
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+
+			//and $user data is needed here for retrieval of store
+
+			$return_values = array();
+			
+			$indexes = array(
+				"st_name",
+				"st_fb_lnk",
+				"st_tw_lnk",
+				"st_in_lnk",
+				"st_wpb_lnk",
+				"st_go_lnk",
+				"st_yt_lnk",
+				"st_phone",
+				"st_email",
+				"st_theme_id"		
+			);//for store table
+
+
+			$address_arr = array(
+				'adt_fullname',
+				'adt_mob',
+				'adt_pincode',
+				'adt_addressline1',
+				'adt_addressline2',
+				'adt_landmark',
+				'adt_city',
+				'adt_state',
+				'adt_type'
+			);//for address
+
+			$i = 0;
+			$SQL = 'UPDATE `store` SET ';
+			//store update operation 
+			foreach($indexes as $index)
+			{	
+				if(isset($_POST[$index]))
+				{
+					if($i > 0)
+					{
+						$SQL .= ',';
+					}
+					$SQL .= "`".$index."`"."='".trim($_POST[$index])."'"; 
+					$i=1;
+				}
+			}
+			
+			$SQL .= " WHERE `merchant_id` ='".$user['merchant_id']."'";
+			
+			if($i > 0)
+			{
+				try
+				{
+					$conn->beginTransaction();
+					$stmt = $conn->prepare($SQL);
+					$response = $stmt->execute();
+					if($response)
+					{
+						$conn->commit();
+						$return_values['success'] = 1;
+					}
+				}
+				catch(PDOException $e)
+				{
+					$conn->rollBack();
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+			}
+			else
+			{
+				$return_values['ERROR'] = "No Data to Update.";
+				$return_values['sql1'] = $SQL;
+			}
+			//store update operation
+			
+			//address update operation
+			$SQL = 'UPDATE `addresses` SET ';
+			$i=0;
+			foreach($address_arr as $index)
+			{
+				if(isset($_POST[$index]))
+				{
+					if($i > 0)
+					{
+						$SQL .= ',';
+					}
+					$SQL .= "`".$index."`"."='".trim($_POST[$index])."'"; 
+					$i=1;
+				}
+			}
+			
+			$SQL .= " WHERE `customer_id` ='".$user['customer_id']."'";
+			
+			if($i > 0)
+			{
+				try
+				{
+					$conn->beginTransaction();
+					$stmt = $conn->prepare($SQL);
+					$response = $stmt->execute();
+					if($response)
+					{
+						$conn->commit();
+						$return_values['success'] = 1;
+					}
+				}
+				catch(PDOException $e)
+				{
+					$conn->rollBack();
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+			}
+			else
+			{
+				$return_values['ERROR'] = "No Data to Update.";
+				$return_values['sql2'] = $SQL;
+			}
+
+			
+			//address update operation
+
+			
+			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+				
 		}
 	}
 ?>
