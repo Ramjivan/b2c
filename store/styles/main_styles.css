@@ -375,10 +375,9 @@ section
 	display: inline-block;
 	position: relative;
 	min-width: 50px;
-	border-right: solid 1px #33333b;	
 	padding-left: 20px;
 	text-align: center;
-	vertical-align: middle;
+	
 	background: transparent;
 }
 .language > a
