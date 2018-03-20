@@ -356,4 +356,5 @@ jQuery(document).ready(function($)
 			}, 1400);
 		});
 	}
+	$("#footer").load("footer.html");
 });
