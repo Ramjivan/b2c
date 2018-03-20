@@ -439,7 +439,15 @@ jQuery(document).ready(function($)
 	}
 
 		$("#footer").load("footer.html",function(){
-			initStoreFromServer();
+			
+			var callback = function(store){
+				getNewArrivals(store);
+				initFixProductBorder();
+			};
+
+			initStoreFromServer(callback);
+			
+				
 		});
 	});
 });
