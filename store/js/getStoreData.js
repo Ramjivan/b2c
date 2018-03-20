@@ -16,7 +16,7 @@ function initStoreFromServer(){
 	url: url,
 	dataType : 'JSON',
 		success:function(data){
-				*/
+				*/	
 				var  x= {
 					"result":1,
 					"store":{
@@ -70,7 +70,6 @@ function initStoreFromServer(){
 				for (var key in sobj) {
 					var str = '<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
 					$('.socialLinksR').append(str);		
-					console.log("dsg");			
 				}
 				
 
@@ -81,3 +80,43 @@ function initStoreFromServer(){
 		}     
 	});*/
 }
+
+
+
+function decodeURI(){
+	var serializedArray = [];
+	var suburl = document.location.toString().split('?');
+	var params = [];
+
+
+	if(suburl.length > 1)
+	{
+		params = suburl[1].split('&');
+
+		if(params.length > 0)
+		{
+			params.forEach(function(item,i){
+				var meta = item.split('=');
+				serializedArray[meta[0]] = meta[1];	
+			});
+
+			if(!serializedArray)
+			{
+				return null;
+			}
+		}
+		else
+		{
+			return null;
+		}
+
+	}
+	else
+	{
+		return null;
+	}
+
+	return serializedArray;
+}
+
+console.log(decodeURI());
