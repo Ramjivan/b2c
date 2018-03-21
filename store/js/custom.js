@@ -440,5 +440,8 @@ jQuery(document).ready(function($)
 
 	$("#footer").load("footer.html");
 
+	$('.lgin').attr('href',"/login.php?redir="+document.location.toString());
+	$('.sgin').attr('href',"/signup.php?redir="+document.location.toString());
+
 });
 });
