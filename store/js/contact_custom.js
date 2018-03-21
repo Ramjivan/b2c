@@ -12,6 +12,7 @@
 
 jQuery(document).ready(function($)
 {
+	$("#header").load("header.html",function(){
 	"use strict";
 
 	/* 
@@ -356,5 +357,11 @@ jQuery(document).ready(function($)
 			}, 1400);
 		});
 	}
-	$("#footer").load("footer.html");
+
+
+	$("#footer").load("footer.html",function(){
+		initStoreFromServer();
+	});
+		
+	});
 });

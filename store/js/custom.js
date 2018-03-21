@@ -438,10 +438,16 @@ jQuery(document).ready(function($)
     	}
 	}
 
-	$("#footer").load("footer.html");
+		$("#footer").load("footer.html",function(){
+			
+			var callback = function(store){
+				getNewArrivals(store);
+				initFixProductBorder();
+			};
 
-	$('.lgin').attr('href',"/login.php?redir="+document.location.toString());
-	$('.sgin').attr('href',"/signup.php?redir="+document.location.toString());
-
-});
+			initStoreFromServer(callback);
+			
+				
+		});
+	});
 });

@@ -78,7 +78,7 @@ function upload_image($index)
 					$return_values['store']['id'] = $return['st_id'];
 					$return_values['store']['name'] = $return['st_name'];
 					$return_values['store']['logo'] = $return['st_logo'];
-					$return_values['store']['merhcant_id'] = $return['merchant_id'];
+					$return_values['store']['merchant_id'] = $return['merchant_id'];
 					$return_values['store']['contact'] = array('phone'=>$return['st_phone'],'email'=>$return['st_email']);
 
 					$return_values['store']['address'] = array(
@@ -93,10 +93,10 @@ function upload_image($index)
 														);
 					
 					$return_values['store']['socialLinks'] = array(
-						'fb' => $return['st_fb_lnk'],
+						'facebook' => $return['st_fb_lnk'],
 						'youtube' => $return['st_yt_lnk'],
-						'whatsappBusiness' => $return['st_wpb_lnk'],
-						'insta' => $return['st_in_lnk'],
+						'whatsapp' => $return['st_wpb_lnk'],
+						'instagram' => $return['st_in_lnk'],
 						'twitter' => $return['st_tw_lnk'],
 						'google' => $return['st_go_lnk'],
 					);									
