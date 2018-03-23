@@ -16,7 +16,7 @@ function initStoreFromServer(callback){
 	}
 	else
 	{
-		window.location= "index.php";
+		window.location= "/index.php";
 	}
 	$.ajax({
 		type: "GET",
@@ -57,17 +57,13 @@ function initStoreFromServer(callback){
 				for (var key in sobj) {
 					var str = '<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
 					$('.socialLinksR').append(str);		
-<<<<<<< HEAD
-					console.log("dsg");			
-=======
->>>>>>> a933f7dd1da827bb716886856cfacd309139f288
 				}
 				//social Links
 
 				//categories
 				var catLiAppend = "";
 				obj.categories.forEach(function(item,i){
-					catLiAppend = '<li><a href="store?name='+obj.store.name+'&catid='+item.category_id+'">'+item.cat_name+'</a></li>';
+					catLiAppend = '<li><a href="/store?name='+obj.store.name+'&catid='+item.category_id+'">'+item.cat_name+'</a></li>';
 					$('#lg-cat-drpdowns').append(catLiAppend);
 					$('#md-str-catholder').append(catLiAppend);
 				});
@@ -96,7 +92,7 @@ function getNewArrivals(store)
 			{
 				obj.products.forEach(function(item){	
 					var images = item['images'];
-					$('#arrival-prdct-grid').append('<div class="product-item col-md-4">\
+					$('#arrival-prdct-grid').append('<div class="product-item col-md-3">\
 														<div class="product discount product_filter">\
 															<div class="product_image center-block">\
 																<img src="/apies/'+images.img_dir+images.img_name+'" alt="">\

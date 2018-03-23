@@ -368,8 +368,6 @@ jQuery(document).ready(function($)
     	{
     		$('.grid_sorting_button').click(function()
 	    	{
-
-
 		        $('.grid_sorting_button.active').removeClass('active');
 		        $(this).addClass('active');
 		 
