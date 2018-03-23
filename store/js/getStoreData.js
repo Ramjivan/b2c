@@ -194,21 +194,109 @@ function getProduct(pid,merchant_id)
 				{
 					if(i <= average_rating)
 					{
-						$('.star_rating').append('<li><i class="fa fa-star" aria-hidden="true"></i></li>');
+						$('#p_star_rating').append('<li><i class="fa fa-star" aria-hidden="true"></i></li>');
 					}
 					else
 					{
-						$('.star_rating').append('<li><i class="fa fa-star-o" aria-hidden="true"></i></li>');
+						$('#p_star_rating').append('<li><i class="fa fa-star-o" aria-hidden="true"></i></li>');
 					}
 				}
 				//rating
 
-				
+				//highlights
+				json.product.highlights.forEach(function(item){
+					$('.highlights_container').append('<li><span class="hlgt">'+item.pht_field_value+'</span></li>');
+				});
+				//highlights
 
+				//specification
+				json.product.specification.forEach(function(item){
+					$('.additional_info_col').append('<p>'+item.spc_field_name+':<span>'+item.spc_field_value+'</span></p>');
+				});
+				//specification
+
+
+				//reviews
+				json.product.review.forEach(function(item){
+					var x = function(){
+						if(item.customer_image !== undefined)
+						{
+							return "/apies/"+item.customer_image.img_dir+item.customer_image.img_name;
+						}
+						else
+						{
+							return "/default-user.png";
+						}
+					};
+					var user_leg = '<div class="user_review_container d-flex flex-column flex-sm-row">\
+						<div class="user">\
+							<div class="user_pic"><img width="100%" style="width: 100%;height:100%;border-radius: 50%;" src="'+(x())+'" /></div>';
+							
+						var rating_leg = '<div class="user_rating"><ul class="star_rating">';
+
+						
+						for(var i=1 ; i<=5 ; i++)
+						{
+							if(i <= item.rew_rating)
+							{
+								rating_leg+='<li><i class="fa fa-star" aria-hidden="true"></i></li>';
+							}
+							else
+							{
+								rating_leg+='<li><i class="fa fa-star-o" aria-hidden="true"></i></li>';
+							}
+						}	
+						rating_leg+='</ul></div></div>';
+
+						var review_leg = '<div class="review">\
+							<div class="review_date">'+item.rew_datetime+'</div>\
+							<div class="user_name">'+item.c_fullname+'</div>\
+							<p>'+item.rew_text+'</p>\
+						</div>\
+					</div>';
+
+					 $('.reviews_col').append(user_leg+rating_leg+review_leg);
+				});
+				//reviews
+
+				//product-images
+				json.product.images.forEach(function(item,i){
+					if(i==0)
+					{
+						$('.images-gridR').append('<li class="active"><img src="/apies/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
+						$('.single_product_image_background').attr("style","background-image:url('/apies/"+item.img_dir+item.img_name+"');");
+					}
+					else
+					{
+						$('.images-gridR').append('<li><img src="/apies/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
+					}
+				});
+				//reinit thumbnails
+				if($('.single_product_thumbnails ul li').length)
+				{
+					var thumbs = $('.single_product_thumbnails ul li');
+					var singleImage = $('.single_product_image_background');
+
+					thumbs.each(function()
+					{
+						var item = $(this);
+						item.on('click', function()
+						{
+							thumbs.removeClass('active');
+							item.addClass('active');
+							var img = item.find('img').data('image');
+							singleImage.css('background-image', 'url(' + img + ')');
+						});
+					});
+				}
+
+
+				//renint thumbnails
+				//product-images
 			}
 			else
 			{
-				//document.location = "/index.php";
+				document.location = "/index.php";
 			}
 		}
 	});

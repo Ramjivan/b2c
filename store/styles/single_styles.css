@@ -924,13 +924,21 @@ section
 {
 	height: 527px;
 }
+
 .single_product_thumbnails ul li
 {
 	position: relative;
-	height: 136px;
+	height: 90px;
+	width:90px;
 	margin-bottom: 30px;
 	cursor: pointer;
+	
 }
+.single_product_thumbnails ul li img
+{
+	height: 100%;
+}
+
 .single_product_thumbnails ul li::after
 {
 	display: block;
@@ -1592,4 +1600,14 @@ section
 .footer_social ul li a:hover
 {
 	color: #fe4c50;
+}
+
+
+ul.highlights_container li{
+	padding:4px;
+	list-style-type: disc;
+}
+
+ul.highlights_container li span.hlgt{
+	font-weight: 700;
 }

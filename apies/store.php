@@ -362,7 +362,7 @@ function upload_image($index)
 								$stmt->execute(array($rviw['ppImg_id']));
 								if($stmt->rowCount() > 0)
 								{
-									$return_values['product']['review'][($i-1)]['cusotmer_image'] = $stmt->fetch();
+									$return_values['product']['review'][($i-1)]['customer_image'] = $stmt->fetch();
 								}
 							}
 							$return_values['product']['rating_count'] = $i;
