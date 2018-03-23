@@ -18,7 +18,6 @@ function initStoreFromServer(callback){
 	{
 		window.location= "index.php";
 	}
-
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -58,6 +57,10 @@ function initStoreFromServer(callback){
 				for (var key in sobj) {
 					var str = '<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
 					$('.socialLinksR').append(str);		
+<<<<<<< HEAD
+					console.log("dsg");			
+=======
+>>>>>>> a933f7dd1da827bb716886856cfacd309139f288
 				}
 				//social Links
 
