@@ -298,29 +298,76 @@ function upload_image($index)
 			try
 			{
 				$SQL = "SELECT * FROM `products` where `product_id`=? AND `merchant_id`=?";
+				$i=0;
 				$stmt = $conn->prepare($SQL);
 				$stmt->execute(array($_GET['pid'],$_GET['merid']));
 				if($stmt->rowCount() > 0)
 				{
 					$return_values['product'] = $stmt->fetch();
 					
+					//images
 					$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
 					$stmt->execute(array($return_values['product']['img_list_id'])); 
 					
+					//specification
 					$spec = $conn->prepare('select `spc_field_name`,`spc_field_value` from `p_spec` where `product_id`=?');
 					$spec->execute(array($_GET['pid']));
 					
 					$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
 					$hlgt->execute(array($_GET['pid']));
-						
-					if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $hlgt->rowCount() > 0)
+					
+					//review
+
+					$review = $conn->prepare('select `p_review`.*,`customers`.`c_fullname`,`customers`.`ppImg_id` from `customers` INNER JOIN `p_review` ON `customers`.`customer_id` = `p_review`.`customer_id` where `p_review`.`product_id`=?');
+					$review->execute(array($_GET['pid']));
+					
+
+					if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $hlgt->rowCount() > 0 && $review !== null)
 					{
+
 						$return_values['product']['images'] = $stmt->fetchAll();
 						
 						$return_values['product']['specification'] = $spec->fetchAll();
 
 						$return_values['product']['highlights'] = $hlgt->fetchAll();
 						
+						$return_values['product']['review'] = $review->fetchAll();
+
+						$return_values['product']['rating_sum'] = 0;
+						$return_values['product']['one_star_rating'] = 0;
+						$return_values['product']['two_star_rating'] = 0;
+						$return_values['product']['three_star_rating'] = 0;
+						$return_values['product']['four_star_rating'] = 0;
+						$return_values['product']['five_star_rating'] = 0;
+						
+						$stmt = $conn->prepare("select * from `images` where `img_id`=? && `isDeleted` = '0'");
+				
+						foreach($return_values['product']['review'] as $rviw)
+						{
+							$i++;
+							$return_values['product']['rating_sum'] += $rviw['rew_rating'];
+							if($rviw['rew_rating'] == 1)
+								$return_values['product']['one_star_rating']++;
+							if($rviw['rew_rating'] == 2)
+								$return_values['product']['two_star_rating']++;
+							if($rviw['rew_rating'] == 3)
+								$return_values['product']['three_star_rating']++;
+							if($rviw['rew_rating'] == 4)
+								$return_values['product']['four_star_rating']++;
+							if($rviw['rew_rating'] == 5)
+								$return_values['product']['five_star_rating']++;
+							
+							if($rviw['ppImg_id'] !== null)
+							{
+								$stmt->execute(array($rviw['ppImg_id']));
+								if($stmt->rowCount() > 0)
+								{
+									$return_values['product']['review'][($i-1)]['cusotmer_image'] = $stmt->fetch();
+								}
+							}
+							$return_values['product']['rating_count'] = $i;
+						}
+
 						$return_values['result'] = 1;
 					}
 				}

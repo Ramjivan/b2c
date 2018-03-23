@@ -176,7 +176,40 @@ function getProduct(pid,merchant_id)
 		dataType : 'JSON',
 		success:function(Response)
 		{
-			console.log(Response);
+			var json = JSON.parse(JSON.stringify(Response));
+			if(json.result == 1)
+			{
+				//name,descriiption
+				$('.productNameR').text(json.product.p_name);
+				$('.descriptionR').text(json.product.p_description);
+				//name,descriiption
+
+				//price
+				$('.product_price').html('<span class="fa fa-1x fa-inr"></span>'+parseFloat(json.product.p_price));
+				//price
+				
+				//rating
+				var average_rating = parseInt(json.product.rating_sum) / parseInt(json.product.rating_count);
+				for(var i = 1 ; i <= 5 ; i++)
+				{
+					if(i <= average_rating)
+					{
+						$('.star_rating').append('<li><i class="fa fa-star" aria-hidden="true"></i></li>');
+					}
+					else
+					{
+						$('.star_rating').append('<li><i class="fa fa-star-o" aria-hidden="true"></i></li>');
+					}
+				}
+				//rating
+
+				
+
+			}
+			else
+			{
+				//document.location = "/index.php";
+			}
 		}
 	});
 }
