@@ -368,11 +368,7 @@ jQuery(document).ready(function($)
     	{
     		$('.grid_sorting_button').click(function()
 	    	{
-	    		// putting border fix inside of setTimeout because of the transition duration
-	    		setTimeout(function()
-		        {
-		        	initFixProductBorder();
-		        },500);
+
 
 		        $('.grid_sorting_button.active').removeClass('active');
 		        $(this).addClass('active');
@@ -442,7 +438,6 @@ jQuery(document).ready(function($)
 			
 			var callback = function(store){
 				getNewArrivals(store);
-				initFixProductBorder();
 			};
 
 			initStoreFromServer(callback);

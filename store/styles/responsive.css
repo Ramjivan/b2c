@@ -322,7 +322,7 @@
 	.product-item
 	{
 		width: 33.333333333333%;
-		height: 345px;
+		height: auto;
 	}
 	.product
 	{
@@ -375,7 +375,7 @@
 	.product-item
 	{
 		width: 50%;
-		height: 420px;
+		height: auto;
 	}
 	.product
 	{
