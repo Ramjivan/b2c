@@ -9,7 +9,7 @@ window.onload = function(){
 	{
 		xhr_call(
 			'GET',
-			'/b2c/apies/order/'+id,
+			'/apies/order/'+id,
 			null,
 			function(xhttp){
 				

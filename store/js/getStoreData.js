@@ -16,8 +16,10 @@ function initStoreFromServer(callback){
 	}
 	else
 	{
-		window.location= "/index.php";
+		//window.location= "/index.php";
 	}
+
+
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -72,7 +74,7 @@ function initStoreFromServer(callback){
 			}
 			else
 			{
-				window.location = "index.php";
+				//window.location = "index.php";
 			}
 		}     
 	});
@@ -92,7 +94,7 @@ function getNewArrivals(store)
 			{
 				obj.products.forEach(function(item){	
 					var images = item['images'];
-					$('#arrival-prdct-grid').append('<div class="product-item col-md-3">\
+					$('#arrival-prdct-grid').append('<div class="product-item col-md-3 clearfix">\
 														<div class="product discount product_filter">\
 															<div class="product_image center-block">\
 																<img src="/apies/'+images.img_dir+images.img_name+'" alt="">\
@@ -118,16 +120,64 @@ function getNewArrivals(store)
 }
 
 
+function getCategory(store,catid,page){	
+	var url = "/apies/store/"+store['merchant_id']+'/'+catid+'/page/'+page;
+	$.ajax({
+		type: "GET",
+		url:url,
+		dataType : 'JSON',
+		success:function(Response)
+		{
+
+			obj = JSON.parse(JSON.stringify(Response));
+
+			if(obj.result)
+			{
+				var productObj = obj.products;
+				
+				productObj.forEach(function(item){
+					app = '<div class="product-item">\
+											<div class="product product_filter">\
+												<div class="product_image">\
+													<img src="/apies/'+item.images.img_dir+item.images.img_name+'" alt="">\
+												</div>\
+												<div class="product_info">\
+													<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'">'+item.p_name+'</a></h6>\
+													<div class="product_price"><span class="fa fa-1x fa-inr"></span>'+item.p_price+'</div>\
+												</div>\
+											</div>\
+											<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>\
+										</div>';
+				
+				});
+
+				$('#prdc-grid').append(app);
+				
+
+				$('.page_total').html("<span>of</span>"+obj.TotalPages);
+
+				for(var i=1 ; i <= obj.TotalPages ; i++)
+				{
+					$('.page_selection').append('<li><a href="#">'+i+'</a></li>');
+				}
+
+			}
+		}
+	});
+
+}
+
+
 
 function decodeURI(){
 	var serializedArray = [];
-	var suburl = document.location.toString().split('?');
+	var suburl = document.location.toString().split('/');
 	var params = [];
 
 
 	if(suburl.length > 1)
 	{
-		params = suburl[1].split('&');
+		params = suburl[suburl.length-1].split('&');
 
 		if(params.length > 0)
 		{

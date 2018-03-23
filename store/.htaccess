@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^name=([a-z]*)$ home.html [QSA]
+RewriteRule ^name=([a-z]*)&catid=([0-9]+)$ categories.html?name=$1&catid=$2 [QSA]

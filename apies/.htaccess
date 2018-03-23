@@ -107,5 +107,5 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 
 #customer related
 RewriteRule ^customer/add$ reg.php [QSA]
-RewriteRule ^customer$ reg.php [L]
+RewriteRule ^customer$ reg.php [QSA] [L]
 #customer related

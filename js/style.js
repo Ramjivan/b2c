@@ -291,7 +291,7 @@ function buttonUp(){
 
 
 $(document).ready(function(){
-	plusSlides(slideIndex,"mySlides");
+	//plusSlides(slideIndex,"mySlides");
 	var submitIcon = $('.sb-icon-search');
 	var submitInput = $('.sb-search-input');
 	var searchBox = $('.sb-search');

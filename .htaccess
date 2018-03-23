@@ -7,7 +7,3 @@ RewriteRule ^customer/address$ address.php [QSA]
 RewriteRule ^customer/address/add$ add_address.php [QSA]
 RewriteRule ^customer/orders$ orders.php [QSA]
 RewriteRule ^order/([\w]*)$ orderSummary.php [QSA]
-
-#store
-RewriteRule ^store/?name=([a-z]+)$ /store/home.html?name=$1 [QSA]
-RewriteRule ^store/?name=([a-z]+)&catid=([0-9]+)$ /store/categories.html?name=$1&catid=$2 [QSA] [L]

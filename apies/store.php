@@ -276,11 +276,7 @@ function upload_image($index)
 				if($stmt->rowCount() > 0)
 				{
 					$return_values['result'] = 1;
-					$return_values['store'] = $stmt->fetch();
-
-					
-
-			
+					$return_values['store'] = $stmt->fetch();	
 				}
 				else
 				{

@@ -19,6 +19,7 @@
 
 jQuery(document).ready(function($)
 {
+	var callback;
 	$("#header").load("header.html",function(){
 	"use strict";
 
@@ -452,7 +453,16 @@ jQuery(document).ready(function($)
 	}
 	
 	$("#footer").load("footer.html",function(){
-		initStoreFromServer();
+		callback = function(store){
+			
+			var storeName = decodeURI();
+	
+			if(storeName !== null)
+			{
+				getCategory(store,parseInt(storeName['catid']),1);
+			}
+		};
+		initStoreFromServer(callback);
 	});
 });
 });
