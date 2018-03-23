@@ -292,6 +292,49 @@ function upload_image($index)
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
 			}
 		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '5')
+		{
+			$return_values = array(); 
+			try
+			{
+				$SQL = "SELECT * FROM `products` where `product_id`=? AND `merchant_id`=?";
+				$stmt = $conn->prepare($SQL);
+				$stmt->execute(array($_GET['pid'],$_GET['merid']));
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['product'] = $stmt->fetch();
+					
+					$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=?');
+					$stmt->execute(array($return_values['product']['img_list_id'])); 
+					
+					$spec = $conn->prepare('select `spc_field_name`,`spc_field_value` from `p_spec` where `product_id`=?');
+					$spec->execute(array($_GET['pid']));
+					
+					$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
+					$hlgt->execute(array($_GET['pid']));
+						
+					if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $hlgt->rowCount() > 0)
+					{
+						$return_values['product']['images'] = $stmt->fetchAll();
+						
+						$return_values['product']['specification'] = $spec->fetchAll();
+
+						$return_values['product']['highlights'] = $hlgt->fetchAll();
+						
+						$return_values['result'] = 1;
+					}
+				}
+				else
+				{
+					$return_values['result'] = 0;				}
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
+			}
+		}
 		
 		
 	}

@@ -320,7 +320,16 @@ jQuery(document).ready(function($)
 	}
 	
 	$("#footer").load("footer.html",function(){
-		initStoreFromServer();
+		var callback = function(store){
+			var storeName = decodeURI();
+	
+			if(storeName !== null)
+			{
+				getProduct(storeName['pid'],store.merchant_id);
+			}
+		};
+		
+		initStoreFromServer(callback);
 	});
 });
 });

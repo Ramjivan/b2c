@@ -102,6 +102,7 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 	RewriteRule ^store/get/([a-zA-Z]+)$ store.php?qtype=1&name=$1 [QSA]
 	RewriteRule ^store/product/([\w]+)/recent$ store.php?qtype=2&mer_id=$1 [QSA]
 	RewriteRule ^store/([\w]+)/([0-9]+)/page/([0-9]+)$ store.php?qtype=3&mer_id=$1&cat=$2&page=$3 [QSA]
+	RewriteRule ^store/product/([\w]+)/([\w]+)$ store.php?qtype=5&pid=$1&merid=$2
 
 #store
 

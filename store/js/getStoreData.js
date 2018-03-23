@@ -167,9 +167,22 @@ function getCategory(store,catid,page){
 
 }
 
+function getProduct(pid,merchant_id)
+{
+	var url = '/apies/store/product/'+pid+'/'+merchant_id;
+	$.ajax({
+		type: "GET",
+		url:url,
+		dataType : 'JSON',
+		success:function(Response)
+		{
+			console.log(Response);
+		}
+	});
+}
 
-
-function decodeURI(){
+function decodeURI()
+{
 	var serializedArray = [];
 	var suburl = document.location.toString().split('/');
 	var params = [];
