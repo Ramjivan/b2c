@@ -55,11 +55,17 @@ function initStoreFromServer(callback){
 
 				//social Links
 				sobj = obj.store.socialLinks;
-				
+				var str = '';
 				for (var key in sobj) {
-					var str = '<li><a href="'+sobj[key]+'"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
-					$('.socialLinksR').append(str);		
+
+					if(sobj[key]){
+
+						str += '<li><a href="'+sobj[key]+'" target="_blank"><i class="fa fa-'+key+'" aria-hidden="true"></i></a></li>';
+
+					}
 				}
+
+				$('.socialLinksR').append(str);		
 				//social Links
 
 				//categories
@@ -100,9 +106,9 @@ function getNewArrivals(store)
 																<img src="/apies/'+images.img_dir+images.img_name+'" alt="">\
 															</div>\
 															<div class="favorite favorite_left"></div>\
-															<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>\
+															<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"></div>\
 															<div class="product_info">\
-																<h6 class="product_name"><a href="store?name='+store.name+'&pid='+item.product_id+'">'+item.p_name+'</a></h6>\
+																<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'">'+item.p_name+'</a></h6>\
 																<div class="product_price"><i class="fa fa-1x fa-inr"></i>'+item.p_price+'</div>\
 															</div>\
 														</div>\

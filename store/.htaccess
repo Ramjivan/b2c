@@ -2,3 +2,5 @@ RewriteEngine On
 RewriteRule ^name=([a-z]*)$ home.html [QSA]
 RewriteRule ^name=([a-z]*)&catid=([0-9]+)$ categories.html?name=$1&catid=$2 [QSA]
 RewriteRule ^name=([a-z]*)&pid=([\w]+)$ single.html?name=$1&catid=$2 [QSA] [L]
+
+RewriteRule ^name=([a-z]*)&section=contact$ contact.html?name=$1 [QSA] [L]
