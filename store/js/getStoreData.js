@@ -313,10 +313,13 @@ function decodeURI()
 	{
 		params = suburl[suburl.length-1].split('&');
 
+
 		if(params.length > 0)
 		{
 			params.forEach(function(item,i){
 				var meta = item.split('=');
+				meta[0] = meta[0].replace('?','');
+				meta[1] = meta[1].replace('?','');
 				serializedArray[meta[0]] = meta[1];	
 			});
 
