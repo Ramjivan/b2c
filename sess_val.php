@@ -19,7 +19,7 @@ function prevent_hijacking(){
 	
 	if(!prevent_hijacking() && !isset($_SESSION['user']))
 	{
-		Header('Location: /login.php?redirurl='.$_SERVER['REQUEST_URI']);
+		Header('Location: /login.php?redirurl=http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 	}
 
 

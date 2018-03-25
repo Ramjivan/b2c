@@ -983,7 +983,6 @@ window.onload = function(){
 								tar.appendChild(option);
 							}
 							tar.onchange=function(){nescat(1,'parent_id')};
-							tar.onchange();
 						}
 					}
 				}

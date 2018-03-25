@@ -21,6 +21,8 @@
 					<div class="dropdown-content" id="32tfg05">
 					</div>
 				</div>
+				<div class="nav-item"><a href="/logout.php"><span class="fa fa-1x fa-power-off"></span>Logout</a></div>	
+
 				
 			</nav>
 		</div>
@@ -54,11 +56,10 @@
 				</div>
                 
 			</nav>
-			<nav class="navbar float-right">
-				
-			<div class="nav-item"><a href="dashboard.php"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
+			<nav class="navbar float-right">	
+				<div class="nav-item"><a href="dashboard.php"><span class="fa fa-1dot5x fa-user-circle"></span>&nbsp;</a></div>
 				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>
-				
+				<div class="nav-item lgout"><a href="/logout.php"><span class="fa fa-1x fa-power-off"></span>Logout</a></div>	
 			</nav>
 			<!--for mobile-->
 			<div id="sb-search" class="sb-search navbar float-right" >

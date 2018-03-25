@@ -994,6 +994,11 @@ ul.imglst{
 	list-style:none;
 }
 
+ul.imglst li{
+	float:left;
+	paddding:2px;
+}
+
 ul.imglst li img{
 	width:60px;
 	height:60px;

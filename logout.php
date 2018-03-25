@@ -7,4 +7,6 @@
 	unset($_SESSION['prevent_hijacking']);
 	
 	session_destroy();
+
+	Header('Location:/index.php');
 ?>

@@ -1,17 +1,34 @@
 window.onload = function(){
+	function decodeURI()
+	{
+		var serializedArray = [];
+		var params = [];
 	
-	try {
+			params = document.location.toString().split('?');
 	
-		var arr = document.location.toString().match(/redir=(http:\/\/)([\w+]*)/g);
 	
-		arr = arr[0].split('=');
-		
-		document.forms['g-signin']['redirurl'].value = arr[arr.length-1]; 	
-			
-	} catch (error) {
-		arr = undefined;
-	}
+			if(params.length > 0)
+			{
+				params.forEach(function(item,i){
+					var meta = item.split('=');
+					serializedArray[meta[0]] = meta[1];	
+				});
 	
+				if(!serializedArray)
+				{
+					return null;
+				}
+			}
+			else
+			{
+				return null;
+			}
+
+	
+		return serializedArray;
+	}	
+	
+		var url = decodeURI();
 	
 	
 	lgn.onclick = function(){
@@ -26,9 +43,9 @@ window.onload = function(){
 				'apies/session',
 				formData,
 				function(xhttp){
-					if(arr !== undefined)
+					if(url !== undefined)
 					{
-						document.location = arr[arr.length-1];
+						document.location = url['redirurl'];
 					}
 					else
 					{

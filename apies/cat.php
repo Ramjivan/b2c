@@ -1,8 +1,6 @@
 <?php
 session_start();
 include('pdo.php');
-include('sessionvalidate.php');
-$user = $_SESSION['user'];
 function is_set_strict(&$var,$index,&$ERROR_FLAG)
 {
 		
@@ -72,6 +70,8 @@ function upload_image($index)
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
+		$user = $_SESSION['user'];
+
 		if(isset($_GET['qtype']) && $_GET['qtype'] == "1" && $user !== null && $user['merchant_id'] !== null)
 		{
 			try
@@ -224,6 +224,7 @@ function upload_image($index)
 		{			
 			//get category of merchant
 			$return_values = array();
+			$user = $_SESSION['user'];
 			
 			try
 			{

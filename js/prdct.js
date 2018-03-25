@@ -247,16 +247,24 @@ window.onload = function(){
 							var images = json.items[0]['images'];
 							var spec = json.items[0]['specification'];
 							var hlgt = json.items[0]['highlights'];
-							
+							var breadcrumb = json.items[0]['breadcrums'];
+
+
+
 							document.title = product.p_name+' | B2C';
-						
-							var upper = '<ul class="breadcrumb">\
-									<li><a href="#">Electronics</a></li>\
-									<li><a href="#">Mobile</a></li>\
-									<li><a href="#">Mi</a></li>\
-									<li>Mi A1</li>\
-								</ul>\
-								<div>\
+							
+							var upper = '<ul class="breadcrumb">';
+
+
+							breadcrumb.reverse().forEach(function(item,i){
+								upper += '<li><a href="/mcat='+item['catid']+'">'+item['name']+'</a></li>';
+							});
+
+							upper += "<li><span>"+product.p_name+"</span></li>";
+
+							upper += '</ul>';
+
+							upper += '<div>\
 									<h3>Images</h3>\
 									<ul id="pimglst" class="imglst">\
 									</ul>\

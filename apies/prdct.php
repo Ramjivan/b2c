@@ -19,8 +19,6 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 		$ERROR_FLAG = true;
 		echo $index;
 	}
-	
-	
 }
 
 
@@ -54,6 +52,38 @@ function upload_image($index)
 		}
 	}
 	return false;
+}
+
+
+function getBreadcrum($cat_id,$conn)
+{
+
+	$breadcrum = array();
+
+	$stmt = $conn->prepare('select `categorydescription`.`category_id`,`cat_name`,`category`.`parent_id` from `categorydescription` LEFT JOIN `category` ON `categorydescription`.`category_id` = `category`.`category_id` where `categorydescription`.`category_id`=?');
+	$stmt->execute(array($cat_id));
+
+	$row = $stmt->fetch();
+
+	array_push($breadcrum,array('name'=>$row['cat_name'],'catid'=>$row['category_id']));
+
+	while($row['parent_id'] !== '1')
+	{
+		$stmt->execute(array($row['parent_id']));
+		$row = $stmt->fetch();
+		
+		
+		array_push($breadcrum,array('name'=>$row['cat_name'],'catid'=>$row['category_id']));
+		
+		if($row['parent_id'] !== '1')
+		{
+			break;
+		}
+
+	}
+
+
+	return $breadcrum;
 }
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -452,15 +482,18 @@ function upload_image($index)
 					
 					$hlgt = $conn->prepare('select `pht_field_value` from `p_highlight` where `product_id`=?');
 					$hlgt->execute(array($_GET['id']));
-						
+					
+					$breadcrum = getBreadCrum($return_values['items'][0]['product']['p_category'],$conn);
+					
 					if($stmt->rowCount() > 0 && $spec->rowCount() > 0 && $hlgt->rowCount() > 0)
 					{
 						$return_values['items'][0]['images'] = $stmt->fetchAll();
 						
 						$return_values['items'][0]['specification'] = $spec->fetchAll();
 
-						$return_values['items'][0]['highlights'] = $hlgt->fetchAll();
+						$return_values['items'][0]['highlights'] = $hlgt->fetchAll();	
 						
+						$return_values['items'][0]['breadcrums'] = $breadcrum;
 					}
 				}
 				else
