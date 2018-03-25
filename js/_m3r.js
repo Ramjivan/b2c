@@ -50,7 +50,7 @@ window.onload = function(){
 										<td>'+json_response.items[i].p_price+'</td>\
 										<td>'+json_response.items[i].p_stock+'</td>\
 										<td>'+json_response.items[i].p_category+'</td>\
-										<td><a href="/b2c/apies/'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'">'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'</a></td>\
+										<td><a href="/apies/'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'">'+json_response.items[i].images[0].img_dir+json_response.items[i].images[0].img_name+'</a></td>\
 										<td><span id="ed'+json_response.items[i].product_id+'" class="fa fa-pencil"></span></td>\
 									   </tr>';
 							
@@ -88,7 +88,7 @@ window.onload = function(){
 										alert(xhttp.responseText);
 									};
 									btn.addEventListener('click',function(){
-										submit_form('pctefm',edit_formvalidation,'valsum','/b2c/apies/product/edit','POST',success,fail);
+										submit_form('pctefm',edit_formvalidation,'valsum','/apies/product/edit','POST',success,fail);
 									});
 								}
 								
@@ -432,7 +432,7 @@ window.onload = function(){
 					alert(xhttp.responseText);
 				};
 				btn.addEventListener('click',function(){
-					submit_form('pctafm',formvalidation,'vsap','/b2c/apies/product/add','POST',success,fail);
+					submit_form('pctafm',formvalidation,'vsap','/apies/product/add','POST',success,fail);
 				});
 			}
 			//product form action
@@ -526,7 +526,7 @@ window.onload = function(){
 											alert(xhttp.responseText);
 										};
 										btn.addEventListener('click',function(){
-											submit_form('qntefm',qne_vld,'valsum1','/b2c/apies/answer/edit','POST',success,fail);
+											submit_form('qntefm',qne_vld,'valsum1','/apies/answer/edit','POST',success,fail);
 										});
 									}
 									
@@ -577,7 +577,7 @@ window.onload = function(){
 											alert(xhttp.responseText);
 										};
 										btn.addEventListener('click',function(){
-											submit_form('qnatefm',qna_vld,'valsum2','/b2c/apies/answer/add','POST',success,fail);
+											submit_form('qnatefm',qna_vld,'valsum2','/apies/answer/add','POST',success,fail);
 										});
 									}
 									
@@ -717,7 +717,7 @@ window.onload = function(){
 										alert(xhttp.responseText);
 									};
 									btn.addEventListener('click',function(){
-										submit_form('ctefm',cat_edit_formvalidation,'vsedc','/b2c/apies/product/category/edit','POST',success,fail);
+										submit_form('ctefm',cat_edit_formvalidation,'vsedc','/apies/product/category/edit','POST',success,fail);
 									});
 								}
 								
@@ -857,7 +857,7 @@ window.onload = function(){
 					alert(xhttp.responseText);
 				};
 				btn.addEventListener('click',function(){
-					submit_form('ctcfm',add_formvalidation,'vsadc','/b2c/apies/product/category/add','POST',success,fail);
+					submit_form('ctcfm',add_formvalidation,'vsadc','/apies/product/category/add','POST',success,fail);
 				});
 			}
 		function nescat(index,name)
@@ -1208,7 +1208,7 @@ window.onload = function(){
 						json.items.productDetails.forEach(function(item){
 							var app = '<div class="ordItem col-6">\
 									<div class="col-6">\
-										<b><a href="/b2c/product?'+item.product_id+'">'+item.p_name+'</a></b>\
+										<b><a href="/product?'+item.product_id+'">'+item.p_name+'</a></b>\
 									</div>\
 									<div class="col-3">\
 										Qty : <b>'+item.qty+'</b>\
