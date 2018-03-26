@@ -21,9 +21,11 @@
 		
     <div class="main-container">
 		<div class="form-card text-center aS" style="display:none;">
+			
 			<div class="clearfix">
 				<span class="fa fa-4x fa-check-circle"  style="color:#bada55;"></span>
 			</div>
+
 			<div class="clearfix">			
 				<h3>
 					Sucessfully Transfered !
@@ -31,44 +33,50 @@
 			</div>
 		</div>
 		
-        <div class="wallet-container">
-        <div class="ab-box">
-            <p>
-                Available Pay balance <span class="bal" id="sn_2-3b_ral_4w"><span class="fa fa-rupee"></span></span>
-             </p> 
-        </div>     
-        
-        <hr>     
-            <div class="row">
-                <div class="w-box">
-                    <a href="#">
-                        <div class="ico"><span class="fa fa-plus-square"></span></div>Add Money 
-                    </a>
-                </div>
-                <div class="w-box">
-                    <a id="w_sM0" href="#">
-                        <div class="ico"><span class="fa fa-send"></span></div> Send Money  
-                    </a>
-                </div>
-            </div>
+		<div class="wallet-container">
+			<div class="ab-box">
+				<p>
+					Available Pay balance <span class="bal" id="sn_2-3b_ral_4w"><span class="fa fa-rupee"></span></span>
+				</p> 
+			</div>     
+		
+			<hr>     
+			<div class="row">
+				<div class="w-box">
+					<a href="#">
+						<div class="ico"><span class="fa fa-plus-square"></span></div>Add Money 
+					</a>
+				</div>
+				<div class="w-box">
+					<a id="w_sM0" href="#">
+						<div class="ico"><span class="fa fa-send"></span></div> Send Money  
+					</a>
+				</div>
+			</div>
 
-            <div class="row">
-                <div class="w-box">
-                    <a href="#">
-                        <div class="ico"><span class="fa fa-book"></span> </div>View Statments
-                    </a>
-                </div>
+			<!--div class="row">
+				<div class="w-box">
+					<a href="#">
+						<div class="ico"><span class="fa fa-book"></span> </div>View Statments
+					</a>
+				</div>
 
-                <div class="w-box">
-                    <a href="#">
-                        <div class="ico"><span class="fa fa-gear"></span></div>Payment Option
-                    </a>
-                </div>
-            </div>
-                
-            
-            
-        </div>
+				<div class="w-box">
+					<a href="#">
+						<div class="ico"><span class="fa fa-gear"></span></div>Payment Option
+					</a>
+				</div>
+			</div-->
+		</div>
+		<div id="txn_cn" class="tc_log_container center-block clearfix">
+			<div class="tc-card col-3 center">
+				<div class="row">
+					<div class="col-2"><h4>#txn-c6246fbc3c</h4></div>
+					<div class="col-2"><span class="amt"><span class="fa fa-inr"></span>200</span></div>
+					<div class="col-2"><span class="tm"><span class="fa fa-calendar-o"></span>2018/3/6</span></div>
+				</div>
+			</div>
+		</div>
     </div>
         
 	<div class="dialog" id="wdlg1a">		

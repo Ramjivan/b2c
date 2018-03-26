@@ -5,7 +5,6 @@
 ***************************fetches store essential that will modal page************
 ***************************and will put the data to Replace holders****************
 ************************************************************************************/
-var sname = 
 
 function initStoreFromServer(callback){
 

@@ -46,7 +46,7 @@
                     if(!json.items.cart.empty && c_itm_cnt !== undefined)
                     {
                         c_itm_cnt.style.display = "flex";
-                        c_itm_cnt.innerHTML = json.items.cart.items.length;
+                        c_itm_cnt.innerHTML = json.items.cart.length;
                     }
                     else
                     {

@@ -109,7 +109,7 @@ function is_set(&$var,$index,&$ERROR_FLAG,$method)
 						if($cart !== null)
 						{
 							$return_values['items']['cart']['empty'] = false;	
-							$return_values['items']['cart']['items'] = $cart;
+							$return_values['items']['cart']['length'] = count($cart);
 						}
 						else
 						{

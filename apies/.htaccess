@@ -82,6 +82,7 @@ RewriteRule ^customer/order/time/([0-9]*)$ orders.php?qtype=3&&t=$1 [QSA] #custo
 
 RewriteRule ^wallet/transfer$ wallet.php?qtype=1 [QSA]
 RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
+RewriteRule ^wallet/txns$ wallet.php?qtype=2 [QSA]
 
 #wallet related
 
