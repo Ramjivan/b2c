@@ -28,15 +28,17 @@ include('sess_val.php');
 					<div class="col-6">
 						<div class="col-6">
 							<img src="default-user.png" class="dashboard-img">
-							<small>Hello ! </small> User
+							<small>Hello ! </small> Merchant
 						</div>
 						<div class="subhead">
 							<h5>Manage</h5>
 						</div>
 						<ul class="dshul">
-							<li class="col-2"><a href="customer/address"><div>Address</div><p>Add,Delete Addresses</p></a></li>
-							<li class="col-2"><a href="wallet.php"><div>wallet</div><p>Send Money,Check Your Previous statements...much more</p></a></li>
-							<li class="col-2"><a href="customer/orders"><div>orders</div><p>Track,View Orders</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/orders.php"><div>Orders</div><p>Track,View Orders</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/store.php"><div>Store</div><p>Manage Store</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/qna.php"><div>QNA</div><p>Answere the questions</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/product.php"><div>Products</div><p>Add, Edit OR Delete the Products.</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/product.php"><div>Categories</div><p>Add, Edit OR Delete the Categories.</p></a></li>
 						</ul>
 					</div>
 				</div>
