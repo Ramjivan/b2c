@@ -42,7 +42,9 @@ function initStoreFromServer(callback){
 				$('.emailR').html('<a href="mailto:'+obj.store.contact.email+'">'+obj.store.contact.email+'</a>');
 				//static
 
+				//login signup url
 
+				$('.lgin').attr("href","/login.php");
 
 				//address
 				var addString = obj.store.address.adt_addressline1 + ' , ' +
