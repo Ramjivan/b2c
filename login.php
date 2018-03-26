@@ -10,7 +10,7 @@
 		<title>
 			Login | B2C
 		</title>
-		<script>
+		<noscript>
         function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -28,7 +28,7 @@
         $('[name="g-signin"]').submit();
         
       };        
-    </script>
+    </noscript>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta name="google-signin-scope" content="profile email">

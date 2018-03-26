@@ -87,6 +87,7 @@ RewriteRule ^wallet$ wallet.php?qtype=1 [QSA]
 
 #session
 	RewriteRule ^session$ session.php [QSA]
+	RewriteRule ^session/BSZC$ session.php?qtype=1 [QSA]
 #session
 
 

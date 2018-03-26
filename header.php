@@ -57,15 +57,13 @@
                 
 			</nav>
 			<nav class="navbar float-right">	
-				<div class="nav-item dropbtn .lgout">
-						<span class="fa fa-1dot5x fa-user-circle"></span>
-						<i class="fa fa-caret-down"></i>
-						<div class="dropdown-content">
+				<div class="nav-item user-dropbtn .lgout">
+						<div class="user-img"><img id="usr_img" src="/default-user.png"/></div>
+						<div class="user-nav-dropdown" id="B5thg2w">
 						<a href="/dashboard.php"><span></span>Dashboard</a>
-						<a href="/logout.php"><span></span>Logout</a>
 						</div>
 				</div>
-				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span></a></div>        
+				<div class="nav-item"><a href="cart"><span class="fa fa-1dot5x fa-shopping-cart"></span><span class="checkout_items" id="c_itm_cnt"></span></a></div>        
 			</nav>
 			<!--for mobile-->
 			<div id="sb-search" class="sb-search navbar float-right" >
