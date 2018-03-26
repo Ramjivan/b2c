@@ -135,7 +135,10 @@ window.onload = function(){
 									
 									rew.innerHTML += (upper_first_leg + upper_second_leg + bottom);
 								}
-								rew.innerHTML += '<form class="detail-card jk-form col-3">\
+								rew.innerHTML +='<form id="rvfm" class="detail-card jk-form col-3">\
+														<div id="vsap" class="vs">\
+															<h3 id="vsh3" class="vs">Something Went wrong</h3>\
+														</div>\
 													<div class="form-group">\
 														<select name="rew_rating">\
 															<option value="1">1 - Star</option>\
@@ -144,11 +147,11 @@ window.onload = function(){
 															<option value="4">4 - Star</option>\
 															<option value="5">5 - Star</option>\
 														</select>\
-														<textarea name="rew_text" placeholder="Write a Rreview(255 char allowed)"></textarea>\
+														<textarea name="rew_text" placeholder="Write a Review(255 char allowed)"></textarea>\
 													</div>\
-								<button class="btn btn-default btn-success btn-wide">Rate & Review</button>\
-								</form>\
-								<div class="clearfix"></div>';
+													<input id="ra_v_btn" type="button" class="btn btn-default btn-success btn-wide" value="Rate & Review"/>\
+													</form>\
+													<div class="clearfix"></div>';
 								qna_fun();
 								//review section ends
 								imageZoom("myimage", "myresult");
@@ -156,12 +159,59 @@ window.onload = function(){
 							else
 							{
 								var rew = document.getElementById('rew_con');
-								rew.innerHTML += '<h4><center>no reviews found.</center></h4><button class="btn btn-default btn-success btn-lg">Rate & Review</button>';
+								rew.innerHTML += '<h4><center>no reviews found.</center></h4>\
+												<form id="rvfm" action="#" method="post" class="detail-card jk-form col-3">\
+													<div id="vsap" class="vs">\
+														<h3 id="vsh3" class="vs">Something Went wrong</h3>\
+														</div>\
+														<div class="form-group">\
+															<select id="str_rt" name="rew_rating">\
+																<option value="1">1 - Star</option>\
+																<option value="2">2 - Star</option>\
+																<option value="3">3 - Star</option>\
+																<option value="4">4 - Star</option>\
+																<option value="5">5 - Star</option>\
+															</select>\
+															<textarea id="txt_rt" max="255" name="rew_text" placeholder="Write a Review(255 char allowed)"></textarea>\
+														</div>\
+												<input id="ra_v_btn" type="button" class="btn btn-default btn-success btn-wide" value="Rate & Review"/>\
+												</form>\
+												<div class="clearfix"></div>';
 								qna_fun();
 								imageZoom("myimage", "myresult");
 								
 							}							
 							
+							//add event listener on review & rate button[xhr_call]
+							
+							if(document.getElementById('ra_v_btn') !== null)
+							{
+								var fv = [
+									{'id':'str_rt','name':'Rating','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':1},
+									{'id':'txt_rt','name':'Review Description','regex':null,'length':null,'min_length':null,'max_length':255}		
+										];
+								var ul = "/apies/review/add";
+								var sc = function(){};
+								var fl = function(){};
+
+
+								var fn = function(arg){
+									if(rvfm!==null)
+									{
+										rvfm.innerHTML += '<input type="hidden" name="product_id" value="'+pid+'">';
+										submit_form('rvfm',arg[1],'vsap',arg[2],'POST',arg[3],arg[4]);
+									}
+								};
+
+								document.getElementById('ra_v_btn').onclick = function(){
+									cb(fn,fv,ul,sc,fl);
+								};
+							}
+
+							
+							//add event listener on review & rate button[xhr_call]
+							
+
 						}
 					}
 				},
