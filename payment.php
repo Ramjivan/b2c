@@ -5,7 +5,8 @@
 			Payment | B2C
 		</title>
 		<meta name="description" content="">
-		<meta name="keywords" content="">
+        <meta name="keywords" content="">
+        <script language="JavaScript" src="/js/hndp.js" type="text/javascript"></script>
 		
 		<?php
 			//include head
@@ -24,26 +25,19 @@
 			<div class="center-block">
                 <h2>Select a payment method</h2>
                 <div id="main-str-cnr">
-					<form class="jk-form pdct-form" id="stafrm" enctype="multipart/form-data">
+					<form class="jk-form pdct-form" action="/apies/hdlpm.php" id="stafrm" method="POST" enctype="multipart/form-data">
 						<div id="vsap" class="vs">
 							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>
                         <!--Don't include this when adding money to Pay balance render only when paying for order and balance is greater then zero-->
-						<div class="form-group">
-                            <div class="jk-checkbox">
-                                <input id="i1" type="checkbox">
-                                <label for="i1">Use your <span class="fa fa-rupee"></span> 50 Pay Balance.</label>
-                            </div>
+						<div id="pybal_co" class="form-group">
+                            
                         </div>
                         <hr>
-                        <!--Don't include this when adding money to Pay balance render only when paying for order and balance is greater then zero-->
-                        <style>
-                        
-                        </style>
                         <div class="pay-mthd" class="inline-block">
                             <div class="form-group">
                                 <div class="jk-radio">
-                                    <input id="upi-rd" type="radio" name="pay-method">
+                                    <input id="upi-rd" type="radio" value="102" name="pay-method">
                                     <label for="upi-rd">UPI</label>
                                 </div>
                                 <div class="pay-grp" id="upi-gp">
@@ -61,7 +55,7 @@
                         <div class="pay-mthd">
                             <div class="form-group">
                                 <div class="jk-radio">
-                                    <input id="cardP" type="radio" name="pay-method">
+                                    <input id="cardP" type="radio" value="103" name="pay-method">
                                     <label for="cardP">Debit/Credit Card</label>
                                 </div>
                             </div>
@@ -102,7 +96,7 @@
                         <div class="pay-mthd">
                             <div class="form-group">
                                 <div class="jk-radio">
-                                    <input id="net-bk" type="radio" name="pay-method">
+                                    <input id="net-bk" type="radio" value="104" name="pay-method">
                                     <label for="net-bk">Net Banking</label>
                                 </div>
                             </div>
@@ -117,14 +111,14 @@
                         <div class="pay-mthd">
                             <div class="form-group">
                                 <div class="jk-radio">
-                                    <input id="cod" type="radio" name="pay-method">
+                                    <input id="cod" type="radio" value="105" name="pay-method">
                                     <label for="cod">Cash On Delivary (COD).</label>
                                 </div>
                             </div>
                         </div>
                         
 						<div class="form-group">
-							<input type="button" id="st_s_btn" class="btn btn-success" value="Continue"/>
+							<button id="st_s_btn" class="btn btn-success"> Continue </button>
 						</div>
 					</form>
                 </div>
@@ -138,57 +132,6 @@
 		//including footer
 		include 'footer.php';
     ?>
-    <script>
-    //month picker
-        for(m = 1; m <= 12; m++) {
-            var optn = document.createElement("OPTION");
-            optn.text = m;
-            // server side month start from one
-            optn.value = (m);
-        
-            document.getElementById('monthPicker').options.add(optn);
-        }
-        //year picker
-        for(y = (new Date()).getFullYear(); y <= 2040; y++) {
-                var optn = document.createElement("OPTION");
-                optn.text = y;
-                optn.value = y;
-                
-                document.getElementById('yearPicker').options.add(optn);
-        }
-        //net banking picker
-        var banks = JSON.parse('["SBI", "ICICI"]');
-        for (var i = 0; i < banks.length; i++) {
-            var counter = banks[i];
-            console.log(counter.counter_name);
-        }
-        //accordian
-        //initially hide all options
-        $('.pay-grp').hide();
-        $('#cardP').change(function() {
-            if(this.checked) {
-                $('.pay-grp').hide();
-                $('#card-gp').show();
-            }
-        });
-        $('#net-bk').change(function() {
-            if(this.checked) {
-                $('.pay-grp').hide();
-                $('#nb-gp').show();
-            }
-        });
-        $('#upi-rd').change(function() {
-            if(this.checked) {
-                $('.pay-grp').hide();
-                $('#upi-gp').show();
-            }
-        });
-        $('#cod').change(function() {
-            if(this.checked) {
-                $('.pay-grp').hide();                
-            }
-        });
-        </script>
         
 </body>
 </html>

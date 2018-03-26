@@ -108,6 +108,11 @@ RewriteRule ^wallet/txns$ wallet.php?qtype=2 [QSA]
 
 #store
 
+
+#payment
+	RewriteRule ^payment/c$ paym.php?qtype=1 [QSA]
+#payment
+
 #customer related
 RewriteRule ^customer/add$ reg.php [QSA]
 RewriteRule ^customer$ reg.php [QSA] [L]

@@ -38,7 +38,7 @@ include('sess_val.php');
 							<span class="cart-total-span"><span id="ttl-span"></span>&nbsp;<span class="fa fa-1x fa-inr"></span></span>
 						</div>
 						<div>
-							<button class="btn btn-wide btn-primary-color" id="chckut-btn">checkout</button>
+							<a class="btn btn-wide btn-primary-color center" href="/payment.php" id="chckut-btn">checkout</a>
 						</div>
 					</div>
 				</div>

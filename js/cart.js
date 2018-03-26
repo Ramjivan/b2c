@@ -160,13 +160,13 @@ window.onload = function(){
 							
 							sum_span.innerHTML += grand_total;
 							
-							var btn_chck = document.getElementById('chckut-btn');
+							/*var btn_chck = document.getElementById('chckut-btn');
 							if(btn_chck !== null)
 							{
 								btn_chck.onclick = function(){
 									cb(a_o);
 								};
-							}
+							}*/
 						}
 						else
 						{
