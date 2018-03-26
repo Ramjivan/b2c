@@ -122,22 +122,22 @@
 						<div class="form-group">
 							<h3>Social Links</h3>
 							<p>Facebook Link</p>
-							<input id="st_fb_lnk" onchange="validate({'id':'st_fb_lnk','name':'Facebook Link','regex':/^([\w]+)\.facebook\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="https://www.facebook.com/jhondoe" name="st_fb_lnk"/>
+							<input id="st_fb_lnk" class="jk-textbox" onchange="validate({'id':'st_fb_lnk','name':'Facebook Link','regex':/^([\w]+)\.facebook\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="url" placeholder="https://www.facebook.com/jhondoe" name="st_fb_lnk"/>
 
 							<p>Twitter Link</p>
-							<input id="st_tw_lnk" onchange="validate({'id':'st_tw_lnk','name':'Twitter Link','regex':/^([\w]+)\.twitter\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="https://www.twitter.com/jhondoe" name="st_tw_lnk"/>
+							<input id="st_tw_lnk" class="jk-textbox" onchange="validate({'id':'st_tw_lnk','name':'Twitter Link','regex':/^([\w]+)\.twitter\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="url" placeholder="https://www.twitter.com/jhondoe" name="st_tw_lnk"/>
 
 							<p>Google+ Link</p>
-							<input id="st_go_lnk" onchange="validate({'id':'st_go_lnk','name':'Google+ Link','regex':/^([\w]+)\.google\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="https://www.google.com/jhondoe" name="st_go_lnk"/>
+							<input id="st_go_lnk" class="jk-textbox" onchange="validate({'id':'st_go_lnk','name':'Google+ Link','regex':/^([\w]+)\.google\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="url" placeholder="https://www.google.com/jhondoe" name="st_go_lnk"/>
 
 							<p>Instagram Link</p>
-							<input id="st_in_lnk" onchange="validate({'id':'st_in_lnk','name':'Instagram Link','regex':/^([\w]+)\.instagram\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="https://www.instagram.com/jhondoe" name="st_in_lnk"/>
+							<input id="st_in_lnk" class="jk-textbox" onchange="validate({'id':'st_in_lnk','name':'Instagram Link','regex':/^([\w]+)\.instagram\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="url" placeholder="https://www.instagram.com/jhondoe" name="st_in_lnk"/>
 
 							<p>Youtube Link</p>
-							<input id="st_yt_lnk" onchange="validate({'id':'st_yt_lnk','name':'Youtube Link','regex':/^([\w]+)\.youtube\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="https://www.youtube.com/jhondoe" name="st_yt_lnk"/>
+							<input id="st_yt_lnk" class="jk-textbox" onchange="validate({'id':'st_yt_lnk','name':'Youtube Link','regex':/^([\w]+)\.youtube\.([\w\W]+)\/([\w\W]+)$/,'length':null,'min_length':9,'max_length':null})" type="url" placeholder="https://www.youtube.com/jhondoe" name="st_yt_lnk"/>
 
-							<p>Whatsapp Bussiness Link</p>
-							<input id="st_wpb_lnk" onchange="validate({'id':'st_wpb_lnk','name':'Whatsapp Link','regex':/^[0-9]{10}$/,'length':10,'min_length':null,'max_length':null})" type="text" placeholder=" 10 Digit Number 772696XXXX" name="st_wpb_lnk"/>
+							<p>Whatsapp Bussiness Number</p>
+							<input id="st_wpb_lnk" class="jk-textbox" onchange="validate({'id':'st_wpb_lnk','name':'Whatsapp Link','regex':/^[0-9]{10}$/,'length':10,'min_length':null,'max_length':null})" type="tel" placeholder=" 10 Digit Number 772696XXXX" name="st_wpb_lnk"/>
 						</div>
 
 						<div class="form-group">

@@ -1,5 +1,5 @@
 <?php
-include('sess_val.php');
+
 ?>
 <!DOCTYPE html>
 <html>

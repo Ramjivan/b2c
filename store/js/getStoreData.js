@@ -5,7 +5,8 @@
 ***************************fetches store essential that will modal page************
 ***************************and will put the data to Replace holders****************
 ************************************************************************************/
-	
+var sname = 
+
 function initStoreFromServer(callback){
 
 	var storeName = decodeURI();
@@ -67,6 +68,10 @@ function initStoreFromServer(callback){
 
 				$('.socialLinksR').append(str);		
 				//social Links
+
+				//Links
+				$('.contactLinkR').attr('href', );
+				//Links
 
 				//categories
 				var catLiAppend = "";
