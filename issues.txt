@@ -11,3 +11,5 @@ of products related to category is not implimented
 
 # added txn_desc in in_txt and ex_txn add description of transection like - paid for order no. 982492 or 
 money sent to 945934850 user or money added to wallet 
+
+#what is orderSummary.php in merchant dashboard if not useful move to trash

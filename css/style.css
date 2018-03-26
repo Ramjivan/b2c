@@ -5,7 +5,7 @@
 
 :root{
 	--primary-color:#FB8c00;
-	--secondary-color:#fff;
+	--secondary-color:rgba(228, 180, 48, 0.829);
 	--jk-radio-size:20px;
 	--jk-form-font-size:16px;
 }
@@ -1301,3 +1301,17 @@ div.user-img img{
 	position: relative;
 }
 
+/* footer styles */
+footer{
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	padding: 1rem;
+  	background-color: #efefef;
+  	text-align: center;
+}
+footer .btt{
+	background-color: var(--secondary-color);
+}
+/* footer styles */
