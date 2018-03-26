@@ -693,13 +693,13 @@ div.prdct div.price{
 }
 
 
-
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 9999;
+	z-index: 9999;
+	left:-90%;
 }
 
 .dropdown-content a {
@@ -991,6 +991,11 @@ margin-top:20px;
 
 ul.imglst{
 	list-style:none;
+}
+
+ul.imglst li{
+	float:left;
+	paddding:2px;
 }
 
 ul.imglst li img{

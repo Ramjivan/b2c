@@ -6,6 +6,10 @@
 }
 @media all and (max-width:400px) /* for mobile tab view */
 {
+	.lgout{
+		display:none;
+	}
+
 	#sidebar{
 		width:100%;
 	}
