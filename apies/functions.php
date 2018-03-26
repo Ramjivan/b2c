@@ -54,5 +54,26 @@
 		}
 		
 	}
+
+
+function get_cart($customer_id)
+{
+	try
+	{
+		include('pdo.php');
+		$stmt = $conn->prepare('select * from `p_cart` where `customer_id` = ?');
+		$stmt->execute(array($customer_id));
+		if($stmt->rowCount() > 0)
+		{
+			return $stmt->fetchAll();
+		}
+		return null;
+	}
+	catch(PDOException $e)
+	{
+		return null;
+	}
+}
+
 	
 ?>

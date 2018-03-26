@@ -692,14 +692,35 @@ div.prdct div.price{
 	padding:2px;
 }
 
+.user-nav-dropdown{
+	display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.6);
+	z-index: 9999;
+	left:-80%;
+}
+
+.user-nav-dropdown a{
+	float: none;
+    display: block;
+    text-align: left;
+	padding:10px;
+	background:white;
+	transition:0.2s;
+}
+
+.user-nav-dropdown a:hover{
+	background-color: #ddd;
+}
 
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.6);
 	z-index: 9999;
-	left:-90%;
+	left:0;
 }
 
 .dropdown-content a {
@@ -716,6 +737,9 @@ div.prdct div.price{
 }
 
 .dropbtn:hover .dropdown-content {
+    display: block;
+}
+.user-dropbtn:hover .user-nav-dropdown {
     display: block;
 }
 .dropdown {
@@ -1197,4 +1221,46 @@ input[type="search"].sb-search-input {
 }
 input::-webkit-calendar-picker-indicator {
 	display: none;
+}
+
+div.user-img{
+	height:35px;
+	width:35px;
+}
+
+div.user-img img{
+	height:100%;
+	width:100%;
+	border-radius:50% ;
+	cursor: pointer;
+}
+
+.fa-shopping-cart{
+	background-color:#ddd;
+	border-radius: 50% ;
+	height:35px;
+	width:35px;
+	text-align:center;
+}
+
+.fa-shopping-cart::before{
+	top:16px;
+	right:22px;
+	position: absolute;
+}
+
+.checkout_items {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+	left: 30px;
+	width:20px;
+	height:20px;
+    border-radius: 50%;
+    background: white;
+    font-size: 12px;
+    color: #000000;
 }

@@ -218,7 +218,7 @@ function imageZoom(imgID, resultID) {
   
   
 
-xhr_call(
+/*xhr_call(
 	'GET',
 	'/apies/index/category',
 	null,
@@ -242,7 +242,7 @@ xhr_call(
 	function(xhttp){
 		
 	}
-);
+);*/
 
 //mobile view search bar 
 function buttonUp(){
