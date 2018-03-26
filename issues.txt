@@ -1,6 +1,6 @@
 #on login.php show something went wrong error only when credentials are wrong
 
-#name of user as session variable is not good use customer_id instead
+#name of user as session variable is not good use customer_id instead => using customer_id and using name for displaying it on app side...
 
 #in store on selection of a category nothing is updated in header footer and retrival 
 of products related to category is not implimented

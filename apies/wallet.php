@@ -72,7 +72,7 @@ function get_wallet($id)
 
 		if($_SERVER['REQUEST_METHOD'] == "POST")
 		{
-			if(isset($_GET['qtype']) && $_GET['qtype'] == '1') //ADD
+			if(isset($_GET['qtype']) && $_GET['qtype'] == '1') //TRANSFR
 			{
 				$return_values = array();
 				$ERROR_FLAG = 0;
@@ -133,8 +133,8 @@ function get_wallet($id)
 								
 								//adding in_txn tuple
 								$txn_id = substr(md5(time()),0,10);
-								$in_txn = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`, `txn_debit_wallet_id`) VALUES (?,?,?,?)');
-								$in_txn->execute(array($txn_id,$indexes['balance'],$current_user_wallet['wallet_id'],$user_wallet['wallet_id']));
+								$in_txn = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`, `txn_debit_wallet_id`,`txn_type`) VALUES (?,?,?,?,?)');
+								$in_txn->execute(array($txn_id,$indexes['balance'],$current_user_wallet['wallet_id'],$user_wallet['wallet_id'],1));
 								//adding in_txn tuple
 								
 								
@@ -146,13 +146,14 @@ function get_wallet($id)
 								else
 								{
 									$conn->rollBack();
-									$return_values['ERROR'] = "DB ERROR";
+									$return_values['ERROR'] = "500";
+									$return_values['MESSAGE'] ="SERVER TIMEOUT / ERROR";
 								}
 							}
 							else
 							{
 								$return_values['ERROR'] = "700";
-								$return_values['DIFFERENCE'] = $indexes['balance'] - $current_balance;
+								$return_values['MESSAGE'] ="Insufficiant Balance";
 							}
 						}
 						catch(PDOException $e)
@@ -164,12 +165,14 @@ function get_wallet($id)
 					}
 					else
 					{
-						$return_values['ERROR'] = "DB ERROR";
+						$return_values['ERROR'] = "400";
+						$return_values['MESSAGE'] ="Forbidden";
 					}
 				}
 				else
 				{
-					$return_values['ERROR'] = '501';
+					$return_values['ERROR'] = '400';
+					$return_values['MESSAGE'] ="Forbidden";
 				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}
@@ -184,11 +187,40 @@ function get_wallet($id)
 				{
 					if(($wallet  = get_wallet($user['customer_id'])) !== null)
 					{
-						$return_values['sucess'] = 1;
+						$return_values['success'] = 1;
 						$return_values['wallet'] = $wallet;
 						echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 					}						
 			}
+				catch(PDOException $e)
+				{
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+			}
+			else if($_GET['qtype'] && $_GET['qtype'] == '2')
+			{
+				$return_values = array();
+
+				try
+				{
+					$wallet = get_wallet($user['customer_id']);
+					$stmt = $conn->prepare('select * from `in_txn` where `txn_credit_wallet_id`=:wallet_id || `txn_credit_wallet_id`=:wallet_id ORDER BY `txn_date_time` ASC');
+					$stmt->execute(array('wallet_id'=>$wallet['wallet_id']));
+					
+					if($stmt->rowCount())
+					{
+						$return_values['result'] = 1;
+						$return_values['transactions'] = $stmt->fetchAll(); 
+
+					}
+					else
+					{
+						$return_values['result'] = 1;
+						$return_values['transactions'] = array();
+					}
+					echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+				}
 				catch(PDOException $e)
 				{
 					$return_values['ERROR']['insert'] = $e->getMessage();
