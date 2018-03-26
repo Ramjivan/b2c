@@ -5,7 +5,8 @@
 ***************************fetches store essential that will modal page************
 ***************************and will put the data to Replace holders****************
 ************************************************************************************/
-	
+var sname = 
+
 function initStoreFromServer(callback){
 
 	var storeName = decodeURI();
@@ -41,7 +42,9 @@ function initStoreFromServer(callback){
 				$('.emailR').html('<a href="mailto:'+obj.store.contact.email+'">'+obj.store.contact.email+'</a>');
 				//static
 
+				//login signup url
 
+				$('.lgin').attr("href","/login.php");
 
 				//address
 				var addString = obj.store.address.adt_addressline1 + ' , ' +
@@ -67,6 +70,10 @@ function initStoreFromServer(callback){
 
 				$('.socialLinksR').append(str);		
 				//social Links
+
+				//Links
+				$('.contactLinkR').attr('href', );
+				//Links
 
 				//categories
 				var catLiAppend = "";

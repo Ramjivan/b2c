@@ -1,4 +1,13 @@
-#while adding a new category root is not listed as parent to choose from
+#on login.php show something went wrong error only when credentials are wrong
 
 #name of user as session variable is not good use customer_id instead
 
+#in store on selection of a category nothing is updated in header footer and retrival 
+of products related to category is not implimented
+
+#in store details not all social media links are required and try to use input type="url" for 
+
+#txn_id must be unique between ex_txn and in_txn table
+
+# added txn_desc in in_txt and ex_txn add description of transection like - paid for order no. 982492 or 
+money sent to 945934850 user or money added to wallet 

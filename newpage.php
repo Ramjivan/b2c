@@ -19,7 +19,7 @@
 			tar.parentNode.parentNode.style.filter = 'blur(0.3px)';
 			xhr_call(
 				'GET',
-				'/b2c/apies/cart/edit/'+args[1]+'/qty/'+args[2],
+				'/apies/cart/edit/'+args[1]+'/qty/'+args[2],
 				null,
 				function(xhttp){
 					if(xhttp.responseText.length > 0)
@@ -43,7 +43,7 @@
 			tar.parentNode.parentNode.style.filter = 'blur(0.3px)';
 			xhr_call(
 				'GET',
-				'/b2c/apies/cart/delete/'+args[1],
+				'/apies/cart/delete/'+args[1],
 				null,
 				function(xhttp){
 					if(xhttp.responseText.length > 0)
@@ -63,7 +63,7 @@
 	
 xhr_call(
 	'GET',
-	'/b2c/apies/cart',
+	'/apies/cart',
 	null,
 	function(xhttp){
 		var tar = document.getElementById('cart-container');
