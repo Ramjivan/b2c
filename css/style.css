@@ -1264,3 +1264,11 @@ div.user-img img{
     font-size: 12px;
     color: #000000;
 }
+
+.center-block h2{
+	text-align: center;
+}
+#payresico{
+	font-size: 200px;
+	color: var(--primary-color);
+}

@@ -37,7 +37,9 @@
                         </div>
                         <hr>
                         <!--Don't include this when adding money to Pay balance render only when paying for order and balance is greater then zero-->
+                        <style>
                         
+                        </style>
                         <div class="pay-mthd" class="inline-block">
                             <div class="form-group">
                                 <div class="jk-radio">
@@ -90,7 +92,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="jk-textbox wi-right" placeholder="Enter CVV...">
-                                    <span class="fa fa-lock jk-input-ico-right"></span>
+                                    <span class="fa fa-key jk-input-ico-right"></span>
                                 </div>
                             </div>
                             
