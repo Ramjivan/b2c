@@ -229,7 +229,10 @@ function getProduct(pid,merchant_id)
 
 
 				//reviews
+				reviewJsonldStr = '';
+				flag = true;
 				json.product.review.forEach(function(item){
+					
 					var x = function(){
 						if(item.customer_image !== undefined)
 						{
@@ -266,7 +269,24 @@ function getProduct(pid,merchant_id)
 							<p>'+item.rew_text+'</p>\
 						</div>\
 					</div>';
-
+					if(flag){
+						reviewJsonldStr += '';	
+					}else{
+						reviewJsonldStr += ',';
+					}
+					reviewJsonldStr += '{ \
+						"@type": "Review", \
+						"author": "' + item.c_fullname + '", \
+						"datePublished": "'+ item.rew_datetime+'", \
+						"description": "' + item.rew_text + '", \
+						"reviewRating": { \
+						  "@type": "Rating", \
+						  "bestRating": "5", \
+						  "ratingValue": "'+ item.rew_rating +'", \
+						  "worstRating": "1" \
+						} \
+					  }';
+					  flag = false;
 					 $('.reviews_col').append(user_leg+rating_leg+review_leg);
 				});
 				//reviews
@@ -301,7 +321,30 @@ function getProduct(pid,merchant_id)
 						});
 					});
 				}
-
+				jsonldStr = '<script type="application/ld+json"> \
+				{ \
+				  "@context": "http://schema.org", \
+				  "@type": "Product", \
+				  "aggregateRating": { \
+					"@type": "AggregateRating", \
+					"ratingValue": "' + average_rating + '", \
+					"reviewCount": "' + json.product.rating_count + '" \
+				  }, \
+				  "description": "' + json.product.p_description + '", \
+				  "name": "' + json.product.p_name + '", \
+				  "image": "kenmore-microwave-17in.jpg", \
+				  "offers": { \
+					"@type": "Offer", \
+					"availability": "http://schema.org/InStock", \
+					"price": "' + json.product.p_price + '", \
+					"priceCurrency": "INR" \
+				  }, \
+				  "review": [ \
+					' + reviewJsonldStr + '  \
+				  ] \
+				} \
+				</script>';
+				$('body').append(jsonldStr);
 
 				//renint thumbnails
 				//product-images
