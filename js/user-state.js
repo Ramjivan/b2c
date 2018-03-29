@@ -1,6 +1,6 @@
     xhr_call(
         'GET',
-        'apies/session/BSZC',
+        '/apies/session/BSZC',
         null,
         function(xhttp){
             if(xhttp.responseText.length > 0 )

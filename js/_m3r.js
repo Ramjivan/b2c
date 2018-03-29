@@ -994,7 +994,7 @@ window.onload = function(){
 		})();
 	}
 	
-	else if(/Orders.php/.test(loc_arr[length-1]))
+	else if(/orders.php/.test(loc_arr[length-1]))
 	{
 		
 		function st(i)

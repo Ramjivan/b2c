@@ -2,6 +2,7 @@
 <script language="JavaScript" type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="/js/style.js"></script>
 <script language="JavaScript" type="text/javascript" src="/js/validate.js"></script>
+<script language="JavaScript" type="text/javascript" src="/js/user-state.js"></script>
 <link rel="stylesheet" href="/css/style.css" type='text/css' media="all"/>
 <link rel="stylesheet" href="/css/style2.css" type='text/css' media="all"/>
 <link rel="stylesheet" href="/css/responsive.css" type='text/css' media="all"/>

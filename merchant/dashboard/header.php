@@ -42,6 +42,15 @@
 			<nav class="navbar float-right">
 				<div class="nav-item"><a href="/logout.php"><span class="fa fa-1dot5x fa-power-off"></span></a></div>	
 			</nav>
+			<nav class="navbar float-right">	
+				<div class="nav-item user-dropbtn .lgout">
+						<div class="user-img"><img id="usr_img" src="/default-user.png"/></div>
+						<div class="user-nav-dropdown" id="B5thg2w">
+						<a href="/dashboard.php"><span></span>Dashboard</a>
+						</div>
+				</div>
+				<div class="nav-item"><a href="/cart"><span class="fa fa-1dot5x fa-shopping-cart"></span><span class="checkout_items" id="c_itm_cnt"></span></a></div>        
+			</nav>
 		</div>
 	</div>
 	<div class="clearfix"></div>

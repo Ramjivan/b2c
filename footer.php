@@ -1,5 +1,8 @@
+<div class="btt">
+        <span class="fa fa-arrow-up"></span>
+</div>
+
+
 <footer>
-    <div class="btt">
-        Back to top
-    </div>
+    
 </footer>
