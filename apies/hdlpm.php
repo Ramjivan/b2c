@@ -347,7 +347,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                    
                                         //deduct from pay balance
                                         $update_cur = $conn->prepare('UPDATE `wallet` SET `balance`=? WHERE `wallet_id` = ?');
-                                        $update_cur->execute(array(($total-$wallet['balance']),$wallet['wallet_id']));
+                                        $update_cur->execute(array(($wallet['balance']-$total),$wallet['wallet_id']));
                                         //deduct from pay balcnce
 
                                     }
