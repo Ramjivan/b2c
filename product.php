@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,9 +38,5 @@
 		</form>
 	</div>
 </div>
-	<?php
-		//including footer
-		include 'footer.php';
-    ?> 
 </body>
 </html>

@@ -1,8 +1,7 @@
 <?php
 session_start();
 include('pdo.php');
-include('sessionvalidate.php');
-$user = $_SESSION['user'];
+
 
 function is_set(&$var,$index,&$ERROR_FLAG)
 {
@@ -39,6 +38,9 @@ function get_product($id)
 	{
 		if(isset($_GET['qtype']) && $_GET['qtype'] == '1') //ADD
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+			
 			$ERROR_FLAG = 0;
 			
 			$return_values = array();
@@ -91,6 +93,9 @@ function get_product($id)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '2')
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+			
 			if(isset($_POST['qna_id']))
 			{
 				try
@@ -169,6 +174,9 @@ function get_product($id)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+			
 			if(isset($_POST['qna_id']))
 			{
 				try

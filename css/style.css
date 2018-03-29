@@ -1378,6 +1378,8 @@ div.p_slider_prev span.fa{
 
 .p_slider_item{
 	display: inline-block;
+	padding:5px;
+	background-color:var(--primary-color);
 }
 
 
@@ -1386,5 +1388,33 @@ div.p_slider_prev span.fa{
 	width:200px;
 	padding:5px;
 }
-
 /*p_slider*/
+
+/*full screen sider*/
+
+.f_scr_slider{
+	height:400px;
+	overflow:hidden;
+}
+
+.f_scr_content{
+	width:100%;
+	height:100%;
+	list-style-type: none;
+	padding:0;
+	margin:0;
+}
+
+ul.f_scr_content li{
+	width:100%;	
+	height:100%;
+	float:left;
+}
+
+.f_scr_content li a img{
+	width:100%;
+	height:100%;
+}
+
+
+/*full screen slider*/
