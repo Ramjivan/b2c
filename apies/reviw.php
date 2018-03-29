@@ -1,8 +1,6 @@
 <?php
 session_start();
 include('pdo.php');
-include('sessionvalidate.php');
-$user = $_SESSION['user'];
 function is_set(&$var,$index,&$ERROR_FLAG,$method)
 {
 	if($method == "POST")
@@ -71,6 +69,9 @@ function get_review($item_id)
 	{
 		if(isset($_GET['qtype']) && $_GET['qtype'] == '1') //ADD
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
+
 			$ERROR_FLAG = 0;
 			
 			$return_values = array();
@@ -121,6 +122,8 @@ function get_review($item_id)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '2') //EDIT
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
 			
 			if(isset($_POST['review_id']) && !empty($_POST['review_id']))
 			{

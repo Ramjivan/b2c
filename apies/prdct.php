@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-include('sessionvalidate.php');
-
-$user = $_SESSION['user'];
-
 include('pdo.php');
 
 
@@ -91,6 +86,10 @@ function getBreadcrum($cat_id,$conn)
 		
 		if(isset($_GET['qtype']) && $_GET['qtype'] == "1")
 		{
+			include('sessionvalidate.php');
+
+			$user = $_SESSION['user'];
+
 			$product_response = $spec_response = $hlgt_response = $imglst_response = $cod_response = 0;
 			
 			$ERROR_FLAG = 0;
@@ -291,6 +290,10 @@ function getBreadcrum($cat_id,$conn)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == "2")
 		{
+			include('sessionvalidate.php');
+
+			$user = $_SESSION['user'];
+
 			
 			if(isset($_POST['product_id']))
 			{
@@ -412,6 +415,11 @@ function getBreadcrum($cat_id,$conn)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] == '1')
 		{
+			
+			include('sessionvalidate.php');
+
+			$user = $_SESSION['user'];
+
 			$return_values = array();
 			try
 			{
