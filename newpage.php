@@ -127,6 +127,12 @@
 
 					var fsNext = function(){
 						var childs = elem.children;
+
+						for(var i = 0 ; i < lis.length ; i++)
+						{
+							lis[i].style.width = main_root.clientWidth+'px'; 
+						}
+
 						elem.style.width = childs.length * main_root.clientWidth+"px";
 						transval += main_root.clientWidth;
 						if(transval > elem.clientWidth/2)

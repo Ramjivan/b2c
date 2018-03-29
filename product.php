@@ -38,9 +38,5 @@
 		</form>
 	</div>
 </div>
-	<?php
-		//including footer
-		include 'footer.php';
-    ?> 
 </body>
 </html>
