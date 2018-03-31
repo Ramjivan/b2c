@@ -19,21 +19,22 @@
 		include 'header.php';
 	?>
 	
-		<div class="main-grid"> 
+		<!--div class="main-grid"> 
 			
 			<div class="main-container">
 				<div class="col-6">
 					<div class="center">
-						<ul class="index-main-cat-ul">
+						<h3>Shop By Category</h3>
+						<ul class="index-main-cat-ul clearfix">
 							<li><a href="#">Electronics</a></li>
 							<li><a href="#">Electronics</a></li>
 							<li><a href="#">Electronics</a></li>
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div-->
 			
-			<div class="main-container">
+			<!--div class="main-container">
 				<div class="col-6">
 					<div class="main-sl">
 					<div class="slideshow-container center">
@@ -55,31 +56,149 @@
 					</div>
 				</div>
 			</div>
-		
-		
-		
-		
-			<div class="prdct-grids row">
-				<div class="prdct">
-				<a class="prdct-lnk-a" href="http://localhost/b2c/product?25c84c7af1">
-					<div class="img">
-						<img src="apies/products/uploads/22be20b1bf2190a3ecccc3dea69d7ae3.jpg"/>
-					</div>
-					<div>
-						<b>Acrylic Painting</b>
+		</div-->
 
-					</div>
-					<div class="details">
-						<div class="price">
-							<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+		<div class="f_scr_slider" id="fs_slider1">
+			<ul class="f_scr_content" id="fssldr_content">
+				<li>
+					<a href="#"><img src="\images\slides-presentation.png" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="\images\mobilemarketing.png" /></a>
+				</li>	
+			</ul>
+			<div class="p_slider_prev" id="fs_slider_prev"><span class="fa fa-arrow-left"></span></div>
+			<div class="p_slider_next" id="fs_slider_next"><span class="fa fa-arrow-right"></span></div>
+		</div>
+		
+		<div id="cart-container" class="main-container">
+			<h3>New Arrivals</h3>
+			<div class="p_slider" id="u_slider_main1">		
+				<div id="u_slider1" class="p_slider_content clearfix">
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
 						</div>
-						<div class="rating">
-							<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
 						</div>
 					</div>
-				</a>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>product 2</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 3</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>product 2</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 3</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
 				</div>
+				<div class="p_slider_prev" id="u_slider_prev"><span class="fa fa-arrow-left"></span></div>
+				<div class="p_slider_next" id="u_slider_next"><span class="fa fa-arrow-right"></span></div>
+			</div>			
+		
+			<!--info grids-->
+			<div class="info-container">
+				
+				<div class="col-2">
+					<div class="info info-240px">
+						<div class="child" style="background-image:url('/images/mobilemarketing.png');background-size:100% 100%;">
+					</div>
+					</div>
+				</div>
+	
+
+				<div class="col-2">
+					<div class="info info-240px">
+						<div class="child" style="background-image:url('/images/mobilemarketing.png');background-size:100% 100%;">
+					</div>
+					</div>
+				</div>
+
+				<div class="col-2">
+					<div class="info info-240px">
+						<div class="child" style="background-image:url('/images/mobilemarketing.png');background-size:100% 100%;">
+					</div>
+					</div>
+				</div>
+
+
 			</div>
+			<!--info grids-->
 		</div>
 
 	<?php

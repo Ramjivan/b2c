@@ -364,7 +364,7 @@ function getProduct(pid,merchant_id)
 					}
 					else
 					{
-						$('.images-gridR').append('<li><img src="/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
+						$('.images-gridR').append('<li><img src="/'+item.img_dir+item.img_name+'" alt="" data-image="'+item.img_dir+item.img_name+'"></li>');	
 					}
 				});
 				//reinit thumbnails

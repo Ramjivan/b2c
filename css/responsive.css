@@ -67,6 +67,10 @@
 		display: inline;
 	}
 	
+	.f_scr_slider{
+		height:300px;
+	}
+
 }
 
 
@@ -116,6 +120,9 @@
 		display: inline;
 	}
 	
+	.f_scr_slider{
+		height:340px;
+	}
 }
 
 
@@ -183,6 +190,7 @@
 	#sb-search{
 		display: inline;
 	}
+
 }
 
 
@@ -247,6 +255,11 @@
 	  .prev, .next {
 		width:75px;
 	  }
+
+
+	.f_scr_slider{
+		height:500px;
+	}
 }
 
 

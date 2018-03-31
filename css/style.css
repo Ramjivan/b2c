@@ -1244,8 +1244,8 @@ div.user-img img{
 }
 
 .fa-shopping-cart::before{
-	top:16px;
-	right:22px;
+	top:14px;
+	right:16px;
 	position: absolute;
 }
 
@@ -1314,7 +1314,7 @@ footer{
 div.btt{
 	color: white;
 	background-color: red;
-	position: absolute;
+	position: fixed;
 	bottom:10px;
 	right:10px;
 	border-radius: 56%;
@@ -1338,6 +1338,7 @@ div.btt{
 	height:300px;
 	overflow:hidden;
 }
+
 
 div.p_slider_next{
 	position:absolute;
@@ -1369,8 +1370,6 @@ div.p_slider_prev span.fa{
 
 .p_slider_content{
 	display: inline-block;
-	padding-left:20px;
-	padding-right:20px;
 	width:100%;
 	height:100%;
 	transition:0.2s;	
@@ -1393,8 +1392,9 @@ div.p_slider_prev span.fa{
 /*full screen sider*/
 
 .f_scr_slider{
-	height:400px;
 	overflow:hidden;
+	margin-top:10px;
+	position: relative;
 }
 
 .f_scr_content{
@@ -1418,3 +1418,47 @@ ul.f_scr_content li{
 
 
 /*full screen slider*/
+
+
+
+/*infomatic div*/
+
+div.info-container{
+	padding:10px;
+	width:100%;
+}
+
+div.info-container [class*="col-"]{
+	padding:10px;
+}
+
+div.info{
+	border-radius:5px;
+	width:100%;
+	overflow: hidden;
+}
+
+div.info div.child{
+	width:100%;
+	height:100%;
+	transition:0.3s;
+}
+div.info:hover div.child{
+	transform:scale(1.04);
+}
+
+
+.info-240px{
+	height:240px;
+}
+
+
+.info-300px{
+	height:300px;
+}
+
+
+.info-400px{
+	height:400px;
+}
+/*infomatic div*/

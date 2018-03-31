@@ -268,7 +268,6 @@ div.form-set label{
 
 div.center{
 	margin:5% auto;
-	display:block;
 	vertical-align:middle;
 	position:relative;
 	border-radius:2px;
@@ -278,17 +277,18 @@ ul.index-main-cat-ul{
 	display:block;
 	list-style:none;
 	padding-bottom:13px;
+	align-self: center;
 }
 
 ul.index-main-cat-ul li {
 	float:left;
 	padding-left:2px;
 	padding-right:2px;
-	border-right:1px solid rgba(0,0,0,0.2);
-	background-color:var(--primary-color);
 	transition:0.3s;
 	color:rgba(0,0,0,0.8);
+	align-self: center;
 }
+
 
 ul.index-main-cat-ul li:last-child{
 	border:none;

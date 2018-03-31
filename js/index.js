@@ -20,6 +20,105 @@ window.onload = function(){
 		});
 	}
 	
+	function putSlider(root_elem_id,elem_id,prev,next)
+	{
+		var main_root = document.getElementById(root_elem_id);
+		var elem = document.getElementById(elem_id);
+		var prev = document.getElementById(prev);
+		var next = document.getElementById(next);
+
+		var transval = 0;
+
+		if(main_root !== null && elem !== null && prev !== null && next !== null)
+		{
+			var childs = elem.children; 
+			var width = 0;
+			var childWidth = 0;
+			for(var i = 0 ; i < childs.length ; i++)
+			{
+				width += childs[i].clientWidth;
+				
+			}
+			
+			if(width > 0)
+			{
+				width+=100;
+				elem.style.width = width+'px';
+				childWidth = childs[0].clientWidth;
+			}
+
+			prev.onclick = function(){
+				transval -= 200;
+				if(transval < 0)
+				{
+					transval = 0;
+				}
+				elem.style.transform =  'translateX(-'+transval+'px)';
+			};
+
+			
+			next.onclick = function(){
+				transval += 200;
+				
+				measurediff = main_root.offsetWidth / childWidth;
+
+				measurediff *= childWidth;
+
+				if(transval > width-measurediff)
+				{
+					transval = width-measurediff;
+				}
+				
+				elem.style.transform =  'translateX(-'+transval+'px)';
+			};
+		}
+
+	}
+
+	putSlider('u_slider_main1','u_slider1','u_slider_prev','u_slider_next');
+
+	function fsSlider(root_elem_id,elem_id,prev,next)
+	{
+		var main_root = document.getElementById(root_elem_id);
+		var elem = document.getElementById(elem_id);
+		var prev = document.getElementById(prev);
+		var next = document.getElementById(next);
+
+		var transval = 0;
+
+		if(main_root !== null && elem !== null && prev !== null && next !== null)
+		{
+			
+			var lis = elem.children;
+
+			for(var i = 0 ; i < lis.length ; i++)
+			{
+				lis[i].style.width = elem.clientWidth+'px'; 
+			}
+
+			var fsNext = function(){
+				var childs = elem.children;
+
+				for(var i = 0 ; i < lis.length ; i++)
+				{
+					lis[i].style.width = main_root.clientWidth+'px'; 
+				}
+
+				elem.style.width = childs.length * main_root.clientWidth+"px";
+				transval += main_root.clientWidth;
+				if(transval > elem.clientWidth/2)
+				{
+					transval = 0;
+				}
+				elem.style.transform =  'translateX(-'+transval+'px)';
+			};
+
+			setInterval(fsNext,2000);
+		}
+	}
+
+	fsSlider('fs_slider1','fssldr_content','fs_slider_prev','fs_slider_next');
+
 	
 };
 
