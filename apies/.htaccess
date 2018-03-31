@@ -1,5 +1,6 @@
 RewriteEngine On
 
+
 RewriteRule ^customer$ reg.php [QSA]
 #product related
 

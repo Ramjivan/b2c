@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteRule ^name=([a-z]*)$ home.html [QSA]
-RewriteRule ^name=([a-z]*)&catid=([0-9]+)$ categories.html?name=$1&catid=$2 [QSA]
-RewriteRule ^name=([a-z]*)&pid=([\w]+)$ single.html?name=$1&catid=$2 [QSA] [L]
+RewriteRule ^name=([A-Za-z]*)$ home.html [QSA]
+RewriteRule ^name=([A-Za-z]*)&catid=([0-9]+)&catname=([A-Za-z]+)$ categories.html?name=$1&catid=$2 [QSA]
+RewriteRule ^name=([A-Za-z]*)&pid=([\w]+)&pname=([A-Za-z\s]+)$ single.html?name=$1&catid=$2 [QSA]
 
-RewriteRule ^name=([a-z]*)&section=contact$ contact.html?name=$1 [QSA] [L]
+RewriteRule ^name=([A-Za-z]*)&section=contact$ contact.html?name=$1 [QSA] [L]

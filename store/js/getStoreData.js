@@ -6,7 +6,58 @@
 ***************************and will put the data to Replace holders****************
 ************************************************************************************/
 
+var store = null;
+
+function userState(){
+	$.ajax({
+		type: "GET",
+		url: '/apies/session/BSZC',
+		success:function(responseText){
+			if(responseText.length > 0 )
+            {
+                var json = JSON.parse(responseText);
+                
+                if(json.result)
+                {
+                    //user-state-[session]
+                    var drop_dwn = document.getElementById('B5thg2w');
+                    if(drop_dwn !== null)
+                    {
+                        if(json.items.SESSION.logged_in == true)
+                        {
+							drop_dwn.innerHTML += '<li><a href="/dashbaord.php" aria-hidden="true"><span>Dashboard</span></a></li>';
+                            drop_dwn.innerHTML += '<li><a href="/logout.php"><span>Logout</span></a></li>';
+                        }
+                        else
+                        {
+                            drop_dwn.innerHTML += '<li><a href="/login.php" aria-hidden="true"><span>Login</span></a></li>';
+                        }
+                    }
+                    //user-state-[session]
+
+					//cart
+					var c_itm_cnt = document.getElementById('c_itm_cnt');
+                    if(json.items.cart !== undefined && !json.items.cart.empty && c_itm_cnt !== undefined)
+                    {
+                        c_itm_cnt.style.display = "flex";
+                        c_itm_cnt.innerHTML = json.items.cart.length;
+					}
+					else
+					{
+						c_itm_cnt.innerHTML = "0";
+					}
+                    //cart
+
+                }
+            }
+		}	
+	});
+}
+
+
 function initStoreFromServer(callback){
+
+	userState();
 
 	var storeName = decodeURI();
 	
@@ -31,6 +82,7 @@ function initStoreFromServer(callback){
 
 			if(obj.result)
 			{
+				store = obj.store; 
 				//static
 				$('.copyrightR').html('©'+(new Date()).getFullYear()+' All Rights Reserverd. '+obj.store.name+' Store with <i class="fa fa-heart-o" aria-hidden="true"></i> from <a href="#">B2C!</a>');
 
@@ -77,7 +129,7 @@ function initStoreFromServer(callback){
 				//categories
 				var catLiAppend = "";
 				obj.categories.forEach(function(item,i){
-					catLiAppend = '<li><a href="/store?name='+obj.store.name+'&catid='+item.category_id+'">'+item.cat_name+'</a></li>';
+					catLiAppend = '<li><a href="/store?name='+obj.store.name+'&catid='+item.category_id+'&catname='+item.cat_name+'">'+item.cat_name+'</a></li>';
 					$('#lg-cat-drpdowns').append(catLiAppend);
 					$('#md-str-catholder').append(catLiAppend);
 				});
@@ -114,7 +166,7 @@ function getNewArrivals(store)
 															<div class="favorite favorite_left"></div>\
 															<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"></div>\
 															<div class="product_info">\
-																<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'">'+item.p_name+'</a></h6>\
+																<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'&pname='+item.p_name+'">'+item.p_name+'</a></h6>\
 																<div class="product_price"><i class="fa fa-1x fa-inr"></i>'+item.p_price+'</div>\
 															</div>\
 														</div>\
@@ -154,7 +206,7 @@ function getCategory(store,catid,page){
 													<img src="/apies/'+item.images.img_dir+item.images.img_name+'" alt="">\
 												</div>\
 												<div class="product_info">\
-													<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'">'+item.p_name+'</a></h6>\
+													<h6 class="product_name"><a href="name='+store.name+'&pid='+item.product_id+'&pname='+item.p_name+'">'+item.p_name+'</a></h6>\
 													<div class="product_price"><span class="fa fa-1x fa-inr"></span>'+item.p_price+'</div>\
 												</div>\
 											</div>\
@@ -191,6 +243,18 @@ function getProduct(pid,merchant_id)
 			var json = JSON.parse(JSON.stringify(Response));
 			if(json.result == 1)
 			{
+
+				//breadcrum
+				var breadcrum_ctn = document.getElementById('56g53');
+				json.product.breadcrum.reverse().forEach(function(item,i){
+					if(i == 0)
+						breadcrum_ctn.innerHTML += '<li><a href="name='+store.name+'&catid='+item.catid+'&catname='+item.name+'">'+item.name+'</a></li>';
+					else
+					breadcrum_ctn.innerHTML += '<li><a href="name='+store.name+'&catid='+item.catid+'&catname='+item.name+'"><i class="fa fa-angle-right" aria-hidden="true"></i>'+item.name+'</a></li>';
+				});
+				breadcrum_ctn.innerHTML += '<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>'+json.product.p_name+'</a></li>';
+				//breadcrum
+
 				//name,descriiption
 				$('.productNameR').text(json.product.p_name);
 				$('.descriptionR').text(json.product.p_description);
@@ -295,12 +359,12 @@ function getProduct(pid,merchant_id)
 				json.product.images.forEach(function(item,i){
 					if(i==0)
 					{
-						$('.images-gridR').append('<li class="active"><img src="/apies/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
-						$('.single_product_image_background').attr("style","background-image:url('/apies/"+item.img_dir+item.img_name+"');");
+						$('.images-gridR').append('<li class="active"><img src="'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
+						$('.single_product_image_background').attr("style","background-image:url('"+item.img_dir+item.img_name+"');");
 					}
 					else
 					{
-						$('.images-gridR').append('<li><img src="/apies/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
+						$('.images-gridR').append('<li><img src="/'+item.img_dir+item.img_name+'" alt="" data-image="/apies/'+item.img_dir+item.img_name+'"></li>');	
 					}
 				});
 				//reinit thumbnails
