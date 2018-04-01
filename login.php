@@ -69,7 +69,7 @@
 							<input type="button" id="lgn" class="btn btn-primary-color" value="Login"/>
 						</div>
 					</form>
-                    <div ></div> Not a mamber SignUp Now
+                    <div ><a class="_redfge" href="/signup.php">Not a mamber SignUp Now</a> </div> 
 				</div>
                 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 			</div>

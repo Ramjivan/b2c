@@ -13,3 +13,40 @@ of products related to category is not implimented
 money sent to 945934850 user or money added to wallet 
 
 #what is orderSummary.php in merchant dashboard if not useful move to trash
+
+With php redirect rule remove file extention eg. login.php => login
+
+--Home Page 
+
+#fix move to top arrow 
+
+#fix cart icon in header
+
+#show 5 recently added products on home page
+
+#replace slider with a good tested one and show images in slider with image_id's 
+
+--wallet
+
+#add money from wallet
+-> process to add money 
+    on click of add money
+    ask amount
+    and on submit
+    move to payment page !while adding from payment page either disable cod and pay option or hide them
+    on submit add money to wallet and add a row in ex_transection 
+
+
+--signup page
+
+#remove radio button to signup for merchant instead use checkbox
+
+--category
+
+#when listing products from category -> http://localhost/mcat=12 image is not shown
+
+--product page
+
+#buy now button when clicked move that single product to cart and proceed to checkout
+
+#ask questions not working[if not implimented let it be for now, fix if a minor bug]
