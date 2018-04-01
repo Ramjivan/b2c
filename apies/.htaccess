@@ -116,5 +116,10 @@ RewriteRule ^wallet/txns$ wallet.php?qtype=2 [QSA]
 
 #customer related
 RewriteRule ^customer/add$ reg.php [QSA]
-RewriteRule ^customer$ reg.php [QSA] [L]
+RewriteRule ^customer$ reg.php [QSA]
 #customer related
+
+#HOMEPAGE
+RewriteRule ^hpg/rc$ homepage.php?qtype=1 [QSA]
+#HOMEPAGE
+

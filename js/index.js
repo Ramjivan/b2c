@@ -75,51 +75,68 @@ window.onload = function(){
 
 	}
 
-	putSlider('u_slider_main1','u_slider1','u_slider_prev','u_slider_next');
-
-	function fsSlider(root_elem_id,elem_id,prev,next)
-	{
-		var main_root = document.getElementById(root_elem_id);
-		var elem = document.getElementById(elem_id);
-		var prev = document.getElementById(prev);
-		var next = document.getElementById(next);
-
-		var transval = 0;
-
-		if(main_root !== null && elem !== null && prev !== null && next !== null)
-		{
-			
-			var lis = elem.children;
-
-			for(var i = 0 ; i < lis.length ; i++)
-			{
-				lis[i].style.width = elem.clientWidth+'px'; 
-			}
-
-			var fsNext = function(){
-				var childs = elem.children;
-
-				for(var i = 0 ; i < lis.length ; i++)
-				{
-					lis[i].style.width = main_root.clientWidth+'px'; 
-				}
-
-				elem.style.width = childs.length * main_root.clientWidth+"px";
-				transval += main_root.clientWidth;
-				if(transval > elem.clientWidth/2)
-				{
-					transval = 0;
-				}
-				elem.style.transform =  'translateX(-'+transval+'px)';
-			};
-
-			setInterval(fsNext,2000);
-		}
-	}
-
-	fsSlider('fs_slider1','fssldr_content','fs_slider_prev','fs_slider_next');
-
 	
+
+	function hpg_rc() //get recent 5 products
+	{
+		xhr_call(
+			'GET',
+			'/apies/hpg/rc',
+			null,
+			function(xhttp){
+				var obj = JSON.parse(xhttp.responseText);
+
+				if(obj.result)
+				{
+					if(u_slider1 !== null)
+					{
+						obj.products.forEach(function(item,i){
+							var avgRating = 0;
+							
+							for(var i = 1 ; i <= 5 ; i++)
+							{
+								avgRating += parseInt(item.rating[i])*i;
+							}
+
+							avgRating = !isFinite(avgRating/parseInt(item.rating.count)) ? 0 : avgRating/parseInt(item.rating.count);
+
+							var app = '<div class="p_slider_item">\
+							<a class="prdct-lnk-a" href="product?'+item.product_id+'">\
+							<img src="'+item.images[1] + item.images[0] +'" alt="pdt">\
+							<div>\
+								<b>'+item.p_name+'</b>\
+							</div>\
+							<div class="details">\
+								<div class="price">\
+									<span class="p_prspn"><span class="fa fa-inr"></span>'+item.p_price+'</span>\
+								</div>\
+								<div class="rating">\
+									<span class="ra_ti_avgr">'+avgRating+'&nbsp;<span class="fa fa-star"></span></span>\
+								</div>\
+							</div>\
+							</a>\
+							</div>';
+
+							u_slider1.innerHTML += app;
+						});
+
+						putSlider('u_slider_main1','u_slider1','u_slider_prev','u_slider_next');
+
+					}
+				}
+				else if(obj.ERROR)
+				{
+					alert('something went worng..');
+				}
+
+			},
+			function(xhttp){
+
+			}
+		);
+	}
+	hpg_rc();
+
 };
 
 

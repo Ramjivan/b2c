@@ -1377,6 +1377,7 @@ div.p_slider_prev span.fa{
 
 .p_slider_item{
 	display: inline-block;
+	margin:5px;
 	padding:5px;
 	background-color:var(--primary-color);
 }

@@ -58,18 +58,6 @@
 			</div>
 		</div-->
 
-		<div class="f_scr_slider" id="fs_slider1">
-			<ul class="f_scr_content" id="fssldr_content">
-				<li>
-					<a href="#"><img src="\images\slides-presentation.png" /></a>
-				</li>
-				<li>
-					<a href="#"><img src="\images\mobilemarketing.png" /></a>
-				</li>	
-			</ul>
-			<div class="p_slider_prev" id="fs_slider_prev"><span class="fa fa-arrow-left"></span></div>
-			<div class="p_slider_next" id="fs_slider_next"><span class="fa fa-arrow-right"></span></div>
-		</div>
 		
 		<div id="cart-container" class="main-container">
 			<h3>New Arrivals</h3>
@@ -91,81 +79,7 @@
 						</div>
 					</div>
 
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>product 2</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 3</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
 					
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>product 2</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 3</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
 				</div>
 				<div class="p_slider_prev" id="u_slider_prev"><span class="fa fa-arrow-left"></span></div>
 				<div class="p_slider_next" id="u_slider_next"><span class="fa fa-arrow-right"></span></div>
