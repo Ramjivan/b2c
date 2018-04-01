@@ -170,10 +170,11 @@ span.cart-total-span{
 }
 
 .dashboard-img{
-	width:30px;
-	height:30px;
+	width:60px;
+	height:60px;
 	margin-left:4px;
 	vertical-align:middle;
+	border-radius:50%;
 }
 
 ul.dshul{

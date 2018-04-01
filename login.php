@@ -53,7 +53,7 @@
 				<div class="spform">
 					<h3>Login</h3>
 					<form id="signin-form" class="jk-form">
-						<div id="vs">
+						<div id="vs" class="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						<div class="form-group">

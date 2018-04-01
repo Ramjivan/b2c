@@ -43,13 +43,22 @@ window.onload = function(){
 				'apies/session',
 				formData,
 				function(xhttp){
-					if(url !== undefined)
+					var obj = JSON.parse(xhttp.responseText);
+
+					if(obj.success == 1)
 					{
-						document.location = url['redirurl'];
+						if(url !== null && url['redirurl'] !== undefined)
+						{
+							document.location = url['redirurl'];
+						}
+						else
+						{
+							document.location = "/";
+						}
 					}
 					else
 					{
-						document.location = "/";
+
 					}				
 				},
 				function(xhttp){

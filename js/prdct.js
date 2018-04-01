@@ -113,7 +113,7 @@ window.onload = function(){
 									var upper_first_leg = '<div itemprop="review" itemscope itemtype="http://schema.org/Review" class="jk-review-tile col-3 clearfix">\
 										<div  class="jk-review-tile-header clearfix">\
 											<div class="col-6">\
-												<img style="max-width:30px;min-height:30px;height:30px;width:30px;border-radius:100%;vertical-align:middle;margin-top:-1px;" src="'+(row.ppImg_id !== null ? 'apies/'+row.cusotmer_image.img_dir+row.cusotmer_image.img_name : 'default-user.png')+'">&nbsp;<span itemprop="author">'+row.c_fullname+'</span>\
+												<img style="max-width:30px;min-height:30px;height:30px;width:30px;border-radius:100%;vertical-align:middle;margin-top:-1px;" src="'+(row.ppImg_id !== null ? row.cusotmer_image.img_dir+row.cusotmer_image.img_name : 'default-user.png')+'">&nbsp;<span itemprop="author">'+row.c_fullname+'</span>\
 											</div>';
 											
 											
@@ -135,20 +135,21 @@ window.onload = function(){
 									
 									rew.innerHTML += (upper_first_leg + upper_second_leg + bottom);
 								}
-								rew.innerHTML +='<form id="rvfm" class="detail-card jk-form col-3">\
+								rew.innerHTML +='<form id="rvfm" method="post" class="detail-card jk-form col-3">\
 														<div id="vsap" class="vs">\
 															<h3 id="vsh3" class="vs">Something Went wrong</h3>\
 														</div>\
 													<div class="form-group">\
-														<select name="rew_rating">\
+														<select id="str_rt" name="rew_rating">\
 															<option value="1">1 - Star</option>\
 															<option value="2">2 - Star</option>\
 															<option value="3">3 - Star</option>\
 															<option value="4">4 - Star</option>\
 															<option value="5">5 - Star</option>\
 														</select>\
-														<textarea name="rew_text" placeholder="Write a Review(255 char allowed)"></textarea>\
+														<textarea name="rew_text" id="txt_rt" placeholder="Write a Review(255 char allowed)"></textarea>\
 													</div>\
+													<input type="hidden" name="product_id" value="">\
 													<input id="ra_v_btn" type="button" class="btn btn-default btn-success btn-wide" value="Rate & Review"/>\
 													</form>\
 													<div class="clearfix"></div>';
@@ -160,7 +161,7 @@ window.onload = function(){
 							{
 								var rew = document.getElementById('rew_con');
 								rew.innerHTML += '<h4><center>no reviews found.</center></h4>\
-												<form id="rvfm" action="#" method="post" class="detail-card jk-form col-3">\
+												<form id="rvfm" method="post" class="detail-card jk-form col-3">\
 													<div id="vsap" class="vs">\
 														<h3 id="vsh3" class="vs">Something Went wrong</h3>\
 														</div>\
@@ -174,6 +175,7 @@ window.onload = function(){
 															</select>\
 															<textarea id="txt_rt" max="255" name="rew_text" placeholder="Write a Review(255 char allowed)"></textarea>\
 														</div>\
+														<input type="hidden" name="product_id" value="">\
 												<input id="ra_v_btn" type="button" class="btn btn-default btn-success btn-wide" value="Rate & Review"/>\
 												</form>\
 												<div class="clearfix"></div>';
@@ -196,9 +198,9 @@ window.onload = function(){
 
 
 								var fn = function(arg){
-									if(rvfm!==null)
+									if(rvfm!==null && rvfm.product_id !== null)
 									{
-										rvfm.innerHTML += '<input type="hidden" name="product_id" value="'+pid+'">';
+										rvfm.product_id.value = pid;
 										submit_form('rvfm',arg[1],'vsap',arg[2],'POST',arg[3],arg[4]);
 									}
 								};
@@ -321,7 +323,7 @@ window.onload = function(){
 								</div>\
 								<div class="row" style="position:relative;">\
 								<div class="col-3 img-zoom-container">\
-									<img itemprop="image" id="myimage" src="apies/'+images[0]['img_dir']+images[0]['img_name']+'">\
+									<img itemprop="image" id="myimage" src="'+images[0]['img_dir']+images[0]['img_name']+'">\
 									<div id="myresult" class="img-zoom-result"></div>\
 									<div class="clearfix"></div>\
 								</div>';
@@ -426,9 +428,9 @@ window.onload = function(){
 								
 								for(var i = 0 ; i < images.length ; i++){
 									if(i == 0)
-										img_lst.innerHTML += '<li><img class="active" src="apies/'+images[0]['img_dir']+images[0]['img_name']+'"></li>';
+										img_lst.innerHTML += '<li><img class="active" src="'+images[0]['img_dir']+images[0]['img_name']+'"></li>';
 									else
-										img_lst.innerHTML += '<li><img src="apies/'+images[0]['img_dir']+images[0]['img_name']+'"></li>';
+										img_lst.innerHTML += '<li><img src="'+images[0]['img_dir']+images[0]['img_name']+'"></li>';
 										
 								}
 								

@@ -64,6 +64,22 @@ function get_review($item_id)
 	}
 }
 
+function reviewed($cus_id,$pro_id)
+{
+	include('pdo.php');
+	if($cas_id !== null && $pro_id !== null)
+	{
+		$stmt =  $conn->prepare('select `customer_id` from `p_review` WHERE `customer_id`= ? && `product_id` = ?');
+		$stmt->exeute(array($cus_id,$pro_id));
+
+		if($stmt->rowCount() > 0)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -93,17 +109,25 @@ function get_review($item_id)
 				try
 				{
 					$indexes['customer_id'] = $user['customer_id'];
-					$conn->beginTransaction();
-					$stmt = $conn->prepare("INSERT INTO `p_review` (`product_id`,`rew_rating`,`rew_text`,`customer_id`) VALUES (:product_id,:rew_rating,:rew_text,:customer_id)");
-					$response = $stmt->execute($indexes);
-					if($response > 0)
-					{
-						$return_values['success'] = 1;
-						$conn->commit();
+					if(reviewed($user['customer_id'],$indexes['product_id']) == false)
+					{		
+						$conn->beginTransaction();
+						$stmt = $conn->prepare("INSERT INTO `p_review` (`product_id`,`rew_rating`,`rew_text`,`customer_id`) VALUES (:product_id,:rew_rating,:rew_text,:customer_id)");
+						$response = $stmt->execute($indexes);
+						if($response > 0)
+						{
+							$return_values['success'] = 1;
+							$conn->commit();
+						}
+						else
+						{
+							$return_values['ERROR'] = "DB ERROR.";
+						}
 					}
 					else
 					{
-						$return_values['ERROR'] = "DB ERROR.";
+						$return_values['ERROR'] = true;
+						$return_values['MESSAGE'] = "Already Reviewed Product.";
 					}
 				}	
 				catch(PDOException $e)
