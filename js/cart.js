@@ -98,7 +98,7 @@ window.onload = function(){
 								var row = json.items[i];
 								var append = '<div class="item-card col-6 clearfix">\
 												<div class="col-1">\
-													<img class="cart-item-image" src="/b2c/apies/'+row.img+'" width="100%" height="80%"/>\
+													<img class="cart-item-image" src="'+row.img+'" width="100%" height="80%"/>\
 												</div>\
 												<div class="col-1">\
 													<h2>'+row.p_name+'</h2>\

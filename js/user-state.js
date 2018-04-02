@@ -34,7 +34,7 @@
                             drop_dwn.innerHTML += '<a href="/logout.php"><span>Logout</span></a>';
                             usr_img.setAttribute('src',json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name);
                             
-                            if(usrdtls_ !== undefined)
+                            if(document.getElementById('usrdtls_') !== null)
                             {
                                 usrdtls_.innerHTML = '<img src="'+json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name+'" class="dashboard-img"/><span>&nbsp;'+json.items.SESSION.user.c_fullname+'</span>';
                             }

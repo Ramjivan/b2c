@@ -331,6 +331,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 $res = $put->execute(array($txn_id,$total,$wallet['wallet_id'],2,$_POST['pay-method']));
 
             }
+            else if(count($wallet) > 0 && $wallet['balance'] < $total && $_POST['pay-method'] !== '105')
+            {
+
+                $txn_id = substr(md5(time()),0,10);
+                $difference = $total - $wallet['balance'];
+
+                $put = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`,`txn_type`,`txn_desc`) VALUES (?,?,?,?,?)');
+                $res = $put->execute(array($txn_id,$total,$wallet['wallet_id'],2,$_POST['pay-method']));
+
+            }
             else if($_POST['pay-method'] == '105')
             {
                 $res = true;
@@ -354,7 +364,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 }
 
                 $conn->commit();
-                echo 'order Placed';
+                Header('Location:/customer/orders');
             }
             else
             {

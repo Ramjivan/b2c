@@ -335,7 +335,7 @@ window.onload = function(){
 										<div>\
 											<h4 itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span itemprop="priceCurrency" content="INR"></span><span \
 											itemprop="price" content="'+product.p_price+'">'+product.p_price+'</span>&nbsp;<span class="fa fa-inr"></span></h4>\
-											'+(product.p_stock > 0 ? '<h4 class="green">In Stock</h4><button id="c-add" class="btn btn-default btn-success">ADD TO CART</button><button class="btn btn-default btn-primary-color">BUY NOW</button>' : '<h4 class="red">Out of Stock</h4>')+'\
+											'+(product.p_stock > 0 ? '<h4 class="green">In Stock</h4><button id="c-add" class="btn btn-default btn-success">ADD TO CART</button><button id="bnow" class="btn btn-default btn-primary-color">BUY NOW</button>' : '<h4 class="red">Out of Stock</h4>')+'\
 										</div>\
 									</div>\
 									<div class="col-3 detail-card">\
@@ -422,6 +422,39 @@ window.onload = function(){
 								cart_btn.onclick = function(){
 									cb(a_q,pid,this);
 								}
+
+								var bnow = document.getElementById('bnow');
+
+								function bnow_q(args)
+								{
+									xhr_call(
+										'GET',
+										'/apies/cart/add/'+args[1]+'/qty/1',
+										null,
+										function(xhttp){
+											if(xhttp.responseText.length > 0)
+											{
+												var json = JSON.parse(xhttp.responseText);
+												if(json.success)
+												{
+													document.location = '/cart';
+												}
+												else if(json.ERROR)
+												{
+													alert('Something Went Wrong.');
+												}
+											}
+										},
+										function(xhttp){
+											alert('couldn\'t esatablish the connection.');
+										}
+									);
+								}
+
+								bnow.onclick = function(){
+									cb(bnow_q,pid,this);
+								}
+
 							}
 							
 							var img_lst = document.getElementById('pimglst');
