@@ -48,7 +48,7 @@ function upload_image($index)
 			{
 				if (move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
 				{
-					return array('dir'=>$dir,'imgname'=>$name.'.'.$imageFileType);
+					return array('dir'=>'/images/','imgname'=>$name.'.'.$imageFileType);
 				}
 			}
 			else

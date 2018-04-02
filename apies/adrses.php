@@ -183,7 +183,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 						{
 							$conn->commit();
 							$return_values['success'] = 1;
-							
+							$_SESSION['user']['c_def_address_id'] = $_POST['cid'];
 						}
 						else
 						{
