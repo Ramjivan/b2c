@@ -155,21 +155,25 @@ window.onload = function(){
 	
 	function pm(i)
 	{
-		if(i == 1)
+		if(i == 101 )
 		{
 			return "Pay Balance";
 		}
-		else if(i == 2)
+		else if(i == 102)
 		{
-			return "Credit Card";
+			return "UPI";
 		}
-		else if(i == 3)
+		else if(i == 103)
 		{
-			return "Paytm";
+			return "Credit/Debit Card";
 		}
-		else if(i == 4)
+		else if(i == 104)
 		{
-			return "COD";
+			return "Net Banking";
+		}
+		else if(i == 105)
+		{
+			return "Cash On Delivery(COD)";
 		}
 	}
 	

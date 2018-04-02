@@ -42,7 +42,7 @@
                         }
                         else
                         {
-                            if(usrdtls_ !== undefined)
+                            if(document.getElementById('usrdtls_') !== null)
                             {
                                 usrdtls_.innerHTML = '<img src="default-user.png" class="dashboard-img"/><span>&nbsp;Hello Guest !</span>';
                             }

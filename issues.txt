@@ -15,8 +15,6 @@
 
 --product page
 
-#buy now button when clicked move that single product to cart and proceed to checkout
-
 #ask questions not working[if not implimented let it be for now, fix if a minor bug]
 
 

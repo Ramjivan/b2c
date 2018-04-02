@@ -79,6 +79,66 @@
 						</div>
 					</div>
 
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="p_slider_item">
+						<img src="default-user.png" alt="pdt">
+						<div>
+							<b>Product 1</b>
+						</div>
+						<div class="details">
+							<div class="price">
+								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
+							</div>
+							<div class="rating">
+								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
+							</div>
+						</div>
+					</div>
+
 					
 				</div>
 				<div class="p_slider_prev" id="u_slider_prev"><span class="fa fa-arrow-left"></span></div>

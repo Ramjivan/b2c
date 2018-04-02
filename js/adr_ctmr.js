@@ -25,6 +25,37 @@ window.onload = function(){
 			}
 		);
 	}
+
+
+	function s_d(args)
+	{
+		var tar = args[2];
+		var form = new FormData();
+		form.set('cid',args[1]);
+		xhr_call(
+			'POST',
+			'/apies/address/sd',
+			form,
+			function(xhttp){
+				if(xhttp.responseText.length > 0)
+				{
+					var json = JSON.parse(xhttp.responseText);
+					if(json.success)
+					{
+						alert("Default Address changed.");
+						get();
+					}
+					else
+					{
+						alert('something went wrong.');
+					}
+				}
+			},
+			function(xhttp){
+				alert('Something went wrong.');
+			}
+		);
+	}
 	
 	
 	function get(){
@@ -37,7 +68,18 @@ window.onload = function(){
 				if(json.result !== undefined && json.result > 0 && document.getElementById('addressrow') !== null){
 					
 					var tar = document.getElementById('addressrow');
-					
+
+					if(document.getElementsByClassName('jk-address-tile') !== null && document.getElementsByClassName('jk-address-tile').length > 1)
+					{	
+						tar.innerHTML = '<a href="customer/address/add">\
+											<div class="jk-address-tile-container col-2">\
+												<div class="jk-address-tile col-6">\
+													<div class="jk-address-tile-add-div"><i class="fa fa-plus"></i></div>\
+												</div>\
+											</div>\
+										</a>';
+					}
+
 					for(var i = 0 ; i < json.items.length ; i++)
 					{
 						var row = json.items[i];
@@ -55,7 +97,7 @@ window.onload = function(){
 						else
 						{
 							
-							app+= '<div class="col-6"><center><button class="btn btn-default btn-primary-color fa fa-trash"></button> | <a class="btn btn-primary-color"><b>set as default</b></a></center></div>';
+							app+= '<div class="col-6"><center><button class="btn btn-default btn-primary-color fa fa-trash" id="uj945e2'+i+'"></button> | <a id="sd45r'+i+'" class="btn btn-primary-color"><b>set as default</b></a></center></div>';
 						}
 						
 						tar.innerHTML += app;
@@ -73,9 +115,22 @@ window.onload = function(){
 							del.onclick = function(){
 								cb(d_q,salt,this);
 							};
+
+								//putting delete
 						}
+						if(document.getElementById('sd45r'+i) !== null)
+						{
+							const salt = json.items[i].address_id;
+							if(json.items[i].address_id !== json.default_id)
+							{
+								var sd = document.getElementById('sd45r'+i);
+								sd.onclick = function(){
+									cb(s_d,salt,this);
+								};
+							}
+						}
+						//putting set default
 					}
-					//putting delete 
 					
 				}
 			},

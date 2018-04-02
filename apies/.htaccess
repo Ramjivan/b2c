@@ -28,6 +28,7 @@ RewriteRule ^index/subcategory/([0-9]*)$ cat.php?qtype=3&id=$1 [QSA]
 
 RewriteRule ^address/add$ adrses.php?qtype=1 [QSA]
 RewriteRule ^address/delete$ adrses.php?qtype=2 [QSA]
+RewriteRule ^address/sd$ adrses.php?qtype=3 [QSA]
 RewriteRule ^address$ adrses.php [QSA]
 
 #address related

@@ -42,7 +42,7 @@ window.onload = function(){
 			
 			if(width > 0)
 			{
-				width+=100;
+				width+=200;
 				elem.style.width = width+'px';
 				childWidth = childs[0].clientWidth;
 			}
@@ -60,9 +60,9 @@ window.onload = function(){
 			next.onclick = function(){
 				transval += 200;
 				
-				measurediff = main_root.offsetWidth / childWidth;
+				measurediff = main_root.offsetWidth / childWidth; //how many could fit in viewport
 
-				measurediff *= childWidth;
+				measurediff *= childWidth; //limiting translation by multiplaying childwidth with count 
 
 				if(transval > width-measurediff)
 				{
