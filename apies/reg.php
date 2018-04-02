@@ -17,7 +17,7 @@ function is_set_strict(&$var,$index,&$ERROR_FLAG)
 }
 
 function is_set(&$var,$index,&$ERROR_FLAG)
-{
+{	
 	if(isset($_POST[$index]))
 	{
 		$var = trim($_POST[$index]);
@@ -40,7 +40,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	{
 		if(!isset($_POST['scus'])) // the customer id for edit request
 		{
-			if((isset($_POST['ctus']) && !empty($_POST['ctus'])) && (isset($_POST['pwd']) && !empty($_POST['pwd']))) // customer type
+			if(isset($_POST['pwd']) && !empty($_POST['pwd'])) // customer type
 			{	
 				$ERROR_FLAG = 0;
 
@@ -62,7 +62,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 					try
 					{
 						
-						if(in_array($_POST['ctus'],array(1,0)))
+						if(isset($_POST['ctus']) && $_POST['ctus'] == 1)
 						{
 							if($_POST['ctus'] == 1)
 							{

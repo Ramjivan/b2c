@@ -26,9 +26,8 @@ include('sess_val.php');
 			<div class="row dshbrdcon full">
 				<div class="col-6 full">
 					<div class="col-6">
-						<div class="col-6">
-							<img src="default-user.png" class="dashboard-img">
-							<small>Hello ! </small> Merchant
+						<div id="usrdtls_" class="col-6">
+								
 						</div>
 						<div class="subhead">
 							<h5>Manage</h5>

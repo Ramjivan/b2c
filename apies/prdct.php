@@ -16,17 +16,15 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}
 }
 
-
+ini_set('display_errors', 1);
 function upload_image($index)
 {
 	if(
 		isset($_FILES[$index]) && 
-		is_uploaded_file($_FILES[$index]['tmp_name']) && 
-		$_FILES[$index]['tmp_name'] !== ""
-	)
+		is_uploaded_file($_FILES[$index]['tmp_name']))
 	{
 		//image validation starts
-		$dir = "products/uploads/";
+		$dir = "/images/";
 		$name = md5(basename($_FILES[$index]['name']).time());
 		$targetFile = $dir.$name;
 		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
@@ -42,11 +40,17 @@ function upload_image($index)
 			}
 			else
 			{
+				echo 'not';
 				return null;
 			}
 		}
+		else
+		{
+			echo 'check'; 
+		}
 	}
-	return false;
+	print_r($_FILES);
+	return null;
 }
 
 
