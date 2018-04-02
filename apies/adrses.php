@@ -165,6 +165,51 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 		}
+		else if( (isset($_GET['qtype']) && $_GET['qtype'] == "3") && isset($_POST['cid']))
+		{
+			try
+			{	
+				$conn->beginTransaction();
+				$get_adr = $conn->prepare('SELECT `customer_id` from `addresses` WHERE `address_id` = ?'); 
+				$response = $get_adr->execute(array($_POST['cid']));
+				if($response > 0)
+				{
+					if(($id = $get_adr->fetch()) !== null && $id['customer_id'] == $user['customer_id'])
+					{
+						$stmt  = $conn->prepare('UPDATE `customers` SET `c_def_address_id` = ? WHERE `customer_id`=?');
+						$response = $stmt->execute(array($_POST['cid'],$user['customer_id']));
+						
+						if($response > 0)
+						{
+							$conn->commit();
+							$return_values['success'] = 1;
+							
+						}
+						else
+						{
+							$conn->rollBack();
+							$return_values['ERROR'] = "SERVER ERROR";
+						}
+					}
+					else
+					{
+						$return_values['ERROR'] = "USER NOT PRIVILEGD";
+					}
+				}
+				else
+				{
+					$return_values['ERROR'] = "DB ERROR";
+				}
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			
+			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+		}
 		
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET")

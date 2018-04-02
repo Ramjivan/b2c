@@ -1,31 +1,3 @@
-#on login.php show something went wrong error only when credentials are wrong
-
-#name of user as session variable is not good use customer_id instead => using customer_id and using name for displaying it on app side...
-
-#in store on selection of a category nothing is updated in header footer and retrival 
-of products related to category is not implimented
-
-#in store details not all social media links are required and try to use input type="url" for 
-
-#txn_id must be unique between ex_txn and in_txn table
-
-# added txn_desc in in_txt and ex_txn add description of transection like - paid for order no. 982492 or 
-money sent to 945934850 user or money added to wallet 
-
-#what is orderSummary.php in merchant dashboard if not useful move to trash
-
-With php redirect rule remove file extention eg. login.php => login
-
---Home Page 
-
-#fix move to top arrow 
-
-#fix cart icon in header
-
-#show 5 recently added products on home page
-
-#replace slider with a good tested one and show images in slider with image_id's 
-
 --wallet
 
 #add money from wallet
@@ -41,20 +13,15 @@ With php redirect rule remove file extention eg. login.php => login
 
 #remove radio button to signup for merchant instead use checkbox
 
---category
-
-#when listing products from category -> http://localhost/mcat=12 image is not shown
-
 --product page
-
-#buy now button when clicked move that single product to cart and proceed to checkout
 
 #ask questions not working[if not implimented let it be for now, fix if a minor bug]
 
---order
 
-#redirect to order summary page from http://localhost/apies/hdlpm.php 
+--customer address
 
-#order is not being placed 
--> it's not listing in order.php
+#implement set as default button
 
+--
+http://localhost/login.php?redirurl=http://localhost/mcat=5  
+remove session validate from product listing pages

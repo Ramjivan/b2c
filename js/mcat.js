@@ -34,7 +34,7 @@ window.onload = function(){
 						app = '<div class="prdct">\
 									<a class="prdct-lnk-a" href="product?'+item.product_id+'">\
 										<div class="img">\
-											<img src="apies/'+item.images[1] + item.images[0] +'"/>\
+											<img src="'+item.images[1] + item.images[0] +'"/>\
 										</div>\
 										<div>\
 											<b>'+item.p_name+'</b>\
