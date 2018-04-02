@@ -38,7 +38,7 @@ session_start();
 				
 					<h3>Sign up</h3>
 					<form class="jk-form" id="sgn-form">
-						<div id="vs">
+						<div class="vs" id="vs">
 							<h3 id="vsh3">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
@@ -54,7 +54,7 @@ session_start();
 							<input id="password" onchange="validate({'id':'password','name':'Email Address','regex':null,'length':null,'min_length':8,'max_length':null})" placeholder="8 character password" type="password" name="pwd" minlength="8" />
 						</div>
 						<div class="form-group">
-							Merchant <input type="radio" name="ctus" value="1"> Customer <input type="radio" name="ctus" value="2">
+							<input type="checkbox" name="ctus" id="ctus" value="1"><label for="ctus">opt to be a Merchant also.</label>
 						</div>
 						<div class="form-group">
 							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>

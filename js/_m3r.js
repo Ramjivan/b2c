@@ -360,13 +360,13 @@ window.onload = function(){
 								_cat_sel_count+=1;
 								select.onchange = function(){nescat(index+1,'p_category')};
 								
-								//document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+								document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 								select.onchange();
 							
 							}
 							else
 							{
-								//document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+								document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
 							}
 						}
 					}							

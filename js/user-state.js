@@ -32,20 +32,32 @@
                         if(json.items.SESSION.logged_in == true)
                         {
                             drop_dwn.innerHTML += '<a href="/logout.php"><span>Logout</span></a>';
-                            usr_img.setAttribute('src',json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name);
                             
-                            if(document.getElementById('usrdtls_') !== null)
+                            if(json.items.SESSION.user.ppimage !== false)
                             {
-                                usrdtls_.innerHTML = '<img src="'+json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name+'" class="dashboard-img"/><span>&nbsp;'+json.items.SESSION.user.c_fullname+'</span>';
+                                usr_img.setAttribute('src',json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name);
+                                
+                                if(document.getElementById('usrdtls_') !== null)
+                                {
+                                    usrdtls_.innerHTML = '<img src="'+json.items.SESSION.user.ppimage.img_dir+json.items.SESSION.user.ppimage.img_name+'" class="dashboard-img"/><span>&nbsp;'+json.items.SESSION.user.c_fullname+'</span>';
+                                }
                             }
-
+                            else
+                            {
+                                if(document.getElementById('usrdtls_') !== null)
+                                {
+                                    usrdtls_.innerHTML = '<img src="/default-user.png" class="dashboard-img"/><span>&nbsp;'+json.items.SESSION.user.c_fullname+'</span>';
+                                }
+                            }
                         }
                         else
                         {
                             if(document.getElementById('usrdtls_') !== null)
                             {
-                                usrdtls_.innerHTML = '<img src="default-user.png" class="dashboard-img"/><span>&nbsp;Hello Guest !</span>';
+                                usrdtls_.innerHTML = '<img src="/default-user.png" class="dashboard-img"/><span>&nbsp;Hello Guest !</span>';
                             }
+
+
 
                             drop_dwn.innerHTML += '<a href="/login.php"><span>Login</span></a>';
                             usr_img.src="/default-user.png";
