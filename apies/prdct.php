@@ -24,7 +24,7 @@ function upload_image($index)
 		is_uploaded_file($_FILES[$index]['tmp_name']))
 	{
 		//image validation starts
-		$dir = "/images/";
+		$dir = dirname(__DIR__)."/images/";
 		$name = md5(basename($_FILES[$index]['name']).time());
 		$targetFile = $dir.$name;
 		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
