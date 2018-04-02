@@ -50,3 +50,11 @@ With php redirect rule remove file extention eg. login.php => login
 #buy now button when clicked move that single product to cart and proceed to checkout
 
 #ask questions not working[if not implimented let it be for now, fix if a minor bug]
+
+--order
+
+#redirect to order summary page from http://localhost/apies/hdlpm.php 
+
+#order is not being placed 
+-> it's not listing in order.php
+
