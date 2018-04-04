@@ -296,6 +296,29 @@ window.onload = function(){
 				}
 				_cat_sel_count--;
 			}
+			var fncrad = function(tar){
+				var selects = document.querySelectorAll('[id*="31t"]');
+				if(selects !== null)
+				{				
+				selects.forEach(function(item){
+					item.removeAttribute('name');
+				});
+					tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+				}
+			};
+
+			var radios = document.querySelectorAll('[id*="3trd"]');
+			if(radios !== null)
+			{				
+				radios.forEach(function(item){
+					item.onchange = function(){
+						fncrad(item);
+					};
+				});
+			}
+
+
+
 			xhr_call(
 				'GET',
 				'/apies/index/subcategory/'+spinner.value,
@@ -317,17 +340,6 @@ window.onload = function(){
 								select.setAttribute('id','31t'+(index+1));
 								select.style.width = 'auto';
 								select.style.margin = '0';
-								
-								var fncrad = function(tar){
-									var selects = document.querySelectorAll('[id*="31t"]');
-									if(selects !== null)
-									{				
-									selects.forEach(function(item){
-										item.removeAttribute('name');
-									});
-										tar.parentNode.getElementsByTagName('select')[0].setAttribute('name','parent_id');
-									}
-								};
 								
 								var radio = document.createElement('input');
 								radio.setAttribute('type','radio');
@@ -358,7 +370,7 @@ window.onload = function(){
 								div.appendChild(radiojk);
 								document.getElementById('cat_panel').appendChild(div);
 								_cat_sel_count+=1;
-								select.onchange = function(){nescat(index+1,'p_category')};
+								select.onchange = function(){nescat(index+1,name)};
 								
 								document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 								select.onchange();
@@ -878,6 +890,28 @@ window.onload = function(){
 					}
 					_cat_sel_count--;
 				}
+
+				var fncrad = function(tar){
+					var selects = document.querySelectorAll('[id*="31t"]');
+					if(selects !== null)
+					{				
+					selects.forEach(function(item){
+						item.removeAttribute('name');
+					});
+						tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+					}
+				};
+	
+				var radios = document.querySelectorAll('[id*="3trd"]');
+				if(radios !== null)
+				{				
+					radios.forEach(function(item){
+						item.onchange = function(){
+							fncrad(item);
+						};
+					});
+				}
+
 				xhr_call(
 					'GET',
 					'/apies/index/subcategory/'+spinner.value,
@@ -900,17 +934,7 @@ window.onload = function(){
 									select.style.width = 'auto';
 									select.style.margin = '0';
 									
-									var fncrad = function(tar){
-										var selects = document.querySelectorAll('[id*="31t"]');
-										if(selects !== null)
-										{				
-										selects.forEach(function(item){
-											item.removeAttribute('name');
-										});
-											tar.parentNode.getElementsByTagName('select')[0].setAttribute('name','parent_id');
-										}
-									};
-									
+								
 									var radio = document.createElement('input');
 									radio.setAttribute('type','radio');
 									radio.setAttribute('id','3trd'+(index+1));
@@ -940,15 +964,15 @@ window.onload = function(){
 									div.appendChild(radiojk);
 									document.getElementById('cat_panel').appendChild(div);
 									_cat_sel_count+=1;
-									select.onchange = function(){nescat(index+1,'parent_id')};
+									select.onchange = function(){nescat(index+1,name)};
 									
-									//document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+									document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 									select.onchange();
 								
 								}
 								else
 								{
-									//document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+									document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
 								}
 							}
 						}							
@@ -983,6 +1007,7 @@ window.onload = function(){
 								tar.appendChild(option);
 							}
 							tar.onchange=function(){nescat(1,'parent_id')};
+							tar.onchange();
 						}
 					}
 				}
