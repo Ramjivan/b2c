@@ -296,6 +296,29 @@ window.onload = function(){
 				}
 				_cat_sel_count--;
 			}
+			var fncrad = function(tar){
+				var selects = document.querySelectorAll('[id*="31t"]');
+				if(selects !== null)
+				{				
+				selects.forEach(function(item){
+					item.removeAttribute('name');
+				});
+					tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+				}
+			};
+
+			var radios = document.querySelectorAll('[id*="3trd"]');
+			if(radios !== null)
+			{				
+				radios.forEach(function(item){
+					item.onchange = function(){
+						fncrad(item);
+					};
+				});
+			}
+
+
+
 			xhr_call(
 				'GET',
 				'/apies/index/subcategory/'+spinner.value,
@@ -876,6 +899,28 @@ window.onload = function(){
 					}
 					_cat_sel_count--;
 				}
+
+				var fncrad = function(tar){
+					var selects = document.querySelectorAll('[id*="31t"]');
+					if(selects !== null)
+					{				
+					selects.forEach(function(item){
+						item.removeAttribute('name');
+					});
+						tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+					}
+				};
+	
+				var radios = document.querySelectorAll('[id*="3trd"]');
+				if(radios !== null)
+				{				
+					radios.forEach(function(item){
+						item.onchange = function(){
+							fncrad(item);
+						};
+					});
+				}
+
 				xhr_call(
 					'GET',
 					'/apies/index/subcategory/'+spinner.value,
@@ -909,6 +954,7 @@ window.onload = function(){
 										}
 									};
 									
+								
 									var radio = document.createElement('input');
 									radio.setAttribute('type','radio');
 									radio.setAttribute('id','3trd'+(index+1));
