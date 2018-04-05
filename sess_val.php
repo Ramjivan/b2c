@@ -22,7 +22,4 @@ function prevent_hijacking(){
 		Header('Location: /login.php?redirurl=http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 	}
 
-
-
-
 ?>

@@ -71,13 +71,15 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<input id="stock" onchange="validate({'id':'stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Stocks" name="p_stock"/>
-						</div>
+						
 						<div class="form-card form-group">
 							<h3>Images</h3>
 							<input type="hidden" name="imgcount" value="1"/>
 							<input id="image1" onchange="validate({'id':'image1','name':'image1','regex':null,'length':null,'min_length':1,'max_length':null})" type="file" name="image1" multiple/>
+						</div>
+
+						<div class="form-group">
+							<input id="stock" onchange="validate({'id':'stock','name':'Stock','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Stocks" name="p_stock"/>
 						</div>
 						<div class="form-group">						
 							<h3>Hightlights</h3>

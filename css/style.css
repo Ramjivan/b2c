@@ -1463,3 +1463,7 @@ div.info:hover div.child{
 	height:400px;
 }
 /*infomatic div*/
+
+nav div a{
+	margin-left: 5px;
+}
