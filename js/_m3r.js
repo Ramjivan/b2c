@@ -325,7 +325,7 @@ window.onload = function(){
 									selects.forEach(function(item){
 										item.removeAttribute('name');
 									});
-										tar.parentNode.getElementsByTagName('select')[0].setAttribute('name','parent_id');
+										tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
 									}
 								};
 								
@@ -358,15 +358,15 @@ window.onload = function(){
 								div.appendChild(radiojk);
 								document.getElementById('cat_panel').appendChild(div);
 								_cat_sel_count+=1;
-								select.onchange = function(){nescat(index+1,'p_category')};
+								select.onchange = function(){nescat(index+1,name)};
 								
-								document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+								//document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 								select.onchange();
 							
 							}
 							else
 							{
-								document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+								//document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
 							}
 						}
 					}							
@@ -435,9 +435,7 @@ window.onload = function(){
 					submit_form('pctafm',formvalidation,'vsap','/apies/product/add','POST',success,fail);
 				});
 			}
-			//product form action
-			
-			
+			//product form action			
 			put_count('s_c',20);
 			
 		})();
@@ -907,7 +905,7 @@ window.onload = function(){
 										selects.forEach(function(item){
 											item.removeAttribute('name');
 										});
-											tar.parentNode.getElementsByTagName('select')[0].setAttribute('name','parent_id');
+											tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
 										}
 									};
 									
@@ -940,15 +938,15 @@ window.onload = function(){
 									div.appendChild(radiojk);
 									document.getElementById('cat_panel').appendChild(div);
 									_cat_sel_count+=1;
-									select.onchange = function(){nescat(index+1,'parent_id')};
+									select.onchange = function(){nescat(index+1,name)};
 									
-									//document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+									document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 									select.onchange();
 								
 								}
 								else
 								{
-									//document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+									document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
 								}
 							}
 						}							
@@ -982,7 +980,7 @@ window.onload = function(){
 								option.appendChild(document.createTextNode(json.items[i].cat_name));
 								tar.appendChild(option);
 							}
-							tar.onchange=function(){nescat(1,'parent_id')};
+							tar.onchange=function(){nescat(1,name)};
 						}
 					}
 				}

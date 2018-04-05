@@ -18,7 +18,7 @@
 				<div class="nav-item"><span class="fa fa-1x fa-clipbaord"></span><a href="order.php">Orders</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="qna.php">Q &amp; A</a></div>
 				<div class="nav-item"><span class="fa fa-1x fa-question-circle-o"></span><a href="store.php">Store</a></div>
-				<div class="nav-item"><a href="/logout.php"><span class="fa fa-1x fa-power-off"></span>Logout</a></div>	
+				
 
 			</nav>
 		</div>
@@ -40,7 +40,7 @@
 			</nav>
 			
 			<nav class="navbar float-right">
-				<div class="nav-item"><a href="/logout.php"><span class="fa fa-1dot5x fa-power-off"></span></a></div>	
+					
 			</nav>
 			<nav class="navbar float-right">	
 				<div class="nav-item user-dropbtn .lgout">

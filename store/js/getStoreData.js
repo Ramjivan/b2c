@@ -161,7 +161,7 @@ function getNewArrivals(store)
 					$('#arrival-prdct-grid').append('<div class="product-item col-md-3 clearfix">\
 														<div class="product discount product_filter">\
 															<div class="product_image center-block">\
-																<img src="/apies/'+images.img_dir+images.img_name+'" alt="">\
+																<img src="'+images.img_dir+images.img_name+'" alt="">\
 															</div>\
 															<div class="favorite favorite_left"></div>\
 															<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"></div>\
