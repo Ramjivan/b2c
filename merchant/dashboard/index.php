@@ -37,7 +37,7 @@ include('sess_val.php');
 							<li class="col-2"><a href="/merchant/dashboard/store.php"><div>Store</div><p>Manage Store</p></a></li>
 							<li class="col-2"><a href="/merchant/dashboard/qna.php"><div>QNA</div><p>Answere the questions</p></a></li>
 							<li class="col-2"><a href="/merchant/dashboard/product.php"><div>Products</div><p>Add, Edit OR Delete the Products.</p></a></li>
-							<li class="col-2"><a href="/merchant/dashboard/product.php"><div>Categories</div><p>Add, Edit OR Delete the Categories.</p></a></li>
+							<li class="col-2"><a href="/merchant/dashboard/category.php"><div>Categories</div><p>Add, Edit OR Delete the Categories.</p></a></li>
 						</ul>
 					</div>
 				</div>
