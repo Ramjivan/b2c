@@ -33,7 +33,7 @@
 
 						<div class="form-group">
 							<h3>Store Name</h3>
-							<input id="st_name" onchange="validate({'id':'st_name','name':'Name','regex':/^([a-zA-Z\s]+)$/,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Store Name (only alphabets allowed)" name="st_name"/>
+							<input id="st_name" onchange="validate({'id':'st_name','name':'Name','regex':/^([a-zA-Z\s]+)$/,'length':null,'min_length':2,'max_length':null})" type="text" placeholder="Store Name (only alphabets allowed)" name="st_name"/>
 						</div>
 
 						<div class="form-group">
@@ -44,9 +44,9 @@
 						<div class="form-group">
 							<h3>Store Contact Details</h3>
 							<p>Phone</p>
-							<input id="st_phone" onchange="validate({'id':'st_phone','name':'Contact Number','regex':/^[0-9]{10}$/,'length':10,'min_length':null,'max_length':null})" type="text" placeholder="Contact Number 75848XXXXX" name="st_phone"/>
+							<input id="st_phone" onchange="validate({'id':'st_phone','name':'Contact Number','regex':/^[0-9]{10}$/,'length':10,'min_length':10,'max_length':10})" type="text" placeholder="Contact Number 75848XXXXX" name="st_phone"/>
 							<p>E-Mail</p>
-							<input id="st_email" onchange="validate({'id':'st_email','name':'Mail Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':9,'max_length':255})" type="text" placeholder="Email" name="st_email"/>
+							<input id="st_email" onchange="validate({'id':'st_email','name':'Mail Address','regex':/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'length':null,'min_length':5,'max_length':255})" type="text" placeholder="Email" name="st_email"/>
 						</div>
 
 						<div class="form-group">

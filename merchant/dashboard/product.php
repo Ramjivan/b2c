@@ -54,10 +54,10 @@
 							<h3 id="vsh3" class="vs">Something Went wrong</h3>
 						</div>
 						<div class="form-group">
-							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
+							<input id="name" onchange="validate({'id':'name','name':'Name','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':2,'max_length':null})" type="text" placeholder="Full Name" name="p_name"/>
 						</div>
 						<div class="form-group">
-							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="p_description"></textarea>
+							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':null})" type="text" placeholder="255 char long description" name="p_description"></textarea>
 						</div>
 						<div class="form-group">
 							<input id="price" onchange="validate({'id':'price','name':'Price','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':6})" type="text" placeholder="Price" name="p_price"/>
@@ -100,13 +100,21 @@
 								<div class="clearfix"></div>
 								<div class="spec">
 									<h3>Specification 1</h3>
-										<input id="sp_name1" onchange="validate({'id':'sp_name1','name':'Spec Name 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Name" name="sp_name1"/>
-										<input id="sp_value1" onchange="validate({'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':5,'max_length':null})" type="text" placeholder="Spec Value" name="sp_value1"/>
+										<input id="sp_name1" onchange="validate({'id':'sp_name1','name':'Spec Name 1','regex':null,'length':null,'min_length':2,'max_length':null})" type="text" placeholder="Spec Name" name="sp_name1"/>
+										<input id="sp_value1" onchange="validate({'id':'sp_value1','name':'Spec Value 1','regex':null,'length':null,'min_length':2,'max_length':null})" type="text" placeholder="Spec Value" name="sp_value1"/>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">							
-							COD eligible ? Yes <input type="radio" name="cod" value="1" checked> No <input type="radio" name="cod" value="0">
+							Cash On Delivary Available ?
+							<div class="jk-radio jk-radio-inline">
+								<input id="cod_yes" type="radio" name="cod" value="1">
+								<label for="cod_yes">Yes</label>
+							</div>
+							<div class="jk-radio jk-radio-inline">
+								<input id="cod_no" type="radio" name="cod" value="0" checked>
+								<label for="cod_no">No</label>
+							</div>
 						</div>
 						<div class="form-group">
 							<input type="button" id="add" class="btn btn-primary-color" value="Add"/>

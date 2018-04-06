@@ -57,7 +57,7 @@ require_once 'sess_val.php';
 						</div>
 						
 						<div class="form-group">
-							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long description" name="cat_description"></textarea>
+							<textarea id="description" onchange="validate({'id':'description','name':'description','regex':null,'length':null,'min_length':null,'max_length':null})" type="text" placeholder="255 char long description" name="cat_description"></textarea>
 						</div>
 						<div class="form-group">
 							<textarea id="metakey" onchange="validate({'id':'metakey','name':'metakey','regex':/^[a-zA-Z ]+$/,'length':null,'min_length':null,'max_length':255})" type="text" placeholder="255 char long keywords" name="cat_meta_keyword"></textarea>
