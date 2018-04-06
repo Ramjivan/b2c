@@ -66,8 +66,13 @@
 							<div id="cat_panel" class="form-card form-group">
 								Parent Category
 								<div>
-											<select id="31t1" style="width:auto;margin:0;" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
+									<div class="jk-radio">
+										<input id="3trd1" value="select" name="3trd" type="radio" checked>
+										<label for="3trd1">
+											<select name="p_category" id="31t1" style="width:auto;margin:0;" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
 											</select>
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>

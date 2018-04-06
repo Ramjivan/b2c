@@ -383,13 +383,13 @@ window.onload = function(){
 								_cat_sel_count+=1;
 								select.onchange = function(){nescat(index+1,name)};
 								
-								//document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+								document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
 								select.onchange();
 							
 							}
 							else
 							{
-								//document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+								document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
 							}
 						}
 					}							
@@ -881,125 +881,125 @@ window.onload = function(){
 					submit_form('ctcfm',add_formvalidation,'vsadc','/apies/product/category/add','POST',success,fail);
 				});
 			}
-		function nescat(index,name)
-		{
-			var spinner = document.getElementById('31t'+index);
-			
-			if(spinner !== null)
+			function nescat(index,name)
 			{
-				while(index < _cat_sel_count )
+				var spinner = document.getElementById('31t'+index);
+				
+				if(spinner !== null)
 				{
-					if(document.getElementById('31t'+index) !== null)
+					while(index < _cat_sel_count )
 					{
-						var jk_radio_parent = document.getElementById('3trd'+_cat_sel_count).parentNode;
-						var clearfix_div = jk_radio_parent.parentNode;
-					
-						clearfix_div.parentNode.removeChild(clearfix_div);
-
+						if(document.getElementById('31t'+index) !== null)
+						{
+							var jk_radio_parent = document.getElementById('3trd'+_cat_sel_count).parentNode;
+							var clearfix_div = jk_radio_parent.parentNode;
+							
+							clearfix_div.parentNode.removeChild(clearfix_div);
+		
+						}
+						_cat_sel_count--;
 					}
-					_cat_sel_count--;
-				}
-
-				var fncrad = function(tar){
-					var selects = document.querySelectorAll('[id*="31t"]');
-					if(selects !== null)
+					var fncrad = function(tar){
+						var selects = document.querySelectorAll('[id*="31t"]');
+						if(selects !== null)
+						{				
+						selects.forEach(function(item){
+							item.removeAttribute('name');
+						});
+							tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+						}
+					};
+		
+					var radios = document.querySelectorAll('[id*="3trd"]');
+					if(radios !== null)
 					{				
-					selects.forEach(function(item){
-						item.removeAttribute('name');
-					});
-						tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+						radios.forEach(function(item){
+							item.onchange = function(){
+								fncrad(item);
+							};
+						});
 					}
-				};
-	
-				var radios = document.querySelectorAll('[id*="3trd"]');
-				if(radios !== null)
-				{				
-					radios.forEach(function(item){
-						item.onchange = function(){
-							fncrad(item);
-						};
-					});
-				}
-
-				xhr_call(
-					'GET',
-					'/apies/index/subcategory/'+spinner.value,
-					null,
-					function(xhttp){
-						const tar = document.getElementById('31t'+index);
-						if(tar !== null)
-						{	
-							if(xhttp.responseText.length > 0)
-							{
-								var json = JSON.parse(xhttp.responseText);
-								if(json.result)
+		
+		
+		
+					xhr_call(
+						'GET',
+						'/apies/index/subcategory/'+spinner.value,
+						null,
+						function(xhttp){
+							const tar = document.getElementById('31t'+index);
+							if(tar !== null)
+							{	
+								if(xhttp.responseText.length > 0)
 								{
-									
-									var div = document.createElement('div');
-									div.setAttribute("class","clearfix");
-									
-									var select = document.createElement('select');
-									select.setAttribute('id','31t'+(index+1));
-									select.style.width = 'auto';
-									select.style.margin = '0';
-									
-									var fncrad = function(tar){
-										var selects = document.querySelectorAll('[id*="31t"]');
-										if(selects !== null)
-										{				
-										selects.forEach(function(item){
-											item.removeAttribute('name');
-										});
-											tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
-										}
-									};
-									
-								
-									var radio = document.createElement('input');
-									radio.setAttribute('type','radio');
-									radio.setAttribute('id','3trd'+(index+1));
-									radio.setAttribute('name','3trd');
-									radio.onchange = function(){
-										fncrad(this);
-									};
-									
-									var radiojk = document.createElement('div');
-									radiojk.setAttribute('class','jk-radio');
-									
-									var label = document.createElement('label');
-									label.setAttribute('for','3trd'+(index+1));
-									label.appendChild(select);
-									
-									radiojk.appendChild(radio);
-									radiojk.appendChild(label);
-									
-									for(var i =0 ; i < json.items.length ; i++)
+									var json = JSON.parse(xhttp.responseText);
+									if(json.result)
 									{
-										var option = document.createElement('option');
-										option.setAttribute('value',json.items[i].category_id);
-										option.appendChild(document.createTextNode(json.items[i].cat_name));
-										select.appendChild(option);
+										
+										var div = document.createElement('div');
+										div.setAttribute("class","clearfix");
+										
+										var select = document.createElement('select');
+										select.setAttribute('id','31t'+(index+1));
+										select.style.width = 'auto';
+										select.style.margin = '0';
+										
+										var fncrad = function(tar){
+											var selects = document.querySelectorAll('[id*="31t"]');
+											if(selects !== null)
+											{				
+											selects.forEach(function(item){
+												item.removeAttribute('name');
+											});
+												tar.parentNode.getElementsByTagName('select')[0].setAttribute('name',name);
+											}
+										};
+										
+										var radio = document.createElement('input');
+										radio.setAttribute('type','radio');
+										radio.setAttribute('id','3trd'+(index+1));
+										radio.setAttribute('name','3trd');
+										radio.onchange = function(){
+											fncrad(this);
+										};
+										
+										var radiojk = document.createElement('div');
+										radiojk.setAttribute('class','jk-radio');
+										
+										var label = document.createElement('label');
+										label.setAttribute('for','3trd'+(index+1));
+										label.appendChild(select);
+										
+										radiojk.appendChild(radio);
+										radiojk.appendChild(label);
+										
+										for(var i =0 ; i < json.items.length ; i++)
+										{
+											var option = document.createElement('option');
+											option.setAttribute('value',json.items[i].category_id);
+											option.appendChild(document.createTextNode(json.items[i].cat_name));
+											select.appendChild(option);
+										}
+										
+										div.appendChild(radiojk);
+										document.getElementById('cat_panel').appendChild(div);
+										_cat_sel_count+=1;
+										select.onchange = function(){nescat(index+1,name)};
+										
+										document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
+										select.onchange();
+									
 									}
-									
-									div.appendChild(radiojk);
-									document.getElementById('cat_panel').appendChild(div);
-									_cat_sel_count+=1;
-									select.onchange = function(){nescat(index+1,name)};
-									
-									document.getElementById('31t'+(_cat_sel_count-1)).removeAttribute('name');
-									select.onchange();
-								
+									else
+									{
+										document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
+									}
 								}
-								else
-								{
-									document.getElementById('31t'+_cat_sel_count).setAttribute('name',name);
-								}
-							}
-						}							
-					}
-				);
+							}							
+						}
+					);
+				}
 			}
-		}
 		var _cat_sel_count = 1;
 			
 		(function(){
@@ -1026,7 +1026,7 @@ window.onload = function(){
 								option.appendChild(document.createTextNode(json.items[i].cat_name));
 								tar.appendChild(option);
 							}
-							tar.onchange=function(){nescat(1,name)};
+							tar.onchange=function(){nescat(1,'parent_id')};
 						}
 					}
 				}
