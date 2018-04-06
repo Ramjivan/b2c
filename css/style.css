@@ -1303,12 +1303,8 @@ div.user-img img{
 
 /* footer styles */
 footer{
-	position: absolute;
-  	right: 0;
-  	bottom: 0;
-  	left: 0;
-  	padding: 1rem;
-  	
+  	padding: 1em;
+  	background-color:var(--primary-color);
   	text-align: center;
 }
 div.btt{
@@ -1464,6 +1460,6 @@ div.info:hover div.child{
 }
 /*infomatic div*/
 
-nav div a{
+nav div.nav-item  span+a{
 	margin-left: 5px;
 }

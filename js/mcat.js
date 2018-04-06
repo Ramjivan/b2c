@@ -26,7 +26,7 @@ window.onload = function(){
 						
 						for(var i = 1 ; i <= 5 ; i++)
 						{
-							avgRating += parseInt(item.rating[i]);
+							avgRating += parseInt(item.rating[i])*i;
 						}
 
 						avgRating = !isFinite(avgRating/parseInt(item.rating.count)) ? 0 : avgRating/parseInt(item.rating.count);

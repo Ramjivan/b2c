@@ -27,13 +27,14 @@ include('sess_val.php');
 			
 			<div class="row">
 				<div class="col-6">
+					
 					<div class="col-6" id="cat_hed">
-						
 					</div>
 					
 					<div class="subctcont col-6" id="cat_sub_">
 					</div>
-				<div>
+
+				</div>
 				<div class="col-6">
 					<div class="prdct-grids row" id="mpc_cont_12">
 					</div>

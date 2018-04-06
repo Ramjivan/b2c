@@ -146,7 +146,7 @@
 			</div>			
 		
 			<!--info grids-->
-			<div class="info-container">
+			<div class="info-container clearfix">
 				
 				<div class="col-2">
 					<div class="info info-240px">

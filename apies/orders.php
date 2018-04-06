@@ -258,8 +258,8 @@ function get_merchant($id)
 					$productDetails = $conn->prepare("select (`products`.`p_price`*`order_list_items`.`qty`) AS `total_price`,`order_list_items`.`qty`,`products`.`product_id`,`products`.`p_name` from `products` LEFT JOIN `order_list_items` ON `order_list_items`.`product_id` = `products`.`product_id`  where `pl_id` = ?");
 					$productDetails->execute(array($_GET['t']));
 					
-					$address = $conn->prepare('select * from `addresses` where `address_id` = ?');
-					$address->execute(array($order['ord_address_id']));
+					$address = $conn->prepare('select * from `snap_addresses` where `address_id` = ? && `order_id`=?');
+					$address->execute(array($order['ord_address_id'],$order['order_id']));
 					
 					
 					if($address->rowCount() > 0 &&
@@ -322,7 +322,7 @@ function get_merchant($id)
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 			}	
 		}
-		else if(isset($_GET['qtype']) && $_GET['qtype'] == 4) //single order fetch merchant
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == 4) //single order fetch customer
 		{
 			
 			try
@@ -336,7 +336,7 @@ function get_merchant($id)
 				{	
 					$order = $stmt->fetch();
 					
-					if($order['merchant_id'] !== $user['merchant_id'])
+					if($order['customer_id'] !== $user['customer_id'])
 					{							
 						$return_values['ERROR'] = 400;
 						$return_values['Message'] = "BAD REQUEST";
@@ -348,8 +348,8 @@ function get_merchant($id)
 					$productDetails = $conn->prepare("select (`products`.`p_price`*`order_list_items`.`qty`) AS `total_price`,`order_list_items`.`qty`,`products`.`product_id`,`products`.`p_name` from `products` LEFT JOIN `order_list_items` ON `order_list_items`.`product_id` = `products`.`product_id`  where `pl_id` = ?");
 					$productDetails->execute(array($_GET['t']));
 					
-					$address = $conn->prepare('select * from `addresses` where `address_id` = ?');
-					$address->execute(array($order['ord_address_id']));
+					$address = $conn->prepare('select * from `snap_addresses` where `address_id` = ? && `order_id`=?');
+					$address->execute(array($order['ord_address_id'],$order['order_id']));
 					
 					
 					if($address->rowCount() > 0 &&

@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
     {
         try
         {
-            $SQL = "SELECT * FROM `products` ORDER BY `p_added` LIMIT 5";
+            $SQL = "SELECT * FROM `products` ORDER BY `p_added` DESC LIMIT 5";
             $stmt = $conn->prepare($SQL);
             $stmt->execute();
             

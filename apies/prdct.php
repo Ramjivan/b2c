@@ -371,7 +371,7 @@ function getBreadcrum($cat_id,$conn)
 				$sub_cat->execute(array($_GET['cat']));
 				
 				
-				if($stmt->rowCount() > 0 && $cat_stmt->rowCount() > 0 && $sub_cat->rowCount() >= 0)
+				if($stmt->rowCount() > 0 && $cat_stmt->rowCount() > 0 || $sub_cat->rowCount() >= 0)
 				{
 					$return_values['products'] = $stmt->fetchAll();
 					$return_values['category'] = $cat_stmt->fetch();
@@ -387,9 +387,9 @@ function getBreadcrum($cat_id,$conn)
 						$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=? LIMIT 1');
 						$stmt->execute(array($item['img_list_id'])); 
 						
-						$rating_stmt = $conn->prepare('SELECT DISTINCT ((SELECT count(*) from `p_review` where `rew_rating`=1) * 1) AS `1`,((SELECT count(*) from `p_review` where `rew_rating`=2) * 2) AS `2`,((SELECT count(*) from `p_review` where `rew_rating`=3) * 3) AS `3`,((SELECT count(*) from `p_review` where `rew_rating`=4) * 4) AS `4`,((SELECT count(*) from `p_review` where `rew_rating`=5) * 5) AS `5`,count(`rew_rating`) AS `count` FROM `b2c`.`p_review` where `product_id` = ?'); 
-						$rating_stmt->execute(array($item['product_id']));
-						
+						$rating_stmt = $conn->prepare('SELECT (SELECT count(*) from `p_review` where `rew_rating`=1  &&  `product_id` = ?) AS `1`,(SELECT count(*) from `p_review` where `rew_rating`=2 &&  `product_id` = ?) AS `2`,(SELECT count(*) from `p_review` where `rew_rating`=3  && `product_id` = ?)  AS `3`,(SELECT count(*) from `p_review` where `rew_rating`=4  && `product_id` = ?) AS `4`,(SELECT count(*) from `p_review` WHERE `rew_rating`=5  && `product_id` = ?) AS `5`,count(`rew_rating`) AS `count` FROM `b2c`.`p_review` WHERE `product_id` = ?'); 
+                    	$rating_stmt->execute(array($item['product_id'],$item['product_id'],$item['product_id'],$item['product_id'],$item['product_id'],$item['product_id']));
+                    
 						if($stmt->rowCount() > 0) 
 							$return_values['products'][$i]['images'] = $stmt->fetch();
 						else
