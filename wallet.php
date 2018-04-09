@@ -6,6 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
+		<script src="/js/cuwlt.js"></script>
 		
 		<?php
 			//include head
@@ -69,13 +70,7 @@
 			</div-->
 		</div>
 		<div id="txn_cn" class="tc_log_container center-block clearfix">
-			<div class="tc-card col-3 center">
-				<div class="row">
-					<div class="col-2"><h4>#txn-c6246fbc3c</h4></div>
-					<div class="col-2"><span class="amt"><span class="fa fa-inr"></span>200</span></div>
-					<div class="col-2"><span class="tm"><span class="fa fa-calendar-o"></span>2018/3/6</span></div>
-				</div>
-			</div>
+			
 		</div>
     </div>
         
@@ -114,82 +109,5 @@
 	?>
 	<div class="blurdfg">
 	</div>
-	<script>
-			//onclick listener for sendMoney btn 
-			document.getElementById('w_sM0').onclick = function(){
-				document.getElementsByClassName('dialog')[0].style.display = 'block';
-				document.getElementsByClassName('blurdfg')[0].className += ' active'; 
-			};
-			//onclick listener for sendMoney 
-			
-			function sd_mo()
-			{
-				var fval = [
-					{'id':'mob','name':'Mobile Number','regex':/^[0-9]+$/,'length':10,'min_length':null,'max_length':null},
-					{'id':'amt','name':'Amount','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':5}
-				];
-				
-				var s = function(xhttp){
-					var response = xhttp.responseText;
-					var json = JSON.parse(response);
-					
-					if(json.success)
-					{						
-						//closing dialog 
-						document.getElementById('wdlg1a').style.display='none';
-						document.getElementsByClassName('blurdfg')[0].style.display='none';
-						document.getElementById('actefm').reset();
-						//closing dialog
-						
-						document.getElementsByClassName('aS')[0].style.display='block';
-					}
-					else if(json.ERROR !== undefined)
-					{
-						alert(json.ERROR);
-					}
-				
-				};
-				var f = function(xhttp){
-					alert('Error While etablishing a connection to server');
-				};
-				
-				submit_form('actefm',fval,'valsum','apies/wallet/transfer','POST',s,f);
-			}
-			
-			function g()
-			{
-				xhr_call(
-					'GET',
-					'apies/wallet',
-					null,
-					function(xhttp){
-						var res = xhttp.responseText;
-						var json = JSON.parse(res);
-						if(json !== null)
-						{								
-							var tar = document.getElementById("sn_2-3b_ral_4w");
-							
-							if(tar !== null)
-							{
-								tar.innerHTML += json.wallet.balance;
-							}
-						}
-					
-					},
-					function(xhttp){
-						
-					}
-				);
-			}
-			
-			
-			//set onclick listener on form submit
-				document.getElementById('tlsambtn').onclick = function(){
-					cb(sd_mo);
-				};
-			//set onclick listener on form submit
-			g();
-			
-	</script>
 </body>
 </html>

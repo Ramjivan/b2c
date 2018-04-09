@@ -205,7 +205,7 @@ function get_wallet($id)
 				try
 				{
 					$wallet = get_wallet($user['customer_id']);
-					$stmt = $conn->prepare('select * from `in_txn` where `txn_credit_wallet_id`=:wallet_id || `txn_credit_wallet_id`=:wallet_id ORDER BY `txn_date_time` ASC');
+					$stmt = $conn->prepare('select * from `in_txn` where `txn_credit_wallet_id`=:wallet_id || `txn_debit_wallet_id`=:wallet_id ORDER BY `txn_date_time` ASC');
 					$stmt->execute(array('wallet_id'=>$wallet['wallet_id']));
 					
 					if($stmt->rowCount())
