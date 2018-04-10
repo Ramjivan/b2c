@@ -113,29 +113,34 @@
 
 		var min = 0;
 
+		//mouse down starts
 		range1.addEventListener('mousedown',function(event){
 			
+			event.preventDefault();
 			initX = range1.offsetLeft;
 			firstX = event.pageX;
 
-			rail.addEventListener('mousemove',rng1);
-			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng1,false);},false);
+			rail.addEventListener('mousemove',drag_rng1);
+			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',drag_rng1,false);},false);
 			main.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng1,false);},false);
 			
 		});
 
 		range2.addEventListener('mousedown',function(event){
 			
+			event.preventDefault();
+
 			initX = range2.offsetLeft;
 			firstX = event.pageX;
 
-			rail.addEventListener('mousemove',rng2);
-			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng2,false);},false);
-			main.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng2,false);},false);
+			rail.addEventListener('mousemove',drag_rng2);
+			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',drag_rng2,false);},false);
+			main.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',drag_rng2,false);},false);
 
 		});
 
-		function rng1(event){
+
+		function drag_rng1(event){
 			if( (initX+event.pageX-firstX) > 0 && (initX+event.pageX-firstX) <= max)
 			{
 				range1.style.left = (initX+event.pageX-firstX) +'px';
@@ -144,13 +149,65 @@
 			min = (initX+event.pageX-firstX);
 		}
 
-		function rng2(event){
+		function drag_rng2(event){
 			if( (initX+event.pageX-firstX) > min && (initX+event.pageX-firstX) <= max)
 			{
 				range2.style.left = (initX+event.pageX-firstX) +'px';
 			}
 			max = (initX+event.pageX-firstX);
 		}
+		//mouse down ends
+
+
+		//touch starts
+		range1.addEventListener('touchstart',function(event){
+			
+			event.preventDefault();
+
+			initX = range1.offsetLeft;
+			var touch =  event.touches;
+			firstX = touch[0].pageX;
+
+			this.addEventListener('touchmove',swipe_rng1);
+			this.addEventListener('touchend',function(){rail.removeEventListener('touchmove',swipe_rng1,false);},false);
+			main.addEventListener('touchend',function(){rail.removeEventListener('touchmove',swipe_rng1,false);},false);
+			
+		});
+
+		range2.addEventListener('touchstart',function(event){
+			
+			event.preventDefault();
+
+			initX = range2.offsetLeft;
+			var touch =  event.touches;
+			firstX = touch[0].pageX;
+
+			this.addEventListener('touchmove',swipe_rng2);
+			this.addEventListener('touchend',function(e){e.preventDefault();rail.removeEventListener('touchmove',swipe_rng2,false);},false);
+			main.addEventListener('touchend',function(e){e.preventDefault();rail.removeEventListener('touchmove',swipe_rng2,false);},false);
+			
+
+		});
+
+
+		function swipe_rng1(event){
+			if( (initX+event.touches[0].pageX-firstX) > 0 && (initX+event.touches[0].pageX-firstX) <= max)
+			{
+				range1.style.left = (initX+event.touches[0].pageX-firstX) +'px';
+			}
+
+			min = (initX+event.touches[0].pageX	-firstX);
+		}
+
+		function swipe_rng2(event){
+			if( (initX+event.touches[0].pageX-firstX) > min && (initX+event.touches[0].pageX-firstX) <= max)
+			{
+				range2.style.left = (initX+event.touches[0].pageX-firstX) +'px';
+			}
+			max = (initX+event.touches[0].pageX-firstX);
+		}
+
+		//touch ends
 
 	</script>
 

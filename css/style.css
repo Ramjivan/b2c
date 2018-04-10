@@ -1494,8 +1494,9 @@ nav div.nav-item  span+a{
 	background: yellowgreen;
 	position: absolute;
 	top:-6px;
+	border-radius:50%;
 	transition:0.1s all;
-	width:10px;
+	width:20px;
 	height:20px;
 	border:1px solid var(--primary-color);
 }
