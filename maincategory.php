@@ -103,6 +103,8 @@
 	?>
 	<script>
 		
+		var main = document.getElementById('p-ranger');
+
 		var rail = document.getElementById('p-ranger-rail');
 
 		var range1 = document.getElementById('rng1'),range2 = document.getElementById('rng2'),initX,firstX;
@@ -118,6 +120,8 @@
 
 			rail.addEventListener('mousemove',rng1);
 			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng1,false);},false);
+			main.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng1,false);},false);
+			
 		});
 
 		range2.addEventListener('mousedown',function(event){
@@ -127,6 +131,8 @@
 
 			rail.addEventListener('mousemove',rng2);
 			this.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng2,false);},false);
+			main.addEventListener('mouseup',function(){rail.removeEventListener('mousemove',rng2,false);},false);
+
 		});
 
 		function rng1(event){

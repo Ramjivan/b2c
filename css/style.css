@@ -1497,6 +1497,7 @@ nav div.nav-item  span+a{
 	transition:0.1s all;
 	width:10px;
 	height:20px;
+	border:1px solid var(--primary-color);
 }
 
 
