@@ -648,7 +648,6 @@ window.onload = function(){
 	}
 	
 	else if(/category.php/.test(loc_arr[length-1]))
-	
 	{
 		
 		var add_formvalidation = [
@@ -1005,6 +1004,7 @@ window.onload = function(){
 		(function(){
 			get_cat();
 			spinner_cat_fill();
+			
 			xhr_call(
 				'GET',
 				'/apies/index/category',
@@ -1027,6 +1027,7 @@ window.onload = function(){
 								tar.appendChild(option);
 							}
 							tar.onchange=function(){nescat(1,'parent_id')};
+							
 						}
 					}
 				}
