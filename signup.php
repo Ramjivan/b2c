@@ -9,6 +9,8 @@ session_start();
 		</title>
 		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
 		<script language="JavaScript" type="text/javascript" src="js/validate.js"></script>
+		<!--reCaptch JS-->
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	<?php
 		//include head
 		include 'headTags.php';
@@ -58,13 +60,13 @@ session_start();
 							<input type="checkbox" name="ctus" id="ctus" value="1">
 							<label for="ctus">opt to be a Merchant also</label>
 						</div>
-							
+						<div class="g-recaptcha" data-sitekey="6LcB-VIUAAAAAOOoNpduuRkr81bVGNuMeFV0Vdl4"></div>	
 						</div>
 						<div class="form-group">
 							<input type="button" id="btn-sgn" class="btn btn-primary-color" value="Register"/>
 						</div>
 					</form>
-					<a class="_redfge" href="login.php">Already a Mamber ! Log In</a>
+					<a class="_redfge" href="/login.php">Already a Mamber ! Log In</a>
 				
 			</div>
 		</div>
