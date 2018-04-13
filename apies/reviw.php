@@ -67,7 +67,7 @@ function get_review($item_id)
 function reviewed($cus_id,$pro_id)
 {
 	include('pdo.php');
-	if($cas_id !== null && $pro_id !== null)
+	if($cus_id !== null && $pro_id !== null)
 	{
 		$stmt =  $conn->prepare('select `customer_id` from `p_review` WHERE `customer_id`= ? && `product_id` = ?');
 		$stmt->exeute(array($cus_id,$pro_id));

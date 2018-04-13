@@ -66,11 +66,11 @@ require_once 'sess_val.php';
 						<div class="form-card form-group">
 							can have child categories ? 
 							<div class="jk-radio">
-								<input id="1" type="radio" value="1" name="isTop" checked>
+								<input id="r3g3t4" type="radio" value="1" name="isTop" checked>
 								<label for="1">Yes</label>
 							</div>
 							<div class="jk-radio">
-								<input id="2" type="radio" name="isTop" value="0">
+								<input id="r3g3t5" type="radio" name="isTop" value="0">
 								<label for="2">No</label>
 							</div>
 						</div>
@@ -82,6 +82,7 @@ require_once 'sess_val.php';
 									<input id="3trd1" value="select" name="3trd" type="radio" checked>
 									<label for="3trd1">
 										<select name="parent_id" id="31t1" style="width:auto;margin:0;" onchange="validate({'id':'31t1','name':'Category','regex':/^[0-9]+$/,'length':null,'min_length':1,'max_length':null})">
+											<option value="1">Root</option>
 										</select>
 									</label>
 								</div>
