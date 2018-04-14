@@ -1,17 +1,26 @@
---wallet
+#cover slider in store and curd operation for photos
 
-#add money from wallet
--> process to add money 
-    on click of add money
-    ask amount
-    and on submit
-    move to payment page !while adding from payment page either disable cod and pay option or hide them
-    on submit add money to wallet and add a row in ex_transection 
+#search functionality on main site and store
+[search via product]
 
+#category page in store [get products of a perticularr category]
 
---signup page
+#in main site get products by category and it's subcategories also
 
-#remove radio button to signup for merchant instead use checkbox
+#add to cart in store api
+
+#redirect to main site cart on click of store cart click
+
+#login from store -> redirect to login with redirect uri -> on sucessful login -> redirect back to store page
+
+#login with google not assigning a session 
+
+#in merchatn dashboard divide store dashboard in tabs ->
+store config(main details)
+social media links
+about us page
+
+#category page in store not working
 
 --product page
 

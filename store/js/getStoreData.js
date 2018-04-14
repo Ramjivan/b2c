@@ -30,7 +30,7 @@ function userState(){
                         }
                         else
                         {
-                            drop_dwn.innerHTML += '<li><a href="/login.php" aria-hidden="true"><span>Login</span></a></li>';
+                            drop_dwn.innerHTML += '<li><a href="/login.php?redirurl='+ window.location.href+'" aria-hidden="true"><span>Login</span></a></li>';
                         }
                     }
                     //user-state-[session]
@@ -123,7 +123,8 @@ function initStoreFromServer(callback){
 				//social Links
 
 				//Links
-				$('.contactLinkR').attr('href', );
+				$('.homeLinkR').attr('href', 'http://' + window.location.hostname + '/store/name=' + obj.store.name);
+				$('.contactLinkR').attr('href', 'http://' + window.location.hostname + '/store/name=' + obj.store.name + '&section=contact');
 				//Links
 
 				//categories

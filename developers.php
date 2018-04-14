@@ -54,6 +54,9 @@
         .space{
             margin:2px;
         }
+        .title li{
+            line-height:2em;
+        }
         </style>
 	</head>
 <body>
@@ -62,6 +65,7 @@
 		include 'header.php';
 	?>
     <div class="main-container">
+    <h3>... Our Team ...</h3>
         <div class="card">
             <img src="images/dev/jivan.jpg" alt="Ramjivan Jangid" style="width:100%">
             <h1>Ramjivan Jangid</h1>
@@ -71,7 +75,7 @@
             <h3>Job Roles</h3>
         
             <div class="title">
-            <li>Cloud Architect</li><br>
+            <li>Cloud Architect</li>
                 <li>SEO</li>
             </div>
             
@@ -93,8 +97,9 @@
             <h3>Job Roles</h3>
         
             <div class="title">
-                <li>Database Administrator</li><br>
+                <li>Database Administrator</li>
                 <li>API Developer</li>
+                <li>UI Development</li>
             </div>
             
             <br>
@@ -113,7 +118,7 @@
             <h3>Job Roles</h3>
         
             <div class="title">
-                <li>UI Development</li><br>
+                <li>UI Designer</li>
                 <li>Social Media Handler</li>
             </div>
             

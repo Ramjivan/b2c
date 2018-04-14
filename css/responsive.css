@@ -70,7 +70,7 @@
 	.f_scr_slider{
 		height:300px;
 	}
-
+	
 }
 
 
@@ -190,7 +190,7 @@
 	#sb-search{
 		display: inline;
 	}
-
+	
 }
 
 
@@ -259,6 +259,9 @@
 
 	.f_scr_slider{
 		height:500px;
+	}
+	.share-button{
+		margin-right: 2em;
 	}
 }
 

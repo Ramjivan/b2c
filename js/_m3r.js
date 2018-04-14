@@ -3,10 +3,13 @@ window.onload = function(){
 	var length = loc_arr.length;
 	if(/product.php/.test(loc_arr[length-1]))
 	{
+		
 		//global vars 
 		var spcount = 1;
 		//global vars
-		
+		function popup(x){
+			alert(x);
+		};
 		
 		var formvalidation = [
 			{'id':'name','name':'Email Address','regex':/^[a-zA-Z0-9 ]+$/,'length':null,'min_length':9,'max_length':null},

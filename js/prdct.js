@@ -317,6 +317,7 @@ window.onload = function(){
 							upper += '</ul>';
 
 							upper += '<div>\
+							<span class="fa fa-share-alt fa-2x share-button" id="pdt-share-btn"></span> \
 									<h3>Images</h3>\
 									<ul id="pimglst" class="imglst">\
 									</ul>\
@@ -387,9 +388,17 @@ window.onload = function(){
 										</div>';
 															
 							var tar = document.getElementsByClassName('main-container')[0];
-							tar.style.padding = '4%';
+							tar.style.padding = '';
 							tar.innerHTML = upper + mid + highlights + spc + '<div id="rat-con"></div>'+ '<div id="rew_con"></div>'+'<div id="qa_con"></div>';
 							
+							//share modal
+							var modal = document.getElementById('shareModal');
+							// Get the button that opens the modal
+							var btn = document.getElementById("pdt-share-btn");
+							//callin popup function which will display modal
+							popup(modal,btn);
+
+
 							if(product.p_stock > 0)
 							{
 								var cart_btn = document.getElementById('c-add');
