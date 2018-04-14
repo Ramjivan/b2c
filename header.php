@@ -1,19 +1,20 @@
 <div class="row">
 		<!--Mobile Navbar-->
-		<div class="col-1" id="sidebar">
+		<div class="sidebar" id="sidebar">
 			<nav class="navbar side-nav">
+				
 				<div class="nav-header">
 					<div>
-					B2C
-						<div class="return-btn right">
+						<div class="return-btn">
 							&times;
 						</div>
 					</div>
-					
+				</div>	
+				
+				<div class="nav-item">
+					<span class="fa fa-1x fa-search"></span><a href="/">Explore</a>
 				</div>
 				
-				
-				<div class="nav-item"><span class="fa fa-1x fa-search"></span><a href="#">Explore</a></div>
 				<div class="nav-item dropbtn">
 					<span class="fa fa-sitemap"></span>
 					<a>Categories</a>
@@ -33,9 +34,8 @@
             <nav class="navbar top-nav">
                
               
-				<div class="nav-item dropbtn">
-						<span class="fa fa-sitemap"></span>
-						<a>Categories</a>
+				<div class="nav-item dropbtn spbycat">
+						<a>Shop By Categories</a>
 						<i class="fa fa-caret-down"></i>
 						<div class="dropdown-content" id="32t3g05">
 						</div>

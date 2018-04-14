@@ -61,83 +61,9 @@
 		
 		<div id="cart-container" class="main-container">
 			<h3>New Arrivals</h3>
-			<div class="p_slider" id="u_slider_main1">		
+			<div class="p_slider fade" id="u_slider_main1">		
 				<div id="u_slider1" class="p_slider_content clearfix">
 
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="p_slider_item">
-						<img src="default-user.png" alt="pdt">
-						<div>
-							<b>Product 1</b>
-						</div>
-						<div class="details">
-							<div class="price">
-								<span class="p_prspn"><span class="fa fa-inr"></span>2299</span>
-							</div>
-							<div class="rating">
-								<span class="ra_ti_avgr">3.5&nbsp;<span class="fa fa-star"></span></span>
-							</div>
-						</div>
-					</div>
 
 					
 				</div>
