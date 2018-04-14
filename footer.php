@@ -29,9 +29,15 @@
                 <h3>Quick Links</h3>
                 <ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li><a href="/">Home</a></li>
                     <li><a href="/customer/dashboard">Dashboard</a></li>
                     <li><a href="/customer/orders">orders</a></li>
+=======
+                    <li><a href="#">About</a></li>
+                    <li><a href="/developers.php">Developers</a></li>
+                    <li><a href="/merchant/dashboard">Merchant Dashboard</a></li>
+>>>>>>> b6508e8edeaffcbbae47e5beaa808bf82f78ce2a
 =======
                     <li><a href="#">About</a></li>
                     <li><a href="/developers.php">Developers</a></li>
