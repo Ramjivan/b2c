@@ -61,7 +61,7 @@
 		
 		<div id="cart-container" class="main-container">
 			<h3>New Arrivals</h3>
-			<div class="p_slider" id="u_slider_main1">		
+			<div class="p_slider fade" id="u_slider_main1">		
 				<div id="u_slider1" class="p_slider_content clearfix">
 
 

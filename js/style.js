@@ -1,13 +1,26 @@
+var sideBarOpen=false;
 $(document).ready(function(){
+	
+	$('#sidebar').on('mouseup',function(e){	
+		return false;	
+	});
+
 	$('.opn-btn').on('click',function(){
 		$('#sidebar').fadeIn();
+		$('#sidebar').css('left','0px');
 		$('.blurdfg').toggleClass('active');
 		disableScroll();
+		sideBarOpen=true;
 	});
 	$('.return-btn').on('click',function(){
-		$('#sidebar').fadeOut();
-		$('.blurdfg').toggleClass('active');
-		enableScroll();
+		if(sideBarOpen == true)
+		{
+			$('#sidebar').fadeOut();
+			$('#sidebar').css('left','-400px');
+			$('.blurdfg').toggleClass('active');
+			enableScroll();
+			sideBarOpen=false;
+		}
 	});
 	//desktop view searchbar form submit
 	$('#d-sb-fsub').on('click',function(){
@@ -302,6 +315,14 @@ $(document).ready(function(){
 		submitInput.val('');
 		$('.sb-search-submit').css('z-index','-999');
 		submitIcon.click();
+		}
+
+		if(sideBarOpen == true){
+			$('#sidebar').fadeOut();
+			$('#sidebar').css('left','-400px');
+			$('.blurdfg').toggleClass('active');
+			enableScroll();
+			sideBarOpen=false;
 		}
 	});
 	

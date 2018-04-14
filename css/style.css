@@ -79,6 +79,11 @@ nav div.nav-header{
 	padding:8px;
 }
 
+.spbycat{
+	border-radius:5px;
+	box-shadow:0px 0px 1px rgba(0,0,0,0.4);
+}
+
 .fa{
 	cursor:pointer;
 }
@@ -89,6 +94,13 @@ nav div.nav-header{
 
 nav.navbar.side-nav div.nav-item:hover{
 	color:#FB8c00;
+}
+
+.sidebar{
+	width:20%;
+	transition:0.2s ease-in-out;
+	left:-400px;
+	top:0;
 }
 
 .side-nav div.nav-item{
@@ -111,18 +123,15 @@ nav div a:hover{
 
 
 #sidebar{
-	background-color:#EFEFEF;
+	background-color:#FFF;
 	position:fixed;
 	height:100%;
 	overflow-x:hidden;
 	overflow-y:auto;
 	z-index:9999;
-	display:none;
 	transition:width 1s linear;
 	-webkit-transition:display 1s linear;
 	box-shadow:0px 0px 20px black;
-	top:0;
-	left:0;
 }
 
 
@@ -160,12 +169,14 @@ nav div a:hover{
 }
 
 .return-btn{
-	border:1px solid white;
-	padding:6px;
+	text-align:center;
 	background-color:#e3e3e3;
-	border-radius:5px;
 	margin-bottom:10px;
 	transition:linear 0.2s;
+	width:21px;
+	height:20px;
+	float:right;
+	border-radius:50%;
 }
 .return-btn:hover{
 	background-color:#4e4e4e;
@@ -865,11 +876,11 @@ background-color: white;
 	margin-top:5px;
 }
 .main-container{
-	max-width: 99%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1em;
 	display: block;
+	height:100vh;
 }
 .inline-block{
 	display:inline-block;
@@ -1100,6 +1111,9 @@ div.detail-card h3{
 }
 
 /**/
+form.nav-s-bar{
+	margin-top:-10px;
+}
 .nav-s-bar .nav-sb:hover,
 .nav-s-bar .nav-sb:focus{
 	border:none;
@@ -1473,7 +1487,7 @@ nav div.nav-item  span+a{
 
 .p-ranger{
 	position: relative;
-	width:100%;
+	width:200px;
 	height:15px;
 	background: var(--primary-color);
 }

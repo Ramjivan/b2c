@@ -159,14 +159,13 @@ span.cart-total-span{
 	
 }
 .dshbrdcon > [class*="col-"] > div{
-	background-color:rgba(255,255,255,1);
-	box-shadow:0px 0px 1px rgba(0,0,0,0.2);
+	background-color:rgba(240,240,240,1);
+	box-shadow:0px 0px 3px rgba(0,0,0,0.2);
 	margin-bottom:10px;
 }
 .dshbrdcon{
-	color:black;
+	color:black;	
 	padding:1px;
-	background-color:rgba(230,230,230,1);
 }
 
 .dashboard-img{

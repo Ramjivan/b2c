@@ -18,8 +18,8 @@
                         {
                             for(var i = 0 ; i < json.items.category.length ; i++)
                             {
-                                tar.innerHTML += '<a href="mcat='+json.items.category[i].category_id+'">'+json.items.category[i].cat_name+'</a>';
-                                tar2.innerHTML += '<a href="mcat='+json.items.category[i].category_id+'">'+json.items.category[i].cat_name+'</a>';
+                                tar.innerHTML += '<a href="/mcat='+json.items.category[i].category_id+'">'+json.items.category[i].cat_name+'</a>';
+                                tar2.innerHTML += '<a href="/mcat='+json.items.category[i].category_id+'">'+json.items.category[i].cat_name+'</a>';
                             }
                         }
                     } 

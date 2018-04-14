@@ -22,7 +22,7 @@ include('sess_val.php');
 	?>
 	<!--Content Here-->
 	
-		<div class="main-container full" style="padding:4px;">
+		<div class="main-container" style="padding:4px;">
 			<div class="row dshbrdcon full">
 				<div class="col-6 full">
 					<div class="col-6">

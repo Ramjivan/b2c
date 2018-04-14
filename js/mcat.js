@@ -82,6 +82,15 @@ window.onload = function(){
 		
 	}
 	
+	function fillter()
+	{
+		
+	}
+
+	function submit_fillter(){
+
+	}
+
 	get(cat_id,1);
 	
 	

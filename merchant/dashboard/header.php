@@ -1,11 +1,10 @@
 <div class="row">
 		<!--Mobile Navbar-->
-		<div class="col-1" id="sidebar">
+		<div class="sidebar" id="sidebar">
 			<nav class="navbar side-nav">
 				<div class="nav-header">
 					<div>
-						B2C
-						<div class="return-btn right">
+						<div class="return-btn">
 							&times;
 						</div>
 					</div>

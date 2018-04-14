@@ -20,11 +20,11 @@
 	?>
 	<!--Content Here-->
 	
-		<div class="main-container clearfix" style="padding:4px;">
+		<div class="main-container" style="padding:4px;">
 			
 			<div class="row">
 				
-				<div class="col-1 clearfix">
+				<div class="col-1">
 					<div class="fil-container col-6">
 						<h3>Filter</h3>
 						<div class="col-6">
@@ -35,6 +35,8 @@
 								<div class="ranger" id="rng1"></div>
 								<div class="ranger" id="rng2"></div>
 							</div>
+							<p>min:<p><input id="p_min" class="jk-textbox clearfix" value="0" type="number" />
+							<p>max:</p><input id="p_max" class="jk-textbox clearfix" value="10000" type="number" />
 						</div>
 						<div class="col-6">
 							<h4></h4>
@@ -54,7 +56,7 @@
 					</div>
 				</div>
 			
-				<div class="col-5">
+				<div class="col-5 clearfix">
 					
 					<div class="col-6">			
 						
@@ -92,15 +94,13 @@
 				
 				</div>
 			</div>
-			
-		</div>
-	
-	<!--Content Here-->
-
-	<?php
+			<?php
 		//including footer
 		include 'footer.php';
 	?>
+		</div>
+	
+	<!--Content Here-->
 	<script>
 		
 		var main = document.getElementById('p-ranger');
@@ -109,9 +109,13 @@
 
 		var range1 = document.getElementById('rng1'),range2 = document.getElementById('rng2'),initX,firstX;
 
-		var max = document.getElementById('rng2').offsetWidth;
+		var max = rail.offsetWidth;
+		p_max.value = Math.ceil((range2.offsetLeft / rail.offsetWidth * 100) * 100) ;
+		var p_max_val = p_max.value;
 
 		var min = range1.offsetLeft;
+		p_min.value = Math.ceil((min / rail.offsetWidth * 100) * 100) ;
+		var p_min_val = p_min.value;
 
 		//mouse down starts
 		range1.addEventListener('mousedown',function(event){
@@ -143,26 +147,28 @@
 		function drag_rng1(event){
 			if( (initX+event.pageX-firstX) > 0 && (initX+event.pageX-firstX) <= max)
 			{
-				range1.style.left = (initX+event.pageX-firstX) +'px';
+				range1.style.left = Math.ceil((initX+event.pageX-firstX)) +'px';
+
+				min = (initX+event.pageX-firstX);
+
 			}
 
-			min = (initX+event.pageX-firstX);
-
 			//logic
-			
+			p_min.value = Math.ceil((min / rail.offsetWidth * 100) * 100 );
+			p_min_val = p_min.value;
 			//logic
 
 		}
 
 		function drag_rng2(event){
-			if( (initX+event.pageX-firstX) > min && (initX+event.pageX-firstX) <= max)
+			if( (initX+event.pageX-firstX) > min && (initX+event.pageX-firstX) <= rail.offsetWidth)
 			{
-				range2.style.left = (initX+event.pageX-firstX) +'px';
+				range2.style.left = Math.ceil((initX+event.pageX-firstX)) +'px';
+				max = (initX+event.pageX-firstX);
 			}
-			max = (initX+event.pageX-firstX);
-
 			//logic
-			
+			p_max.value = Math.ceil((max / rail.offsetWidth * 100) * 100);
+			p_max_val = p_max.value;
 			//logic
 
 		}
@@ -212,29 +218,59 @@
 		function swipe_rng1(event){
 			if( (initX+event.touches[0].pageX-firstX) > 0 && (initX+event.touches[0].pageX-firstX) <= max)
 			{
-				range1.style.left = (initX+event.touches[0].pageX-firstX)-1 +'px';
+				range1.style.left = Math.ceil((initX+event.touches[0].pageX-firstX)) +'px';
+				min = Math.ceil((initX+event.touches[0].pageX-firstX));		
 			}
-
-			min = (initX+event.touches[0].pageX	-firstX);
 			//logic
-			
+			p_min.value = Math.ceil((min / rail.offsetWidth * 100)  * 100);
+			p_min_val = p_min.value;
 			//logic
 		}
 
 		function swipe_rng2(event){
-			if( (initX+event.touches[0].pageX-firstX) > min && (initX+event.touches[0].pageX-firstX) <= max)
+			if( (initX+event.touches[0].pageX-firstX) > min && (initX+event.touches[0].pageX-firstX) <= rail.offsetWidth)
 			{
-				range2.style.left = (initX+event.touches[0].pageX-firstX) +2  +'px';
+				range2.style.left = Math.ceil((initX+event.touches[0].pageX-firstX))+'px';
+				max = Math.ceil(initX+event.touches[0].pageX-firstX);
 			}
-			max = (initX+event.touches[0].pageX-firstX);
 
 			//logic
-
+			p_max.value = Math.ceil((max / rail.offsetWidth * 100) * 100 );
+			p_max_val = p_max.value;
 			//logic
 
 		}
 
 		//touch ends
+
+		p_min.addEventListener('change',function(event){
+			var val = this.value;
+			var offset = Math.ceil((val/100 * rail.offsetWidth)/100);
+			
+			if(val < p_max_val && offset > min && offset <= max)
+			{
+				range1.style.left=offset+"px";
+			}
+			else
+			{
+				this.value=p_min_val;
+			}
+
+		});
+		p_max.addEventListener('change',function(event){
+			var val = this.value;
+			var offset = Math.ceil((val/100 * rail.offsetWidth)/100);
+
+			if(val > p_min_val &&  offset > min && offset <= rail.offsetWidth)
+			{
+				range1.style.left=offset+"px";
+			}
+			else
+			{
+				this.value=p_max_val;
+			}
+		});
+
 
 	</script>
 
