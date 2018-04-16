@@ -346,6 +346,7 @@ window.onload = function(){
 									</div>';
 									//set product description as page meta description
 									document.querySelector('meta[name="description"]').setAttribute("content", product.p_description);
+									
 							var highlights = 
 							'<div class="detail-card">\
 							<h3>\
@@ -386,10 +387,41 @@ window.onload = function(){
 										</table>\
 										</div>\
 										</div>';
-															
+
+							function copyToClipboard(e) {
+								e.preventDefault();
+								var copyText = document.getElementById('shareLinkTextbox');
+								copyText.select();
+								document.execCommand("copy");
+								
+								document.getElementById('cl45s').innerText('Copied ! ');
+							}
+
+							var shareLink = product.p_name + '  ' +window.location.href;
+							var shareBox = '<!-- The Modal --> \
+							<div id="shareModal" class="modal"> \
+							  <div class="modal-content"> \
+								<div class="modal-header"> \
+								  <span class="modal-close">&times;</span> \
+								  <h1>Share this Item</h1> \
+								</div> \
+								<div class="modal-body">';
+								shareBox += '<ul class="sh-list"> \
+										<li class="sl-item"><a href="whatsapp://send?text=' + shareLink + '" data-action="share/whatsapp/share" target="_blank"><span class="fa fa-whatsapp"></span>Whatsapp</a></li> \
+										<li class="sl-item"><a onclick="return !window.open(this.href, \'Product Share on Facebook\', \'width=500,height=500\')" href="https://www.facebook.com/sharer/sharer.php?u='+shareLink+'" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li> \
+										<li class="sl-item"><a  onclick="return !window.open(this.href, \'Product share on Twitter\', \'width=500,height=500\')" href="https://twitter.com/intent/tweet?text=' + shareLink + '" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li> \
+										<li class="sl-item"><a href="sms:?body=' + shareLink + '"><span class="fa fa-mobile" target="_blank"></span>SMS</a></li>\
+										<input type="hidden" value="' + shareLink + '" id="shareLinkTextbox"> \
+										<li class="sl-item"><a onclick="copyToClipboard(event)" id="cl45s" href="#"><span class="fa fa-link"></span>Copy Link</a></li>';
+										shareBox+='<li class="sl-item"><a href="mailto:?body=' + shareLink + '" target="_blank"><span class="fa fa-envelope"></span>Email</a></li> \
+										<li class="sl-item"><a onclick="return !window.open(this.href, \'B2C Google Plus Share\', \'width=400,height=500\') "href="https://plus.google.com/share?url=' + shareLink + '" target="_top"><span class="fa fa-google-plus"></span>Google Plus</a></li> \
+									</ul> \
+								</div> \
+							  </div> \
+							</div>';
 							var tar = document.getElementsByClassName('main-container')[0];
 							tar.style.padding = '';
-							tar.innerHTML = upper + mid + highlights + spc + '<div id="rat-con"></div>'+ '<div id="rew_con"></div>'+'<div id="qa_con"></div>';
+							tar.innerHTML = upper + mid + highlights + spc + shareBox + '<div id="rat-con"></div>'+ '<div id="rew_con"></div>'+'<div id="qa_con"></div>';
 							
 							//share modal
 							var modal = document.getElementById('shareModal');

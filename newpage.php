@@ -19,6 +19,34 @@
 		include 'header.php';
 	?>
 
+<!-- The Modal -->
+<div id="shareModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+    
+		<ul class="sh-list">
+			<li class="sl-item"><a href=""><span class="fa fa-whatsapp"></span>Whatsapp</a></li>
+			<li class="sl-item"><a href=""><span class="fa fa-instagram"></span>Instagram</a></li>
+			<li class="sl-item"><a href=""><span class="fa fa-facebook"></span>Facebook</a></li>
+			<li class="sl-item"><a href=""><span class="fa fa-twitter"></span>Twitter</a></li>
+			<li class="sl-item"><a href=""><span class="fa fa-sms"></span>SMS</a></li>
+			<li class="sl-item"><a href=""><span class="fa fa-link"></span>Copy Link</a></li>
+			
+		</ul>
+
+    </div>
+    <div class="modal-footer">
+      <p>Modal Footer</p>
+    </div>
+  </div>
+
+</div>
 		<div class="f_scr_slider" id="fs_slider1">
 			<ul class="f_scr_content" id="fssldr_content">
 				<li>

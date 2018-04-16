@@ -1540,18 +1540,28 @@ nav div.nav-item  span+a{
 	z-index: 999;
 }
 .sl-item{
-	padding: .2em;
 	text-align: center;
 	border: 2px solid transparent;
-	margin-right: -20px;
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+.sl-item a:link{
+	text-decoration: none;
+	color: black;
 }
 .sl-item:hover{
-	border:2px solid var(--primary-color);
+	background-color: var(--primary-color);
 }
-
+.sh-list{
+	list-style-type: none;
+	padding: 0px;
+}
+.sl-item a:link .fa{
+	margin-right: 10px;
+}
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -1613,7 +1623,7 @@ nav div.nav-item  span+a{
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {padding: 2px;}
 
 .modal-footer {
     padding: 2px 16px;
