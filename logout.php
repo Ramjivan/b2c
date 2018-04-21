@@ -8,5 +8,5 @@
 	
 	session_destroy();
 
-	Header('Location:/index.php');
+	Header('Location:/login.php');
 ?>

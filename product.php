@@ -6,7 +6,7 @@
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script src="js/prdct.js" language="JavaScript" type="text/javascript"></script>
+		<script src="/js/prdct.js" language="JavaScript" type="text/javascript"></script>
 		
 		<?php
 			//include head
@@ -38,5 +38,11 @@
 		</form>
 	</div>
 </div>
+
+<?php
+include 'footer.php';
+?>
+    
+
 </body>
 </html>

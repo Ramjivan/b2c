@@ -80,9 +80,14 @@
             <h3>Job Roles</h3>
         
             <div class="title">
+<<<<<<< HEAD
 				<li>Cloud Architect</li><br>
 				<li>SEO</li><br>
 				<li>Front-End Developer</li>		
+=======
+            <li>Cloud Architect</li>
+                <li>SEO</li>
+>>>>>>> e02bf8581342112f658695eacbfd525d3be5b090
             </div>
             
             
@@ -103,9 +108,15 @@
             <h3>Job Roles</h3>
         
             <div class="title">
+<<<<<<< HEAD
                 <li>Database Administrator</li><br>
 				<li>API Developer</li><br>
 				<li>Front-End Developer</li>
+=======
+                <li>Database Administrator</li>
+                <li>API Developer</li>
+                <li>UI Development</li>
+>>>>>>> e02bf8581342112f658695eacbfd525d3be5b090
             </div>
             
             <br>
@@ -125,10 +136,13 @@
         
             <div class="title">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <li>UI Development</li><br>
 				<li>Social Media Handler</li><br>
 				<li>Front-End Developer</li>
 =======
+=======
+>>>>>>> e02bf8581342112f658695eacbfd525d3be5b090
                 <li>UI Designer</li>
                 <li>Social Media Handler</li>
 >>>>>>> e02bf8581342112f658695eacbfd525d3be5b090
