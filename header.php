@@ -85,9 +85,5 @@
 	</div>
 
 <datalist id="suggestions">
-    <option value="Internet Explorer">
-    <option value="Firefox">
-    <option value="Chrome">
-    <option value="Opera">
-    <option value="Safari">
+    
   </datalist>

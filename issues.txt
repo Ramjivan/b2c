@@ -25,3 +25,6 @@ about us page
 --product page
 
 #ask questions not working[if not implimented let it be for now, fix if a minor bug]
+
+
+# dlocalhost in redirect url on login page
