@@ -4,12 +4,28 @@ include('pdo.php');
 function is_set_strict(&$var,$index,&$ERROR_FLAG)
 {
 		
-	if(isset($_POST[$index]) && !empty($_POST[$index]))
+	if(isset($_GET[$index]) && !empty($_GET[$index]))
+	{
+		$var = trim($_GET[$index]);
+	}
+	else
+	{
+		echo $index.' ';
+		$ERROR_FLAG = true;
+	}
+	
+}
+
+function is_set_post(&$var,$index,&$ERROR_FLAG)
+{
+		
+	if(isset($_POST[$index]))
 	{
 		$var = trim($_POST[$index]);
 	}
 	else
 	{
+		echo $index.' ';
 		$ERROR_FLAG = true;
 	}
 	
@@ -25,9 +41,9 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 		$ERROR_FLAG = true;
 			echo $index." "; 
 	}
-	
-	
 }
+
+
 function upload_image($index)
 {
 	if(
@@ -217,6 +233,147 @@ function upload_image($index)
 			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
 		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
+		{			
+			//get category single category
+			$return_values = array();
+			
+			try
+			{
+				$cat = "select `category`.`category_id`,`category`.`parent_id`,`categorydescription`.`cat_name`,`categorydescription`.`cat_description`,`categorydescription`.`cat_meta_keyword`,`category`.`dateAdded`,`category`.`image_id` from `category`,`categorydescription` where `category`.`category_id` = `categorydescription`.`category_id` && `category`.`parent_id`= ?"; 
+				$stmt = $conn->prepare($cat);
+				$stmt->execute(array($_GET['id']));
+				
+				if($stmt->rowCount() > 0)
+				{
+					$return_values['result'] = 1;
+
+					$return_values['items'] = $stmt->fetchAll();
+					$i = 0;
+					foreach($return_values['items'] as $cat)
+					{
+						if($cat['parent_id'] !== "")
+						{
+							$stmt = $conn->prepare('select * from `categorydescription` where `category_id` = ?');
+							$stmt->execute(array($cat['parent_id']));
+							if($stmt->rowCount() > 0)
+							{
+								$return_values['items'][$i]['parent_name'] = $stmt->fetch()['cat_name']; 
+							}
+						}
+						$i++;
+					}
+					
+				}
+				else
+				{
+					$return_values['result'] = 0;
+				}
+					
+					echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			}
+			catch(PDOException $e)
+			{
+				$return_values['ERROR']['insert'] = $e->getMessage();
+				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+			}
+		}
+		else if(isset($_GET['qtype']) && $_GET['qtype'] == '4')
+		{			
+			
+			$indexes = array('min'=> '','max'=>'','stock'=>'','sort'=>'','page'=>'','catid'=>'');
+			
+			$ERROR_FLAG=false;
+			$return_values = array();
+			
+			foreach($indexes as $index => $value)
+			{
+				is_set_post($indexes[$index],$index,$ERROR_FLAG);
+			}
+			
+			if($ERROR_FLAG == false && is_numeric($indexes['page']))
+			{
+				try
+				{
+					$start = (intval($indexes['page']) * 10) - 10;
+					$end = (intval($indexes['page']) * 10);
+
+					$cat = "SELECT * FROM `products`  where `p_category`=? LIMIT ".$start.",".$end; 
+					$stmt = $conn->prepare($cat);
+					$stmt->execute(array($indexes['catid']));
+					
+					if($stmt->rowCount() > 0)
+					{
+						$return_values['result'] = 1;
+
+						$return_values['products'] = $stmt->fetchAll();
+						
+						$i = -1;
+					
+						foreach($return_values['products'] as $item)
+						{
+							$i++;
+							
+							$stmt = $conn->prepare('select `img_name`,`img_dir` from `images` where `img_list_id`=? LIMIT 1');
+							$stmt->execute(array($item['img_list_id'])); 
+							
+							$rating_stmt = $conn->prepare('SELECT (SELECT count(*) from `p_review` where `rew_rating`=1  &&  `product_id` = ?) AS `1`,(SELECT count(*) from `p_review` where `rew_rating`=2 &&  `product_id` = ?) AS `2`,(SELECT count(*) from `p_review` where `rew_rating`=3  && `product_id` = ?)  AS `3`,(SELECT count(*) from `p_review` where `rew_rating`=4  && `product_id` = ?) AS `4`,(SELECT count(*) from `p_review` WHERE `rew_rating`=5  && `product_id` = ?) AS `5`,count(`rew_rating`) AS `count` FROM `b2c`.`p_review` WHERE `product_id` = ?'); 
+							$rating_stmt->execute(array($item['product_id'],$item['product_id'],$item['product_id'],$item['product_id'],$item['product_id'],$item['product_id']));
+						
+							if($stmt->rowCount() > 0) 
+								$return_values['products'][$i]['images'] = $stmt->fetch();
+							else
+								$return_values['products'][$i]['images'] = array('','default.png');
+							
+							if($rating_stmt->rowCount() > 0)
+								$return_values['products'][$i]['rating'] = $rating_stmt->fetch();
+							else
+								$return_values['products'][$i]['rating'] = array('1'=>0,'2'=>0,'3'=>0,'4'=>0,'5'=>0,'count'=>0);
+							
+						}
+
+						$SQL = 'SELECT count(*) as `total_products` FROM `products`  where `p_category`=?';
+						$stmt = $conn->prepare($SQL);
+						$stmt->execute(array($indexes['catid']));
+						
+						$row = $stmt->fetch();
+						
+						
+						$totalProducts = $row['total_products'];
+						
+						if($totalProducts > 0)
+						{
+							$totalPages = ceil($totalProducts / 10);
+							
+							$return_values['TotalPages'] = $totalPages;
+							$return_values['NextPage'] = ($totalPages > $_GET['page'] ? $_GET['page']+1 : $totalPages);
+							
+						}
+						else
+						{
+							$return_values['TotalPages'] = 0;
+							$return_values['NextPage'] = 0;
+						}
+							
+					}
+					else
+					{
+						$return_values['result'] = 0;
+					}
+						
+				}
+				catch(PDOException $e)
+				{
+					$return_values['ERROR']['insert'] = $e->getMessage();
+					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+				}
+			}
+			else
+			{
+				$return_values['ERROR'] = "401";
+			}
+			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "GET") 
 	{
@@ -276,51 +433,6 @@ function upload_image($index)
 				$cat = "select `category`.`category_id`,`category`.`parent_id`,`categorydescription`.`cat_name`,`categorydescription`.`cat_description`,`categorydescription`.`cat_meta_keyword`,`category`.`dateAdded`,`category`.`image_id` from `category`,`categorydescription` where `category`.`category_id` = `categorydescription`.`category_id` && `category`.`isTop`=? &&  `category`.`parent_id`= 1"; 
 				$stmt = $conn->prepare($cat);
 				$stmt->execute(array(1));
-				
-				if($stmt->rowCount() > 0)
-				{
-					$return_values['result'] = 1;
-
-					$return_values['items'] = $stmt->fetchAll();
-					$i = 0;
-					foreach($return_values['items'] as $cat)
-					{
-						if($cat['parent_id'] !== "")
-						{
-							$stmt = $conn->prepare('select * from `categorydescription` where `category_id` = ?');
-							$stmt->execute(array($cat['parent_id']));
-							if($stmt->rowCount() > 0)
-							{
-								$return_values['items'][$i]['parent_name'] = $stmt->fetch()['cat_name']; 
-							}
-						}
-						$i++;
-					}
-					
-				}
-				else
-				{
-					$return_values['result'] = 0;
-				}
-					
-					echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-			}
-			catch(PDOException $e)
-			{
-				$return_values['ERROR']['insert'] = $e->getMessage();
-				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-			}
-		}
-		else if(isset($_GET['qtype']) && $_GET['qtype'] == '3')
-		{			
-			//get category single category
-			$return_values = array();
-			
-			try
-			{
-				$cat = "select `category`.`category_id`,`category`.`parent_id`,`categorydescription`.`cat_name`,`categorydescription`.`cat_description`,`categorydescription`.`cat_meta_keyword`,`category`.`dateAdded`,`category`.`image_id` from `category`,`categorydescription` where `category`.`category_id` = `categorydescription`.`category_id` && `category`.`parent_id`= ?"; 
-				$stmt = $conn->prepare($cat);
-				$stmt->execute(array($_GET['id']));
 				
 				if($stmt->rowCount() > 0)
 				{

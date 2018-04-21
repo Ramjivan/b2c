@@ -72,6 +72,11 @@
 		<div id="txn_cn" class="tc_log_container center-block clearfix">
 			
 		</div>
+
+	<?php
+		//including footer
+		include 'footer.php';
+	?>
     </div>
         
 	<div class="dialog" id="wdlg1a">		
@@ -101,12 +106,6 @@
 			</form>
 		</div>
 	</div>
-		
-
-	<?php
-		//including footer
-		include 'footer.php';
-	?>
 	<div class="blurdfg">
 	</div>
 </body>

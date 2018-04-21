@@ -1,5 +1,9 @@
 window.onload = function(){
-    xhr_call(
+	
+	var wallet;
+
+    function gettxns(){
+		xhr_call(
         'GET',
         '/apies/wallet/txns',
         null,
@@ -18,7 +22,7 @@ window.onload = function(){
                                             <a href="#">\
                                             <div class="row">\
                                                 <div class="col-1"><span class="amt">#txn-'+item.txn_id+'</span></div>\
-                                                <div class="col-2"><span class="amt"><span class="fa fa-inr"></span>'+item.txn_amount+'</span></div>\
+                                                <div class="col-2"><span class="amt"><span class="fa fa-inr"></span>'+txn_scenerio(item.txn_credit_wallet_id,item.txn_debit_wallet_id,item.txn_amount)+'</span></div>\
                                                 <div class="col-2"><span class="tm"><span class="fa fa-calendar-o"></span>'+item.txn_date_time+'</span></div>\
                                                 <div class="col-1"><span class="amt"><b>'+pm(item.txn_desc)+'</b></span></div>\
                                             </div>\
@@ -34,7 +38,8 @@ window.onload = function(){
         function(xhttp){
 
         }   
-    );
+	);
+}
     function pm(i)
 		{
 			if(i == 101 )
@@ -60,7 +65,17 @@ window.onload = function(){
             return "Pay Balance";
         }
         
-
+		function txn_scenerio(credit,debit,amount)
+		{
+			if(credit == wallet.wallet_id)
+			{
+				return amount;
+			}
+			else if(debit == wallet.wallet_id)
+			{
+				return ' -'+amount;
+			}
+		}
 
         //send money 
         //onclick listener for sendMoney btn 
@@ -120,6 +135,8 @@ window.onload = function(){
 							if(tar !== null)
 							{
 								tar.innerHTML += json.wallet.balance;
+								wallet = json.wallet;
+								gettxns();
 							}
 						}
 					

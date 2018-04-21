@@ -204,12 +204,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     //check all false cases
     if(isset($_POST['payb']) && isset($_POST['pay-method']) && $_POST['pay-method'] == '105')
     {
-        die('<p>something went wrong</p><a href="/">Go to Homepagevvb</a>');
+        die('<p>something went wrong</p><a href="/">Go to Homepage</a>');
     }
 
     if(isset($_POST['payb']) && !isset($_POST['pay-method']))
     {   
-        die('<p>something went wrong</p><a href="/">Go to Homepagfgfe</a>');        
+        die('<p>something went wrong</p><a href="/">Go to Homepage</a>');        
     }
     //check all false cases
 
@@ -253,7 +253,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     $txn_id = substr(md5(time()),0,10);
                     $difference = $total - $wallet['balance'];
 
-                    $put = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`,`txn_type`,`txn_desc`) VALUES (?,?,?,?,?)');
+                    $put = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_debit_wallet_id`,`txn_type`,`txn_desc`) VALUES (?,?,?,?,?)');
                     $res = $put->execute(array($txn_id,$total,$wallet['wallet_id'],2,$_POST['pay-method']));
 
                 }
@@ -327,7 +327,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 $txn_id = substr(md5(time()),0,10);
                 $difference = $total - $wallet['balance'];
 
-                $put = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_credit_wallet_id`,`txn_type`,`txn_desc`) VALUES (?,?,?,?,?)');
+                $put = $conn->prepare('INSERT INTO `in_txn`(`txn_id`, `txn_amount`, `txn_debit_wallet_id`,`txn_type`,`txn_desc`) VALUES (?,?,?,?,?)');
                 $res = $put->execute(array($txn_id,$total,$wallet['wallet_id'],2,$_POST['pay-method']));
 
             }

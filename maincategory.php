@@ -23,37 +23,34 @@
 		<div class="main-container" style="padding:4px;">
 			
 			<div class="row">
-				
+			<form id="hdn_fltr" enctype="form-data/multi-part">
 				<div class="col-1">
 					<div class="fil-container col-6">
 						<h3>Filter</h3>
-						<div class="col-6">
-							<h4>Price</h4>
-							<div id="p-ranger" class="p-ranger">
-								<div id="p-ranger-rail" class="p-ranger-rail">
+							<div class="col-6">
+								<h4>Price</h4>
+								<div id="p-ranger" class="p-ranger">
+									<div id="p-ranger-rail" class="p-ranger-rail">
+									</div>
+									<div class="ranger" id="rng1"></div>
+									<div class="ranger" id="rng2"></div>
 								</div>
-								<div class="ranger" id="rng1"></div>
-								<div class="ranger" id="rng2"></div>
+								<p>min:</p><input id="p_min" name="min" class="jk-textbox clearfix" value="0" type="number" />
+								<p>max:</p><input id="p_max" name="max" class="jk-textbox clearfix" value="10000" type="number" />
 							</div>
-							<p>min:<p><input id="p_min" class="jk-textbox clearfix" value="0" type="number" />
-							<p>max:</p><input id="p_max" class="jk-textbox clearfix" value="10000" type="number" />
-						</div>
-						<div class="col-6">
-							<h4></h4>
-						</div>
-						<div class="col-6">
-						
-							<h4>Availability</h4>
-							<div class="jk-checkbox">
-								<input id="stck" type="checkbox">
-								<label for="stck">Include Out of Stock</label>
+							<div class="col-6">
+							
+								<h4>Availability</h4>
+								<div class="jk-checkbox">
+									<input id="stck" name="stock" value="b2xc" type="checkbox"/>
+									<label for="stck">Include Out of Stock</label>
+								</div>
+							
 							</div>
-						
+							<div class="col-6">
+								<input type="button" class="btn btn-info" id="q45hgv" value="fillter"/>
+							</div>
 						</div>
-						<div class="col-6">
-							<h4></h4>
-						</div>
-					</div>
 				</div>
 			
 				<div class="col-5 clearfix">
@@ -68,11 +65,11 @@
 								</div>
 
 								<div class="col-5">
-									<select id="srtspnr" name="" class="jk-select">	
-										<option value="">Relevance</option>				
-										<option value="">Price(low-to-high)</option>
-										<option value="">Price(high-to-low)</option>
-										<option value="">Newest First</option>
+									<select id="srtspnr" name="sort" class="jk-select">	
+										<option value="401">Relevance</option>				
+										<option value="402">Price(low-to-high)</option>
+										<option value="403">Price(high-to-low)</option>
+										<option value="404">Newest First</option>
 									</select>
 									<span class="fa fa-chevron-down jk-input-ico-right"></span>
 								</div>
@@ -91,8 +88,15 @@
 						<div class="prdct-grids row" id="mpc_cont_12">
 						</div>
 					</div>
-				
+
+					<div class="col-6">
+						<div id="pagecnt" class="pager_grid">
+							
+						</div>
+					</div>
+
 				</div>
+				</form>
 			</div>
 			<?php
 		//including footer
@@ -109,7 +113,7 @@
 
 		var range1 = document.getElementById('rng1'),range2 = document.getElementById('rng2'),initX,firstX;
 
-		var max = rail.offsetWidth;
+		var max = range2.offsetleft;
 		p_max.value = Math.ceil((range2.offsetLeft / rail.offsetWidth * 100) * 100) ;
 		var p_max_val = p_max.value;
 
@@ -247,7 +251,7 @@
 			var val = this.value;
 			var offset = Math.ceil((val/100 * rail.offsetWidth)/100);
 			
-			if(val < p_max_val && offset > min && offset <= max)
+			if(val <= p_max_val && offset > min && offset <= max)
 			{
 				range1.style.left=offset+"px";
 			}
@@ -261,9 +265,9 @@
 			var val = this.value;
 			var offset = Math.ceil((val/100 * rail.offsetWidth)/100);
 
-			if(val > p_min_val &&  offset > min && offset <= rail.offsetWidth)
+			if(val >= p_min_val &&  offset > min && offset <= rail.offsetWidth)
 			{
-				range1.style.left=offset+"px";
+				range2.style.left=offset+"px";
 			}
 			else
 			{

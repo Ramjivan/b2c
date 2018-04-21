@@ -134,7 +134,7 @@ function xhr_call(method,url,param,success_fun,fail_fun)
 		}
 	};
 	
-	xhttp.open(method,url,true);
+	xhttp.open(method,url);
 	if(method == "POST")
 	{		
 		xhttp.send(param);

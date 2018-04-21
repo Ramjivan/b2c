@@ -458,7 +458,16 @@ window.onload = function(){
 					submit_form('pctafm',formvalidation,'vsap','/apies/product/add','POST',success,fail);
 				});
 			}
-			//product form action			
+			//product form action	
+			
+			//ask question dialog and action
+			var 
+			if()
+			{
+
+			}
+			//ask question dialog and action 
+			
 			put_count('s_c',20);
 			
 		})();

@@ -16,7 +16,8 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	}
 }
 
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
+
 function upload_image($index)
 {
 	if(

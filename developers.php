@@ -23,7 +23,12 @@
         }
         .card:hover{
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-        }
+		}
+		
+		.card img{
+			display:block;
+			height:320px;
+		}
         .title {
         color: grey;
         font-size: 18px;
@@ -44,7 +49,7 @@
 
         a {
         text-decoration: none;
-        font-size: 22px;
+        font-size: inherit;
         color: black;
         }
 
@@ -54,6 +59,9 @@
         .space{
             margin:2px;
         }
+        .title li{
+            line-height:2em;
+        }
         </style>
 	</head>
 <body>
@@ -62,6 +70,7 @@
 		include 'header.php';
 	?>
     <div class="main-container">
+    <h3>... Our Team ...</h3>
         <div class="card">
             <img src="images/dev/jivan.jpg" alt="Ramjivan Jangid" style="width:100%">
             <h1>Ramjivan Jangid</h1>
@@ -71,17 +80,18 @@
             <h3>Job Roles</h3>
         
             <div class="title">
-            <li>Cloud Architect</li><br>
-                <li>SEO</li>
+				<li>Cloud Architect</li><br>
+				<li>SEO</li><br>
+				<li>Front-End Developer</li>		
             </div>
             
             
             
             <br>
-            <a href="https://www.linkedin.com/in/ramjivan-jangid/"><i class="fa fa-linkedin"></i></a> 
-            <a href="https://www.santvanitv.com/developers.php"><i class="fa fa-github"></i></a> 
-            <a href="https://twitter.com/ramjeewanj"><i class="fa fa-twitter"></i></a> 
-            <a href="https://ramjivan.github.io/g1/"><i class="fa fa-globe"></i></a> 
+            <a target="_BLANK" href="https://www.linkedin.com/in/ramjivan-jangid/"><i class="fa fa-linkedin"></i></a> 
+            <a target="_BLANK" href="https://www.santvanitv.com/developers.php"><i class="fa fa-github"></i></a> 
+            <a target="_BLANK" href="https://twitter.com/ramjeewanj"><i class="fa fa-twitter"></i></a> 
+            <a target="_BLANK" href="https://ramjivan.github.io/g1/"><i class="fa fa-globe"></i></a> 
             <p><button>Contact</button></p>
         </div>
 
@@ -94,14 +104,15 @@
         
             <div class="title">
                 <li>Database Administrator</li><br>
-                <li>API Developer</li>
+				<li>API Developer</li><br>
+				<li>Front-End Developer</li>
             </div>
             
             <br>
-            <a href="https://www.linkedin.com/in/kunal-awasthi-37383112b/"><i class="fa fa-linkedin"></i></a> 
-            <a href="https://www.santvanitv.com/developers.php"><i class="fa fa-github"></i></a> 
-            <a href="#"><i class="fa fa-twitter"></i></a> 
-            <a href="#"><i class="fa fa-facebook"></i></a> 
+			<a target="_BLANK" href="https://www.linkedin.com/in/kunal-awasthi/"><i class="fa fa-linkedin"></i></a> 
+            <a target="_BLANK" href="https://www.github.com/KunalAwasthi"><i class="fa fa-github"></i></a> 
+            <a target="_BLANK" href="https://kunalawasthi.github.io/KunalAwasthi/"><i class="fa fa-globe"></i></a> 
+            <a target="_BLANK" href="https://www.facebook.com/kunal.awasthi1"><i class="fa fa-facebook"></i></a> 
             <p><button>Contact</button></p>
         </div>
 
@@ -113,16 +124,22 @@
             <h3>Job Roles</h3>
         
             <div class="title">
+<<<<<<< HEAD
                 <li>UI Development</li><br>
+				<li>Social Media Handler</li><br>
+				<li>Front-End Developer</li>
+=======
+                <li>UI Designer</li>
                 <li>Social Media Handler</li>
+>>>>>>> e02bf8581342112f658695eacbfd525d3be5b090
             </div>
             
             <br>
 
-            <a href="https://www.linkedin.com/in/ramjivan-jangid/"><i class="fa fa-linkedin"></i></a> 
-            <a href="https://www.santvanitv.com/developers.php#"><i class="fa fa-github"></i></a> 
-            <a href="https://kunalawasthi.github.io/KunalAwasthi/"><i class="fa fa-globe"></i></a> 
-            <a href="https://www.facebook.com/kunal.awasthi1"><i class="fa fa-facebook"></i></a> 
+            <a target="_BLANK" href="https://www.linkedin.com/in/ramjivan-jangid/"><i class="fa fa-linkedin"></i></a> 
+            <a target="_BLANK" href="https://www.santvanitv.com/developers.php#"><i class="fa fa-github"></i></a> 
+            <a target="_BLANK" href="https://kunalawasthi.github.io/KunalAwasthi/"><i class="fa fa-globe"></i></a> 
+            <a target="_BLANK" href="https://www.facebook.com/kunal.awasthi1"><i class="fa fa-facebook"></i></a> 
             <p><button>Contact</button></p>
         </div>
     </div>

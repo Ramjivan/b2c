@@ -20,6 +20,7 @@ RewriteRule ^product/category/([0-9]*)$ cat.php?id=$2 [QSA]
 RewriteRule ^product/category/merchant$ cat.php?qtype=1 [QSA]
 RewriteRule ^index/category$ cat.php?qtype=2 [QSA]
 RewriteRule ^index/subcategory/([0-9]*)$ cat.php?qtype=3&id=$1 [QSA]
+RewriteRule ^category/fillterv1$ cat.php?qtype=4 [QSA]
 
 
 #category related
