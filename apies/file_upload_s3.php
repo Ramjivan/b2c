@@ -1,8 +1,9 @@
 <?php
+ini_set("display_errors", 1);
 
 use Aws\S3\S3Client;
 
-require '/../vendor/autoload.php';
+require dirname(__DIR__).'/vendor/autoload.php';
 
 $config = require('awsconfig.php');
 
@@ -11,7 +12,7 @@ $bucket = $config['s3']['bucket'];
 //filename must be unique otherwise s3 is gonna rewrite previous file
 $keyname = 'assets/images/test-img-file';
 // $filepath should be absolute path to a file on disk						
-$filepath = 'C:/xampp/htdocs/b2c/images/4bb592d50486e278e0a73d975f57dec2.jpg';
+$filepath = dirname(__DIR__).'/images/8fe784ff93fc5819342242003ee700a6.jpg';
 						
 // Instantiate the client.
 $s3 = new Aws\S3\S3Client([
@@ -36,6 +37,6 @@ $result = $s3->putObject(array(
     )
 ));
 
-echo $result['ObjectURL'];
+print_r($result['ObjectURL']);
 
 ?>

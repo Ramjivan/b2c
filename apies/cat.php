@@ -46,36 +46,88 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 
 function upload_image($index)
 {
-	if(
-		isset($_FILES[$index]) && 
-		is_uploaded_file($_FILES[$index]['tmp_name']) && 
-		$_FILES[$index]['tmp_name'] !== ""
-	)
+
+	require dirname(__DIR__).'/vendor/autoload.php';
+
+	$config = require('awsconfig.php');
+
+	$bucket = $config['s3']['bucket'];
+	
+							
+	// Instantiate the client.
+	$s3 = new Aws\S3\S3Client([
+		'version'     => 'latest',
+		'region'      => 'ap-south-1',
+		'credentials' => [
+		'key'    => $config['s3']['key'],
+		'secret' => $config['s3']['secret']
+		]
+	]);
+
+	
+	if(isset($_FILES[$index]) && 
+	   is_uploaded_file($_FILES[$index]['tmp_name']))
 	{
+		//filename must be unique otherwise s3 is gonna rewrite previous file
+		$keyname = 'assets/images/'.md5(basename($_FILES[$index]['name']).time());
+		
+		/* old technique
 		//image validation starts
-		$dir = dirname(__DIR__)."/images/";
-		$name = md5(basename($_FILES[$index]['name']).time());
-		$targetFile = $dir.$name;
-		$imageFileType = strtolower(pathinfo($dir.basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
+		//$dir = dirname(__DIR__)."/images/";
+		//$name = md5(basename($_FILES[$index]['name']).time());
+		//$targetFile = $dir.$name;
+		old technique*/
+
+		//fileType check
+		$imageFileType = strtolower(pathinfo(basename($_FILES[$index]['name']),PATHINFO_EXTENSION));
+		
+		//$check for validation
 		$check = getimagesize($_FILES[$index]["tmp_name"]);
+		
 		if($check !== false)
 		{
 			if($imageFileType == "png" || $imageFileType == "jpg" || $imageFileType == "jpeg")
 			{
-				if (move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
+				/*if(move_uploaded_file($_FILES[$index]["tmp_name"], $targetFile.'.'.$imageFileType))
 				{
 					return array('dir'=>'/images/','imgname'=>$name.'.'.$imageFileType);
-				}
+				}*/
+
+				$filepath = $_FILES[$index]["tmp_name"];
+				
+				// Upload a file.
+				$result = $s3->putObject(array(
+					'Bucket'       => $bucket,
+					'Key'          => $keyname.'.'.$imageFileType,
+					'SourceFile'   => $filepath,
+					'ACL'          => 'private',
+					'StorageClass' => 'STANDARD',
+					'Metadata'     => array(    
+					'param1'       => 'value 1',
+					'param2'       => 'value 2'
+					)
+				));
+
+				//$arr for name of file  
+				
+				$arr = explode('/',$result['ObjectURL']);
+				
+				return array('dir' => 'https://d12i8noowh27v6.cloudfront.net/assets/images/' , 'imgname' => $arr[count($arr)-1]);
+
 			}
 			else
 			{
+				echo 'not';
 				return null;
 			}
 		}
+		else
+		{
+			echo 'check'; 
+		}
 	}
-	return false;
+	return null;
 }
-
 			   /********************************************
 				***************starts here******************
 				********************************************/
