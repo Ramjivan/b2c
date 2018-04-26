@@ -350,9 +350,43 @@ function upload_image($index)
 					$start = (intval($indexes['page']) * 10) - 10;
 					$end = (intval($indexes['page']) * 10);
 
-					$cat = "SELECT * FROM `products`  where `p_category`=? LIMIT ".$start.",".$end; 
+					$cat = "SELECT * FROM `products` where ";
+					
+					$cat.= "(`p_price` >= ? && `p_price` <= ?) && ";
+					
+					if($indexes['stock'] == 'b2xc')
+					{
+						$cat.= "`p_stock` >= 1 && ";
+					}
+					else
+					{
+						$cat.= "`p_stock` == 0 && ";
+					}
+					$cat.= "`p_category`= ?"; 
+					
+					//for sorting of products
+					switch($indexes['sort'])
+					{
+						case 401:
+							//put it as it is
+						break;
+						case 402:
+							$cat.= " ORDER BY `p_price` ASC";
+						break;
+						case 403:
+							$cat.= " ORDER BY `p_price` DESC";
+						break;
+						case 404:
+							$cat.= " ORDER BY `p_added` DESC";
+						break;
+
+					}
+
+					$cat.= " LIMIT ".$start.",".$end;
+					
+					$return_values['SQL'] = $cat;
 					$stmt = $conn->prepare($cat);
-					$stmt->execute(array($indexes['catid']));
+					$stmt->execute(array($indexes['min'],$indexes['max'],$indexes['catid']));
 					
 					if($stmt->rowCount() > 0)
 					{
