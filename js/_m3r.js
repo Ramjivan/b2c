@@ -461,11 +461,7 @@ window.onload = function(){
 			//product form action	
 			
 			//ask question dialog and action
-			/*var 
-			if()
-			{
-
-			}*/
+			
 			//ask question dialog and action 
 			
 			put_count('s_c',20);

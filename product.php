@@ -38,7 +38,7 @@
 		</form>
 	</div>
 </div>
-
+<div class="clearfix"></div>
 <?php
 include 'footer.php';
 ?>
