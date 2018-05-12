@@ -1627,5 +1627,91 @@ nav div.nav-item  span+a{
 .modal-footer {
     padding: 2px 16px;
     background-color: var(--secondary-color);
-    color: white;
+	color: white;
 }
+
+/*login prompt*/
+div.prompt{
+	display:none;
+	position:fixed;
+	background-color:#425ff4;
+	color:black;
+	height:130px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999;
+	border-radius:10px;
+}
+
+div.prompt div.body{
+	background-color:#425fa4;
+	padding:5px;
+	border-top-left-radius:10px;
+	border-top-right-radius: 10px;
+}
+
+div.prompt div.body p{
+	color:white;
+	padding-left:5px;
+}
+
+div.prompt div.body span{
+	font-size:15px;
+	color:white;
+	font-weight:700;
+}
+
+
+div.prompt div.pb{
+	position: absolute;
+	bottom:10px;
+	right:10px;
+}
+div.prompt div.pb button{
+	display:block;
+	background-color:#fff;
+	border:0px solid;
+	padding:10px;
+	cursor: pointer;
+}
+
+
+div.prompt div.nb{
+	position: absolute;
+	bottom:10px;
+	right:90px;
+}
+
+div.prompt div.nb button{
+	display:block;
+	background-color:#f82828;
+	border:0px solid;
+	padding:10px;
+	cursor: pointer;
+	color:white;
+}
+
+div.prompt span.clsbtn{
+	position: absolute;
+    border-radius: 100%;
+    top: -5px;
+    right: -5px;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 0px;
+    height: 22px;
+    width: 21px;
+	text-align: center;
+	cursor: pointer;
+}
+
+div.prompt button{
+	transition:0.2s all;
+}
+
+div.prompt button:hover{
+	box-shadow:0px 1	px 4px black;
+}
+/*login prompt*/

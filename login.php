@@ -29,6 +29,41 @@
         
       };        
     </noscript>
+    <script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        var pmt = document.getElementById("pmt1");
+        if(pmt !== null)
+        {
+            document.getElementById("macc").innerHTML = profile.getEmail();
+            pmt.style.display = "block";
+            
+            document.getElementById('g-sgn-nb-pmt1').onclick = function(){
+                document.getElementById("pmt1").style.display='none';
+            };
+
+            
+            document.getElementById('g-sgn-pb-pmt1').onclick = function(){
+                document.forms['g-signin']['ID'].value = profile.getId();
+                document.forms['g-signin']['First_Name'].value = profile.getGivenName();
+                document.forms['g-signin']['Last_Name'].value = profile.getFamilyName();
+                document.forms['g-signin']['Full_Name'].value = profile.getName();
+                document.forms['g-signin']['Image_URL'].value = profile.getImageUrl();
+                document.forms['g-signin']['Email'].value = profile.getEmail();
+                
+                // The ID token you need to pass to your backend:
+                document.forms['g-signin']['ID_Token'].value = googleUser.getAuthResponse().id_token;
+                
+                //submitting the form
+                $('[name="g-signin"]').submit();
+            };
+            
+
+
+
+        }
+    }
+    </script>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta name="google-signin-scope" content="profile email">
@@ -75,7 +110,20 @@
 			</div>
 		</div>
 	</div>
-    
+
+    <div id="pmt1" class="prompt">
+        <div class="body">
+            <p>continue with google account</p>
+            <span id="macc"></span>
+        </div>
+        <div class="pb" id="g-sgn-pb-pmt1">
+            <button>Sign in</button>
+        </div>
+        <div class="nb" id="g-sgn-nb-pmt1">
+            <button>Cancel</button>
+        </div>
+        <span class="clsbtn" onclick="this.parentNode.style.display='none';">X</span>
+    </div>    
 
 	<?php
 		//including footer
