@@ -1,12 +1,12 @@
 <?php
 session_start();
-/*echo $_POST['ID'];
+echo $_POST['ID'];
 echo $_POST['Full_Name'];
 echo $_POST['First_Name'];
 echo $_POST['Last_Name'];
 echo $_POST['Image_URL'];
 echo $_POST['Email'];
-echo $_POST['ID_Token'];*/
+echo $_POST['ID_Token'];
 
 require 'pdo.php';
 $CLIENT_ID = '340871764456-pqe4gcc4c2ojfkreg031uelvcs9b19c6.apps.googleusercontent.com';
@@ -33,10 +33,15 @@ if($obj->aud == $CLIENT_ID)
         
         //redircting user
         if(isset($_POST['redirurl'])) 
-        $url = $_POST['redirurl']; // holds url for last page visited.
-        else 
-        $url = "index.php"; // default page for 
-        Header("Location:$url");
+        {
+            $url = $_POST['redirurl']; // holds url for last page visited.
+        }
+        else
+        { 
+            $url = "index.php"; // default page for 
+        }    
+        
+        Header("Location:".$url);
 	}
 	else
 	{
@@ -65,7 +70,7 @@ if($obj->aud == $CLIENT_ID)
                     if($response)
                     {
                         $conn->commit();
-                        $return_values['success'] = 1;
+
                     }
                 }
             }
