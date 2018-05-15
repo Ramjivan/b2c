@@ -629,7 +629,7 @@ window.onload = function(){
 					}
 					else
 					{
-						alert(json_response.ERROR);
+						document.getElementById("error").innerHTML += "<center>No Questions Found.</center>";
 					}
 				}
 				else

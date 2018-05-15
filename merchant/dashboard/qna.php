@@ -44,6 +44,8 @@ require_once 'sess_val.php';
 						</tbody>
 					</table>
 				</div>
+				<div id="error">
+				</div>
 			</div>
 	</div>
 		

@@ -697,6 +697,10 @@ span.p_prspn{
 	text-decoration:none;
 }
 
+.prdct-lnk-a div{
+	width:200px;
+}
+
 div.prdct div.price{
 	font-family:'Roboto',Sans-serif;
 	font-size:14px;

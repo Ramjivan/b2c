@@ -60,10 +60,11 @@ function initStoreFromServer(callback){
 	userState();
 
 	var storeName = decodeURI();
+	storeName['name'] = storeName['name'].replace(/\+/g, "_");;
 	
 	if(storeName !== null)
 	{
-		var url = "/apies/store/get/"+storeName['name'];
+		var url = encodeURI("/apies/store/get/"+storeName['name']);
 	}
 	else
 	{

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			new Page | B2C
+			Customer Wallet | B2C
 		</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">

@@ -95,12 +95,13 @@ function getBreadcrum($cat_id,$conn)
 		if(isset($_GET['qtype']) && $_GET['qtype'] == '1')
 		{			
 			$return_values = array();
-			
+			$name = $_GET['name'];
+			$name = str_replace('_',' ',$_GET['name']);
 			try
 			{
 				$store = "select * from `store` LEFT JOIN `addresses` ON `store`.`st_address_id` = `addresses`.`address_id` where `st_name`= ?"; 
 				$stmt = $conn->prepare($store);
-				$stmt->execute(array($_GET['name']));
+				$stmt->execute(array($name));
 				
 				
 				if($stmt->rowCount() > 0)
