@@ -9,7 +9,34 @@ window.onload = function(){
 	];
 	var url = "apies/customer/add";
 	var method = "POST";
-	var success = function(){document.location="/"};
+	var success = function(xhttp){
+		if(xhttp.responseText.length > 0)
+		{
+			var json = JSON.parse(xhttp.responseText);
+			if(json.success)
+			{
+
+			}
+			else if(json.ERROR)
+			{
+				var node = "";
+				var validation_summary = document.getElementById("vs");
+				validation_summary.style.display = "block";
+				var para = document.createElement("p");
+				para.innerHTML = '<span class="fa fa-exclamation-circle"></span>';
+		
+				if(json["MESSAGE"] !== undefined)
+				{	
+					node = document.createTextNode(json["MESSAGE"]);
+				}
+				
+				node = document.createTextNode("Server Error");
+				
+				para.appendChild(node);
+				validation_summary.appendChild(para);	
+			}
+		}
+	};
 	var fail = function(){alert("Server Error.")};
 	var formid = 'sgn-form';
 	var validation_summary = "vs";

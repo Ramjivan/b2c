@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 include('pdo.php');
 include('functions.php');
@@ -30,6 +31,42 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 	
 }
 
+function email_exist($email){
+	include("pdo.php");
+	try
+	{
+		$stmt = $conn->prepare('select `customer_id` from `customers` where `c_email` = ? LIMIT 1');
+		$stmt->execute(array($email));
+		if($stmt->rowCount() > 0)
+		{
+			return true;
+		}
+		return false;
+	}
+	catch(PDOException $e){
+		$return_values['ERROR'] = $e->getMessage();
+		die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+	}
+}
+
+function phone_exist($phone){
+	include("pdo.php");
+	try
+	{
+		$stmt = $conn->prepare('select `customer_id` from `customers` where `c_mobile` = ? LIMIT 1');
+		$stmt->execute(array($phone));
+		if($stmt->rowCount() > 0)
+		{
+			return true;
+		}
+		return false;
+	}
+	catch(PDOException $e){
+		$return_values['ERROR'] = $e->getMessage();
+		die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+	}
+}
+
 	$QTYPE = "";
 	
 	$id = "";
@@ -59,6 +96,23 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 				
 				if($ERROR_FLAG == 0)
 				{
+
+					if(email_exist($indexes['c_email']))
+					{
+						$return_values = array();
+						$return_values['ERROR'] = true;
+						$return_values['MESSAGE'] = "E-mail Address Already Registered";
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));		
+					}
+
+					if(phone_exist($indexes['c_mobile']))
+					{
+						$return_values = array();
+						$return_values['ERROR'] = true;
+						$return_values['MESSAGE'] = "Phone Number Already Registered";
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+					}
+
 					try
 					{
 						
@@ -100,7 +154,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 					{
 						$conn->rollBack();
 						$return_values['ERROR']['insert'] = $e->getMessage();
-						echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+						die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 					}
 				}
 			}
@@ -130,7 +184,7 @@ function is_set(&$var,$index,&$ERROR_FLAG)
 		{
 			$conn->rollBack();
 			$return_values['ERROR']['insert'] = $e->getMessage();
-			echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+			die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 		}
 
 		echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

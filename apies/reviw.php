@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",1);
 session_start();
 include('pdo.php');
 function is_set(&$var,$index,&$ERROR_FLAG,$method)
@@ -70,7 +71,7 @@ function reviewed($cus_id,$pro_id)
 	if($cus_id !== null && $pro_id !== null)
 	{
 		$stmt =  $conn->prepare('select `customer_id` from `p_review` WHERE `customer_id`= ? && `product_id` = ?');
-		$stmt->exeute(array($cus_id,$pro_id));
+		$stmt->execute(array($cus_id,$pro_id));
 
 		if($stmt->rowCount() > 0)
 		{
