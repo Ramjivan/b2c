@@ -23,7 +23,6 @@
 	
 	<!--Content Here-->
     <div class="main-container clearfix" itemscope itemtype="http://schema.org/Product">
-	
 	</div>
 	<?php
 	include 'footer.php';
