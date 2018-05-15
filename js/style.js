@@ -370,5 +370,6 @@ function popup(modal,btn){
 			modal.style.display = "none";
 		}
 	}
+	modal.style.display = "none";
 }
 
