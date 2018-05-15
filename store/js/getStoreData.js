@@ -130,7 +130,7 @@ function initStoreFromServer(callback){
 				//categories
 				var catLiAppend = "";
 				obj.categories.forEach(function(item,i){
-					catLiAppend = '<li><a href="/store?name='+obj.store.name+'&catid='+item.category_id+'&catname='+item.cat_name+'">'+item.cat_name+'</a></li>';
+					catLiAppend = '<li><a href="/store/name='+obj.store.name+'&catid='+item.category_id+'&catname='+item.cat_name+'">'+item.cat_name+'</a></li>';
 					$('#lg-cat-drpdowns').append(catLiAppend);
 					$('#md-str-catholder').append(catLiAppend);
 				});
