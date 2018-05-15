@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",1);
 session_start();
 include('pdo.php');
 function is_set_strict(&$var,$index,&$ERROR_FLAG)
@@ -138,10 +139,14 @@ function upload_image($index)
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
-		$user = $_SESSION['user'];
-
+		
+		if(isset($_SESSION['user']))
+		{
+			$user = $_SESSION['user'];
+		}
 		if(isset($_GET['qtype']) && $_GET['qtype'] == "1" && $user !== null && $user['merchant_id'] !== null)
 		{
+			
 			try
 			{
 				$conn->beginTransaction();
@@ -356,20 +361,17 @@ function upload_image($index)
 					
 					if($indexes['stock'] == 'b2xc')
 					{
-						$cat.= "`p_stock` >= 1 && ";
+						$cat.= "`p_stock` >= 0 && ";
 					}
 					else
 					{
-						$cat.= "`p_stock` == 0 && ";
+						$cat.= "`p_stock` >= 1 && ";
 					}
 					$cat.= "`p_category`= ?"; 
 					
 					//for sorting of products
 					switch($indexes['sort'])
 					{
-						case 401:
-							//put it as it is
-						break;
 						case 402:
 							$cat.= " ORDER BY `p_price` ASC";
 						break;
@@ -432,7 +434,7 @@ function upload_image($index)
 							$totalPages = ceil($totalProducts / 10);
 							
 							$return_values['TotalPages'] = $totalPages;
-							$return_values['NextPage'] = ($totalPages > $_GET['page'] ? $_GET['page']+1 : $totalPages);
+							$return_values['NextPage'] = ($totalPages > $_POST['page'] ? $_POST['page']+1 : $totalPages);
 							
 						}
 						else
@@ -450,7 +452,7 @@ function upload_image($index)
 				}
 				catch(PDOException $e)
 				{
-					$return_values['ERROR']['insert'] = $e->getMessage();
+					$return_values['ERROR'] = $e->getMessage();
 					die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 				}
 			}

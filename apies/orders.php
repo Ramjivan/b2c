@@ -271,6 +271,7 @@ function get_merchant($id)
 					}
 					else
 					{
+						$return_values = array();
 						$return_values['ERROR'] = 400;
 						$return_values['Message'] = "BAD REQUEST";
 					}

@@ -927,7 +927,7 @@ window.onload = function(){
 		
 		
 					xhr_call(
-						'GET',
+						'POST',
 						'/apies/index/subcategory/'+spinner.value,
 						null,
 						function(xhttp){
@@ -1134,6 +1134,7 @@ window.onload = function(){
 	
 	else if(/order([\w]*)/.test(loc_arr[length-2]+loc_arr[length-1]))
 	{
+		
 		var id = loc_arr[length-1];
 		
 		function get(id)
@@ -1284,25 +1285,31 @@ window.onload = function(){
 			);
 		}
 		
-		function pm(i)
+		
+	function pm(i)
+	{
+		if(i == 101 )
 		{
-			if(i == 1)
-			{
-				return "Pay Balance";
-			}
-			else if(i == 2)
-			{
-				return "Credit Card";
-			}
-			else if(i == 3)
-			{
-				return "Paytm";
-			}
-			else if(i == 4)
-			{
-				return "COD";
-			}
+			return "Pay Balance";
 		}
+		else if(i == 102)
+		{
+			return "UPI";
+		}
+		else if(i == 103)
+		{
+			return "Credit/Debit Card";
+		}
+		else if(i == 104)
+		{
+			return "Net Banking";
+		}
+		else if(i == 105)
+		{
+			return "Cash On Delivery(COD)";
+		}
+	}
+	
 		
 		
 		get(id);
