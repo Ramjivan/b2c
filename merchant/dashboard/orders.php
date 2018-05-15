@@ -1,3 +1,6 @@
+<?php
+require_once 'sess_val.php';
+?>
 <!DOCTYPE html>
 <html id="fh4jf">
 	<head>
@@ -23,7 +26,7 @@
 		<div class="container"> 
 			<div class="center-block">
 				<h3>Orders</h3>
-				<div class="ord_filter">
+				<!--div class="ord_filter">
 					<form id="kj46fn" name="filfrm">
 						<div class="row form-card">
 							<div class="col-2">
@@ -54,7 +57,7 @@
 							</div>
 						</div>
 					</form>
-				</div>
+				</div-->
 				<div class="log-table">
 					<table id="p-tab" class="stripped">
 						<thead>

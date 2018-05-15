@@ -124,7 +124,7 @@ function order($cart,$usr)
                         VALUES
                         (?,?,?,?,?)');
                         
-                    $stmt_ord->execute(array($_SESSION['user']['customer_id'],$merchant_id['merchant_id'],$_POST['pay-method'],1,$ord_pl_id));
+                    $stmt_ord->execute(array($_SESSION['user']['customer_id'],$merchant_id['merchant_id'],$_POST['pay-method'],$_SESSION['user']['c_def_address_id'],$ord_pl_id));
                     
                     $order_id = $conn->lastInsertId();
                     

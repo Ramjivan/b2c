@@ -249,6 +249,8 @@ function get_product($id)
 		}
 		else if(isset($_GET['qtype']) && $_GET['qtype'] = 2)
 		{
+			include('sessionvalidate.php');
+			$user = $_SESSION['user'];
 			try
 			{
 				$stmt = $conn->prepare('SELECT * FROM `p_qna` WHERE `Merchant_id` = ?');

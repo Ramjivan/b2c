@@ -299,8 +299,6 @@ function getBreadcrum($cat_id,$conn)
 
 			try
 			{
-				
-				
 				$SQL = "SELECT * FROM `store` INNER JOIN `addresses` ON `store`.`st_address_id` = `addresses`.`address_id` where `merchant_id` = ? LIMIT 1";
 				$stmt = $conn->prepare($SQL);
 				$stmt->execute(array($user['merchant_id']));
@@ -408,7 +406,8 @@ function getBreadcrum($cat_id,$conn)
 				}
 				else
 				{
-					$return_values['result'] = 0;				}
+					$return_values['result'] = 0;
+				}
 				echo json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 			}
 			catch(PDOException $e)
@@ -416,9 +415,7 @@ function getBreadcrum($cat_id,$conn)
 				$return_values['ERROR'] = $e->getMessage();
 				die(json_encode($return_values,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));	
 			}
-		}
-		
-		
+		}	
 	}
 	else if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
